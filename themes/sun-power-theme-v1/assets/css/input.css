@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@source "../layouts/**/*.html";
+@source "../../../content/**/*.md";
+@source "../../../layouts/**/*.html";
+
+@layer components{
+    .not-home-page h2, .info-page h2{
+        @apply text-2xl md:text-3xl font-light tracking-tight text-gray-900 mb-6;
+    }
+    .not-home-page h3{
+        @apply text-lg mb-3 font-light;
+    }
+    .info-page h3{
+         @apply mt-5;
+    }
+    .not-home-page p{
+        @apply leading-relaxed mb-3;
+    }
+    .not-home-page p, .not-home-page li{
+        @apply text-sm text-gray-500 font-light;
+    }
+    blockquote{
+        @apply border-l-2 border-amber-200 pl-6 text-gray-700;
+    }
+    .info-page ul { @apply list-disc ps-3 mt-3 space-y-2 text-gray-600; }
+    .info-page li { @apply mb-2; }
+    .info-page li::marker {
+        color: #f59e0b; 
+        font-weight: bold;
+    }
+
+    .not-home-page ul {
+        @apply space-y-3;
+        list-style: none !important;
+        padding-left: 0 !important;
+        margin-bottom: 1.5rem;
+    }
+
+    .not-home-page ul li {
+        position: relative;
+        padding-left: 1.75rem; 
+    }
+
+    .not-home-page ul li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.25rem;
+        width: 1.1rem;
+        height: 1.1rem;
+        background-color: #F59E0B; 
+        -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>');
+        mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>');
+        
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+    }
+
+    .section-full-text-with-button p{
+        font-size: 16px;
+    }
+     .section-text-with-image li{
+        margin-bottom: 6px;
+     }
+    summary::-webkit-details-marker { display: none; }
+    summary { list-style: none; }
+}
+

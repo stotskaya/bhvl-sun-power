@@ -1,0 +1,103 @@
+{{- with resources.Get "css/main.css" }}
+  {{- if hugo.IsDevelopment }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+  {{- else }}
+    {{- with . | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{- end }}
+  {{- end }}
+{{- end }}
+<link rel="stylesheet" href="{{ "css/style.css" | relURL }}?v={{ now.Unix }} }}">
+
+  <style>
+
+  
+    /* inputs */
+    .lm-input {
+      width: 100%; padding: .85rem 1.2rem; border-radius: 1rem;
+      background: rgba(255,255,255,.92); border: 1px solid #e5e7eb;
+      font-size: .875rem; color: #111827; outline: none;
+      transition: border-color .15s, box-shadow .15s; box-sizing: border-box;
+    }
+    .lm-input::placeholder { color: #9ca3af; }
+    .lm-input:focus { border-color: #fcd34d; box-shadow: 0 0 0 3px rgba(252,211,77,.22); }
+    .lm-input.err  { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,.18); }
+
+    /* modal — hidden by default, shown with .is-open */
+    #orderModal {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      align-items: flex-end; justify-content: center;
+    }
+    @media (min-width: 640px) {
+      #orderModal { align-items: center; padding: 1.5rem; }
+    }
+    #orderModal.is-open { display: flex; }
+
+    #modalBackdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.22);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      animation: fadeIn .25s ease forwards;
+    }
+    #modalPanel {
+      position: relative; width: 100%;
+      max-height: 96dvh; overflow-y: auto;
+      border-radius: 2.5rem 2.5rem 0 0;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+      border: 1px solid rgba(255,255,255,.82);
+      box-shadow: 0 32px 80px rgba(0,0,0,.15);
+      animation: slideUp .3s cubic-bezier(.22,.68,0,1.15) forwards;
+    }
+    @media (min-width: 640px) {
+      #modalPanel { max-width: 42rem; border-radius: 2.5rem; animation-name: popIn; }
+    }
+
+    @keyframes fadeIn  { from{opacity:0}  to{opacity:1} }
+    @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+    @keyframes popIn   { from{opacity:0;transform:scale(.95) translateY(1rem)} to{opacity:1;transform:scale(1) translateY(0)} }
+    @keyframes spin    { to{transform:rotate(360deg)} }
+    @keyframes pulse   { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* custom checkbox */
+    .cb-box {
+      width: 1.2rem; height: 1.2rem; border-radius: .35rem; flex-shrink: 0;
+      border: 1.5px solid #d1d5db; background: #fff; margin-top: .15rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background .15s, border-color .15s;
+    }
+    .cb-box svg { opacity: 0; transition: opacity .1s; }
+    .cb-box.on { background: #fbbf24; border-color: #fbbf24; }
+    .cb-box.on svg { opacity: 1; }
+
+    /* qty stepper */
+    .qty-btn {
+      width: 2rem; height: 2rem; border-radius: 9999px;
+      border: 1px solid #e5e7eb; background: transparent;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background .15s, color .15s;
+    }
+    .qty-btn:hover { background: #111827; color: #fff; }
+
+    /* avatar ring */
+    .av-ring {
+      background: conic-gradient(from 180deg,#fbbf24,#f59e0b,#fcd34d,#fbbf24);
+      padding: 2px; border-radius: 9999px; display: inline-block;
+    }
+
+    /* success overlay */
+    #orderSuccess {
+      display: none; position: absolute; inset: 0; border-radius: 2.5rem;
+      flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 2.5rem;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      animation: fadeIn .3s ease forwards;
+    }
+    #orderSuccess.show { display: flex; }
+
+    /* demo cards */
+    .demo-card { cursor: pointer; transition: transform .2s, box-shadow .2s; }
+    .demo-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.08); }
+  </style>

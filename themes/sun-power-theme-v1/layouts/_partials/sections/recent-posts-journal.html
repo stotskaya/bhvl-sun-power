@@ -1,0 +1,34 @@
+<section class="py-32 px-6 bg-gray-50/50">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-16 reveal">
+            <h2 class="text-4xl font-light">{{ .Title | default "Insights" }}</h2>
+            <a href="/journal/" class="text-sm font-medium text-gray-400 hover:text-black transition-colors">
+                Journal <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i>
+            </a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-10">
+          {{ range first 3 (where site.RegularPages "Section" "journal") }}
+            <article class="reveal">
+                <div class="aspect-[16/10] rounded-3xl overflow-hidden mb-6">
+                    {{ if .Params.image }}
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    {{ else }}
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Default" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    {{ end }}
+                </div>
+                <span class="text-xs font-medium text-amber-600 mb-3 block">
+                    {{ .Params.category }}
+                </span>
+                <h4 class="text-xl font-medium mb-4 leading-tight">{{ .Title }}</h4>
+                <p class="text-gray-500 font-light text-sm mb-6">
+                    {{ .Params.description | truncate 120 }}
+                </p>
+                <a href="{{ .RelPermalink }}" class="text-sm font-medium border-b border-gray-200 pb-1">Read Editorial</a>
+            </article>
+          {{ else }}
+            <p class="text-gray-400">Поки що немає публікацій у журналі.</p>
+          {{ end }}
+        </div>
+    </div>
+</section>

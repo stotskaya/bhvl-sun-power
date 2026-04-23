@@ -1,0 +1,52 @@
+{{/* 1. Словник кольорів (Мапінг) */}}
+{{ $colorMap := dict 
+    "blue" (dict "text" "text-blue-600" "icon" "text-blue-500" "bg" "from-blue-100/20")
+    "amber" (dict "text" "text-amber-600" "icon" "text-amber-500" "bg" "from-amber-100/20")
+    "green" (dict "text" "text-green-600" "icon" "text-green-500" "bg" "from-green-100/20")
+}}
+
+<section id="{{ .File.TranslationBaseName }}" class="py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-4xl font-light mb-4">{{ .Title }}</h2>
+            <p class="text-gray-500 font-light">{{ .Params.subtitle }}</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {{ range .Params.kits }}
+                {{/* Отримуємо набір класів, якщо кольору немає в словнику — беремо amber */}}
+                {{ $theme := index $colorMap .accent_color | default (index $colorMap "amber") }}
+                
+                <div class="relative group reveal {{ .delay }}">
+                    <div class="absolute inset-0 bg-gradient-to-br {{ $theme.bg }} to-transparent rounded-[3rem] -z-10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    
+                    <div class="glass-panel p-12 rounded-[3rem] border-white/80 h-full flex flex-col">
+                        <span class="text-xs font-semibold tracking-[0.2em] {{ $theme.text }} uppercase mb-4 block">
+                            {{ .collection }}
+                        </span>
+                        <h3 class="text-3xl font-light mb-6">{{ .title }}</h3>
+                        
+                        <ul class="space-y-4 mb-10 text-gray-600 font-light flex-grow">
+                            {{ range .features }}
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 {{ $theme.icon }}"></i> 
+                                {{ . }}
+                            </li>
+                            {{ end }}
+                        </ul>
+
+                        <div class="flex items-end justify-between">
+                            <div>
+                                <p class="text-gray-400 text-sm mb-1">Starting at</p>
+                                <p class="text-3xl font-medium">{{ .price }}</p>
+                            </div>
+                            <button class="bg-gray-900 text-white px-8 py-3 rounded-full text-sm font-medium hover:scale-105 transition-transform">
+                                {{ .button_text }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+</section>

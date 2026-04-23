@@ -1,0 +1,81 @@
+{{ define "main" }}
+<section id="products" class="py-28 px-6 bg-white/30 backdrop-blur-md" aria-labelledby="catalog-title">
+            <div class="max-w-7xl mx-auto">
+                {{ partial "breadcrumbs.html" . }} 
+      
+         
+      <div class="items-start">
+        <section class="reveal" aria-label="Catalog results">
+            
+       
+           <div id="catalogGrid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6" itemscope itemtype="https://schema.org/ItemList">  
+                {{ range .Pages }}
+                <article class="glass-card group p-6 rounded-[2rem]" 
+                        data-id="{{ .Params.product_id }}" 
+                        data-type="product" 
+                        data-category="{{ .Params.category | urlize }}" 
+                        data-tags="{{ .Params.tags }}" 
+                        data-price="{{ .Params.price }}" 
+                        itemscope itemtype="https://schema.org/Product" itemprop="itemListElement">
+                    
+                    <meta itemprop="position" content="{{ .File.UniqueID }}">
+                    
+                    <a href="{{ .RelPermalink }}" class="absolute inset-0 z-10" aria-label="View {{ .Title }}"></a>
+
+                    <div class="aspect-square rounded-2xl bg-gray-50 mb-6 overflow-hidden flex items-center justify-center">
+                        {{ if .Params.image }}
+                        <img src="{{ .Params.image | relURL }}" 
+                            alt="{{ .Title }}" 
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                            itemprop="image">
+                        {{ else }}
+                        <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
+                        {{ end }}
+                    </div>
+
+                    <div class="px-2">
+                        <p class="text-xs text-gray-400 uppercase tracking-widest mb-3" itemprop="category">
+                            {{ .Params.short_title }}
+                        </p>
+                        <h3 class="font-medium text-lg mb-1" itemprop="name">{{ .Title }}</h3>
+                        
+                        
+                        <p class="text-sm text-gray-500 font-light mb-4 line-clamp-2">
+                            {{ .Params.description | plainify | truncate 100 }}
+                        </p>
+
+                        <div class="flex items-center justify-between relative z-20">
+                            <div>
+                                <span class="text-xl font-light" aria-label="Price {{ .Params.price }}">
+                                   {{ if eq .Params.price_from "yes" }}
+                                    <span class="text-sm leading-none opacity-70 mb-2">від </span>
+                                    {{ end }}
+                                    <span class="solar-gradient-text font-medium">{{ .Params.price }}{{ .Params.currency }}</span>
+                                </span>
+                            </div>
+                            
+                            <button type="button" class="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all btn-open-modal">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hidden" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="{{ .Params.currency | default "USD" }}">
+                        <meta itemprop="price" content="{{ .Params.price }}">
+                        <link itemprop="availability" href="https://schema.org/InStock">
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+            <noscript>
+                <div class="mt-6 glass-panel rounded-[2.5rem] p-6 text-sm text-gray-600 font-light">
+                    Filtering and pagination require JavaScript. All items are shown by default.
+                </div>
+            </noscript>
+        
+        </section>    
+        </div>
+    </div>
+</section>
+{{ end }}

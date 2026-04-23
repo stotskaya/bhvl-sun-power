@@ -1,0 +1,207 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-US'
+title = 'BHVL Sun Power'
+
+[params]
+    brandName = "A100"
+    headerButtonText = "Зателефонувати"
+    footerDescription = "Робимо Україну енергонезалежною та екологічно безпечною"
+    copyrightText = "А100 СЕС Запоріжжя. Всі права захищені."
+
+[menus]
+
+  [[menu.main]]
+    name = 'СЕС під ключ'
+    url = '/sps/'
+    identifier = "ses-key"
+    weight = 10
+ 
+  [[menu.main]]
+    name = "Для дому"
+    url = "/sps/"
+    identifier = "ses-key-for-home"
+    parent = "ses-key"     
+    weight = 1
+    params = { subname = "Загальна" }
+
+  [[menu.main]]
+    name = "Гібридні СЕС"
+    url = "/sps/hybrid-sps/"
+    parent = "ses-key-for-home"     
+    weight = 1
+
+  [[menu.main]]
+    name = "Автономні СЕС"
+    url = "/sps/autonomous-sps"
+    parent = "ses-key-for-home"     
+    weight = 2
+
+  [[menu.main]]
+    name = "Мережеві СЕС"
+    url = "/sps/grid-tied-sps/"
+    parent = "ses-key-for-home"     
+    weight = 2
+
+  [[menu.main]]
+    name = "Для бізнесу"
+    url = "/sps/"
+    identifier = "ses-key-for-business"
+    parent = "ses-key"     
+    weight = 2
+    params = { subname = "Акцент на окупність" }
+
+  [[menu.main]]
+    name = "СЕС для виробництва"
+    url = "/ses-key/for-business/dev"
+    parent = "ses-key-for-business"     
+    weight = 1
+
+  [[menu.main]]
+    name = "CEC для офісів/ТЦ"
+    url = "/ses-key/for-business/tc"
+    parent = "ses-key-for-business"     
+    weight = 2
+
+  [[menu.main]]
+    name = "СЕС для сільського господарства"
+    url = "/ses-key/for-business/farm"
+    parent = "ses-key-for-business"     
+    weight = 3
+
+  [[menu.main]]
+    name = "Резервне живлення"
+    url = "/"
+    parent = "ses-key"     
+    weight = 3
+    params = { subname = "СНЕ для квартир/офісів" }
+
+  [[menu.main]]
+    name = 'Каталог'
+    url = '/catalog'
+    identifier = "catalog"
+    weight = 20
+
+  [[menu.main]]
+    name = "Готові комплекти "
+    url = "/catalog/ready"
+    parent = "catalog"     
+    weight = 1
+    params = { subname = "5, 10, 20, 50 кВт" }
+
+  [[menu.main]]
+    name = "Сонячні панелі"
+    url = "/catalog/sun"
+    parent = "catalog"     
+    weight = 2
+    params = { subname = "в т.ч. бренд А100" }
+
+  [[menu.main]]
+    name = "Інвертори"
+    url = "/catalog/inventors"
+    parent = "catalog"     
+    weight = 3
+
+  [[menu.main]]
+    name = "Акумулятори"
+    url = "/catalog/ackum"
+    parent = "catalog"     
+    weight = 4
+
+  [[menu.main]]
+    name = "Комплектуючі"
+    url = "/catalog/komlp"
+    parent = "catalog"     
+    weight = 5
+    params = { subname = "Кріплення, захист" }
+
+  [[menu.main]]
+    name = "Бренд А100"
+    url = "/catalog/a100"
+    parent = "catalog"     
+    weight = 6
+    params = { subname = "Ексклюзив" }
+
+  [[menu.main]]
+    name = 'Послуги'
+    url = '/services/'
+    identifier = "services"
+    weight = 30
+
+  [[menu.main]]
+    name = "Проєктування та Енергоаудит"
+    url = "/services/project"
+    parent = "services"     
+    weight = 1
+
+  [[menu.main]]
+    name = "Збільшення потужності"
+    url = "/services/power"
+    parent = "services"     
+    weight = 2
+
+  [[menu.main]]
+    name = "Демонтаж та перенесення СЕС"
+    url = "/services/deact"
+    parent = "services"     
+    weight = 2
+
+  [[menu.main]]
+    name = 'Наші роботи'
+    url = '/our-works'
+    weight = 40
+
+  [[menu.main]]
+    name = 'Калькулятор'
+    url = '/calculator'
+    weight = 50
+
+  [[menu.main]]
+    name = 'Про компанію'
+    url = '/about-company'
+    weight = 60
+
+  [[menu.footer_nav]]
+    name = "Філософія"
+    url = "#philosophy"
+    weight = 10
+
+  [[menu.footer_nav]]
+    name = "Системи"
+    url = "#systems"
+    weight = 20
+
+  [[menu.footer_nav]]
+    name = "Рішення"
+    url = "#solutions"
+    weight = 30
+  
+  [[menu.footer_nav]]
+    name = "Блог"
+    url = "/journal"
+    weight = 40
+
+  [[menu.footer_social]]
+    name = "Instagram"
+    url = "/"
+    weight = 10
+
+  [[menu.footer_social]]
+    name = "LinkedIn"
+    url = "/"
+    weight = 20
+
+  [[menu.footer_social]]
+    name = "Twitter"
+    url = "/"
+    weight = 30
+
+  [[menu.subfooter_nav]]
+    name = "Політика конфіденційності"
+    url = "/privacy-policy"
+    weight = 10
+
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = '0.146.0'

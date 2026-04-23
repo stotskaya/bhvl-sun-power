@@ -1,0 +1,25 @@
+<section id="{{ .File.TranslationBaseName }}" class="py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-24 reveal">
+            <h2 class="text-4xl font-light mb-4">{{ .Title }}</h2>
+            <div class="text-gray-500 max-w-2xl mx-auto font-light">
+                {{ .Content }}
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            {{/* Проходимо циклом по списку переваг з Front Matter */}}
+            {{ range $index, $item := .Params.items }}
+            <div class="glass-card p-6 md:p-10 rounded-[2.5rem] reveal {{ if eq $index 1 }}delay-150{{ else if eq $index 2 }}delay-300{{ end }}">
+                <div class="w-14 h-14 {{ $item.bg_color | default "bg-amber-50" }} rounded-2xl flex items-center justify-center mb-8 {{ $item.icon_color | default "text-amber-500" }}">
+                    <i data-lucide="{{ $item.icon }}" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-xl font-medium mb-4">{{ $item.title }}</h3>
+                <p class="text-gray-500 font-light leading-relaxed">
+                    {{ $item.description }}
+                </p>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>

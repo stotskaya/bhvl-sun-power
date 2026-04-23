@@ -1,0 +1,43 @@
+
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 reveal">
+                <div class="flex items-center gap-3 text-sm text-gray-500 font-light">
+                    {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+                </div>
+                {{ with .Parent }}
+                {{ if eq .Title "Sps" }}
+                {{ else }}
+                <a href="{{ .RelPermalink }}" class="text-sm font-medium flex items-center gap-2 border-b border-black pb-1 hover:text-amber-600 transition-colors">
+                    <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
+                    {{ .Title }}
+                </a>
+                {{ end }}
+                {{ end }}
+            </div>
+
+            {{ define "breadcrumbnav" }}
+    {{ if .p1.Parent }}
+        {{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2) }}            
+    {{ end }}
+
+    {{/* Перевірка: пропускаємо рендер, якщо назва секції або папки — 'sls' */}}
+    {{ if ne .p1.Section "Sps" }}
+        
+        {{/* Малюємо розділювач, тільки якщо це не головна сторінка і є батько */}}
+        {{ if and .p1.Parent (ne .p1.Kind "home") }}
+            <span class="text-gray-300">/</span>
+        {{ end }}
+
+        {{ if eq .p1 .p2 }}
+            {{/* Поточна сторінка (останній елемент) */}}
+            <span class="text-gray-800 font-medium" itemprop="name">                     
+                {{ .p1.Params.short_title | default .p1.Title }}
+            </span>
+        {{ else }}
+            {{/* Посилання на батьківські розділи */}}
+            <a href="{{ .p1.RelPermalink }}" class="hover:text-amber-600 transition-colors">
+                {{ .p1.Params.short_title | default (.p1.LinkTitle | default .p1.Title) }}
+            </a>
+        {{ end }}
+        
+    {{ end }}
+{{ end }}

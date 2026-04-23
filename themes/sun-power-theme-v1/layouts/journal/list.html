@@ -1,0 +1,114 @@
+{{ define "main" }}
+{{ $categories := slice }}
+{{ $tags := slice }}
+{{ range (where .Site.RegularPages "Section" "journal") }}
+  {{ if .Params.category }}
+    {{ $categories = $categories | append .Params.category }}
+  {{ end }}
+  {{ with .Params.tags }}
+      {{ range . }}
+        {{ $tags = $tags | append . }}
+      {{ end }}
+    {{ end }}
+{{ end }}
+<div id="insights" class="py-28 px-6 bg-white/30 backdrop-blur-md" aria-labelledby="insights-title">
+    <div class="max-w-7xl mx-auto">
+        {{ partial "breadcrumbs.html" . }} 
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-8 reveal ">
+            <div>
+                <h1 id="insights-title" class="text-4xl font-light mb-4">{{ .Params.Title}}</h1>
+                <p class="text-gray-500 font-light max-w-2xl">{{ .Params.Subtitle }}</p>
+            </div>
+            <div class="flex flex-col gap-4 filters-wrapper">
+                <div class="flex flex-wrap items-center justify-start gap-2" aria-label="Categories">
+                    <button type="button" class="glass-card px-5 py-2 rounded-full text-sm font-medium hover:bg-white/80 transition-colors active" data-category="all" aria-pressed="true">All categories</button>
+                    {{ range ($categories | uniq) }}
+                    <button type="button" class="glass-card px-5 py-2 rounded-full text-sm font-medium hover:bg-white/80 transition-colors" data-category="{{ . | lower }}" aria-pressed="false">{{ . }}</button>
+                    {{ end }}
+                </div>
+                <div class="flex flex-wrap items-center justify-start gap-2" aria-label="Tags">
+                    <button type="button" class="glass-card px-5 py-2 rounded-full text-sm font-medium hover:bg-white/80 transition-colors active" data-tag="all" aria-pressed="true">All tags</button>
+                    {{ range ($tags | uniq | sort) }}
+                    <button type="button" class="glass-card px-5 py-2 rounded-full text-sm font-medium hover:bg-white/80 transition-colors" data-tag="{{ . | lower }}" aria-pressed="false">{{ . }}</button>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        <div class="glass-panel rounded-[2.5rem] p-6 md:p-8 mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal">
+            <div>
+                <p class="text-xs text-gray-400 tracking-widest uppercase">Results</p>
+                <p class="text-lg font-medium">
+                    <span id="resultsCount">0</span> articles
+                </p>
+            </div>
+            <div class="flex items-center gap-4">
+                <p id="resultsStatus" class="text-sm text-gray-500 font-light" aria-live="polite"></p>
+                <button id="clearFilters" type="button" class="text-sm font-medium flex items-center gap-2 border-b border-black pb-1 hover:text-amber-600 transition-colors">
+                    Clear filters <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+      
+        <div id="insightsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">  
+            {{ range .Paginator.Pages }}
+            {{ $tags_list := delimit .Params.tags "," | lower }}
+            <article class="reveal " 
+                    data-category="{{ .Params.category | default "Energy" }}" 
+                    data-tags="{{ $tags_list }}">
+                
+                <div class="aspect-[16/10] rounded-3xl overflow-hidden mb-6">
+                    {{ if .Params.image }}
+                        <img src="{{ .Params.image }}" 
+                            alt="{{ .Title }}" 
+                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    {{ else }}
+                        <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300">No Image</div>
+                    {{ end }}
+                </div>
+
+                <div class="flex items-center justify-between gap-6 mb-3">
+                    <span class="text-xs font-medium text-amber-600">
+                        {{ .Params.category | default "Sustainability" }}
+                    </span>
+                    <span class="text-xs text-gray-400 tracking-widest uppercase">
+                        {{ .Params.editorial_type | default "Editorial" }}
+                    </span>
+                </div>
+
+                <h2 class="text-xl font-medium mb-4 leading-tight">
+                    {{ .Title | safeHTML }}
+                </h2>
+
+                <p class="text-gray-500 font-light text-sm mb-5">
+                    {{ .Params.description | truncate 150 }}
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                    {{ range .Params.tags }}
+                        <span class="glass-card px-3 py-1.5 rounded-full text-xs font-medium">{{ . }}</span>
+                    {{ end }}
+                </div>
+
+                <a href="{{ .RelPermalink }}" class="text-sm font-medium border-b border-gray-200 pb-1 hover:text-amber-600 transition-colors inline-block">
+                    Read {{ .Params.editorial_type | default "Editorial" }}
+                </a>
+
+            </article>
+            {{ end }}
+        </div>
+        <nav id="insightsPagination" class="mt-16 flex items-center justify-center reveal" aria-label="Insights pagination">
+            <div class="glass-panel rounded-full px-5 py-3 flex items-center gap-3">
+                <button id="prevPage" type="button" class="text-sm font-medium flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/60 transition-colors opacity-50 cursor-not-allowed" disabled="">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-left" class="lucide lucide-chevron-left w-4 h-4" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+                    Prev
+                </button>
+                <div id="pageNumbers" class="flex items-center gap-2"><button type="button" class="w-10 h-10 rounded-full text-sm font-medium hover:bg-white/60 transition-colors bg-gray-900 text-white" aria-current="page">1</button><button type="button" class="w-10 h-10 rounded-full text-sm font-medium hover:bg-white/60 transition-colors glass-card">2</button></div>
+                <button id="nextPage" type="button" class="text-sm font-medium flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/60 transition-colors">
+                    Next
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" class="lucide lucide-chevron-right w-4 h-4" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+                </button>
+            </div>
+        </nav>   
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,172 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --solar-gold: #FDB813;
+    --solar-amber: #F59E0B;
+    --charcoal: #1F2937;
+    --pearl: #F9FAFB;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--pearl);
+    color: var(--charcoal);
+    overflow-x: hidden;
+}
+
+/* Apple Liquid Glass Aesthetics */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    border-color: rgba(253, 184, 19, 0.3);
+}
+
+.filters-wrapper .glass-card.active{
+    border: 2px solid oklch(87.9% 0.169 91.605);
+}
+
+.luminous-depth {
+    background: radial-gradient(circle at 50% -20%, rgba(253, 184, 19, 0.15), transparent 70%),
+                radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.8), transparent 50%);
+}
+
+.solar-gradient-text {
+    background: linear-gradient(135deg, #f59e0b, #fcd34d);
+    -webkit-background-clip: text;
+    padding-right: 15px;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.floating-layer {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Refined Buttons */
+.btn-premium {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.btn-premium::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+}
+
+.btn-premium:hover::after {
+    left: 100%;
+}
+
+/* Background atmospheric elements */
+.sun-glow {
+    position: fixed;
+    top: -20vh;
+    right: -10vw;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(251, 191, 36, .13) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sky-drift {
+    position: fixed;
+    bottom: -10vh;
+    left: -10vw;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(147, 197, 253, .09) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.article-layout {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.article-layout > * {
+    min-width: 0;
+}
+
+@media (min-width: 1024px) {
+    .article-layout:has(> aside),
+    .article-layout:has(> .article-aside),
+    .article-layout:has(> [data-aside]) {
+        grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+    }
+}
+.lbl {
+    font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #9ca3af; font-weight: 500;
+    display: block; margin-bottom: 6px;
+}
+.step-num {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: oklch(98.7% 0.022 95.277);
+    color: #f59e0b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.section-image{
+    height: 100%;
+    min-height: 300px;
+    width: 100%;
+    position: relative;
+}
+
+.section-image img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-position: center;
+    object-fit: cover;
+    height: 100%;
+}

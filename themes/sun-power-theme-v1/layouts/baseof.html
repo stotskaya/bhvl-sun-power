@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}" class="scroll-smooth">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="antialiased">
+  <div class="sun-glow"></div>
+  <div class="sky-drift"></div>
+  <header>
+    {{ partial "header.html" . }}
+  </header>
+  <main class="{{ if (not .IsHome) }} not-home-page {{ end }}">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  {{ partial "orderModal.html" . }}
+
+</body>
+</html>

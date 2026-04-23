@@ -1,0 +1,287 @@
+{{ define "main" }}
+<section id="products" class="py-28 px-6 bg-white/30 backdrop-blur-md" aria-labelledby="catalog-title">
+            <div class="max-w-7xl mx-auto">
+                {{ partial "breadcrumbs.html" . }} 
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-8 reveal">
+                    <div>
+                        <h2 id="catalog-title" class="text-4xl font-light mb-4">{{ .Params.Title}}</h2>
+                        <p class="text-gray-500 font-light">{{ .Params.Subtitle }}</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+                        <label class="text-sm font-medium text-gray-600" for="sortBy">Sort</label>
+                        <div class="relative">
+                            <select id="sortBy" name="sortBy" class="glass-panel rounded-full pl-5 pr-10 py-3 text-sm font-medium text-gray-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-300/70">
+                                <option value="featured">Featured</option>
+                                <option value="price_asc">Price: Low to High</option>
+                                <option value="price_desc">Price: High to Low</option>
+                                <option value="rating_desc">Top Rated</option>
+                                <option value="name_asc">Name: A–Z</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+         <div class="lg:hidden mb-6 reveal">
+            <button id="filtersToggle" type="button" class="glass-panel rounded-full px-6 py-3 w-full flex items-center justify-between text-sm font-medium" aria-expanded="false" aria-controls="filtersPanel">
+                <span class="flex items-center gap-2">
+                    <i data-lucide="sliders-horizontal" class="w-4 h-4" aria-hidden="true"></i>
+                    Filters
+                </span>
+                <span class="flex items-center gap-2 text-gray-500">
+                    <span id="activeFiltersCount" class="text-xs uppercase tracking-widest">0 active</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+      <div class="grid lg:grid-cols-[320px_1fr] gap-8 items-start">
+        <aside id="filtersPanel" class="glass-panel rounded-[2.5rem] p-8 lg:sticky lg:top-28 reveal hidden lg:block" aria-label="Catalog filters">
+            <form id="filtersForm" class="space-y-10" novalidate>
+                <div class="flex items-start justify-between gap-4">
+                    <div>
+                        <h3 class="text-lg font-medium">Filters</h3>
+                        <p class="text-xs text-gray-400 tracking-widest uppercase mt-1">Refine results</p>
+                    </div>
+                    <button id="resetFilters" type="button" class="text-sm font-medium text-gray-400 hover:text-black transition-colors">
+                        Reset
+                    </button>
+                </div>
+
+                <fieldset class="space-y-4">
+                    <legend class="text-sm font-medium text-gray-700">Category</legend>
+                    <div class="space-y-3 text-sm text-gray-600 font-light">
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="category" value="modules">
+                            <span>Solar Modules</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="category" value="storage">
+                            <span>Energy Storage</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="category" value="inverters">
+                            <span>Inverters</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="category" value="monitoring">
+                            <span>Monitoring</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="category" value="installation">
+                            <span>Installation</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="category" value="maintenance">
+                            <span>Maintenance</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-4">
+                    <legend class="text-sm font-medium text-gray-700">Tags</legend>
+                    <div class="flex flex-wrap gap-2">
+                        <label class="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-sm font-medium cursor-pointer">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="tag" value="premium">
+                            <span>Premium</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-sm font-medium cursor-pointer">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="tag" value="smart">
+                            <span>Smart</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-sm font-medium cursor-pointer">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="tag" value="quiet">
+                            <span>Quiet</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-sm font-medium cursor-pointer">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="tag" value="new">
+                            <span>New</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-sm font-medium cursor-pointer">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="tag" value="bestseller">
+                            <span>Best Seller</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-sm font-medium cursor-pointer">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="tag" value="outdoor">
+                            <span>Outdoor</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-4">
+                    <legend class="text-sm font-medium text-gray-700">Price</legend>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-400 tracking-widest uppercase mb-2" for="priceMin">Min</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">$</span>
+                                <input id="priceMin" name="priceMin" type="number" inputmode="decimal" min="0" step="1" placeholder="0" class="w-full glass-panel rounded-2xl pl-9 pr-4 py-3 text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-300/70">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-400 tracking-widest uppercase mb-2" for="priceMax">Max</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm">$</span>
+                                <input id="priceMax" name="priceMax" type="number" inputmode="decimal" min="0" step="1" placeholder="25000" class="w-full glass-panel rounded-2xl pl-9 pr-4 py-3 text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-300/70">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-4">
+                    <legend class="text-sm font-medium text-gray-700">Brand</legend>
+                    <div class="space-y-3 text-sm text-gray-600 font-light">
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="brand" value="Lumina">
+                            <span>Lumina</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="brand" value="Vault">
+                            <span>Vault</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="brand" value="Nexus">
+                            <span>Nexus</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="brand" value="Horizon">
+                            <span>Horizon</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="checkbox" name="brand" value="Studio">
+                            <span>Studio</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="space-y-4">
+                    <legend class="text-sm font-medium text-gray-700">Rating</legend>
+                    <div class="space-y-3 text-sm text-gray-600 font-light">
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="radio" name="rating" value="0" checked>
+                            <span>Any rating</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="radio" name="rating" value="4.5">
+                            <span>4.5+</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="radio" name="rating" value="4">
+                            <span>4.0+</span>
+                        </label>
+                        <label class="flex items-center gap-3">
+                            <input class="h-4 w-4 accent-amber-500" type="radio" name="rating" value="3.5">
+                            <span>3.5+</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <button id="applyFilters" type="submit" class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 w-full">
+                    Apply Filters
+                </button>
+            </form>
+        </aside>
+        <section class="reveal" aria-label="Catalog results">
+            <div class="glass-panel rounded-[2.5rem] p-6 md:p-8 mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <p class="text-xs text-gray-400 tracking-widest uppercase">Results</p>
+                    <p class="text-lg font-medium">
+                        <span id="resultsCount">0</span> items
+                    </p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <p id="resultsStatus" class="text-sm text-gray-500 font-light" aria-live="polite"></p>
+                    <button id="clearSearchState" type="button" class="text-sm font-medium flex items-center gap-2 border-b border-black pb-1 hover:text-amber-600 transition-colors">
+                        Clear selection <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="noResults" class="hidden glass-panel rounded-[2.5rem] p-6 md:p-10 text-center">
+                <p class="text-xl font-medium mb-3">No matches found</p>
+                <p class="text-gray-500 font-light mb-8">Try removing filters or adjusting your price and rating range.</p>
+                <button type="button" class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200" id="noResultsReset">
+                    Reset Filters
+                </button>
+            </div>
+       
+           <div id="catalogGrid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6" itemscope itemtype="https://schema.org/ItemList">  
+                {{ range .Pages }}
+                <article class="glass-card group p-6 rounded-[2rem]" 
+                        data-id="{{ .Params.product_id }}" 
+                        data-type="product" 
+                        data-category="{{ .Params.category | urlize }}" 
+                        data-tags="{{ .Params.tags }}" 
+                        data-price="{{ .Params.price }}" 
+                        itemscope itemtype="https://schema.org/Product" itemprop="itemListElement">
+                    
+                    <meta itemprop="position" content="{{ .File.UniqueID }}">
+                    
+                    <a href="{{ .RelPermalink }}" class="absolute inset-0 z-10" aria-label="View {{ .Title }}"></a>
+
+                    <div class="aspect-square rounded-2xl bg-gray-50 mb-6 overflow-hidden flex items-center justify-center">
+                        {{ if .Params.image }}
+                        <img src="{{ .Params.image | relURL }}" 
+                            alt="{{ .Title }}" 
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                            itemprop="image">
+                        {{ else }}
+                        <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
+                        {{ end }}
+                    </div>
+
+                    <div class="px-2">
+                        <h3 class="font-medium text-lg mb-1" itemprop="name">{{ .Title }}</h3>
+                        <p class="text-xs text-gray-400 uppercase tracking-widest mb-3" itemprop="category">
+                            {{ .Params.category }}
+                        </p>
+                        
+                        <p class="text-sm text-gray-500 font-light mb-4 line-clamp-2">
+                            {{ .Summary | plainify | truncate 100 }}
+                        </p>
+
+                        <div class="flex items-center justify-between relative z-20">
+                            <div>
+                                <span class="text-xl font-light" aria-label="Price {{ .Params.price }}">
+                                    {{ .Params.currency | default "$" }}{{ .Params.price }}
+                                </span>
+                                <div class="text-xs text-gray-400 tracking-widest uppercase mt-1">
+                                    {{ .Params.status | default "In stock" }}
+                                </div>
+                            </div>
+                            
+                            <button type="button" class="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="hidden" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="{{ .Params.currency | default "USD" }}">
+                        <meta itemprop="price" content="{{ .Params.price }}">
+                        <link itemprop="availability" href="https://schema.org/InStock">
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+            <nav class="mt-10 flex items-center justify-between gap-4 glass-panel rounded-full px-6 py-4" aria-label="Pagination">
+                <button id="prevPage" type="button" class="text-sm font-medium flex items-center gap-2 hover:text-amber-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+                    <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
+                    Prev
+                </button>
+                <div id="pageNumbers" class="flex items-center gap-2" aria-label="Page numbers"></div>
+                <button id="nextPage" type="button" class="text-sm font-medium flex items-center gap-2 hover:text-amber-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                    Next
+                    <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                </button>
+            </nav>
+
+            <noscript>
+                <div class="mt-6 glass-panel rounded-[2.5rem] p-6 text-sm text-gray-600 font-light">
+                    Filtering and pagination require JavaScript. All items are shown by default.
+                </div>
+            </noscript>
+        
+        </section>    
+        </div>
+    </div>
+</section>
+{{ end }}

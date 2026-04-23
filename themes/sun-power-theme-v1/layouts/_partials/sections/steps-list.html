@@ -1,0 +1,30 @@
+<section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+        {{ with .title }}
+        <h2 class="text-3xl md:text-4xl font-light text-center mb-16">{{ . }}</h2>
+        {{ end }}
+
+        <div class="flex flex-wrap lg:flex-nowrap justify-center gap-6">
+            {{ range $index, $step := .steps }}
+            
+            {{ $delay := mul $index 100 }}
+            
+            <div class="glass-card rounded-[2rem] p-7 reveal visible flex flex-col items-start text-left flex-1 min-w-[240px] lg:min-w-0 {{ if $delay }}delay-{{ $delay }}{{ end }} p-6">
+                
+                <div class="step-num mb-5">
+                    {{ add $index 1 }}
+                </div>
+                
+                <h3 class="font-medium text-sm mb-2">
+                    {{ .title }}
+                </h3>
+                
+                <p class="text-xs text-gray-400 font-light leading-relaxed">
+                    {{ .text }}
+                </p>
+                
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>

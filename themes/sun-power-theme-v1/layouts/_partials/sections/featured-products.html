@@ -1,0 +1,46 @@
+ <section id="products" class="py-32 px-6 bg-white/30 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 reveal">
+                    <div>
+                        <h2 class="text-4xl font-light mb-4">{{ .Params.title }}</h2>
+                        <p class="text-gray-500 font-light">{{ .Params.subtitle }}</p>
+                    </div>
+                    <a class="text-sm font-medium flex items-center gap-2 border-b border-black pb-1 hover:text-amber-600 transition-colors" href="/products">
+                        View Full Catalog  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div> 
+ <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {{/* Додаємо $index, щоб отримати порядковий номер ітерації (0, 1, 2, 3) */}}
+        {{ range $index, $element := first 4 (where .Site.RegularPages "Section" "products").ByDate.Reverse }}
+        
+        {{/* Рахуємо затримку: 0*75=0ms, 1*75=75ms, 2*75=150ms і т.д. */}}
+        {{ $delay := mul $index 75 }} 
+
+        <div class="glass-card group p-6 rounded-[2rem] reveal relative" {{ if $delay }}style="transition-delay: {{ $delay }}ms"{{ end }}>
+            <a href="{{ .RelPermalink }}" class="absolute inset-0 z-10" aria-label="{{ .Title }}"></a>
+            
+            <div class="aspect-square rounded-2xl bg-gray-50 mb-6 overflow-hidden flex items-center justify-center">
+                {{ if .Params.image }}
+                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                {{ else }}
+                    <i data-lucide="sun" class="w-16 h-16 text-gray-200 stroke-[0.5]"></i>
+                {{ end }}
+            </div>
+
+            <div class="px-2">
+                <h4 class="font-medium text-lg mb-1">{{ .Title }}</h4>
+                <p class="text-xs text-gray-400 uppercase tracking-widest mb-4">{{ .Params.category }}</p>
+                <div class="flex items-center justify-between relative z-20">
+                    <span class="text-xl font-light">
+                        {{ .Params.currency | default "$" }}{{ .Params.price }}
+                    </span>
+                    <button type="button" class="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    </div>
+    </section>

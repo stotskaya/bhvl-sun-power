@@ -1,0 +1,188 @@
+{{ define "main" }}
+  <section class="py-28 px-6 bg-white/30 backdrop-blur-md" itemscope itemtype="https://schema.org/Product">
+    <div class="max-w-7xl mx-auto">
+        {{ partial "breadcrumbs.html" . }} 
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+        
+        <div class="reveal">
+            <div class="glass-panel rounded-[2.5rem] p-6">
+                <div class="aspect-square rounded-[2rem] overflow-hidden bg-gray-50 flex items-center justify-center">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="w-full h-full object-cover" itemprop="image">
+                    {{ else }}
+                    <i data-lucide="image" class="w-20 h-20 text-gray-200"></i>
+                    {{ end }}
+                </div>
+                <div class="grid grid-cols-3 gap-4 mt-6">
+                    <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center">
+                        <img src="{{ .Params.image | relURL }}" alt="Detail 1" class="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center border-2 border-dashed border-gray-100">
+                        <i data-lucide="sun" class="w-12 h-12 text-gray-200 stroke-[0.8]"></i>
+                    </div>
+                    <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center border-2 border-dashed border-gray-100">
+                        <i data-lucide="zap" class="w-12 h-12 text-gray-200 stroke-[0.8]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal delay-150">
+            <div class="glass-panel rounded-[2.5rem] p-6 md:p-10">
+                <p class="text-xs text-gray-400 uppercase tracking-widest mb-4" itemprop="category">
+                    {{ .Params.category | default "Solar Module" }}
+                </p>
+                
+                <h1 class="text-5xl font-light tracking-tight mb-6" itemprop="name">
+                    {{ .Title }}
+                </h1>
+                
+                <div class="text-gray-500 font-light leading-relaxed mb-8" itemprop="description">
+                    {{ .Content }}
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-6 mb-10">
+                    <div class="glass-card rounded-2xl p-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-400 tracking-widest uppercase">Price</span>
+                            <i data-lucide="tag" class="w-4 h-4 text-gray-300"></i>
+                        </div>
+                        <div class="text-3xl font-light mt-3" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                            <span itemprop="priceCurrency" content="{{ .Params.currency | default "USD" }}"></span>
+                            <span class="text-lg leading-none opacity-70">{{ .Params.currency | default "$" }}</span>
+                            <span itemprop="price" content="{{ .Params.price }}">{{ .Params.price }}</span>
+                            <div class="text-xs text-gray-400 tracking-widest uppercase mt-2">In stock</div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-400 tracking-widest uppercase">Efficiency</span>
+                            <i data-lucide="hash" class="w-4 h-4 text-gray-300"></i>
+                        </div>
+                        <div class="text-3xl font-light mt-3">22.4%</div>
+                        <div class="text-xs text-gray-400 tracking-widest uppercase mt-2">Peak module</div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-400 tracking-widest uppercase">Rating</span>
+                            <i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
+                        </div>
+                        <div class="text-3xl font-light mt-3">{{ .Params.rating }}</div>
+                        <div class="text-xs text-gray-400 tracking-widest uppercase mt-2">{{ .Params.reviews }} reviews</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3 mb-10">
+                  {{ if .Params.tags }}
+                    {{ $tags := split .Params.tags "," }}
+                    {{ range $tags }}
+                        {{ $tag := trim . " " }}
+                        {{ if $tag }}
+                            <span class="glass-card px-4 py-2 rounded-full text-sm font-medium capitalize tracking-wider text-gray-600">
+                                {{ $tag }}
+                            </span>
+                        {{ end }}
+                    {{ end }}
+                {{ else }}
+                    <span class="text-xs text-gray-300">No tags found</span>
+                {{ end }}
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200">
+                        Reserve Consultation
+                    </button>
+                    <a href="#specs" class="glass-panel px-10 py-4 rounded-full font-medium hover:bg-white/60 transition-colors flex items-center justify-center gap-2">
+                        View Specs <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mt-8">
+                <div class="glass-card rounded-[2rem] p-8 reveal">
+                    <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center mb-6 text-amber-500">
+                        <i data-lucide="sparkles" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h2 class="text-lg font-medium mb-2">Liquid-Glass Finish</h2>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">A refined surface treatment that blends into premium architecture.</p>
+                </div>
+                <div class="glass-card rounded-[2rem] p-8 reveal delay-75">
+                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-500">
+                        <i data-lucide="shield-check" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h2 class="text-lg font-medium mb-2">25-Year Warranty</h2>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Performance and aesthetic coverage designed for long-term confidence.</p>
+                </div>
+                <div class="glass-card rounded-[2rem] p-8 reveal delay-150">
+                    <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mb-6 text-green-500">
+                        <i data-lucide="leaf" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h2 class="text-lg font-medium mb-2">Low-Carbon Build</h2>
+                    <p class="text-sm text-gray-500 font-light leading-relaxed">Sourced materials and manufacturing choices optimized for impact.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div id="specs" class="mt-16 grid lg:grid-cols-3 gap-8 items-start">
+        <div class="lg:col-span-2 glass-panel rounded-[2.5rem] p-6 md:p-10 reveal">
+            <h2 class="text-2xl font-light mb-6">Technical Specifications</h2>
+            <div class="grid sm:grid-cols-2 gap-6 text-sm">
+                <div class="glass-card rounded-2xl p-6">
+                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Peak Power</p>
+                    <p class="text-lg font-medium">425 W</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6">
+                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Module Efficiency</p>
+                    <p class="text-lg font-medium">22.4%</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6">
+                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Operating Temp</p>
+                    <p class="text-lg font-medium">-40°C to 85°C</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6">
+                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Glass Type</p>
+                    <p class="text-lg font-medium">Tempered, AR-coated</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6">
+                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Ingress Rating</p>
+                    <p class="text-lg font-medium">IP68</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6">
+                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Compatibility</p>
+                    <p class="text-lg font-medium">Nexus / third-party inverters</p>
+                </div>
+            </div>
+        </div>
+
+        <aside class="glass-panel rounded-[2.5rem] p-6 md:p-10 reveal delay-100" aria-label="What is included">
+            <h2 class="text-2xl font-light mb-6">What’s Included</h2>
+            <ul class="space-y-4 text-sm text-gray-600 font-light">
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-4 h-4 text-amber-500 mt-0.5" aria-hidden="true"></i>
+                    <span>Prime V3 module with pre-installed junction box</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-4 h-4 text-amber-500 mt-0.5" aria-hidden="true"></i>
+                    <span>MC4-compatible connectors</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-4 h-4 text-amber-500 mt-0.5" aria-hidden="true"></i>
+                    <span>Installation guide and care instructions</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-4 h-4 text-amber-500 mt-0.5" aria-hidden="true"></i>
+                    <span>Warranty registration card</span>
+                </li>
+            </ul>
+            <div class="mt-10 glass-card rounded-2xl p-6">
+                <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Installation</p>
+                <p class="text-sm text-gray-500 font-light leading-relaxed">White-glove installation is available as a separate service in the catalog.</p>
+            </div>
+        </aside>
+    </div>
+    </div>
+    </section>
+{{ end }}

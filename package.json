@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "tailwindcss": "^4.2.2"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./themes/sun-power-theme-v1/assets/css/input.css -o ./themes/sun-power-theme-v1/static/css/style.css",
+    "fetch": "node assets/js/fetch-products.js",
+    "dev": "npm run fetch && hugo server -D"
+  }
+}

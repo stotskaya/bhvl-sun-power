@@ -1,0 +1,288 @@
+<div id="orderModal" role="dialog" aria-modal="true" aria-labelledby="mpName">
+
+  <div id="modalBackdrop"></div>
+
+  <div id="modalPanel">
+
+    <!-- close btn -->
+    <button id="modalClose" aria-label="Закрити"
+      style="position:absolute;top:1.25rem;right:1.25rem;z-index:10;width:2.25rem;height:2.25rem;border-radius:9999px;background:rgba(255,255,255,.85);border:1px solid #f3f4f6;display:flex;align-items:center;justify-content:center;color:#9ca3af;cursor:pointer;">
+      <i data-lucide="x" class="w-4 h-4"></i>
+    </button>
+
+    <!-- drag handle on mobile -->
+    <div style="display:flex;justify-content:center;padding:1rem 0 .25rem;" class="sm:hidden">
+      <div style="width:2.5rem;height:.25rem;border-radius:9999px;background:#e5e7eb;"></div>
+    </div>
+
+    <div style="padding:1.5rem 1.5rem 2rem;" class="sm:!p-10">
+
+      <!-- ── HEADER ── -->
+      <div style="margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid #f3f4f6;">
+        <span style="display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .85rem;border-radius:9999px;background:#f0fdf4;color:#15803d;font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem;">
+          <span style="width:.45rem;height:.45rem;border-radius:9999px;background:#22c55e;display:inline-block;animation:pulse 2s infinite;"></span>
+          Завжди на зв'язку
+        </span>
+        <h2 id="mpName" style="font-size:clamp(1.3rem,4vw,1.7rem);font-weight:300;line-height:1.3;letter-spacing:-.02em;margin-bottom:.6rem;color:#111827;">
+          Залиште заявку —
+          <span style="background:linear-gradient(135deg,#f59e0b,#fbbf24,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;font-weight:500;">ми відповімо.</span>
+        </h2>
+        <p style="font-size:.875rem;color:#6b7280;font-weight:300;line-height:1.65;max-width:30rem;">
+          Залиште заявку, і наші фахівці зв'яжуться з вами, щоб відповісти на всі ваші питання та допомогти.
+        </p>
+      </div>
+
+      <!-- ── FORM + MANAGER ── -->
+      <div style="display:grid;gap:2rem;" class="sm:grid-cols-[1fr_auto]">
+
+        <!-- FORM -->
+        <div>
+          <p style="font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#9ca3af;margin-bottom:1rem;">Ваші дані</p>
+          <form id="orderForm" novalidate style="display:flex;flex-direction:column;gap:.9rem;">
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem;">
+              <div>
+                <label style="display:block;font-size:.8rem;font-weight:500;color:#374151;margin-bottom:.35rem;">Ім'я <span style="color:#f59e0b;">*</span></label>
+                <input name="nm" type="text" required autocomplete="name" placeholder="Олена Коваль" class="lm-input">
+                <p class="ferr" style="font-size:.7rem;color:#ef4444;margin-top:.3rem;display:none;"></p>
+              </div>
+              <div>
+                <label style="display:block;font-size:.8rem;font-weight:500;color:#374151;margin-bottom:.35rem;">Телефон <span style="color:#f59e0b;">*</span></label>
+                <input name="ph" type="tel" required autocomplete="tel" inputmode="tel" placeholder="+38 (050) 000-0000" class="lm-input">
+                <p class="ferr" style="font-size:.7rem;color:#ef4444;margin-top:.3rem;display:none;"></p>
+              </div>
+            </div>
+
+            <div>
+              <label style="display:block;font-size:.8rem;font-weight:500;color:#374151;margin-bottom:.35rem;">Email <span style="color:#f59e0b;">*</span></label>
+              <input name="em" type="email" required autocomplete="email" inputmode="email" placeholder="olena@mail.com" class="lm-input">
+              <p class="ferr" style="font-size:.7rem;color:#ef4444;margin-top:.3rem;display:none;"></p>
+            </div>
+
+            <div>
+              <label style="display:block;font-size:.8rem;font-weight:500;color:#374151;margin-bottom:.35rem;">Адреса об'єкту</label>
+              <input name="addr" type="text" autocomplete="street-address" placeholder="вул. Сонячна 12, Київ" class="lm-input">
+            </div>
+
+            <div>
+              <label style="display:block;font-size:.8rem;font-weight:500;color:#374151;margin-bottom:.35rem;">Коментар</label>
+              <textarea name="notes" rows="3" placeholder="Зручний час, тип покриття даху…" class="lm-input" style="resize:none;"></textarea>
+            </div>
+
+            <!-- consent -->
+            <div>
+              <label style="display:flex;align-items:flex-start;gap:.65rem;cursor:pointer;">
+                <div id="cbBox" class="cb-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24"
+                       fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <input id="cbInput" type="checkbox" style="position:absolute;opacity:0;pointer-events:none;">
+                <span style="font-size:.75rem;color:#6b7280;font-weight:300;line-height:1.6;padding-top:.05rem;">
+                  Я даю згоду на обробку моїх персональних даних відповідно до
+                  <a href="privacy-policy.html" target="_blank" style="color:#d97706;font-weight:500;">Політики конфіденційності</a>.
+                  <span style="color:#f59e0b;">*</span>
+                </span>
+              </label>
+              <p id="cbErr" style="font-size:.7rem;color:#ef4444;margin-top:.35rem;padding-left:1.85rem;display:none;">
+                Будь ласка, підтвердьте згоду.
+              </p>
+            </div>
+
+            <div id="fStatus" style="display:none;border-radius:.75rem;padding:.75rem 1rem;font-size:.825rem;"></div>
+
+            <button id="fSubmit" type="submit"
+              style="width:100%;background:#111827;color:#fff;padding:.95rem 1.5rem;border-radius:9999px;font-size:.875rem;font-weight:500;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:0 8px 24px rgba(0,0,0,.12);transition:background .15s;">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              Залишити заявку
+            </button>
+
+            <p style="text-align:center;font-size:.68rem;color:#9ca3af;">
+              Поля, позначені <span style="color:#f59e0b;">*</span>, є обов'язковими. Відповідаємо протягом 24 год.
+            </p>
+          </form>
+        </div>
+
+        <!-- MANAGER -->
+        <div style="width:12.5rem;flex-shrink:0;">
+          <p style="font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#9ca3af;margin-bottom:1rem;">Ваш менеджер</p>
+
+          <div style="border-radius:1.5rem;padding:1.2rem;text-align:center;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.85);">
+            <div class="av-ring" style="width:3.75rem;height:3.75rem;margin:0 auto .65rem;">
+              <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200"
+                   alt="Олена Марш" style="width:100%;height:100%;border-radius:9999px;object-fit:cover;display:block;">
+            </div>
+            <p style="font-size:.85rem;font-weight:500;color:#111827;">Олена Марш</p>
+            <p style="font-size:.68rem;color:#9ca3af;margin-top:.1rem;">Senior Energy Advisor</p>
+            <div style="color:#fbbf24;font-size:.65rem;margin:.4rem 0 .1rem;">★★★★★</div>
+            <p style="font-size:.62rem;color:#9ca3af;">4.9 · 312 консультацій</p>
+
+            <div style="border-top:1px solid #f3f4f6;margin:.75rem 0;"></div>
+
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.55rem;text-align:left;">
+              <li><a href="tel:+18005864622" style="display:flex;align-items:center;gap:.55rem;font-size:.7rem;color:#374151;text-decoration:none;">
+                <span style="width:1.6rem;height:1.6rem;border-radius:9999px;background:#fffbeb;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <i data-lucide="phone" class="w-3 h-3" style="color:#f59e0b;"></i>
+                </span>800-A100
+              </a></li>
+              <li><a href="mailto:elena@A100-solar.com" style="display:flex;align-items:center;gap:.55rem;font-size:.7rem;color:#374151;text-decoration:none;overflow:hidden;">
+                <span style="width:1.6rem;height:1.6rem;border-radius:9999px;background:#fffbeb;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <i data-lucide="mail" class="w-3 h-3" style="color:#f59e0b;"></i>
+                </span>
+                <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">elena@A100-solar.com</span>
+              </a></li>
+              <li><a href="#" style="display:flex;align-items:center;gap:.55rem;font-size:.7rem;color:#374151;text-decoration:none;">
+                <span style="width:1.6rem;height:1.6rem;border-radius:9999px;background:#fffbeb;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <i data-lucide="message-circle" class="w-3 h-3" style="color:#f59e0b;"></i>
+                </span>Live Chat
+              </a></li>
+            </ul>
+
+            <div style="display:flex;align-items:center;justify-content:center;gap:.35rem;background:#f0fdf4;color:#15803d;border-radius:9999px;padding:.35rem .8rem;font-size:.62rem;font-weight:600;margin-top:.75rem;">
+              <span style="width:.38rem;height:.38rem;border-radius:9999px;background:#22c55e;display:inline-block;animation:pulse 2s infinite;"></span>
+              Онлайн зараз
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:flex-start;gap:.45rem;font-size:.68rem;color:#9ca3af;font-weight:300;line-height:1.5;margin-top:.75rem;">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 shrink-0" style="color:#fbbf24;margin-top:.1rem;"></i>
+            Гарантія 5 років на всі компоненти A100.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- success overlay -->
+    <div id="orderSuccess">
+      <div style="width:4rem;height:4rem;border-radius:9999px;background:#f0fdf4;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+        <i data-lucide="check" style="width:2rem;height:2rem;color:#22c55e;"></i>
+      </div>
+      <h3 style="font-size:1.4rem;font-weight:500;margin-bottom:.6rem;color:#111827;">Заявку отримано!</h3>
+      <p style="font-size:.875rem;color:#6b7280;font-weight:300;line-height:1.6;max-width:17rem;">
+        Олена зв'яжеться з вами впродовж 24 годин, щоб обговорити деталі та терміни.
+      </p>
+      <button id="successClose"
+        style="margin-top:1.75rem;background:#111827;color:#fff;padding:.7rem 2rem;border-radius:9999px;font-size:.875rem;font-weight:500;border:none;cursor:pointer;">
+        Закрити
+      </button>
+    </div>
+
+  </div>
+</div>
+<script>
+  lucide.createIcons();
+
+  /* refs */
+  const modal    = document.getElementById('orderModal');
+  const backdrop = document.getElementById('modalBackdrop');
+  const form     = document.getElementById('orderForm');
+  const fSubmit  = document.getElementById('fSubmit');
+  const fStatus  = document.getElementById('fStatus');
+  const success  = document.getElementById('orderSuccess');
+  const cbBox    = document.getElementById('cbBox');
+  const cbInput  = document.getElementById('cbInput');
+  const cbErr    = document.getElementById('cbErr');
+
+  /* checkbox */
+  cbBox.addEventListener('click', () => {
+    cbInput.checked = !cbInput.checked;
+    cbBox.classList.toggle('on', cbInput.checked);
+    if (cbInput.checked) cbErr.style.display = 'none';
+  });
+
+  
+  /* open */
+  function openModal(d) {
+  
+    form.reset(); clearErrs();
+    fStatus.style.display = 'none';
+    success.classList.remove('show');
+    cbBox.classList.remove('on'); cbInput.checked = false;
+    fSubmit.disabled = false;
+    if (d != null){
+    fSubmit.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Залишити заявку';
+
+    document.getElementById('mpFullName').textContent = d.name;
+    document.getElementById('mpCat').textContent      = d.cat;
+    document.getElementById('mpDesc').textContent     = d.desc;
+    
+
+     const thumb = document.getElementById('mpThumb');
+    thumb.innerHTML = '';
+    
+      if (d.img) {
+        const img = document.createElement('img');
+        img.src = d.img; img.alt = d.name;
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+        thumb.appendChild(img);
+      } else {
+        thumb.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:#d1d5db"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>';
+      }
+    } 
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  /* close */
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('successClose').addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  /* wire cards */
+  function cardData(c) {
+    return { name: c.dataset.name||'', cat: c.dataset.category||'',
+             
+             img: c.dataset.img||'', desc: c.dataset.desc||'' };
+  }
+  document.querySelectorAll('[data-name]').forEach(card => {
+    card.addEventListener('click', () => openModal(cardData(card)));
+  });
+  document.querySelectorAll('.btn-open-modal').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const card = null;
+       openModal(card);
+    });
+  });
+
+  /* validation */
+  function clearErrs() {
+    form.querySelectorAll('.lm-input').forEach(i => i.classList.remove('err'));
+    form.querySelectorAll('.ferr').forEach(p => p.style.display = 'none');
+    cbErr.style.display = 'none';
+  }
+  function fieldErr(inp, msg) {
+    inp.classList.add('err');
+    const p = inp.parentElement.querySelector('.ferr');
+    if (p) { p.textContent = msg; p.style.display = 'block'; }
+  }
+  function validate() {
+    clearErrs(); let ok = true;
+    const nm = form.querySelector('[name="nm"]');
+    const ph = form.querySelector('[name="ph"]');
+    const em = form.querySelector('[name="em"]');
+    if (!nm.value.trim()) { fieldErr(nm, "Будь ласка, вкажіть ваше ім'я."); ok = false; }
+    if (!ph.value.trim()) { fieldErr(ph, 'Будь ласка, вкажіть телефон.');    ok = false; }
+    if (!/\S+@\S+\.\S+/.test(em.value)) { fieldErr(em, 'Введіть коректний email.'); ok = false; }
+    if (!cbInput.checked) { cbErr.style.display = 'block'; ok = false; }
+    return ok;
+  }
+
+  /* submit */
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!validate()) return;
+    fSubmit.disabled = true;
+    fSubmit.innerHTML = '<svg style="animation:spin 1s linear infinite;width:1rem;height:1rem;" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="32" stroke-dashoffset="12"/></svg>&nbsp;Надсилаємо…';
+    await new Promise(r => setTimeout(r, 1400)); /* замінити на fetch */
+    success.classList.add('show');
+    lucide.createIcons({ nodes: [success] });
+  });
+  </script>

@@ -1,0 +1,40 @@
+<footer class="py-20 px-6 border-t border-gray-100">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-20">
+        <div class="col-span-2">
+            <div class="flex items-center gap-2 mb-8">
+                <div class="w-6 h-6 rounded-full bg-amber-400"></div>
+                <span class="text-lg font-medium tracking-tight">{{ .Site.Params.brandName }}</span>
+            </div>
+            <p class="text-gray-400 font-light max-w-sm">
+                {{ .Site.Params.footerDescription }}
+            </p>
+        </div>
+
+        <div>
+            <h5 class="font-medium mb-8">Меню</h5>
+            <ul class="space-y-4 text-sm text-gray-500 font-light">
+                {{ range .Site.Menus.footer_nav }}
+                <li><a href="{{ .URL | relURL }}" class="hover:text-amber-500 transition-colors">{{ .Name }}</a></li>
+                {{ end }}
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="font-medium mb-8">Соцмережі</h5>
+            <ul class="space-y-4 text-sm text-gray-500 font-light">
+                {{ range .Site.Menus.footer_social }}
+                <li><a href="{{ .URL | safeURL }}" target="_blank" class="hover:text-amber-500 transition-colors">{{ .Name }}</a></li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 pt-10 border-t border-gray-50 text-xs text-gray-400 tracking-widest uppercase">
+        <p>&copy; {{ now.Format "2006" }} {{ .Site.Params.copyrightText }}</p>
+        <div class="flex gap-10">
+            {{ range .Site.Menus.subfooter_nav }}
+                <a href="{{ .URL | safeURL }}" target="_blank" class="hover:text-amber-500 transition-colors">{{ .Name }}</a>
+            {{ end }}
+        </div>
+    </div>
+</footer>

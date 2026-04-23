@@ -1,0 +1,41 @@
+<section class="py-20 px-6" id="specs">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 reveal visible">
+        
+        <div class="lg:col-span-2 glass-card rounded-[2.5rem] p-6 md:p-10">
+            <h3 class="font-light text-2xl mb-5 max-w-[80%]">
+                {{ .title }}
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {{ range .specs }}
+                <div class="glass-panel rounded-2xl p-6 flex flex-col align-start">
+                    <span class="text-xs text-gray-400 tracking-widest uppercase">{{ .label }}</span>
+                    <div class="text-sm font-regular mt-3 leading-relaxed">
+                        {{ .value | safeHTML }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+            
+            <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 w-full mt-6 btn-open-modal">
+                {{ .button_text }}
+            </button>
+        </div>
+
+        <div class="glass-card rounded-[2.5rem] p-6 md:p-10">
+            <h3 class="font-light text-2xl mb-5 solar-gradient-text italic font-medium">{{ .composition_title }}</h3>
+            <ul class="mb-8">
+                {{ range .composition_list }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+            
+            <div class="pt-4 border-t border-gray-100">
+                <span class="text-xs text-gray-400 tracking-widest uppercase">{{ .installation_label }}</span>
+                <p class="text-sm text-gray-500 font-light leading-relaxed mt-2">
+                    {{ .installation_text }}
+                </p>
+            </div>
+        </div>
+        
+    </div>
+</section>

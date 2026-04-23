@@ -1,0 +1,113 @@
+{{ define "main" }}
+<section class="pt-32 pb-20 px-6 ">
+    <div class="max-w-7xl mx-auto">
+         {{ partial "breadcrumbs.html" . }} 
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
+            <div class="reveal visible glass-panel rounded-[2.5rem] p-6">
+                <div class="rounded-[2rem] overflow-hidden aspect-[4/4] bg-gray-100">
+                    <img src="{{ .Params.image | absURL }}" alt="{{ .Params.image_alt }}" class="solar-img w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="reveal delay-150 visible">
+                <div>
+                    <span class="lbl">{{ .Params.label }}</span>
+                    <h1 class="text-4xl lg:text-5xl font-light tracking-tight mb-5 leading-tight" style="line-height: 1;">
+                       {{ $title := .Title }}
+                        {{ $words := split $title " " }}
+
+                        <span class="solar-gradient-text italic font-medium">
+                            {{ range first 2 $words }}
+                                {{ . }} 
+                            {{ end }}
+                        </span>
+
+                        {{ range after 2 $words }}
+                            {{ . }} 
+                        {{ end }}
+                    </h1>
+                    <p class="text-gray-500 font-light leading-relaxed mb-8">
+                        {{ .Params.description }}
+                    </p>
+
+                    <div class="grid sm:grid-cols-3 gap-6 mb-8">
+                        <div class="glass-card rounded-2xl p-6">
+                            <div class="flex items-center  justify-between">
+                                <span class="text-xs text-gray-400 tracking-widest uppercase">Вартість</span>
+                                <i data-lucide="tag" class="w-4 h-4 text-gray-300"></i>
+                            </div>
+                            <div class="text-3xl font-light mt-3">
+                                <div class="flex flew-row items-end gap-2">{{ if eq .Params.price_from "yes" }}
+                                    <span class="text-lg leading-none font-light mb-2 ">від </span>
+                                    {{ end }}
+                                    <span class="solar-gradient-text font-medium">{{ .Params.price }}{{ .Params.currency }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-6">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-400 tracking-widest uppercase">Потужність</span>
+                                <i data-lucide="zap" class="w-4 h-4 text-gray-300"></i>
+                            </div>
+                            <div class="text-2xl font-light mt-3">{{ .Params.efficiency }}</div>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-6">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-400 tracking-widest uppercase">Гарантія</span>
+                                <i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
+                            </div>
+                            <div class="text-2xl font-light mt-3">{{ .Params.rating }}</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-1 mb-8">
+                        <span class="px-3 py-2 text-sm font-medium tracking-wider text-gray-600">
+                            {{ .Params.attribute_1 }}
+                        </span>
+                        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                            <circle cx="3" cy="3" r="2.5" fill="#F59E0B"/>
+                        </svg>
+                        <span class="px-3 py-2 text-sm font-medium tracking-wider text-gray-600">
+                           {{ .Params.attribute_2 }}
+                        </span>
+                        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                            <circle cx="3" cy="3" r="2.5" fill="#F59E0B"/>
+                        </svg>
+                        <span class="px-3 py-2 text-sm font-medium tracking-wider text-gray-600">
+                            {{ .Params.attribute_3 }}
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 btn-open-modal"
+                     >
+                        Отримати розрахунок
+                    </button>
+                    <a href="#specs" class="glass-panel px-10 py-4 rounded-full font-medium hover:bg-white/60 transition-colors flex items-center justify-center gap-2">
+                        Дивитись комплекти <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-down" aria-hidden="true" class="lucide lucide-arrow-down w-4 h-4"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            {{ range .Params.features }}
+            <div class="glass-card rounded-[2rem] p-8 reveal visible">
+                <div class="w-10 h-10 bg-{{ .color }}-50 rounded-xl flex items-center justify-center mb-5">
+                    <i data-lucide="{{ .icon }}" class="w-5 h-5 text-{{ .color }}-500"></i>
+                </div>
+                <h3 class="text-lg font-medium mb-2">{{ .title }}</h3>
+                <p class="text-sm text-gray-400 font-light leading-relaxed">{{ .text }}</p>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ range .Params.sections }}
+    {{ $path := printf "sections/%s.html" .type }}
+    {{ partial $path . }}
+{{ end }}
+{{ end }}

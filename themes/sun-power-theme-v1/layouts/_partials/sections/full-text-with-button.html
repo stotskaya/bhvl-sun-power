@@ -1,0 +1,44 @@
+<section class="py-20 px-6 bg-white/90 section-full-text-with-button" id="{{ .id | default "cta" }}">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col items-center text-center">
+            
+            <div class="reveal visible active max-w-3xl">
+                <h2 class="text-3xl md:text-4xl font-light mb-6 tracking-tight">
+                   
+                                {{ $title := .title }}
+
+            {{ $words := split $title " " }}
+
+            {{ $total := len $words }}
+
+            {{ range first (sub $total 3) $words }}
+
+            {{ . }}
+
+            {{ end }}
+
+            <span class="solar-gradient-text italic font-medium">
+
+            {{ range last 3 $words }}
+
+            {{ . }}
+
+            {{ end }}
+
+            </span>
+                </h2>
+                
+                <div class="text-gray-600 space-y-4 text-s font-light leading-relaxed mx-auto" style="max-width: 600px;">
+                    {{ .content | markdownify }}
+                </div>
+                
+                {{ with .button_text }}
+                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-100 mt-8 btn-open-modal">
+                    {{ . }}
+                </button>
+                {{ end }}
+            </div>
+            
+        </div>
+    </div>
+</section>

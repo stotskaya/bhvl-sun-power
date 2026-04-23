@@ -1,0 +1,49 @@
+<section id="{{ .File.TranslationBaseName }}" class="relative min-h-screen flex items-center pt-20 luminous-depth overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase mb-6">
+                {{ .Params.badge | default "Future of Energy" }}
+            </span>
+            
+            <h1 class="text-6xl lg:text-8xl font-light leading-[1.1] mb-8 tracking-tight">
+                {{ .Title | safeHTML }}
+            </h1>
+            
+            <div class="text-xl text-gray-500 max-w-lg mb-10 leading-relaxed font-light">
+                {{ .Content }}
+            </div>
+            
+            <div class="flex flex-wrap gap-4">
+                {{ with .Params.primary_btn }}
+                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:scale-105 transition-transform">
+                    {{ . }}
+                </button>
+                {{ end }}
+                
+                {{ with .Params.secondary_btn }}
+                <button class="glass-panel px-10 py-4 rounded-full font-medium hover:bg-white/60 transition-colors flex items-center gap-2">
+                    {{ . }} <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                </button>
+                {{ end }}
+            </div>
+        </div>
+
+        <div class="relative reveal delay-300">
+            <div class="floating-layer relative z-10">
+                <div class="aspect-square rounded-[3rem] overflow-hidden glass-panel p-4">
+                    <img src="{{ .Params.image | default "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200" }}" 
+                         alt="{{ .Title }}" 
+                         class="w-full h-full object-cover rounded-[2.5rem]">
+                </div>
+            </div>
+            
+            <div class="absolute -top-12 -right-12 w-64 h-64 glass-card rounded-3xl -z-10 rotate-12 flex items-center justify-center">
+                <div class="text-center">
+                    <span class="block text-4xl font-light text-amber-500">{{ .Params.stat_value }}</span>
+                    <span class="text-xs uppercase tracking-widest text-gray-400">{{ .Params.stat_label }}</span>
+                </div>
+            </div>
+            <div class="absolute -bottom-8 -left-8 w-48 h-48 glass-panel rounded-full -z-10 blur-sm opacity-50"></div>
+        </div>
+    </div>
+</section>

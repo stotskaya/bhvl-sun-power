@@ -1,0 +1,77 @@
+{{- $isMobile := .isMobile -}}
+{{- $menuID := .menuID -}}
+
+{{- with index site.Menus $menuID }}
+  <ul class="{{ if $isMobile }}flex flex-col gap-4{{ else }}flex items-center gap-6{{ end }} text-sm font-medium text-gray-600">
+    {{- range . }}
+      <li class="relative {{ if not $isMobile }}group/main list-none{{ else }}list-none border-b border-gray-50 pb-2{{ end }}" 
+          {{ if $isMobile }}x-data="{ open: false }"{{ end }}>
+        
+        <div class="flex items-center justify-between">
+            <a href="{{ .URL | relURL }}" class="hover:text-amber-500 transition-colors flex items-center gap-1 {{ if not $isMobile }}py-4{{ else }}text-s py-2{{ end }}">
+                {{ .Name }}
+            </a>
+            
+            {{ if and .HasChildren $isMobile }}
+                <button @click="open = !open" class="p-2 text-gray-400">
+                    <svg :class="open ? 'rotate-180' : ''" class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            {{ else if .HasChildren }}
+                <svg class="w-4 h-4 opacity-40 group-hover/main:rotate-180 transition-transform" style="margin-left: 5px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            {{ end }}
+        </div>
+
+        {{- if .HasChildren }}
+          <ul 
+            {{ if $isMobile }}
+                x-show="open" x-collapse 
+                class="flex flex-col gap-2 pl-4 mt-2 mb-4"
+            {{ else }}
+                class="absolute left-0 top-full hidden group-hover/main:block min-w-[220px] bg-white/95 backdrop-blur-md border border-gray-100 shadow-2xl py-2 rounded-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200"
+            {{ end }}>
+            
+            {{- range .Children }}
+              <li class="relative {{ if not $isMobile }}group/sub list-none px-2{{ else }}list-none{{ end }}"
+                  {{ if and $isMobile .HasChildren }}x-data="{ subOpen: false }"{{ end }}>
+                
+                <div class="flex items-center justify-between">
+                    <a href="{{ .URL | relURL }}" class="flex items-center justify-between w-full px-4 py-2.5 rounded-xl hover:bg-amber-50 hover:text-amber-600 transition-all">
+                        <div class="flex flex-col items-start">
+                          <span>{{ .Name }}</span>
+                          {{ with .Params.subname }}
+                            <span class="block font-normal text-[12px] opacity-80">{{ . }}</span>
+                          {{ end }}
+                        </div>
+                    </a>
+                    {{ if and .HasChildren $isMobile }}
+                        <button @click="subOpen = !subOpen" class="p-2 mr-2">
+                            <svg :class="subOpen ? 'rotate-180' : ''" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                    {{ end }}
+                </div>
+
+                {{- if .HasChildren }}
+                  <ul 
+                    {{ if $isMobile }}
+                        x-show="subOpen" x-collapse
+                        class="pl-6 flex flex-col gap-1 border-l border-amber-100 ml-4 mb-2"
+                    {{ else }}
+                        class="absolute left-full top-0 ml-1 hidden group-hover/sub:block min-w-[220px] bg-white/95 backdrop-blur-md border border-gray-100 shadow-2xl py-2 rounded-2xl z-50 animate-in fade-in slide-in-from-left-2 duration-200"
+                    {{ end }}>
+                    {{- range .Children }}
+                      <li class="list-none px-2">
+                        <a href="{{ .URL | relURL }}" class="block px-4 py-2 rounded-xl hover:bg-amber-50 hover:text-amber-600 transition-all text-[13px]">
+                          {{ .Name }}
+                        </a>
+                      </li>
+                    {{- end }}
+                  </ul>
+                {{- end }}
+              </li>
+            {{- end }}
+          </ul>
+        {{- end }}
+      </li>
+    {{- end }}
+  </ul>
+{{- end }}
