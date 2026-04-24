@@ -1,6 +1,6 @@
 baseURL = 'https://bhvl-sun-power.pages.dev/'
 languageCode = 'en-US'
-title = 'BHVL Sun Power'
+title = 'A100 СЕС Запоріжжя'
 
 [params]
     brandName = "A100"

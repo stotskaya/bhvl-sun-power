@@ -1,8 +1,20 @@
 <section class="py-20 px-6 section-text-with-image" id="{{ .id }}">
     <div class="max-w-7xl mx-auto">
         {{ with .title }}
+
         <h2 class="text-4xl font-light text-center mb-14 tracking-tight reveal visible">
-            {{ . | safeHTML }}
+             {{ $title := . }}
+                        {{ $words := split $title " " }}
+
+                        <span class="solar-gradient-text italic font-medium">
+                            {{ range first 3 $words }}
+                                {{ . }} 
+                            {{ end }}
+                        </span><br>
+
+                        {{ range after 3 $words }}
+                            {{ . }} 
+                        {{ end }}
         </h2>
         {{ end }}
 

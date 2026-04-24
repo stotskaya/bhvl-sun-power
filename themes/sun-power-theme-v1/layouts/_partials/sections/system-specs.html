@@ -2,7 +2,8 @@
     <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 reveal visible">
         
         <div class="lg:col-span-2 glass-card rounded-[2.5rem] p-6 md:p-10">
-            <h3 class="font-light text-2xl mb-5 max-w-[80%]">
+            <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">Базовий комплект</p>
+            <h3 class="font-medium text-2xl mb-5 max-w-[80%]">
                 {{ .title }}
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -22,6 +23,7 @@
         </div>
 
         <div class="glass-card rounded-[2.5rem] p-6 md:p-10">
+            <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">Комплектація</p>
             <h3 class="font-light text-2xl mb-5 solar-gradient-text italic font-medium">{{ .composition_title }}</h3>
             <ul class="mb-8">
                 {{ range .composition_list }}

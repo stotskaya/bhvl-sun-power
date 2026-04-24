@@ -36,7 +36,7 @@ sections:
     id: "about-ses"
     image_position: "right" 
     title: "Що таке гібридна СЕС та коли вона потрібна?"
-    image: "/sps/grid-tied-sps/1.webp"
+    image: "/sps/hybrid-sps/1.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -83,7 +83,7 @@ sections:
     id: "about-ses"
     image_position: "left" 
     title: "Ефективність та надійність гібридної СЕС"
-    image: "/sps/grid-tied-sps/2.webp"
+    image: "/sps/hybrid-sps/2.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -110,7 +110,7 @@ sections:
 
     conclusion_label: "ВИСНОВОК ІНЖЕНЕРА"
     conclusion_text: "Проєкт розроблено з метою максимального зниження операційних витрат компанії. Завдяки потужному сонячному полю та промисловим акумуляторам А100 бізнес не лише скоротив чеки за електрику вдвічі, але й отримав 100% захист ліній від простоїв під час раптових блекаутів"
-    image: "/sps/hybrid-sps/cover.webp"
+    image: "/sps/hybrid-sps/3.webp"
     image_alt: "Автономна СЕС"
     button_text: "Деталі кейсу"  
 
