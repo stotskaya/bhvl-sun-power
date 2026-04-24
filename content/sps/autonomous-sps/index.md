@@ -12,7 +12,7 @@ rating: 5+ років
 attribute_1: "Енергонезалежність"
 attribute_2: "Власний склад"
 attribute_3: "Швидкий монтаж"
-image: "/sps/autonomous-sps/cover.webp"
+image: "/sps/autonomous-sps/1.webp"
 image_alt: "Автономна сонячна електростанція Lumina"
 
 
@@ -36,7 +36,7 @@ sections:
     id: "about-ses"
     image_position: "right" 
     title: "Що таке автономна СЕС та коли вона потрібна?"
-    image: "/sps/autonomous-sps/1.webp"
+    image: "/sps/autonomous-sps/cover.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |

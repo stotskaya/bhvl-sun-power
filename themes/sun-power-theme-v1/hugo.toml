@@ -52,25 +52,25 @@ title = 'A100 СЕС Запоріжжя'
 
   [[menu.main]]
     name = "СЕС для виробництва"
-    url = "/ses-key/for-business/dev"
+    url = "/sps/business-sps/"
     parent = "ses-key-for-business"     
     weight = 1
 
   [[menu.main]]
-    name = "CEC для офісів/ТЦ"
-    url = "/ses-key/for-business/tc"
+    name = "CEC для дому"
+    url = "/sps/home-sps/"
     parent = "ses-key-for-business"     
     weight = 2
 
   [[menu.main]]
-    name = "СЕС для сільського господарства"
-    url = "/ses-key/for-business/farm"
+    name = "СЕС для ОСББ"
+    url = "/sps/osbb-sps/"
     parent = "ses-key-for-business"     
     weight = 3
 
   [[menu.main]]
     name = "Резервне живлення"
-    url = "/"
+    url = "/sps/reserve-sps/"
     parent = "ses-key"     
     weight = 3
     params = { subname = "СНЕ для квартир/офісів" }

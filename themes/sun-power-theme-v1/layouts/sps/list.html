@@ -29,7 +29,14 @@
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                             itemprop="image">
                         {{ else }}
-                        <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
+                         {{ if .Params.thumb_image}}
+                             <img src="{{ .Params.thumb_image| relURL }}" 
+                            alt="{{ .Title }}" 
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                            itemprop="image">
+                         {{ else }}
+                            <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
+                            {{ end }}
                         {{ end }}
                     </div>
 
@@ -37,7 +44,7 @@
                         <p class="text-xs text-gray-400 uppercase tracking-widest mb-3" itemprop="category">
                             {{ .Params.short_title }}
                         </p>
-                        <h3 class="font-medium text-lg mb-1" itemprop="name">{{ .Title }}</h3>
+                        <h3 class="font-medium text-lg mb-1" itemprop="name">{{ .Title | plainify | truncate 60  }}</h3>
                         
                         
                         <p class="text-sm text-gray-500 font-light mb-4 line-clamp-2">
