@@ -77,7 +77,7 @@ title = 'A100 СЕС Запоріжжя'
 
   [[menu.main]]
     name = 'Каталог'
-    url = '/catalog'
+    url = '/products'
     identifier = "catalog"
     weight = 20
 
@@ -147,7 +147,7 @@ title = 'A100 СЕС Запоріжжя'
 
   [[menu.main]]
     name = 'Наші роботи'
-    url = '/our-works'
+    url = '/journal'
     weight = 40
 
   [[menu.main]]
