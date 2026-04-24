@@ -12,23 +12,7 @@
         <div class="hidden lg:block">
             {{ partial "menu.html" (dict "menuID" "main" "page" . "isMobile" false) }}
         </div>
-
-        <div class="flex items-center gap-4">
-            <a href="tel:{{ .Site.Params.phone | default "+380000000000" }}" 
-   class="bg-gray-900 text-white p-2.5 md:px-6 md:py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 relative z-[60] flex items-center justify-center shrink-0">
-    
-    <span class="md:hidden flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" class="w-5 h-5">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-        </svg>
-    </span>
-
-    <span class="hidden md:block">
-        {{ .Site.Params.headerButtonText }}
-    </span>
-</a>
-
-            <button 
+<button 
                 @click="mobileMenuOpen = !mobileMenuOpen"
                 class="lg:hidden p-2 text-gray-600 hover:text-amber-500 transition-colors relative z-[60]"
                 aria-label="Toggle menu"
@@ -36,7 +20,71 @@
                 <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 <svg x-show="mobileMenuOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
+        <div class="flex items-center gap-4">
+            
+            <div class="relative inline-block text-left" id="phone-dropdown-wrapper">
+                <button type="button" 
+                        onclick="togglePhoneDropdown()"
+                        class="hidden md:block"><div class="flex items-center gap-2 bg-gray-900 hover:bg-yellow-500 text-white px-5 py-2.5 rounded-full font-medium transition-all duration-300 active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" class="w-5 h-5">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <span>Зателефонувати</span>
+                    <i data-lucide="chevron-down" id="dropdown-chevron" class="w-4 h-4 transition-transform duration-300"></i>
+                    </div>
+                </button>
+                <button type="button" 
+                        onclick="togglePhoneDropdown()"
+                        class="md:hidden flex items-center gap-2 bg-gray-900 hover:bg-yellow-500 text-white px-0 py-0 rounded-full font-medium transition-all duration-300 active:scale-95" style="min-width: 32px;
+    min-height: 32px;
+    align-items: center;
+    justify-content: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" class="w-5 h-5" style="width: 16px; height: 16px;">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                
+                </button>
+
+                <div id="phone-dropdown" 
+                    class="hidden absolute right-0 mt-8 w-80 glass-panel   rounded-[2rem] p-6 shadow-2xl border border-white/20 z-50 transform origin-top-right transition-all duration-300 opacity-0 scale-95" style="background: white;">
+                    
+                    <div class="space-y-4">
+                        <div class="space-y-1">
+                            <span class="text-[10px] text-gray-400 tracking-widest uppercase block">Консультація менеджера</span>
+                            <a href="tel:+380936743029" class="text-m font-medium hover:text-yellow-500 transition-colors">+38 093 674 30 29</a>
+                        </div>
+
+                        <hr class="border-gray-50">
+
+                        <div class="space-y-1">
+                            <span class="text-[10px] text-gray-400 tracking-widest uppercase block">Продаж обладнання</span>
+                            <a href="tel:+380931953799" class="text-m  font-medium hover:text-yellow-500 transition-colors">+38 093 195 37 99</a>
+                        </div>
+
+                        <hr class="border-gray-50 ">
+
+                        <div class="space-y-1">
+                            <span class="text-[10px] text-gray-400 tracking-widest uppercase block">Графік роботи</span>
+                            <p class="text-sm font-medium  ">Щодня, 9:00 — 20:00</p>
+                        </div>
+
+                        <hr class="border-gray-50">
+
+                        <div class="space-y-1">
+                            <span class="text-[10px] text-gray-400 tracking-widest uppercase block">Напишіть нам</span>
+                            <a href="mailto:info@isolar.com.ua" class="text-sm font-medium hover:text-yellow-500 transition-colors">info@isolar.com.ua</a>
+                        </div>
+
+                        <button class="w-full bg-yellow-400 hover:bg-yellow-500 text-black py-4 rounded-2xl font-semibold transition-all duration-300 active:scale-95 shadow-lg shadow-yellow-400/10 mt-2 btn-open-modal">
+                            Замовити консультацію
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
         </div>
+
+      
     </nav>
 
     <div 
