@@ -11,75 +11,74 @@ title = 'A100 СЕС Запоріжжя'
 [menus]
 
   [[menu.main]]
-    name = 'СЕС під ключ'
+    name = 'Види СЕС'
     url = '/sps/'
-    identifier = "ses-key"
+    identifier = "ses-types"
     weight = 10
  
   [[menu.main]]
-    name = "Для дому"
-    url = "/sps/"
-    identifier = "ses-key-for-home"
-    parent = "ses-key"     
+    name = "Автономні СЕС"
+    url = "/sps/autonomous-sps"
+    parent = "ses-types"     
     weight = 1
     params = { subname = "Загальна" }
 
   [[menu.main]]
     name = "Гібридні СЕС"
     url = "/sps/hybrid-sps/"
-    parent = "ses-key-for-home"     
-    weight = 1
-
-  [[menu.main]]
-    name = "Автономні СЕС"
-    url = "/sps/autonomous-sps"
-    parent = "ses-key-for-home"     
+    parent = "ses-types"     
     weight = 2
+    params = { subname = "Загальна" }
 
   [[menu.main]]
     name = "Мережеві СЕС"
     url = "/sps/grid-tied-sps/"
-    parent = "ses-key-for-home"     
-    weight = 2
+    parent = "ses-types"     
+    weight = 3
+    params = { subname = "Загальна" }
 
   [[menu.main]]
+    name = 'СЕС під ключ'
+    url = '/sps/'
+    identifier = "ses-key"
+    weight = 20
+ 
+  [[menu.main]]
+    name = "Для дому"
+    url = "/sps/home-sps/"
+    parent = "ses-key"     
+    weight = 1
+    params = { subname = "Загальна" }
+  
+  [[menu.main]]
     name = "Для бізнесу"
-    url = "/sps/"
-    identifier = "ses-key-for-business"
+    url = "/sps/business-sps/"
     parent = "ses-key"     
     weight = 2
     params = { subname = "Акцент на окупність" }
 
   [[menu.main]]
-    name = "СЕС для виробництва"
-    url = "/sps/business-sps/"
-    parent = "ses-key-for-business"     
-    weight = 1
-
-  [[menu.main]]
-    name = "CEC для дому"
-    url = "/sps/home-sps/"
-    parent = "ses-key-for-business"     
-    weight = 2
-
-  [[menu.main]]
-    name = "СЕС для ОСББ"
+    name = "Для ОСББ"
     url = "/sps/osbb-sps/"
-    parent = "ses-key-for-business"     
-    weight = 3
-
+    parent = "ses-key"     
+    weight = 2
+    params = { subname = "Акцент на окупність" }
+  
   [[menu.main]]
     name = "Резервне живлення"
     url = "/sps/reserve-sps/"
     parent = "ses-key"     
-    weight = 3
-    params = { subname = "СНЕ для квартир/офісів" }
+    weight = 4
+    [menu.main.params]
+        subname = "СНЕ для квартир/офісів"
+        bold = true
+
 
   [[menu.main]]
     name = 'Каталог'
     url = '/products'
     identifier = "catalog"
-    weight = 20
+    weight = 30
 
   [[menu.main]]
     name = "Готові комплекти "
@@ -125,7 +124,7 @@ title = 'A100 СЕС Запоріжжя'
     name = 'Послуги'
     url = '/services/'
     identifier = "services"
-    weight = 30
+    weight = 40
 
   [[menu.main]]
     name = "Проєктування та Енергоаудит"
@@ -148,17 +147,15 @@ title = 'A100 СЕС Запоріжжя'
   [[menu.main]]
     name = 'Наші роботи'
     url = '/journal'
-    weight = 40
+    weight = 50
+
 
   [[menu.main]]
     name = 'Калькулятор'
     url = '/calculator'
-    weight = 50
-
-  [[menu.main]]
-    name = 'Про компанію'
-    url = '/about-company'
     weight = 60
+
+  
 
   [[menu.footer_nav]]
     name = "Філософія"

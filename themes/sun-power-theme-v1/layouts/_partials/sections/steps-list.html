@@ -2,43 +2,42 @@
     <div class="max-w-7xl mx-auto">
         {{ with .title }}
         <h2 class="text-3xl md:text-4xl font-light text-center mb-16">
-           {{ $title := . }}
-                        {{ $words := split $title " " }}
+            {{ $title := . }}
+            {{ $words := split $title " " }}
 
-                        <span class="solar-gradient-text italic font-medium">
-                            {{ range first 3 $words }}
-                                {{ . }} 
-                            {{ end }}
-                        </span><br>
+            <span class="solar-gradient-text italic font-medium">
+                {{ range first 3 $words }}{{ . }} {{ end }}
+            </span><br>
 
-                        {{ range after 3 $words }}
-                            {{ . }} 
-                        {{ end }}
+            {{ range after 3 $words }}{{ . }} {{ end }}
         </h2>
         {{ end }}
 
+        {{/* Рахуємо кількість кроків та визначаємо клас сітки */}}
+        {{ $count := len .steps }}
+        {{ $gridCols := "lg:grid-cols-5" }}
+        {{ if eq $count 6 }}
+            {{ $gridCols = "lg:grid-cols-3" }}
+        {{ end }}
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 {{ $gridCols }} gap-8 lg:gap-4">
+            {{ range $index, $step := .steps }}
+                {{ $delay := mul $index 100 }}
+                <div class="reveal glass-card rounded-[2.5rem] px-8 pt-12 pb-4 h-full transition-all duration-500 hover:translate-y-[-8px] border border-white/5 hover:border-yellow-400/40 relative z-10 {{ if $delay }}delay-{{ $delay }}{{ end }} active">
+                    
+                    <div class="absolute top-4 right-6 text-5xl font-black italic select-none pointer-events-none" style="color:#f59e0b;opacity:.3">
+                        {{ add $index 1 }}
+                    </div>
 
-      
-          {{ range $index, $step := .steps }}
-          {{ $delay := mul $index 100 }}
-            <div class="reveal glass-card rounded-[2.5rem] p-8 h-full transition-all duration-500 hover:translate-y-[-8px] border border-white/5 hover:border-yellow-400/40 relative z-10 {{ if $delay }}delay-{{ $delay }}{{ end }}  " style="padding-top: 50px; padding-bottom: 15px;">
-                <div class="absolute top-4 right-6 text-5xl font-black italic select-none pointer-events-none " style="color: #f59e0b; opacity: 0.3;">  {{ add $index 1 }}</div>
-                   <h3 class="font-semibold text-base mb-3 leading-tight group-hover:text-yellow-400 transition-colors" style="max-width: 80%;">
-                     {{ .title }}
-                </h3>
-                <p class="text-sm text-gray-400 font-light leading-relaxed">
-                  {{ .text }}
-                </p>
-            </div>
-            {{end}}
-
+                    <h3 class="font-semibold text-base mb-3 leading-tight group-hover:text-yellow-400 transition-colors max-w-[80%]">
+                        {{ .title }}
+                    </h3>
+                    
+                    <p class="text-sm text-gray-400 font-light leading-relaxed">
+                        {{ .text }}
+                    </p>
+                </div>
+            {{ end }}
         </div>
-
-   
     </div>
 </section>
-
-
-

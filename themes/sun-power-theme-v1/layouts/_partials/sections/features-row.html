@@ -1,0 +1,33 @@
+<section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+        {{ with .title }}
+        <h2 class="text-3xl md:text-4xl font-light text-center mb-16">
+            {{ $title := . }}
+            {{ $words := split $title " " }}
+
+            <span class="solar-gradient-text italic font-medium">
+                {{ range first 3 $words }}{{ . }} {{ end }}
+            </span><br>
+
+            {{ range after 3 $words }}{{ . }} {{ end }}
+        </h2>
+        {{ end }}
+     
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-4">
+            {{ range $index, $step := .steps }}
+                {{ $delay := mul $index 100 }}
+                <div class="reveal glass-card rounded-[2.5rem] p-10 h-full transition-all duration-500 hover:translate-y-[-8px] border border-white/5 hover:border-yellow-400/40 relative z-10 {{ if $delay }}delay-{{ $delay }}{{ end }} active">
+                    
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase mb-5"> {{ .subtitle }}</span>
+                    <h3 class="font-semibold text-base mb-3 leading-tight group-hover:text-yellow-400 transition-colors max-w-[80%]">
+                        {{ .title }}
+                    </h3>
+                    
+                    <div class="text-sm text-gray-400 font-light leading-relaxed">
+                        {{ .text }}
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
