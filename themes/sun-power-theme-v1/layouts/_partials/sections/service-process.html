@@ -1,0 +1,64 @@
+<section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-10 glass-card rounded-[2.5rem] p-10">
+  <!-- Ліва колонка — кроки -->
+  <div class=" reveal">
+    <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">
+      {{  .subtitle }}
+    </p>
+    <h2 class="text-2xl font-light text-gray-900 tracking-tight mb-8">{{  .title }}</h2>
+
+    <div class="flex flex-col divide-y divide-gray-100/50">
+      {{ range $index, $step :=  .steps }}
+      <div class="flex gap-4 py-4 first:pt-0 last:pb-0 group">
+        <!-- Авто-нумерація -->
+        <div class="block  text-amber-600 text-base font-semibold tracking-widest uppercase mb-5">
+          {{ printf "%02d" (add $index 1) }}
+        </div>
+        <div>
+          <h4 class="text-base font-semibold text-gray-900 mb-2">{{ .title }}</h4>
+          <div class="text-sm font-light text-gray-500 leading-relaxed">
+            {{ .text }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+
+  <!-- Права колонка — порівняння -->
+  <div class="flex flex-col gap-6 reveal delay-200 ">
+    <div>
+      <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">
+        {{  .result_subtitle }}
+      </p>
+      <h2 class="text-2xl font-light text-gray-900 tracking-tight mb-0">{{  .result_title }}</h2>
+    </div>
+
+    <!-- Без проєкту (Negative) -->
+    {{ with  .comparison_negative }}
+    <div class="rounded-3xl p-6 flex flex-col gap-3 bg-red-500/5 border border-red-500/10">
+      <div class="flex items-center gap-2 text-red-600">
+        <i data-lucide="circle-x" class="w-4 h-4"></i>
+        <span class="text-[12px] font-bold tracking-wider uppercase">{{ .label }}</span>
+      </div>
+      <p class="text-sm font-light text-gray-700 leading-relaxed italic">
+        {{ .text }}
+      </p>
+    </div>
+    {{ end }}
+
+    <!-- З проєктом (Positive) -->
+    {{ with  .comparison_positive }}
+    <div class="rounded-3xl p-6 flex flex-col gap-3 bg-amber-50 border border-amber-500/20 shadow-sm shadow-amber-500/5">
+      <div class="flex items-center gap-2 text-amber-600">
+        <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <span class="text-[12px] font-bold tracking-wider uppercase">{{ .label }}</span>
+      </div>
+      <p class="text-sm   text-gray-800 leading-relaxed">
+        {{ .text }}
+      </p>
+    </div>
+    {{ end }}
+  </div>
+</div>
+</section>

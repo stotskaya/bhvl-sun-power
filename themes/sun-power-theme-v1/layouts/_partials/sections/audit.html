@@ -1,0 +1,76 @@
+<section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+<div class="glass rounded-[2rem] p-8 flex flex-col gap-8 relative overflow-hidden reveal">
+
+  <div>
+     {{ with .title }}
+    <h2 class="text-3xl md:text-4xl font-light text-center mb-4">
+        {{ $title := . }}
+        {{ $words := split $title " " }}
+
+        <span class="solar-gradient-text italic font-medium">
+            {{ range first 3 $words }}{{ . }} {{ end }}
+        </span><br>
+
+        {{ range after 3 $words }}{{ . }} {{ end }}
+    </h2>
+    {{ end }}
+     
+    <p class="text-[14px] font-light text-gray-400 italic text-center">
+      {{  .description }}
+    </p>
+  </div>
+
+  <!-- Сітка ситуацій + Чеклист -->
+  <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_1.8fr] gap-4 items-stretch">
+
+    <!-- Цикл ситуацій (1-3) -->
+    {{ range $index, $item :=  .situations }}
+    <div class="relative overflow-hidden rounded-3xl p-6 flex flex-col gap-3 bg-white/40 border border-black/5 hover:border-amber-400/30 transition-all group">
+      
+      <h4 class="relative text-base font-bold text-gray-900 leading-snug">
+        {{ .title }}
+      </h4>
+      <p class="relative text-[14px] font-light text-gray-500 leading-relaxed">
+        {{ .text }}
+      </p>
+    </div>
+    {{ end }}
+
+    
+    <div class="relative glass-panel overflow-hidden rounded-3xl p-7 flex flex-col gap-5">
+ 
+      <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-amber-400/20 blur-3xl pointer-events-none"></div>
+      
+      <h4 class="relative text-base font-semibold solar-gradient-text italic ">
+        {{  .checklist_title }}
+      </h4>
+      
+      <ul class="relative flex flex-col gap-0 mb-0">
+        {{ range  .documentation }}
+        <li class="flex items-start gap-3 text-sm font-light  leading-tight">
+          {{ . }}
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Футер секції -->
+  <div class="flex flex-wrap items-center justify-between gap-6">
+    <div class="flex flex-wrap gap-2">
+      {{ range  .tags }}
+      <span class="text-[12px] font-medium text-amber-700 bg-amber-50  rounded-full px-4 py-2 hover:bg-amber-50 transition-colors">
+        {{ . }}
+      </span>
+      {{ end }}
+    </div>
+
+    <button class="bg-gray-900 text-white px-10 py-3 rounded-full font-medium  transition-all shadow-lg shadow-gray-200 btn-open-modal hover:bg-amber-500 hover:text-black transition-all group shadow-lg active:scale-95">
+      {{  .cta_text }}
+    </button>
+  </div>
+
+</div>
+</div>
+</section>

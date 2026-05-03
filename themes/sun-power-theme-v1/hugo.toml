@@ -128,21 +128,27 @@ title = 'A100 СЕС Запоріжжя'
 
   [[menu.main]]
     name = "Проєктування та Енергоаудит"
-    url = "/services/project"
+    url = "/services/design-and-energy-audit/"
     parent = "services"     
     weight = 1
 
   [[menu.main]]
     name = "Збільшення потужності"
-    url = "/services/power"
+    url = "/services/capacity-increase/"
     parent = "services"     
     weight = 2
 
   [[menu.main]]
     name = "Демонтаж та перенесення СЕС"
-    url = "/services/deact"
+    url = "/services/relocation-of-sps/"
     parent = "services"     
-    weight = 2
+    weight = 3
+
+  [[menu.main]]
+    name = "Сервіс,чистка та діагностика"
+    url = "/services/service-and-cleaning"
+    parent = "services"     
+    weight = 4
 
   [[menu.main]]
     name = 'Наші роботи'
