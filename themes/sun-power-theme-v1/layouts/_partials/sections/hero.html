@@ -5,15 +5,15 @@
                 {{ .Params.badge | default "Future of Energy" }}
             </span>
             {{ with .Title }}
-            <h1 class="text-6xl md:text-8xl font-light  mb-8 tracking-tight leading-[1.1]">
+            <h1 class="text-6xl md:text-[75px] font-light  mb-8 tracking-tight leading-[1.1]">
                 {{ $title := . }}
                 {{ $words := split $title " " }}
 
                 <span class="solar-gradient-text italic font-medium">
-                    {{ range first 2 $words }}{{ . }} {{ end }}
+                    {{ range first 3 $words }}{{ . }} {{ end }}
                 </span> 
 
-                {{ range after 2 $words }}{{ . }} {{ end }}
+                {{ range after 3 $words }}{{ . }} {{ end }}
             </h1>
             {{ end }}
            

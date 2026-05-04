@@ -1,12 +1,12 @@
 ---
-title: "Джерело світла та прибутку"
+title: "Ваше власне джерело світла та прибутку"
 type: "hero"
 weight: 10
 
 badge: "Енергонезалежність «під ключ» від А100"
 images:
-  - "/sps/autonomous-sps/cover.webp"
-  - "/sps/business-sps/cover.webp"
+  - "/sps/hybrid-sps/1.webp"
+  - "/sps/grid-tied-sps/1.webp"
   - "/sps/reserve-sps/cover.webp"
 
 primary_btn: "Отримати безкоштовний прорахунок"
