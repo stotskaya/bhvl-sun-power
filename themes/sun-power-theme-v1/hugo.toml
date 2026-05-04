@@ -45,21 +45,18 @@ title = 'A100 СЕС Запоріжжя'
     url = "/sps/home-sps/"
     parent = "ses-key"     
     weight = 1
-    params = { subname = "Загальна" }
   
   [[menu.main]]
     name = "Для бізнесу"
     url = "/sps/business-sps/"
     parent = "ses-key"     
     weight = 2
-    params = { subname = "Акцент на окупність" }
 
   [[menu.main]]
     name = "Для ОСББ"
     url = "/sps/osbb-sps/"
     parent = "ses-key"     
     weight = 2
-    params = { subname = "Акцент на окупність" }
   
   [[menu.main]]
     name = "Резервне живлення"
@@ -149,7 +146,7 @@ title = 'A100 СЕС Запоріжжя'
 
   [[menu.main]]
     name = 'Наші роботи'
-    url = '/journal'
+    url = '/projects'
     weight = 50
 
 

@@ -75,7 +75,7 @@ sections:
 
     cta_text: "Замовити релокацію СЕС"
 
-  - type: "featured-projects"
+  - type: "featured-levels"
     title: "Оберіть формат робіт із демонтажу чи перенесення"
     tiers:
     - label: "Базовий"

@@ -75,7 +75,7 @@ sections:
 
     cta_text: "Отримати аудит системи"
 
-  - type: "featured-projects"
+  - type: "featured-levels"
     title: "Оберіть рівень модернізації вашої енергосистеми"
     tiers:
     - label: "Базовий"

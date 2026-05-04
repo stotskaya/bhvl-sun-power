@@ -75,7 +75,7 @@ sections:
 
     cta_text: "Замовити діагностику СЕС"
 
-  - type: "featured-projects"
+  - type: "featured-levels"
     title: "Оберіть рівень сервісного обслуговування СЕС"
     tiers:
     - label: "Базовий"

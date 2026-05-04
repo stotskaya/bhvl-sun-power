@@ -75,7 +75,7 @@ sections:
 
     cta_text: "Замовити енергоаудит"
 
-  - type: "featured-projects"
+  - type: "featured-levels"
     title: "Оберіть рівень інженерної розробки вашого проєкту"
     tiers:
     - label: "Базовий"
