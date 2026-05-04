@@ -13,7 +13,7 @@ attribute_1: "Енергонезалежність критичних вузлі
 attribute_2: ""
 attribute_3: ""
 image: ""
-thumb_image: "/sps/osbb-sps/cover.webp"
+thumb_image: "/sps/osbb-sps/1.webp"
 image_alt: "Мережева сонячна електростанція"
 main_button_text: "Отримати розрахунок для будинку"
 specs_button_text: "Дивитись рішення для ОСББ"
@@ -41,7 +41,7 @@ sections:
     id: "about-ses"
     image_position: "right" 
     title: "Що таке СЕС для ОСББ та які завдання вона вирішує?"
-    image: "/sps/grid-tied-sps/1.webp"
+    image: "/sps/osbb-sps/1.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |

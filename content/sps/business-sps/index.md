@@ -13,7 +13,7 @@ attribute_1: "Отримайте податкові пільги, швидкий
 attribute_2: ""
 attribute_3: ""
 image: ""
-thumb_image: "/sps/business-sps/cover.webp"
+thumb_image: "/sps/business-sps/1.webp"
 image_alt: "Мережева сонячна електростанція"
 main_button_text: "Розрахувати окупність"
 specs_button_text: "Галузеві рішення"
@@ -38,7 +38,7 @@ sections:
     id: "about-ses"
     image_position: "right" 
     title: "Що таке СЕС для бізнесу та які завдання вона вирішує?"
-    image: "/sps/grid-tied-sps/1.webp"
+    image: "/sps/business-sps/1.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |

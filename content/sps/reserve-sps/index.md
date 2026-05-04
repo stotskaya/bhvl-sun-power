@@ -13,7 +13,7 @@ attribute_1: "Швидкий монтаж та 100% безпека для вик
 attribute_2: ""
 attribute_3: ""
 image: ""
-thumb_image: "/sps/reserve-sps/cover.webp"
+thumb_image: "/sps/reserve-sps/1.webp"
 image_alt: "Мережева сонячна електростанція"
 main_button_text: "Розрахувати автономність"
 specs_button_text: "Дивитись готові рішення"
@@ -39,7 +39,7 @@ sections:
     id: "about-ses"
     image_position: "right" 
     title: "Що таке СНЕ та які завдання вона вирішує у приміщенні?"
-    image: "/sps/grid-tied-sps/1.webp"
+    image: "/sps/reserve-sps/1.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
