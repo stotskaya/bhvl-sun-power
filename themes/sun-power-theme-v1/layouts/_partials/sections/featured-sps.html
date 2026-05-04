@@ -1,0 +1,70 @@
+<section class="py-20 px-6 relative z-10">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Заголовок -->
+    <div class="text-center">
+        {{ with .Params.title }}
+        <h2 class="text-3xl md:text-4xl font-light text-center mb-16">
+            {{ $title := . }}
+            {{ $words := split $title " " }}
+
+            <span class="solar-gradient-text italic font-medium">
+                {{ range first 2 $words }}{{ . }} {{ end }}
+            </span><br>
+
+            {{ range after 2 $words }}{{ . }} {{ end }}
+        </h2>
+        {{ end }}
+    </div>
+
+    <!-- Сітка карток -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        {{ range .Params.cards }}
+        <div class="glass-card rounded-3xl flex flex-col card-lift overflow-hidden bg-white/40 border border-white/20 transition-all duration-500 hover:shadow-xl hover:shadow-amber-500/5 reveal">
+            
+            <!-- Зображення -->
+             {{ if .image }}
+            <div class="w-full h-[250px] relative overflow-hidden">
+                <img src="{{ .image | relURL }}" alt="{{ .title }}" class="absolute inset-0 w-full h-full object-cover object-bottom transition-transform duration-700 hover:scale-105">
+            </div>
+            {{ end }}
+            <!-- Тіло картки -->
+            <div class="p-7 flex flex-col gap-5 flex-1">
+                <div class="flex flex-col gap-2">
+                    <p class="text-[10px] tracking-widest uppercase text-gray-400 ">{{ .label }}</p>
+                    <h3 class="text-lg font-medium text-gray-900 leading-snug">{{ .title }}</h3>
+                </div>
+
+                <p class="text-[13px] font-light text-gray-500 leading-relaxed flex-1">
+                    {{ .description }}
+                </p>
+
+                <!-- Характеристики -->
+                <div class="flex flex-col gap-3 pt-5 border-t border-gray-100/50">
+                    {{ range .specs }}
+                    <div class="flex gap-2 items-baseline">
+                        <span class="text-[12.5px] font-light text-gray-400 capitalize">{{ .key }}</span>
+                        <span class="text-[12.5px] text-gray-700 font-medium">{{ .value }}</span>
+                    </div>
+                    {{ end }}
+                    {{ if .badge }}
+                    <div class="flex pt-1">
+                        <span class="text-[12.5px] font-medium text-amber-600 bg-amber-50 rounded-full px-4 py-1.5 border border-amber-100/50">
+                            {{ .badge }}
+                        </span>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+
+            <!-- Кнопка -->
+            <div class="px-7 pb-7">
+                <a href="{{ .link | relURL }}" class="block w-full py-3 rounded-full text-[13px] font-medium text-center text-gray-700 border border-gray-200 bg-white/80 hover:bg-amber-400 hover:border-amber-400 hover:text-black transition-all duration-300">
+                    {{ .button_text }}
+                </a>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    </div>
+</section>

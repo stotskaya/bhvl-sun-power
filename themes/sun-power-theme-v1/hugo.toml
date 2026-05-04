@@ -21,21 +21,18 @@ title = 'A100 СЕС Запоріжжя'
     url = "/sps/autonomous-sps"
     parent = "ses-types"     
     weight = 1
-    params = { subname = "Загальна" }
 
   [[menu.main]]
     name = "Гібридні СЕС"
     url = "/sps/hybrid-sps/"
     parent = "ses-types"     
     weight = 2
-    params = { subname = "Загальна" }
 
   [[menu.main]]
     name = "Мережеві СЕС"
     url = "/sps/grid-tied-sps/"
     parent = "ses-types"     
     weight = 3
-    params = { subname = "Загальна" }
 
   [[menu.main]]
     name = 'СЕС під ключ'

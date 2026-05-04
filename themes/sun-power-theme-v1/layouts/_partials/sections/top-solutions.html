@@ -1,0 +1,93 @@
+<section class="py-20 px-6 relative z-10" id="top-solutions">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Заголовок секції -->
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-4">
+        {{ $words := split .Title " " }}
+        {{ range $index, $word := $words }}
+          {{ if eq $word "«Золотого" }}<span class="solar-gradient-text italic font-medium">{{ end }}
+          {{ $word }}
+          {{ if eq $word "стандарту»" }}</span>{{ end }}
+        {{ end }}
+      </h2>
+      <p class="text-[14px] font-light text-gray-400 italic text-center">
+        {{ .Params.description }}
+      </p>
+    </div>
+
+    <!-- 3 продуктові картки -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+   
+      {{ range .Params.products }}
+           {{ $isFeatured := .featured }}
+      <div class="glass-card rounded-[2.5rem] flex flex-col product-card overflow-hidden reveal
+                  {{ if .featured }} border-2 border-amber-200/50 relative {{ end }}">
+        
+        {{ if $isFeatured}}
+        <!-- Бейдж "Популярне" -->
+        <div class="absolute top-4 right-5 z-10">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-[9.5px] font-semibold tracking-[.1em] uppercase border border-amber-200/80 shadow-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse inline-block"></span>
+            {{ .badge }}
+          </span>
+        </div>
+        {{ end }}
+
+        <!-- Тіло картки -->
+        <div class="p-7 flex flex-col gap-5 flex-1">
+          
+          <!-- Назва -->
+          <div class="relative">
+            <p class="text-[10px] tracking-widest uppercase mb-2 {{ if $isFeatured }} text-amber-600 {{ else }} text-gray-400 {{ end }}">{{ .label }}</p>
+            <h3 class="text-lg font-medium leading-snug">
+              {{ .title }}<br>
+              <span class="text-gray-500 font-light">{{ .subtitle }}</span>
+            </h3>
+          </div>
+
+          <!-- Ціна -->
+          <div class="rounded-2xl px-5 py-4 {{ if $isFeatured }} bg-amber-50/80 border border-amber-100 {{ else }} glass-card {{ end }}">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] text-gray-400 tracking-widest uppercase">Вартість</span>
+              <i data-lucide="tag" class="w-3.5 h-3.5 {{ if $isFeatured }} text-amber-400 {{ else }} text-gray-300 {{ end }}"></i>
+            </div>
+            <div class="flex items-end gap-2">
+              <span class="text-[13px] font-light text-gray-500 mb-1">від</span>
+              <span class="text-2xl {{ if $isFeatured }} font-medium {{ else }} font-light {{ end }} solar-gradient-text">${{ .price }}</span>
+            </div>
+          </div>
+
+          <!-- Опис -->
+          <p class="text-[13px] font-light text-gray-500 leading-relaxed">
+            {{ .description }}
+          </p>
+
+          <!-- Склад комплекту -->
+          <div>
+            <p class="text-[10px] text-gray-400 tracking-widest uppercase mb-3">Склад комплекту</p>
+            <ul class="flex flex-col gap-2">
+              {{ range .equipment }}
+              <li class="flex items-start gap-2.5 text-[13px] font-light text-gray-600">
+                <div class="w-4 h-4 rounded-full {{ if $isFeatured }} bg-amber-100 {{ else }} bg-amber-50 {{ end }} flex items-center justify-center shrink-0 mt-px">
+                  <i data-lucide="check" class="w-2.5 h-2.5 {{ if $isFeatured }} text-amber-600 {{ else }} text-amber-500 {{ end }}"></i>
+                </div>
+                {{ . }}
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-auto pt-2">
+            <button class="{{ if $isFeatured}} bg-gray-900 text-white hover:bg-gray-800 {{ else }} glass-panel hover:bg-white/60 {{ end }} w-full py-3.5 rounded-full text-sm font-medium transition-all flex items-center justify-center gap-2 btn-open-modal">
+              {{  .button_text }}
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
