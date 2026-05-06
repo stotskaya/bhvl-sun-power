@@ -60,7 +60,7 @@ content:
             label: "Questions"
             type: "list"
             fields:
-              - { name: "name", label: "ID", type: "string" }
+              - { name: "item_name", label: "ID", type: "string" }
               - { name: "label", label: "Label", type: "string" }
               - name: "options"
                 label: "Options"
