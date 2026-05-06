@@ -1,7 +1,7 @@
 ---
 title: "Реалізовані проєкти та відгуки"
 description: "Понад 200 об'єктів по всій Україні, де технології A100 вже забезпечують комфорт та прибуток"
-weight: 60
+weight: 70
 type: "featured-projects"
 projects:
   - category: "Бізнес"

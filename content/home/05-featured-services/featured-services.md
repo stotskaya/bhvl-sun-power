@@ -1,7 +1,7 @@
 ---
 title: "Професійна інженерна підтримка: від проєкту до сервісу"
-weight: 40
-type: "services-grid"
+weight: 50
+type: "featured-services"
 services:
   - number: "01"
     title: "Проєктування та енергоаудит"

@@ -1,0 +1,82 @@
+<section class="py-20 px-6 reveal">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Заголовок -->
+    <div class="text-center mb-14">
+       {{ with .Title }}
+            <h2 class="text-3xl md:text-4xl font-light text-center mb-5">
+            {{ $title := . }}
+            {{ $words := split $title " " }}
+
+            <span class="solar-gradient-text italic font-medium">
+                {{ range first 3 $words }}{{ . }} {{ end }}
+            </span>
+
+            {{ range after 3 $words }}{{ . }} {{ end }}
+        </h2>
+        {{ end }}
+      <p class="text-base font-light text-gray-400 max-w-2xl mx-auto">
+        {{ .Params.description }}
+      </p>
+    </div>
+
+    <!-- 3 картки -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      {{ range .Params.cards }}
+        {{/* 1. Зберігаємо параметри КАРТКИ у змінні ПЕРЕД внутрішнім циклом */}}
+        {{ $isFeatured := .featured }}
+        {{ $cardItems := .items }}
+
+        <div class="info-card flex flex-col overflow-hidden rounded-[2.5rem] transition-all duration-500
+                    {{ if $isFeatured }} 
+                      border-2 border-amber-200/50 relative shadow-xl shadow-amber-500/5
+                    {{ else }} 
+                      glass-card border border-white/10 
+                    {{ end }}"
+             {{ if $isFeatured }} style="background:linear-gradient(160deg,rgba(255,255,255,.88),rgba(254,243,199,.45))" {{ end }}>
+
+          {{ if $isFeatured }}
+            <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full pointer-events-none" 
+                 style="background:radial-gradient(circle,rgba(251,191,36,.2) 0%,transparent 70%)"></div>
+          {{ end }}
+
+          <!-- Шапка картки -->
+          <div class="px-8 pt-8 pb-6 border-b {{ if $isFeatured }} border-amber-100/60 {{ else }} border-white/50 {{ end }} relative z-10">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 {{ if $isFeatured }} bg-amber-100 {{ else }} bg-amber-50 {{ end }}">
+                  <i data-lucide="{{ .icon }}" class="w-5 h-5 {{ if $isFeatured }} text-amber-600 {{ else }} text-amber-500 {{ end }}"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">{{ .title }}</h3>
+              </div>
+              {{ if .badge }}
+                <span class="text-[9.5px] font-bold tracking-widest uppercase text-amber-700 bg-amber-100 px-3 py-1 rounded-full border border-amber-200">
+                  {{ .badge }}
+                </span>
+              {{ end }}
+            </div>
+          </div>
+
+          <!-- Тіло картки (Внутрішній цикл) -->
+          <div class="px-8 py-8 flex flex-col gap-6 flex-1 relative z-10">
+            {{ range $index, $item := $cardItems }}
+              <div class="flex flex-col gap-1">
+                {{/* ТУТ: використовуємо .subtitle, бо контекст тепер — елемент масиву items */}}
+                <p class="text-sm font-bold text-gray-900">{{ .subtitle }}</p>
+                <p class="text-[14px] font-light text-gray-500 leading-relaxed ">
+                  {{ .text }}
+                </p>
+              </div>
+
+              {{/* Розділювальна лінія */}}
+              {{ if lt $index (sub (len $cardItems) 1) }}
+                <div class="h-px {{ if $isFeatured }} bg-amber-100/60 {{ else }} bg-gray-100 {{ end }}"></div>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div>
+
+  </div>
+</section>

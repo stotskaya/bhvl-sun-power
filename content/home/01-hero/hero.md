@@ -5,9 +5,9 @@ weight: 10
 
 badge: "Енергонезалежність «під ключ» від А100"
 images:
-  - "/sps/hybrid-sps/1.webp"
-  - "/sps/grid-tied-sps/1.webp"
-  - "/sps/reserve-sps/cover.webp"
+  - "/home/01-hero/2.webp"
+  - "/home/01-hero/1.webp"
+  - "/home/01-hero/3.webp"
 
 primary_btn: "Отримати безкоштовний прорахунок"
 secondary_btn: "Дивитись готові рішення"
