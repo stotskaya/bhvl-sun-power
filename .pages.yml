@@ -1,0 +1,232 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/images"
+public_folder: "/images"
+
+content:
+  - name: "home"
+    label: "Головна сторінка"
+    type: "files"
+    files:
+
+      - name: "hero"
+        label: "01. Головний екран"
+        file: "content/home/01-hero/hero.md"
+        fields:
+          - { name: "title", label: "Title", type: "string" }
+          - { name: "type", label: "Type", type: "string" }
+          - { name: "weight", label: "Weight", type: "number" }
+          - { name: "badge", label: "Badge", type: "string" }
+          - name: "images"
+            label: "Images"
+            type: "list"
+            field: { name: "image", label: "Image", type: "image" }
+          - { name: "primary_btn", label: "Primary Button", type: "string" }
+          - { name: "secondary_btn", label: "Secondary Button", type: "string" }
+          - { name: "body", label: "Content", type: "markdown" }
+
+      - name: "top_solutions"
+        label: "02. ТОП рішення"
+        file: "content/home/02-top-solutions/top-solutions.md"
+        fields:
+          - { name: "title", type: "string" }
+          - { name: "weight", type: "number" }
+          - { name: "type", type: "string" }
+          - { name: "description", type: "string" }
+          - name: "products"
+            type: "list"
+            fields:
+              - { name: "label", type: "string" }
+              - { name: "title", type: "string" }
+              - { name: "subtitle", type: "string" }
+              - { name: "price", type: "string" }
+              - { name: "button_text", type: "string" }
+              - { name: "description", type: "string" }
+              - { name: "featured", type: "boolean" }
+              - { name: "badge", type: "string" }
+              - name: "equipment"
+                type: "list"
+                field: { name: "item", type: "string" }
+
+      - name: "featured_sps_home"
+        label: "03. Рівень інженерної розробки"
+        file: "content/home/03-featured-sps/featured-sps.md"
+        fields:
+          - { name: "title", type: "string" }
+          - { name: "weight", type: "number" }
+          - { name: "type", type: "string" }
+          - name: "cards"
+            type: "list"
+            fields:
+              - { name: "label", type: "string" }
+              - { name: "title", type: "string" }
+              - { name: "image", type: "image" }
+              - { name: "description", type: "string" }
+              - name: "specs"
+                type: "list"
+                fields:
+                  - { name: "key", type: "string" }
+                  - { name: "value", type: "string" }
+              - { name: "badge", type: "string" }
+              - { name: "button_text", type: "string" }
+              - { name: "link", type: "string" }
+
+      - name: "featured_technologies"
+        label: "04. Технології"
+        file: "content/home/04-featured-technologies/featured-technologies.md"
+        fields:
+          - { name: "title", type: "string" }
+          - { name: "weight", type: "number" }
+          - { name: "type", type: "string" }
+          - name: "cards"
+            type: "list"
+            fields:
+              - { name: "label", type: "string" }
+              - { name: "title", type: "string" }
+              - { name: "image", type: "image" }
+              - { name: "description", type: "string" }
+              - name: "specs"
+                type: "list"
+                fields:
+                  - { name: "key", type: "string" }
+                  - { name: "value", type: "string" }
+              - { name: "badge", type: "string" }
+              - { name: "button_text", type: "string" }
+              - { name: "link", type: "string" }
+
+      - name: "featured_services"
+        label: "05. Послуги"
+        file: "content/home/05-featured-services/featured-services.md"
+        fields:
+          - { name: "title", type: "string" }
+          - { name: "weight", type: "number" }
+          - { name: "type", type: "string" }
+          - name: "services"
+            type: "list"
+            fields:
+              - { name: "number", type: "string" }
+              - { name: "title", type: "string" }
+              - { name: "description", type: "string" }
+              - { name: "link", type: "string" }
+              - { name: "image", type: "image" }
+
+      - name: "text_image_6"
+        label: "06. Текст з фото (Екосистема)"
+        file: "content/home/06-text-image/text-with-image.md"
+        fields:
+          - { name: "title", type: "string" }
+          - { name: "type", type: "string" }
+          - { name: "weight", type: "number" }
+          - name: "image_position"
+            type: "select"
+            options: ["left", "right"]
+          - { name: "id", type: "string" }
+          - { name: "image", type: "image" }
+          - { name: "image_alt", type: "string" }
+          - { name: "body_text", type: "markdown" }
+
+      - name: "featured_projects"
+        label: "07. Проєкти"
+        file: "content/home/07-featured-projects/featured-projects.md"
+        fields:
+          - { name: "title", type: "string" }
+          - { name: "description", type: "string" }
+          - { name: "weight", type: "number" }
+          - { name: "type", type: "string" }
+          - name: "projects"
+            type: "list"
+            fields:
+              - { name: "category", type: "string" }
+              - { name: "category_slug", type: "string" }
+              - { name: "title", type: "string" }
+              - { name: "client", type: "string" }
+              - { name: "image", type: "image" }
+              - { name: "icon", type: "string" }
+              - { name: "bg_gradient", type: "string" }
+              - { name: "config", type: "string" }
+              - { name: "result", type: "string" }
+              - name: "testimonial"
+                type: "object"
+                fields:
+                  - { name: "text", type: "string" }
+                  - { name: "author", type: "string" }
+                  - { name: "role", type: "string" }
+                  - { name: "rating", type: "number" }
+              - { name: "link", type: "string" }
+
+      - name: "cost_calculate"
+        label: "08. Калькулятор"
+        file: "content/home/08-cost-calculate/cost-calculate.md"
+        fields:
+          - { name: "title", type: "string" }
+          - { name: "description", type: "string" }
+          - { name: "type", type: "string" }
+          - { name: "weight", type: "number" }
+          - name: "questions"
+            type: "list"
+            fields:
+              - { name: "name", type: "string" }
+              - { name: "label", type: "string" }
+              - name: "options"
+                type: "list"
+                fields:
+                  - { name: "id", type: "string" }
+                  - { name: "text", type: "string" }
+                  - { name: "default", type: "boolean" }
+          - { name: "primary_btn", type: "string" }
+          - { name: "secondary_btn", type: "string" }
+          - name: "footer_tags"
+            type: "list"
+            field: { name: "tag", type: "string" }
+
+      - name: "payment_delivery"
+        label: "09. Оплата та доставка"
+        file: "content/home/09-payment-delivery/payment-delivery.md"
+        fields:
+          - { name: "title", type: "string" }
+          - { name: "description", type: "string" }
+          - { name: "type", type: "string" }
+          - { name: "weight", type: "number" }
+          - name: "cards"
+            type: "list"
+            fields:
+              - { name: "title", type: "string" }
+              - { name: "icon", type: "string" }
+              - { name: "featured", type: "boolean" }
+              - { name: "badge", type: "string" }
+              - name: "items"
+                type: "list"
+                fields:
+                  - { name: "subtitle", type: "string" }
+                  - { name: "text", type: "string" }
+
+      - name: "faq"
+        label: "12. FAQ"
+        file: "content/home/12-faq/faq.md"
+        fields:
+          - { name: "title", label: "Title", type: "string" }
+          - { name: "type", type: "string" }
+          - { name: "weight", type: "number" }
+          - name: "items"
+            type: "list"
+            fields:
+              - { name: "question", type: "string" }
+              - { name: "answer", type: "markdown" }
+
+      - name: "text_image_13"
+        label: "13. Заклик до дії"
+        file: "content/home/13-text-image/text-with-image.md"
+        fields:
+          - { name: "weight", type: "number" }
+          - { name: "type", type: "string" }
+          - { name: "id", type: "string" }
+          - name: "image_position"
+            type: "select"
+            options: ["left", "right"]
+          - { name: "title", type: "string" }
+          - { name: "image", type: "image" }
+          - { name: "image_alt", type: "string" }
+          - { name: "button_text", type: "string" }
+          - { name: "body_text", type: "markdown" }
