@@ -1,53 +1,12 @@
 media_folder: ""
 public_folder: ""
 content:
-  - name: "home"
-    label: "Головна сторінка"
+  - name: "legal"
+    label: "Legal"
     type: "collection"
     files:
-      - name: "hero"
-        label: "01. Головний екран"
-        path: "content/home/01-hero/hero.md"
+      - name: "privacy"
+        label: "Privacy Policy"
+        path: "content/privacy.md" # Перевір, чи є такий файл у content/
         fields:
           - { name: "title", label: "Title", type: "string" }
-          - { name: "badge", label: "Badge", type: "string" }
-          - { name: "body", label: "Content", type: "rich-text" }
-
-      - name: "top_solutions"
-        label: "02. ТОП рішення"
-        path: "content/home/02-top-solutions/top-solutions.md"
-        fields:
-          - { name: "title", label: "Title", type: "string" }
-          - { name: "description", label: "Description", type: "string" }
-
-      - name: "featured_sps"
-        label: "03. Інженерна розробка"
-        path: "content/home/03-featured-sps/featured-sps.md"
-        fields:
-          - { name: "title", label: "Title", type: "string" }
-          - name: "cards"
-            label: "Cards"
-            type: "list"
-            fields: # Тільки плоский список, без specs
-              - { name: "title", label: "Title", type: "string" }
-              - { name: "image", label: "Image", type: "image" }
-
-      - name: "text_image_6"
-        label: "06. Текст з фото (Екосистема)"
-        path: "content/home/06-text-image/text-with-image.md"
-        fields:
-          - { name: "title", label: "Title", type: "string" }
-          - { name: "image", label: "Image", type: "image" }
-          - { name: "body_text", label: "Body Text", type: "rich-text" }
-
-      - name: "faq"
-        label: "12. FAQ"
-        path: "content/home/12-faq/faq.md"
-        fields:
-          - { name: "title", label: "Заголовок", type: "string" }
-          - name: "items"
-            label: "Питання/Відповіді"
-            type: "list"
-            fields:
-              - { name: "question", label: "Питання", type: "string" }
-              - { name: "answer", label: "Відповідь", type: "rich-text" }
