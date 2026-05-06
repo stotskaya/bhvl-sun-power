@@ -3,11 +3,11 @@ public_folder: ""
 content:
   - name: "home"
     label: "Головна сторінка"
-    type: "file"
+    type: "collection"
     files:
       - name: "hero"
         label: "01. Головний екран"
-        file: "content/home/01-hero/hero.md"
+        path: "content/home/01-hero/hero.md"
         fields:
           - name: "title"
             label: "Title"
@@ -40,7 +40,7 @@ content:
 
       - name: "top_solutions"
         label: "02. ТОП рішення"
-        file: "content/home/02-top-solutions/top-solutions.md"
+        path: "content/home/02-top-solutions/top-solutions.md"
         fields:
           - name: "title"
             label: "Title"
@@ -92,7 +92,7 @@ content:
 
       - name: "featured_sps_home"
         label: "03. Рівень інженерної розробки"
-        file: "content/home/03-featured-sps/featured-sps.md"
+        path: "content/home/03-featured-sps/featured-sps.md"
         fields:
           - name: "title"
             label: "Title"
@@ -141,7 +141,7 @@ content:
 
       - name: "featured_technologies"
         label: "04. Технології"
-        file: "content/home/04-featured-technologies/featured-technologies.md"
+        path: "content/home/04-featured-technologies/featured-technologies.md"
         fields:
           - name: "title"
             label: "Title"
@@ -190,7 +190,7 @@ content:
 
       - name: "featured_services"
         label: "05. Послуги"
-        file: "content/home/05-featured-services/featured-services.md"
+        path: "content/home/05-featured-services/featured-services.md"
         fields:
           - name: "title"
             label: "Title"
@@ -223,7 +223,7 @@ content:
 
       - name: "text_image_6"
         label: "06. Текст з фото (Екосистема)"
-        file: "content/home/06-text-image/text-with-image.md"
+        path: "content/home/06-text-image/text-with-image.md"
         fields:
           - name: "title"
             label: "Title"
@@ -255,7 +255,7 @@ content:
 
       - name: "featured_projects"
         label: "07. Проєкти"
-        file: "content/home/07-featured-projects/featured-projects.md"
+        path: "content/home/07-featured-projects/featured-projects.md"
         fields:
           - name: "title"
             label: "Title"
@@ -322,7 +322,7 @@ content:
 
       - name: "cost_calculate"
         label: "08. Калькулятор"
-        file: "content/home/08-cost-calculate/cost-calculate.md"
+        path: "content/home/08-cost-calculate/cost-calculate.md"
         fields:
           - name: "title"
             label: "Title"
@@ -375,7 +375,7 @@ content:
 
       - name: "payment_delivery"
         label: "09. Оплата та доставка"
-        file: "content/home/09-payment-delivery/payment-delivery.md"
+        path: "content/home/09-payment-delivery/payment-delivery.md"
         fields:
           - name: "title"
             label: "Title"
@@ -418,7 +418,7 @@ content:
 
       - name: "text_image_10"
         label: "10. Гарантії"
-        file: "content/home/10-text-image/text-with-image.md"
+        path: "content/home/10-text-image/text-with-image.md"
         fields:
           - name: "title"
             label: "Title"
@@ -450,7 +450,7 @@ content:
 
       - name: "faq"
         label: "12. FAQ"
-        file: "content/home/12-faq/faq.md"
+        path: "content/home/12-faq/faq.md"
         fields:
           - name: "itle"
             label: "Title 1 (itle)"
@@ -477,7 +477,7 @@ content:
 
       - name: "text_image_13"
         label: "13. Заклик до дії"
-        file: "content/home/13-text-image/text-with-image.md"
+        path: "content/home/13-text-image/text-with-image.md"
         fields:
           - name: "weight"
             label: "Weight"
