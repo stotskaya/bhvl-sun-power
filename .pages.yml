@@ -24,7 +24,7 @@ content:
           - name: "images"
             label: "Images"
             type: "list"
-            field:
+            fields:
               name: "image"
               label: "Image"
               type: "image"
@@ -85,7 +85,7 @@ content:
               - name: "equipment"
                 label: "Equipment"
                 type: "list"
-                field:
+                fields:
                   name: "item"
                   label: "Item"
                   type: "string"
@@ -368,7 +368,7 @@ content:
           - name: "footer_tags"
             label: "Footer Tags"
             type: "list"
-            field:
+            fields:
               name: "tag"
               label: "Tag"
               type: "string"
@@ -452,8 +452,8 @@ content:
         label: "12. FAQ"
         path: "content/home/12-faq/faq.md"
         fields:
-          - name: "itle"
-            label: "Title 1 (itle)"
+          - name: "title"
+            label: "Title"
             type: "string"
           - name: "type"
             label: "Type"
@@ -461,9 +461,6 @@ content:
           - name: "weight"
             label: "Weight"
             type: "number"
-          - name: "title"
-            label: "Title 2"
-            type: "string"
           - name: "items"
             label: "Items"
             type: "list"
