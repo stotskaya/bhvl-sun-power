@@ -1,10 +1,10 @@
-media_folder: ""
-public_folder: ""
+media_path: ""
+public_path: ""
 content:
   - name: "home"
     label: "Home Sections"
     type: "collection"
-    folder: "content/home"
+    path: "content/home"
     nested: true
     fields:
       - name: "title"
@@ -111,7 +111,7 @@ content:
   - name: "services"
     label: "Services"
     type: "collection"
-    folder: "content/services"
+    path: "content/services"
     nested: true
     fields:
       - name: "title"
@@ -269,7 +269,7 @@ content:
   - name: "projects"
     label: "Projects"
     type: "collection"
-    folder: "content/projects"
+    path: "content/projects"
     nested: true
     fields:
       - name: "title"
@@ -301,7 +301,7 @@ content:
   - name: "sps"
     label: "Solar Power Stations"
     type: "collection"
-    folder: "content/sps"
+    path: "content/sps"
     nested: true
     fields:
       - name: "title"
@@ -343,7 +343,7 @@ content:
   - name: "journal"
     label: "Journal"
     type: "collection"
-    folder: "content/journal"
+    path: "content/journal"
     nested: true
     fields:
       - name: "title"
