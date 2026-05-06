@@ -10,16 +10,7 @@ content:
         path: "content/home/01-hero/hero.md"
         fields:
           - { name: "title", label: "Title", type: "string" }
-          - { name: "type", label: "Type", type: "string" }
-          - { name: "weight", label: "Weight", type: "number" }
           - { name: "badge", label: "Badge", type: "string" }
-          - name: "images"
-            label: "Images"
-            type: "list"
-            fields: # ВИПРАВЛЕНО: було field
-              - { name: "image", label: "Image", type: "image" }
-          - { name: "primary_btn", label: "Primary Button", type: "string" }
-          - { name: "secondary_btn", label: "Secondary Button", type: "string" }
           - { name: "body", label: "Content", type: "rich-text" }
 
       - name: "top_solutions"
@@ -27,52 +18,36 @@ content:
         path: "content/home/02-top-solutions/top-solutions.md"
         fields:
           - { name: "title", label: "Title", type: "string" }
-          - { name: "weight", label: "Weight", type: "number" }
-          - { name: "type", label: "Type", type: "string" }
           - { name: "description", label: "Description", type: "string" }
-          - name: "products"
-            label: "Products"
-            type: "list"
-            fields:
-              - { name: "label", label: "Label", type: "string" }
-              - { name: "title", label: "Title", type: "string" }
-              - { name: "subtitle", label: "Subtitle", type: "string" }
-              - { name: "price", label: "Price", type: "string" }
-              - { name: "button_text", label: "Button Text", type: "string" }
-              - { name: "description", label: "Description", type: "string" }
-              - { name: "featured", label: "Featured", type: "boolean" }
-              - { name: "badge", label: "Badge", type: "string" }
-              - name: "equipment"
-                label: "Equipment"
-                type: "list"
-                fields: # ВИПРАВЛЕНО: було field
-                  - { name: "item", label: "Item", type: "string" }
 
-      - name: "cost_calculate"
-        label: "08. Калькулятор"
-        path: "content/home/08-cost-calculate/cost-calculate.md"
+      - name: "featured_sps"
+        label: "03. Інженерна розробка"
+        path: "content/home/03-featured-sps/featured-sps.md"
         fields:
           - { name: "title", label: "Title", type: "string" }
-          - { name: "description", label: "Description", type: "string" }
-          - { name: "type", label: "Type", type: "string" }
-          - { name: "weight", label: "Weight", type: "number" }
-          - name: "questions"
-            label: "Questions"
+          - name: "cards"
+            label: "Cards"
+            type: "list"
+            fields: # Тільки плоский список, без specs
+              - { name: "title", label: "Title", type: "string" }
+              - { name: "image", label: "Image", type: "image" }
+
+      - name: "text_image_6"
+        label: "06. Текст з фото (Екосистема)"
+        path: "content/home/06-text-image/text-with-image.md"
+        fields:
+          - { name: "title", label: "Title", type: "string" }
+          - { name: "image", label: "Image", type: "image" }
+          - { name: "body_text", label: "Body Text", type: "rich-text" }
+
+      - name: "faq"
+        label: "12. FAQ"
+        path: "content/home/12-faq/faq.md"
+        fields:
+          - { name: "title", label: "Заголовок", type: "string" }
+          - name: "items"
+            label: "Питання/Відповіді"
             type: "list"
             fields:
-              - { name: "item_name", label: "ID", type: "string" }
-              - { name: "label", label: "Label", type: "string" }
-              - name: "options"
-                label: "Options"
-                type: "list"
-                fields:
-                  - { name: "id", label: "ID", type: "string" }
-                  - { name: "text", label: "Text", type: "string" }
-                  - { name: "default", label: "Default", type: "boolean" }
-          - { name: "primary_btn", label: "Primary Button", type: "string" }
-          - { name: "secondary_btn", label: "Secondary Button", type: "string" }
-          - name: "footer_tags"
-            label: "Footer Tags"
-            type: "list"
-            fields: # ВИПРАВЛЕНО: було field
-              - { name: "tag", label: "Tag", type: "string" }
+              - { name: "question", label: "Питання", type: "string" }
+              - { name: "answer", label: "Відповідь", type: "rich-text" }
