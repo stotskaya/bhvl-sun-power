@@ -1,36 +1,20 @@
-backend:
-  name: git-gateway
-  branch: main
+- name: "hero"
+  label: "Hero"
+  path: "content/home/01-hero/hero.md"
+  fields:
+    - { name: "title", label: "Title", type: "string" }
+    - { name: "type", label: "Type", type: "string" }
+    - { name: "weight", label: "Weight", type: "number" }
+    - { name: "badge", label: "Badge", type: "string" }
 
-media_folder: "static/images"
-public_folder: "/images"
+    - name: "images"
+      label: "Images"
+      type: "list"
+      field:
+        name: "image"
+        label: "Image"
+        type: "image"
 
-content:
-  - name: "home"
-    label: "Головна сторінка"
-    type: "collection"
-    items:
-
-      - name: "hero"
-        label: "01. Головний екран"
-        path: "content/home/01-hero/hero.md"
-        fields:
-          - { name: "title", type: "string" }
-          - { name: "type", type: "string" }
-          - { name: "weight", type: "number" }
-          - { name: "badge", type: "string" }
-          - name: "images"
-            type: "list"
-            field: { name: "image", type: "image" }
-          - { name: "primary_btn", type: "string" }
-          - { name: "secondary_btn", type: "string" }
-          - { name: "body", type: "markdown" }
-
-      - name: "top_solutions"
-        label: "02. ТОП рішення"
-        path: "content/home/02-top-solutions/top-solutions.md"
-        fields:
-          - { name: "title", type: "string" }
-          - { name: "weight", type: "number" }
-          - { name: "type", type: "string" }
-          - { name: "description", type: "string" }
+    - { name: "primary_btn", label: "Primary Button", type: "string" }
+    - { name: "secondary_btn", label: "Secondary Button", type: "string" }
+    - { name: "body", label: "Content", type: "markdown" }
