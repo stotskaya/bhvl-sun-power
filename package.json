@@ -4,7 +4,7 @@
   },
   "scripts": {
     "build:css": "npx tailwindcss -i ./themes/sun-power-theme-v1/assets/css/input.css -o ./themes/sun-power-theme-v1/static/css/style.css",
-    "dev": "npm run hugo server -D"
+    "dev": "hugo server -D"
   },
   "devDependencies": {
     "tailwindcss": "^4.2.4"

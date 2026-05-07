@@ -1,431 +1,191 @@
 {{ define "main" }}
-<section class="pt-32   px-6 ">
+<section class="pt-32 pb-20 px-6">
     <div class="max-w-7xl mx-auto">
-         {{ partial "breadcrumbs.html" . }} 
-         {{ if .Params.image }}
-        <div class="grid lg:grid-cols-1 gap-10 items-start">
-           
-
-            <div class="reveal delay-150 visible">
-                <div>
-                    <span class="lbl">{{ .Params.category}}</span>
-                    <div class="text-3xl lg:text-4xl font-light tracking-tight mb-2 solar-gradient-text italic font-medium">{{ .Title}}</div>
-                    <h1 class="text-4xl lg:text-5xl font-light tracking-tight mb-5 leading-tight " style="line-height: 1;">
-                      
-                            {{ .Params.client }} 
-                    </h1>
-                    <p class="text-gray-500 font-light leading-relaxed mb-8 text-base">
-                        {{ .Params.description }}
-                    </p>
-                    
-                   
-
-                   
-                </div>
+      <div class="grid lg:grid-cols-[1fr_400px] gap-8 items-start">
+        <div class="flex flex-col gap-6">
+          <span class="inline-block px-4 py-1.5 w-fit rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase">{{ .Params.category }}</span>
+          <h1 class="text-4xl md:text-5xl font-light tracking-tight fu d1">
+            {{ .Title }} <span class="solar-gradient-text italic font-medium">{{ .Params.power_label }}</span>
+          </h1>
+          <span class="text-gray-500 font-light leading-relaxed mb-8 text-base max-w-[80%]">
+            {{ .Params.location }}
+          </span>
+          
+          <div class="glass-card rounded-[2rem] overflow-hidden fu d1 ">
+            <div class="relative bg-white">
+              <div class="section-image h-[500px] w-full">
+                <img src="{{ .Params.image }}" class="w-full object-cover cursor-zoom-in">
+              </div>
             </div>
-        </div> 
-        {{ else }}
-      
+          </div>
 
-{{ end }}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            {{ range .Params.features }}
-            <div class="glass-card rounded-[2rem] p-8 reveal visible">
-                <div class="w-10 h-10 bg-{{ .color }}-50 rounded-xl flex items-center justify-center mb-5">
-                    <i data-lucide="{{ .icon }}" class="w-5 h-5 text-{{ .color }}-500"></i>
-                </div>
-                <h3 class="text-lg font-medium mb-2">{{ .title }}</h3>
-                <p class="text-sm text-gray-400 font-light leading-relaxed">{{ .text }}</p>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4 fu">
+            {{ range .Params.stats }}
+            <div class="glass-card rounded-[1.75rem] px-5 py-5 hover-card">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-400 tracking-widest uppercase mb-2">{{ .label }}</span>
+                <i data-lucide="{{ .icon }}" class="w-4 h-4 text-gray-300"></i>
+              </div>
+              <div class="text-2xl font-normal">{{ .value }}</div>
+              <span class="text-[12px] text-gray-400 font-light mt-1">{{ .subtext }}</span>
             </div>
             {{ end }}
-        </div>
-    </div>
-</section>
-<section class="pt-0 pb-20 px-6 ">
-    <div class="max-w-7xl mx-auto">
-<div class="grid lg:grid-cols-[1fr_360px] gap-8 items-start">
-
-      <!-- ── Ліва колонка ── -->
-      <div class="flex flex-col gap-6">
-
-       
-
-
-        <!-- Галерея -->
-        <div class="glass-card rounded-[2rem] overflow-hidden fade-up delay-1">
-          <div class="p-6 pb-4">
-            <p class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400">Фото об'єкта</p>
-          </div>
-          <!--
-            Підставте реальні фото:
-            <img src="main.jpg" class="w-full h-64 object-cover">
-          -->
-          <div class="grid grid-cols-[1.8fr_1fr] gap-2 px-6 pb-6">
-            <!-- Головне фото -->
-            <div class="relative rounded-2xl overflow-hidden h-64 flex items-center justify-center" style="background:linear-gradient(145deg,#1e293b,#1e3a5f)">
-              <div class="absolute inset-0 opacity-[.06]" style="background:repeating-linear-gradient(90deg,transparent,transparent 40px,#fff 40px,#fff 41px),
-                                      repeating-linear-gradient(0deg,transparent,transparent 28px,#fff 28px,#fff 29px)"></div>
-              <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center ring-1 ring-white/15">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="panel-top" aria-hidden="true" class="lucide lucide-panel-top w-8 h-8 text-white/50"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path></svg>
-              </div>
-              <!-- Лічильник фото -->
-              <div class="absolute bottom-3 right-3 glass-panel rounded-full px-3 py-1.5 flex items-center gap-1.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="image" aria-hidden="true" class="lucide lucide-image w-3 h-3 text-gray-500"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>
-                <span class="text-xs font-medium text-gray-600">+8 фото</span>
-              </div>
-            </div>
-            <!-- Мініатюри -->
-            <div class="flex flex-col gap-2">
-              <div class="rounded-2xl overflow-hidden flex-1 flex items-center justify-center h-[calc(50%-4px)]" style="background:linear-gradient(145deg,#78350f,#d97706)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="wrench" aria-hidden="true" class="lucide lucide-wrench w-6 h-6 text-white/40"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"></path></svg>
-              </div>
-              <div class="rounded-2xl overflow-hidden flex-1 flex items-center justify-center h-[calc(50%-4px)]" style="background:linear-gradient(145deg,#064e3b,#059669)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cpu" aria-hidden="true" class="lucide lucide-cpu w-6 h-6 text-white/40"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Параметри проєкту -->
-        <div class="glass-card rounded-[2rem] p-7 fade-up delay-2">
-          <p class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400 mb-5">Параметри проєкту</p>
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-            <div class="glass-panel rounded-2xl p-4">
-              <span class="text-[9px] text-gray-400 tracking-widest uppercase block mb-1.5">Тип об'єкта</span>
-              <p class="text-sm font-light text-gray-800">Виробниче підприємство</p>
-            </div>
-            <div class="glass-panel rounded-2xl p-4">
-              <span class="text-[9px] text-gray-400 tracking-widest uppercase block mb-1.5">Площа даху</span>
-              <p class="text-sm font-light text-gray-800">320 м²</p>
-            </div>
-            <div class="glass-panel rounded-2xl p-4">
-              <span class="text-[9px] text-gray-400 tracking-widest uppercase block mb-1.5">Тип системи</span>
-              <p class="text-sm font-light text-gray-800">Гібридна + резерв</p>
-            </div>
-            <div class="glass-panel rounded-2xl p-4">
-              <span class="text-[9px] text-gray-400 tracking-widest uppercase block mb-1.5">Термін монтажу</span>
-              <p class="text-sm font-medium text-gray-900">4 робочі дні</p>
-            </div>
-            <div class="glass-panel rounded-2xl p-4">
-              <span class="text-[9px] text-gray-400 tracking-widest uppercase block mb-1.5">Інвертор</span>
-              <p class="text-sm font-light text-gray-800">Deye 3-фазний</p>
-            </div>
-            <div class="glass-panel rounded-2xl p-4">
-              <span class="text-[9px] text-gray-400 tracking-widest uppercase block mb-1.5">Гарантія</span>
-              <p class="text-sm font-medium text-gray-900">5 років</p>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Склад системи -->
-        <div class="glass-card rounded-[2rem] p-7 fade-up">
-          <p class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400 mb-5">Склад системи</p>
-          <div class="flex flex-col divide-y divide-gray-100/80">
-
-            <div class="flex items-center gap-4 py-4 first:pt-0">
-              <div class="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" aria-hidden="true" class="lucide lucide-zap w-5 h-5 text-amber-500"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
-              </div>
-              <div class="flex-1">
-                <div class="text-sm font-medium text-gray-900">Інвертор Deye 3-фазний</div>
-                <p class="text-xs font-light text-gray-400 mt-0.5">28 кВт · Преміум серія</p>
-              </div>
-              <span class="text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
-                ×1
-              </span>
-            </div>
-
-            <div class="flex items-center gap-4 py-4">
-              <div class="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="battery-charging" aria-hidden="true" class="lucide lucide-battery-charging w-5 h-5 text-amber-500"><path d="m11 7-3 5h4l-3 5"></path><path d="M14.856 6H16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.935"></path><path d="M22 14v-4"></path><path d="M5.14 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2.936"></path></svg>
-              </div>
-              <div class="flex-1">
-                <div class="text-sm font-medium text-gray-900">Акумуляторний модуль A100</div>
-                <p class="text-xs font-light text-gray-400 mt-0.5">5.376 кВт·год кожен · LFP хімія</p>
-              </div>
-              <span class="text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
-                ×10
-              </span>
-            </div>
-
-            <div class="flex items-center gap-4 py-4">
-              <div class="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sun" aria-hidden="true" class="lucide lucide-sun w-5 h-5 text-amber-500"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-              </div>
-              <div class="flex-1">
-                <div class="text-sm font-medium text-gray-900">Сонячні панелі JA Solar 590 Вт</div>
-                <p class="text-xs font-light text-gray-400 mt-0.5">Tier 1 · Монокристалічні</p>
-              </div>
-              <span class="text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
-                ×48
-              </span>
-            </div>
-
-            <div class="flex items-center gap-4 py-4">
-              <div class="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" aria-hidden="true" class="lucide lucide-shield-check w-5 h-5 text-amber-500"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
-              </div>
-              <div class="flex-1">
-                <div class="text-sm font-medium text-gray-900">Система захисту та кріплень</div>
-                <p class="text-xs font-light text-gray-400 mt-0.5">Алюмінієві профілі · Заземлення · Блискавкозахист</p>
-              </div>
-              <span class="text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
-                Комплект
-              </span>
-            </div>
-
-            <div class="flex items-center gap-4 pt-4">
-              <div class="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="wifi" aria-hidden="true" class="lucide lucide-wifi w-5 h-5 text-amber-500"><path d="M12 20h.01"></path><path d="M2 8.82a15 15 0 0 1 20 0"></path><path d="M5 12.859a10 10 0 0 1 14 0"></path><path d="M8.5 16.429a5 5 0 0 1 7 0"></path></svg>
-              </div>
-              <div class="flex-1">
-                <div class="text-sm font-medium text-gray-900">Моніторинг SolarmanBusiness</div>
-                <p class="text-xs font-light text-gray-400 mt-0.5">Онлайн-контроль генерації з телефону</p>
-              </div>
-              <span class="text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-100">
-                В комплекті
-              </span>
-            </div>
-
-          </div>
-        </div>
-
-
-       
-
-        <!-- Відгук -->
-        <div class="glass-card rounded-[2rem] p-7 fade-up">
-          <div class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400 mb-5">Відгук замовника</div>
-
-          <div class="quote-block">
-            <p class="text-base font-light text-gray-700 leading-relaxed italic">
-              «Завдяки A100 наше виробництво не зупинялося під час зимових блекаутів.
-              Окупність іде навіть швидше за прогноз. Команда інженерів вражає своїм підходом —
-              жодного питання без відповіді, жодного сюрпризу у кошторисі.»
-            </p>
           </div>
 
-          <div class="flex items-center gap-4 mt-6 pt-5 border-t border-gray-100">
-            <!-- Аватар з ініціалами -->
-            <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-400/30 to-yellow-200/30
-                        flex items-center justify-center text-sm font-semibold text-amber-800
-                        ring-1 ring-amber-200 shrink-0">
-              ВК
-            </div>
-            <div class="flex-1">
-              <div class="text-sm font-medium text-gray-900">Віктор Коваленко</div>
-              <p class="text-xs font-light text-gray-400">Власник підприємства «Гранторг»</p>
-            </div>
-            <!-- Зірки -->
-            <div class="flex items-center gap-1">
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <div class="star"></div>
-              <span class="ml-1.5 text-xs font-medium text-amber-700">5.0</span>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Схожі проєкти -->
-        <div class="fade-up">
-          <p class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400 mb-4">Схожі проєкти</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-            <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
-              <div class="h-32 relative overflow-hidden flex items-end" style="background:linear-gradient(145deg,#78350f,#d97706)">
-                <div class="absolute inset-0 opacity-[.07]" style="background:repeating-linear-gradient(90deg,transparent,transparent 30px,#fff 30px,#fff 31px)"></div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="home" aria-hidden="true" class="lucide lucide-home w-10 h-10 text-white/25"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+          <div class="glass-card rounded-[2rem] p-8 fu d2">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-2xl bg-gray-100 flex items-center justify-center shrink-0">
+                    <i data-lucide="target" class="w-4 h-4 text-gray-500"></i>
+                  </div>
+                  <span class="text-base font-medium text-gray-900">Задача</span>
                 </div>
-                <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.45) 0%,transparent 60%)"></div>
-                <div class="relative z-10 px-5 pb-3 flex items-end justify-between w-full">
-                  <span class="glass-panel rounded-lg px-2.5 py-1 text-xs font-medium text-white/90">ДІМ</span>
-                  <span class="glass-panel rounded-lg px-2.5 py-1 text-xs font-medium text-white/90">12 кВт</span>
+                <div class="quote-block">
+                  <span class="text-sm font-light text-gray-600 leading-relaxed">
+                    {{ .Params.mission.task }}
+                  </span>
                 </div>
               </div>
-              <div class="p-5">
-                <p class="text-[10px] text-gray-400 tracking-widest uppercase mb-1">Котедж</p>
-                <p class="text-sm font-medium text-gray-900">Приватний будинок 150 м², Київ</p>
-                <p class="text-xs font-light text-gray-400 mt-1">Економія 60% · Окупність 5 р.</p>
-              </div>
-            </div>
-
-            <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
-              <div class="h-32 relative overflow-hidden flex items-end" style="background:linear-gradient(145deg,#064e3b,#059669)">
-                <div class="absolute inset-0 opacity-[.07]" style="background:repeating-linear-gradient(90deg,transparent,transparent 30px,#fff 30px,#fff 31px)"></div>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" aria-hidden="true" class="lucide lucide-users w-10 h-10 text-white/25"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-amber-500"></i>
+                  </div>
+                  <span class="text-base font-medium text-gray-900">Результат</span>
                 </div>
-                <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.45) 0%,transparent 60%)"></div>
-                <div class="relative z-10 px-5 pb-3 flex items-end justify-between w-full">
-                  <span class="glass-panel rounded-lg px-2.5 py-1 text-xs font-medium text-white/90">ОСББ</span>
-                  <span class="glass-panel rounded-lg px-2.5 py-1 text-xs font-medium text-white/90">30 кВт</span>
+                <div class="quote-block">
+                  <span class="text-sm font-light text-gray-600 leading-relaxed">
+                    {{ .Params.mission.result }}
+                  </span>
                 </div>
               </div>
-              <div class="p-5">
-                <p class="text-[10px] text-gray-400 tracking-widest uppercase mb-1">Багатоквартирний будинок</p>
-                <p class="text-sm font-medium text-gray-900">ОСББ «Сонячний квартал», Харків</p>
-                <p class="text-xs font-light text-gray-400 mt-1">Ліфти та освітлення 24/7</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-[2rem] p-8 fu d3">
+            <span class="text-[10px] font-semibold tracking-[.14em] uppercase text-amber-600 mb-5 block">Параметри проєкту</span>
+            <div class="grid md:grid-cols-2 gap-x-10">
+              {{ $params := .Params.parameters }}
+              {{ $break := div (add (len $params) 1) 2 }}
+              <div>
+                {{ range (first $break $params) }}
+                <div class="spec-row">
+                  <span class="spec-key">{{ .key }}</span>
+                  <span class="spec-val">{{ .val }}</span>
+                </div>
+                {{ end }}
+              </div>
+              <div>
+                {{ range (after $break $params) }}
+                <div class="spec-row">
+                  <span class="spec-key">{{ .key }}</span>
+                  <span class="spec-val">{{ .val }}</span>
+                </div>
+                {{ end }}
               </div>
             </div>
-
+          </div>
+    
+          <div class="glass-card rounded-[2rem] p-8 fu d4">
+            <div class="text-[10px] font-semibold tracking-[.14em] uppercase text-amber-600 mb-5">Склад системи</div>
+            <div class="flex flex-col divide-y divide-gray-100">
+              {{ range .Params.components }}
+              <div class="flex items-center gap-4 py-4 first:pt-0 last:pb-0">
+                <div class="flex-1 flex flex-col">
+                  <span class="text-sm font-medium text-gray-900">{{ .name }}</span>
+                  <span class="text-xs font-light text-gray-400 mt-0.5">{{ .desc }}</span>
+                </div>
+                <span class="text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-100 shrink-0">{{ .qty }}</span>
+              </div>
+              {{ end }}
+            </div>
+          </div>
+      
+          <div class="glass-card rounded-[2rem] p-7 fade-up">
+            <div class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400 mb-5">Відгук замовника</div>
+            <div class="quote-block">
+              <p class="text-base font-light text-gray-700 leading-relaxed italic">
+                {{ .Params.testimonial.text }}
+              </p>
+            </div>
+            <div class="flex items-center gap-4 mt-6 pt-5 border-t border-gray-100">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-400/30 to-yellow-200/30 flex items-center justify-center text-sm font-semibold text-amber-800 ring-1 ring-amber-200 shrink-0">
+                {{ .Params.testimonial.initials }}
+              </div>
+              <div class="flex-1">
+                <div class="text-sm font-medium text-gray-900">{{ .Params.testimonial.author }}</div>
+                <p class="text-xs font-light text-gray-400">{{ .Params.testimonial.role }}</p>
+              </div>
+              <div class="flex items-center gap-1">
+                {{ range seq 5 }}<div class="star"></div>{{ end }}
+              </div>
+            </div>
           </div>
         </div>
 
-      </div><!-- /left col -->
-
-
-      <!-- ── Права колонка — sticky sidebar ── -->
-      <div class="flex flex-col gap-5" id="cta">
-
-        <!-- CTA-картка -->
-        <div class="glass-card rounded-[2rem] overflow-hidden sticky top-28 fade-up">
-          <div class="h-1.5 amber-shimmer"></div>
-          <div class="p-7 flex flex-col gap-5">
-
-            <div>
-              <span class="lbl1 mb-3 inline-flex">Замовте подібний проєкт</span>
-              <h3 class="text-xl font-light text-gray-900 leading-snug mt-3">
-                Хочете таку само систему для свого об'єкта?
-              </h3>
-            </div>
-
-            <p class="text-sm font-light text-gray-500 leading-relaxed">
-              Розрахуємо вартість, підберемо конфігурацію та надамо ТЕО протягом 24 годин.
-            </p>
-
-            <!-- Міні-форма -->
-            <div class="flex flex-col gap-3">
-              <input type="text" placeholder="Ваше ім'я" class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200
-                            rounded-2xl outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100
-                            transition-all placeholder-gray-400">
-              <input type="tel" placeholder="+380 __ ___ __ __" class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200
-                            rounded-2xl outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100
-                            transition-all placeholder-gray-400">
-              <textarea placeholder="Коротко про об'єкт: тип, потужність, місто..." rows="3" class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200
-                               rounded-2xl outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100
-                               transition-all placeholder-gray-400 resize-none"></textarea>
-            </div>
-
-            <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:scale-105 transition-transform btn-open-modal text-sm">
-              Отримати прорахунок 
-              </button>
-
-           
-
-          </div>
-        </div>
-
-        <!-- Переваги A100 -->
-        
-
-        <!-- Поділитися -->
-        
-
-      </div><!-- /right col -->
-    </div>
-    <div class="mt-16">
-      <div class="glass-card rounded-[2rem] overflow-hidden">
-        <div class="h-1 amber-shimmer"></div>
-        <div class="p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+ 
+    <div class="flex flex-col gap-5 lg:sticky lg:top-28" id="cta">
+ 
+      <div class="glass-card bg-white rounded-[2rem] overflow-hidden fu d1">
+      
+        <div class="p-7 flex flex-col gap-5">
           <div>
-            <span class="lbl1 mb-3 inline-flex">200+ реалізованих об'єктів</span>
-            <h2 class="text-2xl md:text-3xl font-light tracking-tight mt-3">
-              Готові до
-              <span class="solar-gradient-text italic font-medium">власної СЕС?</span>
+            <span class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase mb-3">Хочете таку само?</span>
+            <h2 class="text-xl font-light text-gray-900 leading-snug mt-3">
+              Замовте подібний проєкт для вашого дому
             </h2>
-            <p class="text-sm font-light text-gray-400 mt-2 max-w-md">
-              Розрахуємо вартість, підберемо конфігурацію та надамо повний ТЕО протягом 24 годин — безкоштовно.
-            </p>
+            <span class="text-sm font-light text-gray-400 mt-1.5 leading-relaxed">
+              Розрахуємо вартість під ваш об'єкт та надамо ТЕО протягом 24 годин — безкоштовно.
+            </span>
           </div>
-          <div class="flex flex-col sm:flex-row gap-3 shrink-0">
-            <a href="#cta" class="btn-dark">
-              Замовити прорахунок
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-            </a>
-            <a href="tel:+380" class="btn-ghost">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" aria-hidden="true" class="lucide lucide-phone w-4 h-4 text-amber-500"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
-              Подзвонити
-            </a>
+          <div class="flex flex-col gap-3">
+            <input type="text" placeholder="Ваше ім'я" class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl
+                          outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400">
+            <input type="tel" placeholder="+380 __ ___ __ __" class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl
+                          outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400">
+            <textarea rows="2" placeholder="Тип об'єкта, місто..." class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl
+                             outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400 resize-none"></textarea>
+          </div>
+          <button class="bg-gray-900 text-white w-full py-4 rounded-full font-medium text-sm
+                         hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 flex items-center justify-center gap-2">
+            Отримати розрахунок + ТЕО
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </button>
+          <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+            <span class="text-xs font-light text-gray-400">Відповідь до 30 хв</span>
+            <span class="dot-sep bg-amber-50"></span>
+            <span class="text-xs font-light text-gray-400">Безкоштовно</span>
           </div>
         </div>
       </div>
-    </div>
-    </div>
-    </section>
-    <style>/* Bar chart */
-    .bar-col { display: flex; flex-direction: column; align-items: center; flex: 1; }
-    .bar-inner {
-      width: 100%; border-radius: 6px 6px 0 0;
-      background: #e5e7eb;
-      transition: background 0.2s;
-    }
-    .bar-inner.active { background: linear-gradient(to top, #f59e0b, #fcd34d); }
-    .bar-lbl { font-size: 10px; color: #9ca3af; margin-top: 6px; }
 
-    /* Кнопки */
-    .btn-dark {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #111827; color: #fff;
-      padding: 0.9rem 2rem; border-radius: 9999px;
-      font-size: 0.875rem; font-weight: 400;
-      border: none; cursor: pointer;
-      transition: background 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-    }
-    .btn-dark:hover { background: #1f2937; box-shadow: 0 8px 24px rgba(0,0,0,.15); }
-
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,.55); color: #374151;
-      border: 1px solid rgba(255,255,255,.80);
-      backdrop-filter: blur(16px);
-      padding: 0.9rem 2rem; border-radius: 9999px;
-      font-size: 0.875rem; font-weight: 400;
-      cursor: pointer;
-      transition: background 0.2s;
-      text-decoration: none;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,.72); }
-    
-    .lbl1 {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      padding: 0.25rem 0.85rem; border-radius: 9999px;
-      background: #fef3c7; color: #d97706;
-      font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
-    }
-
-    /* dot-sep */
-    .dot-sep {
-      display: inline-block; width: 5px; height: 5px;
-      border-radius: 50%; background: #f59e0b; flex-shrink: 0;
-    }
-
-    /* star */
-    .star {
-      width: 14px; height: 14px;
-      background: #f59e0b;
-      clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-    }
-
-    /* Scroll-анімація появи */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up { animation: fadeUp 0.5s ease forwards; }
-    .delay-1 { animation-delay: 0.1s; opacity: 0; }
-    .delay-2 { animation-delay: 0.2s; opacity: 0; }
-    .delay-3 { animation-delay: 0.3s; opacity: 0; }</style>
-{{ range .Params.sections }}
-    {{ $path := printf "sections/%s.html" .type }}
-    {{ partial $path . }}
-{{ end }}
+    </div><!-- /right col -->
+  </div>
+  <div class="mt-16">
+          <div class="glass-card rounded-[2rem] overflow-hidden">
+            <div class="p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div>
+                <span class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase mb-3">200+ реалізованих об'єктів</span>
+                <h2 class="text-2xl md:text-3xl font-light tracking-tight mt-3">
+                  Готові до <span class="solar-gradient-text italic font-medium">власної СЕС?</span>
+                </h2>
+                <p class="text-sm font-light text-gray-400 mt-2 max-w-md">
+                  Розрахуємо вартість, підберемо конфігурацію та надамо повний ТЕО протягом 24 годин — безкоштовно.
+                </p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+                <a href="#cta" class="btn-dark">
+                  Замовити прорахунок
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </a>
+                <a href="tel:+380" class="btn-ghost"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" aria-hidden="true" class="lucide lucide-phone w-4 h-4 text-amber-500"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+                Подзвонити</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+  </section>
 {{ end }}
 

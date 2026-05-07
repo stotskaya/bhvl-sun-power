@@ -1,5 +1,5 @@
 ---
-title: "Catalog"
+title: "Каталог"
 layout: "list"
 subtitle: "Products and services curated for elegant, resilient residential energy."
 ---

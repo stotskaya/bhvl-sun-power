@@ -218,8 +218,10 @@
                     <a href="{{ .RelPermalink }}" class="absolute inset-0 z-10" aria-label="View {{ .Title }}"></a>
 
                     <div class="aspect-square rounded-2xl bg-gray-50 mb-6 overflow-hidden flex items-center justify-center">
-                        {{ if .Params.image }}
-                        <img src="{{ .Params.image | relURL }}" 
+                        {{ if .Params.images }}
+                        {{ $firstImage := index .Params.images 0 }}
+      
+                        <img src="{{ $firstImage | relURL }}" 
                             alt="{{ .Title }}" 
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                             itemprop="image">
@@ -229,7 +231,7 @@
                     </div>
 
                     <div class="px-2">
-                        <h3 class="font-medium text-lg mb-1" itemprop="name">{{ .Title }}</h3>
+                        <h3 class="font-medium text-lg mb-1" itemprop="name">{{ .Title  | truncate 45}}</h3>
                         <p class="text-xs text-gray-400 uppercase tracking-widest mb-3" itemprop="category">
                             {{ .Params.category }}
                         </p>
@@ -243,9 +245,7 @@
                                 <span class="text-xl font-light" aria-label="Price {{ .Params.price }}">
                                     {{ .Params.currency | default "$" }}{{ .Params.price }}
                                 </span>
-                                <div class="text-xs text-gray-400 tracking-widest uppercase mt-1">
-                                    {{ .Params.status | default "In stock" }}
-                                </div>
+                                
                             </div>
                             
                             <button type="button" class="w-10 h-10 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition-all">
@@ -265,11 +265,11 @@
             <nav class="mt-10 flex items-center justify-between gap-4 glass-panel rounded-full px-6 py-4" aria-label="Pagination">
                 <button id="prevPage" type="button" class="text-sm font-medium flex items-center gap-2 hover:text-amber-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" disabled>
                     <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
-                    Prev
+                    
                 </button>
                 <div id="pageNumbers" class="flex items-center gap-2" aria-label="Page numbers"></div>
                 <button id="nextPage" type="button" class="text-sm font-medium flex items-center gap-2 hover:text-amber-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
-                    Next
+                   
                     <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
                 </button>
             </nav>

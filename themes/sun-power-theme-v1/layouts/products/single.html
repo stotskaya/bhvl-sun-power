@@ -1,188 +1,197 @@
 {{ define "main" }}
+
   <section class="py-28 px-6 bg-white/30 backdrop-blur-md" itemscope itemtype="https://schema.org/Product">
     <div class="max-w-7xl mx-auto">
         {{ partial "breadcrumbs.html" . }} 
-    <div class="grid lg:grid-cols-2 gap-10 items-start">
-        
-        <div class="reveal">
-            <div class="glass-panel rounded-[2.5rem] p-6">
-                <div class="aspect-square rounded-[2rem] overflow-hidden bg-gray-50 flex items-center justify-center">
-                    {{ if .Params.image }}
-                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="w-full h-full object-cover" itemprop="image">
-                    {{ else }}
-                    <i data-lucide="image" class="w-20 h-20 text-gray-200"></i>
-                    {{ end }}
-                </div>
-                <div class="grid grid-cols-3 gap-4 mt-6">
-                    <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center">
-                        <img src="{{ .Params.image | relURL }}" alt="Detail 1" class="w-full h-full object-cover opacity-50 hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center border-2 border-dashed border-gray-100">
-                        <i data-lucide="sun" class="w-12 h-12 text-gray-200 stroke-[0.8]"></i>
-                    </div>
-                    <div class="aspect-square rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center border-2 border-dashed border-gray-100">
-                        <i data-lucide="zap" class="w-12 h-12 text-gray-200 stroke-[0.8]"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="max-w-7xl mx-auto px-4 md:px-6  pb-20 relative z-10">
+  <div class="grid lg:grid-cols-[1fr_400px] gap-6 items-start">
 
-        <div class="reveal delay-150">
-            <div class="glass-panel rounded-[2.5rem] p-6 md:p-10">
-                <p class="text-xs text-gray-400 uppercase tracking-widest mb-4" itemprop="category">
-                    {{ .Params.category | default "Solar Module" }}
-                </p>
-                
-                <h1 class="text-5xl font-light tracking-tight mb-6" itemprop="name">
-                    {{ .Title }}
-                </h1>
-                
-                <div class="text-gray-500 font-light leading-relaxed mb-8" itemprop="description">
-                    {{ .Content }}
-                </div>
-
-                <div class="grid sm:grid-cols-3 gap-6 mb-10">
-                    <div class="glass-card rounded-2xl p-6">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-400 tracking-widest uppercase">Price</span>
-                            <i data-lucide="tag" class="w-4 h-4 text-gray-300"></i>
-                        </div>
-                        <div class="text-3xl font-light mt-3" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                            <span itemprop="priceCurrency" content="{{ .Params.currency | default "USD" }}"></span>
-                            <span class="text-lg leading-none opacity-70">{{ .Params.currency | default "$" }}</span>
-                            <span itemprop="price" content="{{ .Params.price }}">{{ .Params.price }}</span>
-                            <div class="text-xs text-gray-400 tracking-widest uppercase mt-2">In stock</div>
-                        </div>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-400 tracking-widest uppercase">Efficiency</span>
-                            <i data-lucide="hash" class="w-4 h-4 text-gray-300"></i>
-                        </div>
-                        <div class="text-3xl font-light mt-3">22.4%</div>
-                        <div class="text-xs text-gray-400 tracking-widest uppercase mt-2">Peak module</div>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-6">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-400 tracking-widest uppercase">Rating</span>
-                            <i data-lucide="star" class="w-4 h-4 text-gray-300"></i>
-                        </div>
-                        <div class="text-3xl font-light mt-3">{{ .Params.rating }}</div>
-                        <div class="text-xs text-gray-400 tracking-widest uppercase mt-2">{{ .Params.reviews }} reviews</div>
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap gap-3 mb-10">
-                  {{ if .Params.tags }}
-                    {{ $tags := split .Params.tags "," }}
-                    {{ range $tags }}
-                        {{ $tag := trim . " " }}
-                        {{ if $tag }}
-                            <span class="glass-card px-4 py-2 rounded-full text-sm font-medium capitalize tracking-wider text-gray-600">
-                                {{ $tag }}
-                            </span>
-                        {{ end }}
-                    {{ end }}
-                {{ else }}
-                    <span class="text-xs text-gray-300">No tags found</span>
-                {{ end }}
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200">
-                        Reserve Consultation
-                    </button>
-                    <a href="#specs" class="glass-panel px-10 py-4 rounded-full font-medium hover:bg-white/60 transition-colors flex items-center justify-center gap-2">
-                        View Specs <i data-lucide="arrow-down" class="w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 mt-8">
-                <div class="glass-card rounded-[2rem] p-8 reveal">
-                    <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center mb-6 text-amber-500">
-                        <i data-lucide="sparkles" class="w-6 h-6" aria-hidden="true"></i>
-                    </div>
-                    <h2 class="text-lg font-medium mb-2">Liquid-Glass Finish</h2>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">A refined surface treatment that blends into premium architecture.</p>
-                </div>
-                <div class="glass-card rounded-[2rem] p-8 reveal delay-75">
-                    <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 text-blue-500">
-                        <i data-lucide="shield-check" class="w-6 h-6" aria-hidden="true"></i>
-                    </div>
-                    <h2 class="text-lg font-medium mb-2">25-Year Warranty</h2>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">Performance and aesthetic coverage designed for long-term confidence.</p>
-                </div>
-                <div class="glass-card rounded-[2rem] p-8 reveal delay-150">
-                    <div class="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center mb-6 text-green-500">
-                        <i data-lucide="leaf" class="w-6 h-6" aria-hidden="true"></i>
-                    </div>
-                    <h2 class="text-lg font-medium mb-2">Low-Carbon Build</h2>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">Sourced materials and manufacturing choices optimized for impact.</p>
-                </div>
-            </div>
-        </div>
-        
+    <div class="flex flex-col gap-4 fade-up">
+  <div class="glass-card rounded-[2rem] overflow-hidden">
+    <div class="relative bg-white">
+      {{ $firstImage := index .Params.images 0 }}
+      <img id="mainImg" src="{{ $firstImage }}" alt="{{ .Title }}" class="w-full h-[420px] object-contain p-6">
+      
+      <div class="absolute bottom-4 right-4 glass-panel rounded-xl px-3 py-1.5 flex items-center gap-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zoom-in" aria-hidden="true" class="lucide lucide-zoom-in w-3.5 h-3.5 text-gray-400">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+          <line x1="11" x2="11" y1="8" y2="14"></line>
+          <line x1="8" x2="14" y1="11" y2="11"></line>
+        </svg>
+        <span class="text-xs text-gray-400">Клікніть для збільшення</span>
+      </div>
     </div>
-    <div id="specs" class="mt-16 grid lg:grid-cols-3 gap-8 items-start">
-        <div class="lg:col-span-2 glass-panel rounded-[2.5rem] p-6 md:p-10 reveal">
-            <h2 class="text-2xl font-light mb-6">Technical Specifications</h2>
-            <div class="grid sm:grid-cols-2 gap-6 text-sm">
-                <div class="glass-card rounded-2xl p-6">
-                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Peak Power</p>
-                    <p class="text-lg font-medium">425 W</p>
-                </div>
-                <div class="glass-card rounded-2xl p-6">
-                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Module Efficiency</p>
-                    <p class="text-lg font-medium">22.4%</p>
-                </div>
-                <div class="glass-card rounded-2xl p-6">
-                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Operating Temp</p>
-                    <p class="text-lg font-medium">-40°C to 85°C</p>
-                </div>
-                <div class="glass-card rounded-2xl p-6">
-                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Glass Type</p>
-                    <p class="text-lg font-medium">Tempered, AR-coated</p>
-                </div>
-                <div class="glass-card rounded-2xl p-6">
-                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Ingress Rating</p>
-                    <p class="text-lg font-medium">IP68</p>
-                </div>
-                <div class="glass-card rounded-2xl p-6">
-                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Compatibility</p>
-                    <p class="text-lg font-medium">Nexus / third-party inverters</p>
-                </div>
-            </div>
-        </div>
+  </div>
 
-        <aside class="glass-panel rounded-[2.5rem] p-6 md:p-10 reveal delay-100" aria-label="What is included">
-            <h2 class="text-2xl font-light mb-6">What’s Included</h2>
-            <ul class="space-y-4 text-sm text-gray-600 font-light">
-                <li class="flex items-start gap-3">
-                    <i data-lucide="check" class="w-4 h-4 text-amber-500 mt-0.5" aria-hidden="true"></i>
-                    <span>Prime V3 module with pre-installed junction box</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <i data-lucide="check" class="w-4 h-4 text-amber-500 mt-0.5" aria-hidden="true"></i>
-                    <span>MC4-compatible connectors</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <i data-lucide="check" class="w-4 h-4 text-amber-500 mt-0.5" aria-hidden="true"></i>
-                    <span>Installation guide and care instructions</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <i data-lucide="check" class="w-4 h-4 text-amber-500 mt-0.5" aria-hidden="true"></i>
-                    <span>Warranty registration card</span>
-                </li>
-            </ul>
-            <div class="mt-10 glass-card rounded-2xl p-6">
-                <p class="text-xs text-gray-400 tracking-widest uppercase mb-2">Installation</p>
-                <p class="text-sm text-gray-500 font-light leading-relaxed">White-glove installation is available as a separate service in the catalog.</p>
-            </div>
-        </aside>
+  <div class="grid grid-cols-6 gap-2">
+    {{ range .Params.images }}
+    <button class="thumb glass-card rounded-2xl overflow-hidden" onclick="setImg(this, '{{ . }}')">
+      <img src="{{ . }}" class="w-full h-16 object-contain p-1.5 bg-white">
+    </button>
+    {{ end }}
+  </div>
+
+  <div class="glass-panel rounded-[2rem] overflow-hidden fade-up d1">
+    <div class="p-6 pb-0 flex items-center gap-2 border-b border-gray-100/80 pb-4">
+        <button class="tab-btn active" onclick="switchTab(this,'desc')">Опис</button>
+        <button class="tab-btn" onclick="switchTab(this,'specs')">Характеристики</button>
+         <button class="tab-btn" onclick="switchTab(this,'more')">Додатково</button>
     </div>
+
+    <div id="tab-specs" class="tab-panel p-6 ">
+      {{ if .Params.specs }}
+      <div class="grid md:grid-cols-2 gap-x-8">
+        {{ range .Params.specs }}
+        <div class="spec-row">
+          <span class="spec-key">{{ .key }}</span>
+          <span class="spec-val">{{ .val }}</span>
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    <div id="tab-desc" class="tab-panel p-6  active">
+      <div class="flex flex-col gap-5 text-sm font-light text-gray-600 leading-relaxed">
+        {{ .Params.full_description }}
+      </div>
+    </div>
+    <div id="tab-more" class="tab-panel p-6">
+      <div class="flex flex-col gap-5 text-sm font-light text-gray-600 leading-relaxed">
+        {{ .Content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- ── ПРАВА: замовлення ── -->
+    <div class="flex flex-col gap-5 lg:sticky lg:top-28" id="order">
+
+      <!-- Назва і ціна -->
+      <div class=" overflow-hidden fade-up d2">
+        
+        <div class="p-7 flex flex-col gap-4">
+
+          <span class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase mb-0 w-fit">Акумулятори</span><div>
+            
+            <h1 class="text-2xl font-medium leading-snug tracking-tight">{{   .Params.title }}</h1>
+            <p class="text-sm font-light text-gray-400 mt-1">{{   .Params.description }}</p>
+          </div>
+
+          <!-- Рейтинг -->
+          
+
+          <!-- Ціна -->
+         
+            <div class="grid sm:grid-cols-2 gap-6 mb-8">
+              <div class="glass-card rounded-2xl p-6">
+                <div class="flex items-center  justify-between">
+                    <span class="text-xs text-gray-400 tracking-widest uppercase">Вартість</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="tag" aria-hidden="true" class="lucide lucide-tag w-4 h-4 text-gray-300"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
+                </div>
+                <div class="text-3xl font-light mt-3">
+                    <div class="flex flew-row items-end gap-2">
+                        
+                        <span class="solar-gradient-text font-medium">{{ .Params.price }}</span>
+                    </div>
+                </div>
+            
+            </div>
+              <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-center  justify-between mb-3 ">
+                    <span class="text-xs text-gray-400 tracking-widest uppercase">Кількість</span>
+                      </div>
+            <div class="flex items-center gap-3">
+              <button onclick="" class="w-10 h-10 rounded-full   flex items-center justify-center
+                             hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="minus" aria-hidden="true" class="lucide lucide-minus w-4 h-4"><path d="M5 12h14"></path></svg>
+              </button>
+              <span id="qty" class="w-12 text-center text-lg font-medium">1</span>
+              <button onclick="" class="w-10 h-10 rounded-full  flex items-center justify-center
+                             hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" aria-hidden="true" class="lucide lucide-plus w-4 h-4"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+              </button>
+              
+            </div>
+          </div>
+
+            </div>
+          
+
+          <!-- Кількість -->
+          
+          <!-- CTA -->
+          <button class="bg-gray-900 text-white w-full py-4 rounded-full font-medium text-sm
+                         hover:bg-gray-800 transition-all shadow-lg shadow-gray-200
+                         flex items-center justify-center gap-2">
+            Замовити
+              </button>
+          <button class="glass-panel w-full py-3.5 rounded-full text-sm font-light
+                         hover:bg-white/70 transition-colors flex items-center justify-center gap-2 text-gray-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" aria-hidden="true" class="lucide lucide-phone w-4 h-4 text-amber-500"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+            Проконсультуватись
+          </button>
+
+          <!-- Мікро-теги -->
+          <div class="flex flex-wrap items-center justify-center gap-1 pt-1">
+            
+            
+            <span class="text-xs font-light text-gray-400">Офіційний імпортер</span>
+            <span class="dot-sep"></span>
+            <span class="text-xs font-light text-gray-400">Є кредит 0.1%</span>
+          </div>
+
+        </div>
+      </div>
+
+   
+
+    </div><!-- /right -->
+  </div><!-- /grid -->
+
+
+ 
+
+</div>
     </div>
     </section>
+    <script>
+  lucide.createIcons();
+
+  // Галерея
+  function setImg(btn, src) {
+    document.getElementById('mainImg').src = src;
+    document.querySelectorAll('.thumb').forEach(t => {
+      t.classList.remove('active','ring-2','ring-amber-400','ring-offset-1');
+    });
+    btn.classList.add('active','ring-2','ring-amber-400','ring-offset-1');
+  }
+
+  // Tabs
+  function switchTab(btn, tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+tab).classList.add('active');
+  }
+
+  // Кількість
+  let qty = 1;
+  function changeQty(d) {
+    qty = Math.max(1, Math.min(15, qty + d));
+    document.getElementById('qty').textContent = qty;
+    document.getElementById('totalKwh').textContent = (qty * 5.38).toFixed(2);
+  }
+
+  // Accordion
+  function toggleAcc(btn) {
+    const body = btn.nextElementSibling;
+    const icon = btn.querySelector('.acc-icon');
+    const open = body.classList.contains('open');
+    document.querySelectorAll('.acc-body.open').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.acc-icon.open').forEach(i => i.classList.remove('open'));
+    if (!open) { body.classList.add('open'); icon.classList.add('open'); }
+  }
+</script>
 {{ end }}
