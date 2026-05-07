@@ -103,12 +103,12 @@
                     <span class="text-xs text-gray-400 tracking-widest uppercase">Кількість</span>
                       </div>
             <div class="flex items-center gap-3">
-              <button onclick="" class="w-10 h-10 rounded-full   flex items-center justify-center
+              <button onclick="changeQty(-1)" class="w-10 h-10 rounded-full   flex items-center justify-center
                              hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="minus" aria-hidden="true" class="lucide lucide-minus w-4 h-4"><path d="M5 12h14"></path></svg>
               </button>
               <span id="qty" class="w-12 text-center text-lg font-medium">1</span>
-              <button onclick="" class="w-10 h-10 rounded-full  flex items-center justify-center
+              <button onclick="changeQty(1)" class="w-10 h-10 rounded-full  flex items-center justify-center
                              hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" aria-hidden="true" class="lucide lucide-plus w-4 h-4"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
               </button>
@@ -154,7 +154,70 @@
  
 
 </div>
+<div class="mt-16">
+    <div class="flex items-center justify-between mb-6">
+      <p class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400">Схожі товари</p>
+      <a href="/catalog/batteries" class="text-sm font-light text-amber-600 hover:text-amber-700 no-underline flex items-center gap-1">
+        Весь каталог <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-3.5 h-3.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
     </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
+        <div class="bg-white p-4 flex items-center justify-center h-32">
+          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="battery-charging" aria-hidden="true" class="lucide lucide-battery-charging w-6 h-6 text-amber-500"><path d="m11 7-3 5h4l-3 5"></path><path d="M14.856 6H16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.935"></path><path d="M22 14v-4"></path><path d="M5.14 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2.936"></path></svg>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Модуль 10.76 кВт·год</p>
+          <p class="text-sm font-medium text-gray-900">A100 МТ-LFP × 2</p>
+          <p class="text-xs font-light text-gray-400 mt-0.5">Комплект 2 модулі</p>
+          <p class="text-sm solar-gradient-text mt-2 font-medium">від $1 850</p>
+        </div>
+      </div>
+      <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
+        <div class="bg-white p-4 flex items-center justify-center h-32">
+          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" aria-hidden="true" class="lucide lucide-zap w-6 h-6 text-amber-500"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Інвертор</p>
+          <p class="text-sm font-medium text-gray-900">Deye SUN-6K-SG04LP3</p>
+          <p class="text-xs font-light text-gray-400 mt-0.5">6 кВт · 3-фазний</p>
+          <p class="text-sm solar-gradient-text mt-2 font-medium">від $780</p>
+        </div>
+      </div>
+      <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
+        <div class="bg-white p-4 flex items-center justify-center h-32">
+          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sun" aria-hidden="true" class="lucide lucide-sun w-6 h-6 text-amber-500"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Сонячна панель</p>
+          <p class="text-sm font-medium text-gray-900">JA Solar 590 Вт</p>
+          <p class="text-xs font-light text-gray-400 mt-0.5">Tier 1 · Монокристал</p>
+          <p class="text-sm solar-gradient-text mt-2 font-medium">від $140</p>
+        </div>
+      </div>
+      <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
+        <div class="bg-white p-4 flex items-center justify-center h-32">
+          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="package" aria-hidden="true" class="lucide lucide-package w-6 h-6 text-amber-500"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Готовий комплект</p>
+          <p class="text-sm font-medium text-gray-900">Базовий резерв 6 кВт</p>
+          <p class="text-xs font-light text-gray-400 mt-0.5">Інвертор + АКБ + панелі</p>
+          <p class="text-sm solar-gradient-text mt-2 font-medium">від $3 200</p>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    
     </section>
     <script>
   lucide.createIcons();
