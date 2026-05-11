@@ -1,6 +1,4 @@
-media:
-  input: static
-  output: /
+
 
 content:
   - name: sps
