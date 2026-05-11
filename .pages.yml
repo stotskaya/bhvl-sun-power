@@ -1,331 +1,190 @@
-media:
-  input: static/images
-  output: /images
+# pagecms.yml
 
-content:
+label: "Автономна СЕС"
+icon: "battery-charging"
+file: "content/sps/autonomous-ses.md" # Шлях до вашого файлу
 
-  - name: sps
-    label: SPS сторінки
-    type: collection
-    path: content/sps
+fields:
+  - name: title
+    label: "Заголовок сторінки (H1)"
+    type: string
+  - name: short_title
+    label: "Коротка назва"
+    type: string
+  - name: label
+    label: "Мітка"
+    type: string
+  - name: description
+    label: "Опис (SEO)"
+    type: textarea
+  - name: layout
+    label: "Шаблон (Layout)"
+    type: hidden
+    default: "sps"
 
-    filename: "{slug}.md"
-
-    items:
-
-      - name: title
-        label: Title
-        type: string
-
-      - name: short_title
-        label: Short title
-        type: string
-
-      - name: label
-        label: Label
-        type: string
-
-      - name: description
-        label: Description
-        type: text
-
+  # Блок ціни та характеристик
+  - name: price_settings
+    label: "Ціна та статус"
+    type: object
+    fields:
       - name: price_from
-        label: Price from
-        type: boolean
-
+        label: "Ціна 'від'"
+        type: select
+        options: ["yes", "no"]
       - name: price
-        label: Price
-        type: string
-
+        label: "Вартість"
+        type: number
       - name: currency
-        label: Currency
+        label: "Валюта"
         type: string
-
       - name: efficiency
-        label: Efficiency
+        label: "Потужність/Ефективність"
         type: string
-
       - name: rating
-        label: Rating
+        label: "Рейтинг/Гарантія"
         type: string
 
+  # Атрибути (теги)
+  - name: attributes
+    label: "Основні переваги (теги)"
+    type: object
+    fields:
       - name: attribute_1
-        label: Attribute 1
         type: string
-
       - name: attribute_2
-        label: Attribute 2
         type: string
-
       - name: attribute_3
-        label: Attribute 3
         type: string
 
+  # Зображення прев'ю
+  - name: image_settings
+    label: "Головне зображення"
+    type: object
+    fields:
       - name: image
-        label: Main image
+        label: "Шлях до файлу"
         type: image
-
       - name: image_alt
-        label: Image alt
+        label: "Alt текст"
         type: string
 
-      # FEATURES
+  # Переваги (Features)
+  - name: features
+    label: "Ключові особливості"
+    type: list
+    fields:
+      - name: title
+        type: string
+      - name: text
+        type: textarea
+      - name: icon
+        type: string
+      - name: color
+        type: select
+        options: ["amber", "blue", "green", "red", "purple"]
 
-      - name: features
-        label: Top features
-        type: object
-        list: true
-
-        items:
-
+  # Конструктор секцій (Blocks)
+  - name: sections
+    label: "Секції сторінки"
+    type: list
+    types:
+      - name: text-with-image
+        label: "Текст із зображенням"
+        fields:
+          - name: id
+            type: string
           - name: title
-            label: Title
+            type: string
+          - name: image
+            type: image
+          - name: image_alt
+            type: string
+          - name: image_position
+            type: select
+            options: ["left", "right"]
+          - name: body_text
+            label: "Контент (Markdown)"
+            type: markdown
+
+      - name: system-specs
+        label: "Технічні характеристики системи"
+        fields:
+          - name: title
+            type: string
+          - name: button_text
+            type: string
+          - name: specs
+            type: list
+            fields:
+              - name: label
+                type: string
+              - name: value
+                type: string
+          - name: composition_title
+            type: string
+          - name: composition_list
+            type: list
+            fields:
+              - name: item
+                type: string
+          - name: installation_label
+            type: string
+          - name: installation_text
             type: string
 
-          - name: text
-            label: Text
-            type: text
-
-          - name: icon
-            label: Icon
+      - name: steps-list
+        label: "Етапи роботи"
+        fields:
+          - name: title
             type: string
+          - name: steps
+            type: list
+            fields:
+              - name: title
+                type: string
+              - name: text
+                type: string
 
-          - name: color
-            label: Color
+      - name: features-grid
+        label: "Сітка переваг (Чому ми)"
+        fields:
+          - name: title
             type: string
-
-      # SECTIONS
-
-      - name: sections
-        label: Sections
-        type: block
-        list: true
-        blockKey: type
-
-        blocks:
-
-          # TEXT WITH IMAGE
-
-          - name: text-with-image
-            label: Text with image
-
-            items:
-
-              - name: id
-                label: Section ID
-                type: string
-
-              - name: title
-                label: Title
-                type: string
-
-              - name: image
-                label: Image
-                type: image
-
-              - name: image_alt
-                label: Image alt
-                type: string
-
-              - name: image_position
-                label: Image position
-                type: select
-
-                options:
-                  - label: Left
-                    value: left
-
-                  - label: Right
-                    value: right
-
-              - name: button_text
-                label: Button text
-                type: string
-                required: false
-
-              - name: body_text
-                label: Content
-                type: rich-text
-
-          # SYSTEM SPECS
-
-          - name: system-specs
-            label: System specs
-
+          - name: image
+            type: image
+          - name: features
+            type: list
             fields:
-
               - name: title
-                label: Title
+                type: string
+              - name: subtitle
+                type: string
+              - name: icon
+                type: string
+              - name: bg
+                type: string
+              - name: text
                 type: string
 
-              - name: button_text
-                label: Button text
-                type: string
-
-              - name: specs
-                label: Specifications
-                type: object
-                list: true
-
-                fields:
-
-                  - name: label
-                    label: Label
-                    type: string
-
-                  - name: value
-                    label: Value
-                    type: rich-text
-
-              - name: composition_title
-                label: Composition title
-                type: string
-
-              - name: composition_list
-                label: Composition list
-                type: string
-                list: true
-
-              - name: installation_label
-                label: Installation label
-                type: string
-
-              - name: installation_text
-                label: Installation text
-                type: text
-
-          # STEPS LIST
-
-          - name: steps-list
-            label: Steps list
-
+      - name: faq
+        label: "Питання та відповіді"
+        fields:
+          - name: title
+            type: string
+          - name: items
+            type: list
             fields:
-
-              - name: title
-                label: Title
+              - name: question
                 type: string
+              - name: answer
+                type: textarea
 
-              - name: steps
-                label: Steps
-                type: object
-                list: true
-
-                fields:
-
-                  - name: title
-                    label: Title
-                    type: string
-
-                  - name: text
-                    label: Text
-                    type: text
-
-          # FEATURES GRID
-
-          - name: features-grid
-            label: Features grid
-
-            fields:
-
-              - name: id
-                label: Section ID
-                type: string
-
-              - name: title
-                label: Title
-                type: string
-
-              - name: image
-                label: Image
-                type: image
-
-              - name: image_alt
-                label: Image alt
-                type: string
-
-              - name: image_position
-                label: Image position
-                type: select
-
-                options:
-                  - label: Left
-                    value: left
-
-                  - label: Right
-                    value: right
-
-              - name: features
-                label: Features
-                type: object
-                list: true
-
-                fields:
-
-                  - name: title
-                    label: Title
-                    type: string
-
-                  - name: subtitle
-                    label: Subtitle
-                    type: text
-
-                  - name: icon
-                    label: Icon
-                    type: string
-
-                  - name: bg
-                    label: Background class
-                    type: string
-
-                  - name: text
-                    label: Text class
-                    type: string
-
-          # FULL TEXT WITH BUTTON
-
-          - name: full-text-with-button
-            label: Full text with button
-
-            fields:
-
-              - name: id
-                label: Section ID
-                type: string
-
-              - name: title
-                label: Title
-                type: string
-
-              - name: content
-                label: Content
-                type: rich-text
-
-              - name: button_text
-                label: Button text
-                type: string
-
-          # FAQ
-
-          - name: faq
-            label: FAQ
-
-            fields:
-
-              - name: title
-                label: Title
-                type: string
-
-              - name: items
-                label: FAQ items
-                type: object
-                list: true
-
-                fields:
-
-                  - name: question
-                    label: Question
-                    type: string
-
-                  - name: answer
-                    label: Answer
-                    type: rich-text
+      - name: full-text-with-button
+        label: "Заклик до дії (CTA)"
+        fields:
+          - name: title
+            type: string
+          - name: content
+            type: markdown
+          - name: button_text
+            type: string
