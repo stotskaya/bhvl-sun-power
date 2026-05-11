@@ -73,11 +73,13 @@ content:
               - { name: composition_title, label: "Comp Title", type: string }
               - name: composition_list
                 label: "Comp List"
-                type: object
-                list: true
-                fields: 
-                  - { name: installation_label, label: "Inst Label", type: string }
-                  - { name: installation_text, label: "Inst Text", type: text }
+                type: text
+              - name: installation_label 
+                label: "Inst Label"
+                type: string
+              - name: installation_text
+                label: "Inst Text"
+                type: text
 
           - name: steps-list
             label: "Steps list"
