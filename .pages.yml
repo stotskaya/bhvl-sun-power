@@ -74,9 +74,7 @@ content:
               - name: composition_list
                 label: "Список обладнання"
                 type: list
-                field:
-                  label: "Назва компонента"
-                  type: "string"
+                field: { label: "Назва компонента", type: "string" }
               - name: installation_label 
                 label: "Inst Label"
                 type: string
