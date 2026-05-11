@@ -1,190 +1,119 @@
-# pagecms.yml
+media:
+  input: static/images
+  output: /images
 
-label: "Автономна СЕС"
-icon: "battery-charging"
-file: "content/sps/autonomous-ses.md" # Шлях до вашого файлу
-
-fields:
-  - name: title
-    label: "Заголовок сторінки (H1)"
-    type: string
-  - name: short_title
-    label: "Коротка назва"
-    type: string
-  - name: label
-    label: "Мітка"
-    type: string
-  - name: description
-    label: "Опис (SEO)"
-    type: textarea
-  - name: layout
-    label: "Шаблон (Layout)"
-    type: hidden
-    default: "sps"
-
-  # Блок ціни та характеристик
-  - name: price_settings
-    label: "Ціна та статус"
-    type: object
+content:
+  - name: sps
+    label: "SPS сторінки"
+    type: collection
+    path: "content/sps"
+    filename: "{slug}.md"
     fields:
-      - name: price_from
-        label: "Ціна 'від'"
-        type: select
-        options: ["yes", "no"]
-      - name: price
-        label: "Вартість"
-        type: number
-      - name: currency
-        label: "Валюта"
-        type: string
-      - name: efficiency
-        label: "Потужність/Ефективність"
-        type: string
-      - name: rating
-        label: "Рейтинг/Гарантія"
-        type: string
+      - { name: title, label: "Title", type: string }
+      - { name: short_title, label: "Short title", type: string }
+      - { name: label, label: "Label", type: string }
+      - { name: description, label: "Description", type: text }
+      - { name: layout, label: "Layout", type: hidden, default: "sps" }
+      - { name: price_from, label: "Price from", type: string }
+      - { name: price, label: "Price", type: string }
+      - { name: currency, label: "Currency", type: string }
+      - { name: efficiency, label: "Efficiency", type: string }
+      - { name: rating, label: "Rating", type: string }
+      - { name: attribute_1, label: "Attribute 1", type: string }
+      - { name: attribute_2, label: "Attribute 2", type: string }
+      - { name: attribute_3, label: "Attribute 3", type: string }
+      - { name: image, label: "Main image", type: image }
+      - { name: image_alt, label: "Image alt", type: string }
 
-  # Атрибути (теги)
-  - name: attributes
-    label: "Основні переваги (теги)"
-    type: object
-    fields:
-      - name: attribute_1
-        type: string
-      - name: attribute_2
-        type: string
-      - name: attribute_3
-        type: string
-
-  # Зображення прев'ю
-  - name: image_settings
-    label: "Головне зображення"
-    type: object
-    fields:
-      - name: image
-        label: "Шлях до файлу"
-        type: image
-      - name: image_alt
-        label: "Alt текст"
-        type: string
-
-  # Переваги (Features)
-  - name: features
-    label: "Ключові особливості"
-    type: list
-    fields:
-      - name: title
-        type: string
-      - name: text
-        type: textarea
-      - name: icon
-        type: string
-      - name: color
-        type: select
-        options: ["amber", "blue", "green", "red", "purple"]
-
-  # Конструктор секцій (Blocks)
-  - name: sections
-    label: "Секції сторінки"
-    type: list
-    types:
-      - name: text-with-image
-        label: "Текст із зображенням"
+      # FEATURES
+      - name: features
+        label: "Top features"
+        type: list
         fields:
-          - name: id
-            type: string
-          - name: title
-            type: string
-          - name: image
-            type: image
-          - name: image_alt
-            type: string
-          - name: image_position
-            type: select
-            options: ["left", "right"]
-          - name: body_text
-            label: "Контент (Markdown)"
-            type: markdown
+          - { name: title, label: "Title", type: string }
+          - { name: text, label: "Text", type: text }
+          - { name: icon, label: "Icon", type: string }
+          - { name: color, label: "Color", type: string }
 
-      - name: system-specs
-        label: "Технічні характеристики системи"
-        fields:
-          - name: title
-            type: string
-          - name: button_text
-            type: string
-          - name: specs
-            type: list
+      # SECTIONS
+      - name: sections
+        label: "Sections"
+        type: list
+        types: # У деяких версіях використовується 'types' або 'blocks' для конструктора
+          - name: text-with-image
+            label: "Text with image"
             fields:
-              - name: label
-                type: string
-              - name: value
-                type: string
-          - name: composition_title
-            type: string
-          - name: composition_list
-            type: list
-            fields:
-              - name: item
-                type: string
-          - name: installation_label
-            type: string
-          - name: installation_text
-            type: string
+              - { name: id, label: "ID", type: string }
+              - { name: title, label: "Title", type: string }
+              - { name: image, label: "Image", type: image }
+              - { name: image_alt, label: "Alt", type: string }
+              - name: image_position
+                label: "Position"
+                type: select
+                options: ["left", "right"]
+              - { name: body_text, label: "Text", type: markdown }
 
-      - name: steps-list
-        label: "Етапи роботи"
-        fields:
-          - name: title
-            type: string
-          - name: steps
-            type: list
+          - name: system-specs
+            label: "System specs"
             fields:
-              - name: title
-                type: string
-              - name: text
-                type: string
+              - { name: title, label: "Title", type: string }
+              - { name: button_text, label: "Button", type: string }
+              - name: specs
+                label: "Specs"
+                type: list
+                fields:
+                  - { name: label, label: "Label", type: string }
+                  - { name: value, label: "Value", type: string }
+              - { name: composition_title, label: "Comp Title", type: string }
+              - name: composition_list
+                label: "Comp List"
+                type: list
+                field: { type: string }
+              - { name: installation_label, label: "Inst Label", type: string }
+              - { name: installation_text, label: "Inst Text", type: text }
 
-      - name: features-grid
-        label: "Сітка переваг (Чому ми)"
-        fields:
-          - name: title
-            type: string
-          - name: image
-            type: image
-          - name: features
-            type: list
+          - name: steps-list
+            label: "Steps list"
             fields:
-              - name: title
-                type: string
-              - name: subtitle
-                type: string
-              - name: icon
-                type: string
-              - name: bg
-                type: string
-              - name: text
-                type: string
+              - { name: title, label: "Title", type: string }
+              - name: steps
+                label: "Steps"
+                type: list
+                fields:
+                  - { name: title, label: "Title", type: string }
+                  - { name: text, label: "Text", type: text }
 
-      - name: faq
-        label: "Питання та відповіді"
-        fields:
-          - name: title
-            type: string
-          - name: items
-            type: list
+          - name: features-grid
+            label: "Features grid"
             fields:
-              - name: question
-                type: string
-              - name: answer
-                type: textarea
+              - { name: id, label: "ID", type: string }
+              - { name: title, label: "Title", type: string }
+              - { name: image, label: "Image", type: image }
+              - { name: image_alt, label: "Alt", type: string }
+              - name: features
+                label: "Features"
+                type: list
+                fields:
+                  - { name: title, type: string }
+                  - { name: subtitle, type: string }
+                  - { name: icon, type: string }
+                  - { name: bg, type: string }
+                  - { name: text, type: string }
 
-      - name: full-text-with-button
-        label: "Заклик до дії (CTA)"
-        fields:
-          - name: title
-            type: string
-          - name: content
-            type: markdown
-          - name: button_text
-            type: string
+          - name: faq
+            label: "FAQ"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - name: items # Тут 'items' можна залишити як назву поля, але тип - list
+                label: "Questions"
+                type: list
+                fields:
+                  - { name: question, label: "Q", type: string }
+                  - { name: answer, label: "A", type: markdown }
+
+          - name: full-text-with-button
+            label: "Full text CTA"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: content, label: "Content", type: markdown }
+              - { name: button_text, label: "Button", type: string }
