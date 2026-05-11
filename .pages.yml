@@ -73,7 +73,7 @@ content:
                 label: "Comp List"
                 type: object
                 list: true
-                fields:  
+                fields: 
                   - { name: installation_label, label: "Inst Label", type: string }
                   - { name: installation_text, label: "Inst Text", type: text }
 
