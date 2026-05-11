@@ -98,7 +98,8 @@ content:
               - { name: image_alt, label: "Alt", type: string }
               - name: features
                 label: "Features"
-                type: list
+                type: object
+                list: true
                 fields:
                   - { name: title, type: string }
                   - { name: subtitle, type: string }
@@ -112,7 +113,8 @@ content:
               - { name: title, label: "Title", type: string }
               - name: items # Тут 'items' можна залишити як назву поля, але тип - list
                 label: "Questions"
-                type: list
+                type: object
+                list: true
                 fields:
                   - { name: question, label: "Q", type: string }
                   - { name: answer, label: "A", type: markdown }
