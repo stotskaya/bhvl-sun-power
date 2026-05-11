@@ -47,16 +47,21 @@ content:
         blocks: 
           - name: text-with-image
             label: "Text with image"
-            items:
+            fields: # Використовуй fields замість items
+              - { name: type, type: hidden, default: "text-with-image" }
               - { name: id, label: "ID", type: string }
               - { name: title, label: "Title", type: string }
               - { name: image, label: "Image", type: image }
               - { name: image_alt, label: "Alt", type: string }
-              - name: image_position
-                label: "Position"
-                type: select
-                options: ["left", "right"]
-              - { name: body_text, label: "Text", type: markdown }
+
+              - name: image_left
+                label: "Image on the left?"
+                type: boolean
+                default: false
+              # ПЕРЕПИСУЄМО BODY_TEXT (спробуй 'markdown', якщо 'text' не проходить)
+              - name: body_text
+                label: "Text"
+                type: text
 
           - name: system-specs
             label: "System specs"
