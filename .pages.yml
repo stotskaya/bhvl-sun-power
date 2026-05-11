@@ -1,0 +1,353 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/images"
+public_folder: "/images"
+
+content:
+
+  - name: "sps"
+    label: "SPS сторінки"
+    type: "collection"
+    path: "content/sps"
+    filename: "{{slug}}"
+
+    fields:
+
+      # =========================================
+      # BASIC PAGE INFO
+      # =========================================
+
+      - name: "title"
+        label: "Title"
+        type: "string"
+
+      - name: "short_title"
+        label: "Short title"
+        type: "string"
+
+      - name: "label"
+        label: "Label"
+        type: "string"
+
+      - name: "description"
+        label: "Description"
+        type: "text"
+
+      - name: "layout"
+        label: "Layout"
+        type: "hidden"
+        default: "sps"
+
+      - name: "price_from"
+        label: "Price from"
+        type: "boolean"
+
+      - name: "price"
+        label: "Price"
+        type: "string"
+
+      - name: "currency"
+        label: "Currency"
+        type: "string"
+
+      - name: "efficiency"
+        label: "Efficiency"
+        type: "string"
+
+      - name: "rating"
+        label: "Rating"
+        type: "string"
+
+      - name: "attribute_1"
+        label: "Attribute 1"
+        type: "string"
+
+      - name: "attribute_2"
+        label: "Attribute 2"
+        type: "string"
+
+      - name: "attribute_3"
+        label: "Attribute 3"
+        type: "string"
+
+      - name: "image"
+        label: "Main image"
+        type: "image"
+
+      - name: "image_alt"
+        label: "Image alt"
+        type: "string"
+
+      # =========================================
+      # TOP FEATURES
+      # =========================================
+
+      - name: "features"
+        label: "Top features"
+        type: "list"
+
+        fields:
+          - name: "title"
+            label: "Title"
+            type: "string"
+
+          - name: "text"
+            label: "Text"
+            type: "text"
+
+          - name: "icon"
+            label: "Icon"
+            type: "string"
+
+          - name: "color"
+            label: "Color"
+            type: "string"
+
+      # =========================================
+      # SECTIONS
+      # =========================================
+
+      - name: "sections"
+        label: "Sections"
+        type: "list"
+
+        types:
+
+          # =====================================
+          # TEXT WITH IMAGE
+          # =====================================
+
+          - name: "text-with-image"
+            label: "Text with image"
+
+            fields:
+
+              - name: "id"
+                label: "Section ID"
+                type: "string"
+
+              - name: "title"
+                label: "Title"
+                type: "string"
+
+              - name: "image"
+                label: "Image"
+                type: "image"
+
+              - name: "image_alt"
+                label: "Image alt"
+                type: "string"
+
+              - name: "image_position"
+                label: "Image position"
+                type: "select"
+
+                options:
+                  - label: "Left"
+                    value: "left"
+
+                  - label: "Right"
+                    value: "right"
+
+              - name: "button_text"
+                label: "Button text"
+                type: "string"
+                required: false
+
+              - name: "body_text"
+                label: "Content"
+                type: "markdown"
+
+          # =====================================
+          # SYSTEM SPECS
+          # =====================================
+
+          - name: "system-specs"
+            label: "System specs"
+
+            fields:
+
+              - name: "title"
+                label: "Title"
+                type: "string"
+
+              - name: "button_text"
+                label: "Button text"
+                type: "string"
+
+              - name: "specs"
+                label: "Specifications"
+                type: "list"
+
+                fields:
+                  - name: "label"
+                    label: "Label"
+                    type: "string"
+
+                  - name: "value"
+                    label: "Value"
+                    type: "markdown"
+
+              - name: "composition_title"
+                label: "Composition title"
+                type: "string"
+
+              - name: "composition_list"
+                label: "Composition list"
+                type: "list"
+
+                field:
+                  name: "item"
+                  label: "Item"
+                  type: "string"
+
+              - name: "installation_label"
+                label: "Installation label"
+                type: "string"
+
+              - name: "installation_text"
+                label: "Installation text"
+                type: "text"
+
+          # =====================================
+          # STEPS LIST
+          # =====================================
+
+          - name: "steps-list"
+            label: "Steps list"
+
+            fields:
+
+              - name: "title"
+                label: "Title"
+                type: "string"
+
+              - name: "steps"
+                label: "Steps"
+                type: "list"
+
+                fields:
+
+                  - name: "title"
+                    label: "Title"
+                    type: "string"
+
+                  - name: "text"
+                    label: "Text"
+                    type: "text"
+
+          # =====================================
+          # FEATURES GRID
+          # =====================================
+
+          - name: "features-grid"
+            label: "Features grid"
+
+            fields:
+
+              - name: "id"
+                label: "Section ID"
+                type: "string"
+
+              - name: "title"
+                label: "Title"
+                type: "string"
+
+              - name: "image"
+                label: "Image"
+                type: "image"
+
+              - name: "image_alt"
+                label: "Image alt"
+                type: "string"
+
+              - name: "image_position"
+                label: "Image position"
+                type: "select"
+
+                options:
+                  - label: "Left"
+                    value: "left"
+
+                  - label: "Right"
+                    value: "right"
+
+              - name: "features"
+                label: "Features"
+                type: "list"
+
+                fields:
+
+                  - name: "title"
+                    label: "Title"
+                    type: "string"
+
+                  - name: "subtitle"
+                    label: "Subtitle"
+                    type: "text"
+
+                  - name: "icon"
+                    label: "Icon"
+                    type: "string"
+
+                  - name: "bg"
+                    label: "Background class"
+                    type: "string"
+
+                  - name: "text"
+                    label: "Text class"
+                    type: "string"
+
+          # =====================================
+          # FULL TEXT WITH BUTTON
+          # =====================================
+
+          - name: "full-text-with-button"
+            label: "Full text with button"
+
+            fields:
+
+              - name: "id"
+                label: "Section ID"
+                type: "string"
+
+              - name: "title"
+                label: "Title"
+                type: "string"
+
+              - name: "content"
+                label: "Content"
+                type: "markdown"
+
+              - name: "button_text"
+                label: "Button text"
+                type: "string"
+
+          # =====================================
+          # FAQ
+          # =====================================
+
+          - name: "faq"
+            label: "FAQ"
+
+            fields:
+
+              - name: "title"
+                label: "Title"
+                type: "string"
+
+              - name: "items"
+                label: "FAQ items"
+                type: "list"
+
+                fields:
+
+                  - name: "question"
+                    label: "Question"
+                    type: "string"
+
+                  - name: "answer"
+                    label: "Answer"
+                    type: "markdown"
