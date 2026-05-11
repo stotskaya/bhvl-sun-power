@@ -9,9 +9,9 @@
 <div id="insights" class="py-28 px-6 bg-white/30 backdrop-blur-md" aria-labelledby="insights-title">
     <div class="max-w-7xl mx-auto">
         {{ partial "breadcrumbs.html" . }} 
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-8 reveal ">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-2 gap-8  ">
             <div>
-                <h1 id="insights-title" class="text-4xl font-light mb-4">{{ .Params.Title}}</h1>
+                <h1 id="insights-title" class="text-4xl font-light ">{{ .Params.Title}}</h1>
                 <p class="text-gray-500 font-light max-w-2xl">{{ .Params.Subtitle }}</p>
             </div>
             <div class="flex flex-col gap-4 filters-wrapper">
@@ -23,10 +23,10 @@
                 </div>
             </div>
         </div>
-        <div class="glass-panel rounded-[2.5rem] p-6 md:p-8 mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal">
+        <div class=" flex flex-row md:flex-row md:items-center md:justify-between gap-4 active mb-10">
             <div>
-                <p class="text-xs text-gray-400 tracking-widest uppercase">Результатів</p>
-                <p class="text-lg font-medium">
+              
+                <p class="text-lg font-light">
                     <span id="resultsCount">0</span> проєктів
                 </p>
             </div>
@@ -38,7 +38,7 @@
             </div>
         </div>
       
-        <div id="insightsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">  
+        <div id="insightsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">  
             {{ range .Paginator.Pages }}
             
             <article class="reveal relative glass-card rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5" 
@@ -49,7 +49,7 @@
                 <div class="relative h-64 overflow-hidden group">
                     
                     
-
+                        <p class="text-[10px] inline-block px-4 py-1.5 w-fit rounded-full text-amber-600 bg-amber-50 text-xs font-semibold tracking-widest uppercase" style="position:absolute; bottom: 5px; left: 20px; z-index: +1;">{{ .Params.category }}</p>
                     <!-- Реальне фото об'єкта -->
                     <div class="absolute inset-0 w-full h-full overflow-hidden">
                          {{ if .Params.image }}
@@ -66,52 +66,29 @@
                 </div>
 
                 <!-- Тіло картки -->
-                <div class="p-7 flex flex-col gap-6 flex-1 bg-white/40 backdrop-blur-sm">
+                <div class="p-7 flex flex-col gap-5 flex-1 bg-white/40 backdrop-blur-sm">
 
                     <!-- Заголовок та клієнт -->
-                    <div>
-                        <p class="text-[10px] inline-block px-4 py-1.5 w-fit rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase">{{ .Params.category }}</p>
+                    <div class="flex-1">
+                        
                         <h3 class="text-xl font-bold text-gray-900 leading-snug mb-1">{{ .Params.title }}</h3>
-                        <div class="text-sm text-gray-500 font-light">{{ .Params.location }}</div>
+                        <div class="text-[13px] text-gray-500 font-light">{{ .Params.location }}</div>
                     </div>
-<div class="grid grid-cols-3 gap-4"> 
+<div class="flex flex-col  gap-2 "> 
                      {{ range .Params.stats }}
-                        <div class="glass-panel rounded-[1.75rem] px-5 py-5 hover-card">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] text-gray-400 tracking-widest uppercase mb-2">{{ .label }}</span>
+                        <div class="flex items-center justify-between gap-4">
+                        <div class="flex flex-row items-center gap-3">
                             <i data-lucide="{{ .icon }}" class="w-4 h-4 text-amber-500"></i>
+                            <span class="text-[12.5px] text-gray-400  ">{{ .label }}</span>
+                            
                         </div>
-                        <div class="text-[14px] font-normal">{{ .value }}</div>
+                        <div class="text-[12.5px] font-normal">{{ .value }}</div>
                         </div>
                     {{ end }}
                     </div>
-                    <div class="flex flex-col gap-4 flex-1">
-                        <span class="text-[9px] text-gray-400 tracking-widest uppercase font-bold">Відгук</span>
-                        <div class="flex-1">
-                            <p class="text-sm font-light text-gray-600 leading-relaxed italic relative pl-4 border-l-2 border-amber-600/30">
-                                {{ .Params.testimonial.text }}
-                            </p>
-                        </div>
-                        
-                        <!-- Автор відгуку -->
-                        <div class="flex items-center gap-3 pt-2">
-                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0 border border-gray-200">
-                                <i data-lucide="user" class="w-5 h-5 text-gray-400"></i>
-                            </div>
-                            <div>
-                                <div class="text-xs font-bold text-gray-900">{{ .Params.testimonial.author }}</div>
-                                <p class="text-[10px] text-gray-400">{{ .Params.testimonial.role }}</p>
-                            </div>
-                            <!-- Рейтинг зірками -->
-                            <div class="ml-auto flex gap-0.5">
-                                {{ range seq .Params.testimonial.rating }}
-                                <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
-                                {{ end }}
-                            </div>
-                        </div>
-                    </div>
+                  
                     <!-- Кнопка проєкту -->
-                    <a href="{{ .Params.link | relURL }}" class="mt-4 glass-panel w-full py-4 rounded-full text-xs font-bold text-gray-800 transition-all hover:bg-gray-900   flex items-center justify-center gap-2 group/btn">
+                    <a href="{{ .Params.link | relURL }}" class=" w-full  text-xs font-bold text-gray-800 transition-all hover:bg-gray-900   flex items-center justify-center gap-2 group/btn">
                         Детальніше
                         
                     </a>
@@ -121,7 +98,7 @@
             </article>
             {{ end }}
         </div>
-        <nav id="insightsPagination" class="mt-16 flex items-center justify-center reveal" aria-label="Insights pagination">
+        <nav id="insightsPagination" class="mt-16 flex items-center justify-center" aria-label="Insights pagination">
             <div class="glass-panel rounded-full px-5 py-3 flex items-center gap-3">
                 <button id="prevPage" type="button" class="text-sm font-medium flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/60 transition-colors opacity-50 cursor-not-allowed" disabled="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-left" class="lucide lucide-chevron-left w-4 h-4" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
