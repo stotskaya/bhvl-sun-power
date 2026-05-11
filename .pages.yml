@@ -41,6 +41,7 @@ content:
         label: "Sections"
         type: block
         list: true
+        blockKey: type
         blocks: 
           - name: text-with-image
             label: "Text with image"
