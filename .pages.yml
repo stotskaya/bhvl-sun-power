@@ -72,8 +72,11 @@ content:
                   - { name: value, label: "Value", type: string }
               - { name: composition_title, label: "Comp Title", type: string }
               - name: composition_list
-                label: "Comp List"
-                type: text
+                label: "Список обладнання"
+                type: list
+                field:
+                  label: "Назва компонента"
+                  type: "string"
               - name: installation_label 
                 label: "Inst Label"
                 type: string
