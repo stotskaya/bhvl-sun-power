@@ -1,10 +1,13 @@
-
+media:
+  input: static/images
+  output: /images
 
 content:
   - name: sps
     label: "SPS сторінки"
     type: collection
     path: "content/sps"
+    relative: true
     filename: "{slug}.md"
     fields:
       - { name: title, label: "Title", type: string }
