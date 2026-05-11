@@ -28,7 +28,8 @@ content:
       # FEATURES
       - name: features
         label: "Top features"
-        type: list
+        type: object
+        list: true
         fields:
           - { name: title, label: "Title", type: string }
           - { name: text, label: "Text", type: text }
@@ -38,11 +39,12 @@ content:
       # SECTIONS
       - name: sections
         label: "Sections"
-        type: list
-        types: # У деяких версіях використовується 'types' або 'blocks' для конструктора
+        type: block
+        list: true
+        blocks: 
           - name: text-with-image
             label: "Text with image"
-            fields:
+            items:
               - { name: id, label: "ID", type: string }
               - { name: title, label: "Title", type: string }
               - { name: image, label: "Image", type: image }
@@ -60,17 +62,19 @@ content:
               - { name: button_text, label: "Button", type: string }
               - name: specs
                 label: "Specs"
-                type: list
+                type: object
+                list: true
                 fields:
                   - { name: label, label: "Label", type: string }
                   - { name: value, label: "Value", type: string }
               - { name: composition_title, label: "Comp Title", type: string }
               - name: composition_list
                 label: "Comp List"
-                type: list
-                field: { type: string }
-              - { name: installation_label, label: "Inst Label", type: string }
-              - { name: installation_text, label: "Inst Text", type: text }
+                type: object
+                list: true
+                fields:  
+                  - { name: installation_label, label: "Inst Label", type: string }
+                  - { name: installation_text, label: "Inst Text", type: text }
 
           - name: steps-list
             label: "Steps list"
@@ -78,7 +82,8 @@ content:
               - { name: title, label: "Title", type: string }
               - name: steps
                 label: "Steps"
-                type: list
+                type: object
+                list: true
                 fields:
                   - { name: title, label: "Title", type: string }
                   - { name: text, label: "Text", type: text }
