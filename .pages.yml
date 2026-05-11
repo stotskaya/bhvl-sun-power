@@ -1,6 +1,6 @@
 media:
-  input: static/images
-  output: /images
+  input: static
+  output: /
 
 content:
   - name: sps
