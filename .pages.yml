@@ -1,348 +1,331 @@
-backend:
-  name: git-gateway
-  branch: main
-
-media_folder: "static/images"
-public_folder: "/images"
+media:
+  input: static/images
+  output: /images
 
 content:
 
-  - name: "sps"
-    label: "SPS сторінки"
-    type: "collection"
-    path: "content/sps"
-    filename: "{{slug}}.md"
+  - name: sps
+    label: SPS сторінки
+    type: collection
+    path: content/sps
 
-    fields:
+    filename: "{slug}.md"
 
-      # =========================================
-      # BASIC PAGE INFO
-      # =========================================
+    items:
 
-      - name: "title"
-        label: "Title"
-        type: "string"
+      - name: title
+        label: Title
+        type: string
 
-      - name: "short_title"
-        label: "Short title"
-        type: "string"
+      - name: short_title
+        label: Short title
+        type: string
 
-      - name: "label"
-        label: "Label"
-        type: "string"
+      - name: label
+        label: Label
+        type: string
 
-      - name: "description"
-        label: "Description"
-        type: "text"
+      - name: description
+        label: Description
+        type: text
 
-      - name: "price_from"
-        label: "Price from"
-        type: "boolean"
+      - name: price_from
+        label: Price from
+        type: boolean
 
-      - name: "price"
-        label: "Price"
-        type: "string"
+      - name: price
+        label: Price
+        type: string
 
-      - name: "currency"
-        label: "Currency"
-        type: "string"
+      - name: currency
+        label: Currency
+        type: string
 
-      - name: "efficiency"
-        label: "Efficiency"
-        type: "string"
+      - name: efficiency
+        label: Efficiency
+        type: string
 
-      - name: "rating"
-        label: "Rating"
-        type: "string"
+      - name: rating
+        label: Rating
+        type: string
 
-      - name: "attribute_1"
-        label: "Attribute 1"
-        type: "string"
+      - name: attribute_1
+        label: Attribute 1
+        type: string
 
-      - name: "attribute_2"
-        label: "Attribute 2"
-        type: "string"
+      - name: attribute_2
+        label: Attribute 2
+        type: string
 
-      - name: "attribute_3"
-        label: "Attribute 3"
-        type: "string"
+      - name: attribute_3
+        label: Attribute 3
+        type: string
 
-      - name: "image"
-        label: "Main image"
-        type: "image"
+      - name: image
+        label: Main image
+        type: image
 
-      - name: "image_alt"
-        label: "Image alt"
-        type: "string"
+      - name: image_alt
+        label: Image alt
+        type: string
 
-      # =========================================
-      # TOP FEATURES
-      # =========================================
+      # FEATURES
 
-      - name: "features"
-        label: "Top features"
-        type: "list"
+      - name: features
+        label: Top features
+        type: object
+        list: true
 
-        fields:
-          - name: "title"
-            label: "Title"
-            type: "string"
+        items:
 
-          - name: "text"
-            label: "Text"
-            type: "text"
+          - name: title
+            label: Title
+            type: string
 
-          - name: "icon"
-            label: "Icon"
-            type: "string"
+          - name: text
+            label: Text
+            type: text
 
-          - name: "color"
-            label: "Color"
-            type: "string"
+          - name: icon
+            label: Icon
+            type: string
 
-      # =========================================
+          - name: color
+            label: Color
+            type: string
+
       # SECTIONS
-      # =========================================
 
-      - name: "sections"
-        label: "Sections"
-        type: "list"
+      - name: sections
+        label: Sections
+        type: block
+        list: true
+        blockKey: type
 
-        types:
+        blocks:
 
-          # =====================================
           # TEXT WITH IMAGE
-          # =====================================
 
-          - name: "text-with-image"
-            label: "Text with image"
+          - name: text-with-image
+            label: Text with image
 
-            fields:
+            items:
 
-              - name: "id"
-                label: "Section ID"
-                type: "string"
+              - name: id
+                label: Section ID
+                type: string
 
-              - name: "title"
-                label: "Title"
-                type: "string"
+              - name: title
+                label: Title
+                type: string
 
-              - name: "image"
-                label: "Image"
-                type: "image"
+              - name: image
+                label: Image
+                type: image
 
-              - name: "image_alt"
-                label: "Image alt"
-                type: "string"
+              - name: image_alt
+                label: Image alt
+                type: string
 
-              - name: "image_position"
-                label: "Image position"
-                type: "select"
+              - name: image_position
+                label: Image position
+                type: select
 
                 options:
-                  - label: "Left"
-                    value: "left"
+                  - label: Left
+                    value: left
 
-                  - label: "Right"
-                    value: "right"
+                  - label: Right
+                    value: right
 
-              - name: "button_text"
-                label: "Button text"
-                type: "string"
+              - name: button_text
+                label: Button text
+                type: string
                 required: false
 
-              - name: "body_text"
-                label: "Content"
-                type: "markdown"
+              - name: body_text
+                label: Content
+                type: rich-text
 
-          # =====================================
           # SYSTEM SPECS
-          # =====================================
 
-          - name: "system-specs"
-            label: "System specs"
+          - name: system-specs
+            label: System specs
 
             fields:
 
-              - name: "title"
-                label: "Title"
-                type: "string"
+              - name: title
+                label: Title
+                type: string
 
-              - name: "button_text"
-                label: "Button text"
-                type: "string"
+              - name: button_text
+                label: Button text
+                type: string
 
-              - name: "specs"
-                label: "Specifications"
-                type: "list"
+              - name: specs
+                label: Specifications
+                type: object
+                list: true
 
                 fields:
-                  - name: "label"
-                    label: "Label"
-                    type: "string"
 
-                  - name: "value"
-                    label: "Value"
-                    type: "markdown"
+                  - name: label
+                    label: Label
+                    type: string
 
-              - name: "composition_title"
-                label: "Composition title"
-                type: "string"
+                  - name: value
+                    label: Value
+                    type: rich-text
 
-              - name: "composition_list"
-                label: "Composition list"
-                type: "list"
+              - name: composition_title
+                label: Composition title
+                type: string
 
-                field:
-                  name: "item"
-                  label: "Item"
-                  type: "string"
+              - name: composition_list
+                label: Composition list
+                type: string
+                list: true
 
-              - name: "installation_label"
-                label: "Installation label"
-                type: "string"
+              - name: installation_label
+                label: Installation label
+                type: string
 
-              - name: "installation_text"
-                label: "Installation text"
-                type: "text"
+              - name: installation_text
+                label: Installation text
+                type: text
 
-          # =====================================
           # STEPS LIST
-          # =====================================
 
-          - name: "steps-list"
-            label: "Steps list"
+          - name: steps-list
+            label: Steps list
 
             fields:
 
-              - name: "title"
-                label: "Title"
-                type: "string"
+              - name: title
+                label: Title
+                type: string
 
-              - name: "steps"
-                label: "Steps"
-                type: "list"
+              - name: steps
+                label: Steps
+                type: object
+                list: true
 
                 fields:
 
-                  - name: "title"
-                    label: "Title"
-                    type: "string"
+                  - name: title
+                    label: Title
+                    type: string
 
-                  - name: "text"
-                    label: "Text"
-                    type: "text"
+                  - name: text
+                    label: Text
+                    type: text
 
-          # =====================================
           # FEATURES GRID
-          # =====================================
 
-          - name: "features-grid"
-            label: "Features grid"
+          - name: features-grid
+            label: Features grid
 
             fields:
 
-              - name: "id"
-                label: "Section ID"
-                type: "string"
+              - name: id
+                label: Section ID
+                type: string
 
-              - name: "title"
-                label: "Title"
-                type: "string"
+              - name: title
+                label: Title
+                type: string
 
-              - name: "image"
-                label: "Image"
-                type: "image"
+              - name: image
+                label: Image
+                type: image
 
-              - name: "image_alt"
-                label: "Image alt"
-                type: "string"
+              - name: image_alt
+                label: Image alt
+                type: string
 
-              - name: "image_position"
-                label: "Image position"
-                type: "select"
+              - name: image_position
+                label: Image position
+                type: select
 
                 options:
-                  - label: "Left"
-                    value: "left"
+                  - label: Left
+                    value: left
 
-                  - label: "Right"
-                    value: "right"
+                  - label: Right
+                    value: right
 
-              - name: "features"
-                label: "Features"
-                type: "list"
+              - name: features
+                label: Features
+                type: object
+                list: true
 
                 fields:
 
-                  - name: "title"
-                    label: "Title"
-                    type: "string"
+                  - name: title
+                    label: Title
+                    type: string
 
-                  - name: "subtitle"
-                    label: "Subtitle"
-                    type: "text"
+                  - name: subtitle
+                    label: Subtitle
+                    type: text
 
-                  - name: "icon"
-                    label: "Icon"
-                    type: "string"
+                  - name: icon
+                    label: Icon
+                    type: string
 
-                  - name: "bg"
-                    label: "Background class"
-                    type: "string"
+                  - name: bg
+                    label: Background class
+                    type: string
 
-                  - name: "text"
-                    label: "Text class"
-                    type: "string"
+                  - name: text
+                    label: Text class
+                    type: string
 
-          # =====================================
           # FULL TEXT WITH BUTTON
-          # =====================================
 
-          - name: "full-text-with-button"
-            label: "Full text with button"
+          - name: full-text-with-button
+            label: Full text with button
 
             fields:
 
-              - name: "id"
-                label: "Section ID"
-                type: "string"
+              - name: id
+                label: Section ID
+                type: string
 
-              - name: "title"
-                label: "Title"
-                type: "string"
+              - name: title
+                label: Title
+                type: string
 
-              - name: "content"
-                label: "Content"
-                type: "markdown"
+              - name: content
+                label: Content
+                type: rich-text
 
-              - name: "button_text"
-                label: "Button text"
-                type: "string"
+              - name: button_text
+                label: Button text
+                type: string
 
-          # =====================================
           # FAQ
-          # =====================================
 
-          - name: "faq"
-            label: "FAQ"
+          - name: faq
+            label: FAQ
 
             fields:
 
-              - name: "title"
-                label: "Title"
-                type: "string"
+              - name: title
+                label: Title
+                type: string
 
-              - name: "items"
-                label: "FAQ items"
-                type: "list"
+              - name: items
+                label: FAQ items
+                type: object
+                list: true
 
                 fields:
 
-                  - name: "question"
-                    label: "Question"
-                    type: "string"
+                  - name: question
+                    label: Question
+                    type: string
 
-                  - name: "answer"
-                    label: "Answer"
-                    type: "markdown"
+                  - name: answer
+                    label: Answer
+                    type: rich-text
