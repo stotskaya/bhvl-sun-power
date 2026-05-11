@@ -48,8 +48,6 @@ content:
           - name: text-with-image
             label: "Text with image"
             fields: # Використовуй fields замість items
-              - { name: type,   default: "text-with-image" }
-              - { name: id, label: "ID", type: string }
               - { name: title, label: "Title", type: string }
               - { name: image, label: "Image", type: image }
               - { name: image_alt, label: "Alt", type: string }
