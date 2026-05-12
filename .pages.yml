@@ -76,6 +76,19 @@ content:
                   - { name: title, label: "Title", type: string }
                   - { name: subtitle, label: "Subtitle", type: string }
                   - { name: text, label: "Text", type: text }
+           
+          - name: case-specs
+            label: "Case Specs"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: subtitle, label: "SubTitle", type: string }
+              - name: specs
+                label: "Specs"
+                type: object
+                list: true
+                fields:
+                   - { name: label, label: "Label", type: string }
+                   - { name: value, label: "Value", type: text }
               
           - name: system-specs
             label: "System specs"
