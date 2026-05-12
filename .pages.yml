@@ -345,7 +345,10 @@ content:
       - label: "Головна статистика (stats)"
         name: "stats"
         type: object
-        list: true
+        list:
+          collapsible:
+              collapsed: true
+              summary: "{label}"
         fields:
           - { label: "Заголовок", name: "label", type: "string" }
           - { label: "Значення", name: "value", type: "string" }
@@ -379,7 +382,7 @@ content:
         list:
           collapsible:
               collapsed: true
-              summary: "{title}"
+              summary: "{name}"
         fields:
           - { label: "Назва пристрою", name: "name", type: "string" }
           - { label: "Опис/Характеристики", name: "desc", type: "string" }
