@@ -328,7 +328,7 @@ content:
                   - { name: text, label: "Опис кроку", type: text }
 
   - name: projects
-    label: "Послуги"
+    label: "Наші роботи"
     type: collection
     path: "content/projects"
     filename: "{slug}.md"
