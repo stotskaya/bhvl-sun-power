@@ -364,7 +364,10 @@ content:
       - label: "Таблиця параметрів (parameters)"
         name: "parameters"
         type: object
-        list: true
+        list:
+          collapsible:
+              collapsed: true
+              summary: "{title}"
         fields:
           - { label: "Ключ (Параметр)", name: "key", type: "string" }
           - { label: "Значення", name: "val", type: "string" }
@@ -373,7 +376,10 @@ content:
       - label: "Склад системи (components)"
         name: "components"
         type: object
-        list: true
+        list:
+          collapsible:
+              collapsed: true
+              summary: "{title}"
         fields:
           - { label: "Назва пристрою", name: "name", type: "string" }
           - { label: "Опис/Характеристики", name: "desc", type: "string" }
