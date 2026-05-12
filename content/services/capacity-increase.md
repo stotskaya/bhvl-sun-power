@@ -5,7 +5,7 @@ label: "ЗБІЛЬШЕННЯ ПОТУЖНОСТІ | МОДЕРНІЗАЦІЯ"
 description: "Оновимо вашу СЕС: додамо сонячні панелі, встановимо надійні акумулятори А100 або замінимо інвертор на сучасний Deye"
 note: "Отримайте більше власної енергії та захист від блекаутів без заміни всієї станції"
 layout: "services" 
-image: "/services/capacity-increase/1.webp"
+image: "/images/services/capacity-increase-1.webp"
 image_alt: "Автономна сонячна електростанція Lumina"
 
 
@@ -14,7 +14,7 @@ sections:
     id: "about-ses"
     image_left: true
     title: "Що таке модернізація та збільшення потужності СЕС?"
-    image: "/services/capacity-increase/2.webp"
+    image: "/images/services/capacity-increase-2.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -112,7 +112,7 @@ sections:
     id: "about-ses"
     image_left: false
     title: "Модернізація: як зробити СЕС сучасною та безпечною"
-    image: "/services/capacity-increase/3.webp"
+    image: "/images/services/capacity-increase-3.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -172,7 +172,7 @@ sections:
     id: "b"
     image_left: true
     title: ""
-    image: "/services/design-and-energy-audit/4.webp"
+    image: "/images/services/design-and-energy-audit-4.webp"
     image_alt: "Автономна СЕС"
     button_text: "Замовити прорахунок модернізації СЕС"
 

@@ -5,7 +5,7 @@ label: "Демонтаж|Перенесення СЕС"
 description: "Безпечно розберемо, запакуємо, транспортуємо, проведемо повторний монтаж і налаштування системи на новому об’єкті з гарантією цілісності панелей, інверторів та акумуляторів А100"
 note: "Плануєте переїзд чи ремонт покрівлі? Отримайте точний розрахунок вартості робіт"
 layout: "services" 
-image: "/services/relocation-of-sps/1.webp"
+image: "/images/services/relocation-of-sps-1.webp"
 image_alt: "Автономна сонячна електростанція Lumina"
 
 
@@ -14,7 +14,7 @@ sections:
     id: "about-ses"
     image_left: true
     title: "Що таке професійний демонтаж та перенесення СЕС?"
-    image: "/services/relocation-of-sps/2.webp"
+    image: "/images/services/relocation-of-sps-2.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -112,7 +112,7 @@ sections:
     id: "about-ses"
     image_left: right  
     title: "Професійнв релокація: ваш захист від пошкоджень обладнання"
-    image: "/services/relocation-of-sps/3.webp"
+    image: "/images/services/relocation-of-sps-3.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -157,7 +157,7 @@ sections:
     id: "b"
     image_left: true 
     title: ""
-    image: "/services/relocation-of-sps/4.webp"
+    image: "/images/services/relocation-of-sps-4.webp"
     image_alt: "Автономна СЕС"
     button_text: "Замовити прорахунок перенесення"
 

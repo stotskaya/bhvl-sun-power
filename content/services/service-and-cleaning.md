@@ -5,7 +5,7 @@ label: "Сервіс|Чистка|Діагностика"
 description: "Регулярний сервіс збільшує генерацію панелей до 25% та гарантує пожежну безпеку вашого об’єкта"
 note: "Проводимо професійну чистку, діагностику електроніки та перевірку акумуляторів А100"
 layout: "services" 
-image: "/services/service-and-cleaning/1.webp"
+image: "/images/services/service-and-cleaning-1.webp"
 image_alt: "Автономна сонячна електростанція Lumina"
 
 
@@ -14,7 +14,7 @@ sections:
     id: "about-ses"
     image_left: true 
     title: "Що таке професійний сервіс СЕС?"
-    image: "/services/service-and-cleaning/2.webp"
+    image: "/images/services/service-and-cleaning-2.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -112,7 +112,7 @@ sections:
     id: "about-ses"
     image_left: right 
     title: "Технічний сервіс: ваш захист від втрат та поломок"
-    image: "/services/service-and-cleaning/3.webp"
+    image: "/images/services/service-and-cleaning-3.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -172,7 +172,7 @@ sections:
     id: "b"
     image_left: true 
     title: ""
-    image: "/services/service-and-cleaning/4.webp"
+    image: "/images/services/service-and-cleaning-4.webp"
     image_alt: "Автономна СЕС"
     button_text: "Замовити сервіс та діагностику"
 

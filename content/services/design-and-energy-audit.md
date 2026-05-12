@@ -5,7 +5,7 @@ label: "Проєктування і енергоаудит"
 description: "Визначаємо оптимальну конфігурацію та розробляємо детальний проєкт СЕС. Ви уникаєте зайвих витрат, отримаєте максимальний виробіток та швидко окупите вкладення"
 note: "Отримайте детальний прорахунок вартості та окупності вашої СЕС"
 layout: "services" 
-image: "/services/design-and-energy-audit/cover.webp"
+image: "/images/services/design-and-energy-audit-cover.webp"
 image_alt: "Автономна сонячна електростанція Lumina"
 
 
@@ -14,7 +14,7 @@ sections:
     id: "about-ses"
     image_left: true 
     title: "Що таке енергоаудит та проєктування СЕС?"
-    image: "/services/design-and-energy-audit/1.webp"
+    image: "/images/services/design-and-energy-audit-1.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -112,7 +112,7 @@ sections:
     id: "about-ses"
     image_left: right 
     title: "Інженерний проєкт: ваш захист від прихованих ризиків"
-    image: "/services/design-and-energy-audit/5.webp"
+    image: "/images/services/design-and-energy-audit-2.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -170,7 +170,7 @@ sections:
     id: "b"
     image_left: true 
     title: ""
-    image: "/services/design-and-energy-audit/4.webp"
+    image: "/images/services/design-and-energy-audit-4.webp"
     image_alt: "Автономна СЕС"
     button_text: "Замовити аудит та проєкт"
 
