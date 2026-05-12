@@ -69,12 +69,12 @@ sections:
   
     composition_title: "Склад системи"
     composition_list:
-      - Сонячні панелі Tier 1 (Jinko Solar)
-      - Мережевий інвертор (Deye / Solis) (Золотий стандарт)
-      - Акумулятори А100 (LiFePO4)
-      - Спеціалізований кабель та кріплення
-      - Захисна автоматика (Schneider/Hager)
-      - Система моніторингу та Net Billing
+      - item: Сонячні панелі Tier 1 (Jinko Solar)
+      - item: Мережевий інвертор (Deye / Solis) (Золотий стандарт)
+      - item: Акумулятори А100 (LiFePO4)
+      - item: Спеціалізований кабель та кріплення
+      - item: Захисна автоматика (Schneider/Hager)
+      - item: Система моніторингу та Net Billing
     
     installation_label: "Встановлення"
     installation_text: "Монтаж та налаштування системи входять у вартість рішення «під ключ»."
