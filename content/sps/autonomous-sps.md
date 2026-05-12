@@ -1,5 +1,5 @@
 ---
-title: "Автономні сонячні електростанції для віддалених об'єктів"
+title: "New Автономні сонячні електростанції для віддалених об'єктів"
 short_title: "Aвтономні СЕС"
 label: "Автономна СЕС"
 description: "Ідеальне рішення для місць, де мережа відсутня взагалі. Проєктуємо та встановлюємо системи під ключ, що забезпечують надійне живлення об'єктів"
@@ -12,7 +12,7 @@ rating: 5+ років
 attribute_1: "Енергонезалежність"
 attribute_2: "Власний склад"
 attribute_3: "Швидкий монтаж"
-image: "/sps/autonomous-sps-1.webp"
+image: "/images/sps/autonomous-sps-1.webp"
 image_alt: "Автономна сонячна електростанція Lumina"
 
 
@@ -36,7 +36,7 @@ sections:
     id: "about-ses"
     image_position: "right" 
     title: "Що таке автономна СЕС та коли вона потрібна?"
-    image: "/sps/autonomous-sps-cover.webp"
+    image: "/images/sps/autonomous-sps-cover.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -81,7 +81,7 @@ sections:
     id: "about-ses"
     image_position: "left" 
     title: "Ефективність автономної СЕС"
-    image: "/sps/autonomous-sps-2.webp"
+    image: "/images/sps/autonomous-sps-2.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -117,7 +117,7 @@ sections:
     id: "about-ses"
     image_position: "right" 
     title: "Чому українці обирають автономні СЕС від А100"
-    image: "/sps/autonomous-sps-3.webp"
+    image: "/images/sps/autonomous-sps-3.webp"
     image_alt: "Автономна СЕС"
     features:
       - title: "Швидкий сервіс"
@@ -176,7 +176,7 @@ sections:
     id: "b"
     image_position: "left" 
     title: ""
-    image: "/sps/autonomous-sps-4.webp"
+    image: "/images/sps/autonomous-sps-4.webp"
     image_alt: "Автономна СЕС"
     button_text: "Отримати прорахунок"
 
