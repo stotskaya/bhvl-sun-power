@@ -461,6 +461,7 @@ content:
                   - { name: description, label: "Опис", type: text }
                   - { name: featured, label: "Акцентна картка", type: boolean }
                   - { name: badge, label: "Badge (Популярне)", type: string }
+                  - { name: button_text, label: "Текст кнопки", type: string }
                   - name: equipment
                     label: "Комплектація"
                     type: object
