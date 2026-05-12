@@ -48,7 +48,7 @@ content:
         list:
           collapsible:
               collapsed: true
-              summary: "{label}"
+              summary: ""
         blockKey: type
         blocks: 
           - name: text-with-image
