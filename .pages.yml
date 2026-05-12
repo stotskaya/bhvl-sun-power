@@ -45,6 +45,7 @@ content:
         list:
           collapsible:
               collapsed: true
+              summary: "{{type}} — {{title}}"
         blockKey: type
         blocks: 
           - name: text-with-image
