@@ -7,8 +7,6 @@ content:
     label: "CEC сторінки"
     type: collection
     path: "content/sps"
-    media_folder: "static/images/sps"      # Порожньо означає "в тій же папці, де .md"
-    public_folder: "/images/sps"     # Порожньо означає відносний шлях у самому коді
     filename: "{slug}.md"
     fields:
       - { name: title, label: "Title", type: string }
