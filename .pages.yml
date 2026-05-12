@@ -367,7 +367,7 @@ content:
         list:
           collapsible:
               collapsed: true
-              summary: "{title}"
+              summary: "{key}"
         fields:
           - { label: "Ключ (Параметр)", name: "key", type: "string" }
           - { label: "Значення", name: "val", type: "string" }
