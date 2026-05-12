@@ -178,7 +178,8 @@ content:
             fields:
               - { name: button_text, label: "Button Text", type: string }
               - { name: seo_text, label: "Text", type: rich-text }
-
+      - { name: SEO_title, label: "SEO title", type: text }
+      - { name: SEO_description, label: "SEO description", type: text }
   - name: services
     label: "Послуги"
     type: collection
@@ -341,7 +342,9 @@ content:
             fields:
               - { name: button_text, label: "Button Text", type: string }
               - { name: seo_text, label: "Text", type: rich-text }
-
+      - { name: SEO_title, label: "SEO title", type: text }
+      - { name: SEO_description, label: "SEO description", type: text }
+      
   - name: projects
     label: "Наші роботи"
     type: collection

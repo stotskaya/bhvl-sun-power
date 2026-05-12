@@ -1,6 +1,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<title>
+{{- if .Params.SEO_title -}}
+  {{-  .Params.SEO_title | plainify -}}
+{{- else if .IsHome -}}
+  {{- site.Title -}}
+{{- else -}}
+  {{- printf "%s | %s" .Title site.Title -}}
+{{- end -}}
+</title>
+{{ if .Params.SEO_description }}
+<meta name="description" content="{{.Params.SEO_description}}">
+{{ end }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
