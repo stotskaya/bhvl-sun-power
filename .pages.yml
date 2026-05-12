@@ -4,7 +4,7 @@ media:
 
 content:
   - name: sps
-    label: "SPS сторінки"
+    label: "CEC сторінки"
     type: collection
     path: "content/sps"
     media_folder: "static/images/sps"      # Порожньо означає "в тій же папці, де .md"
