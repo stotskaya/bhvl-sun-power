@@ -313,3 +313,15 @@ content:
                 fields:
                   - { name: question, label: "Q", type: string }
                   - { name: answer, label: "A", type: rich-text }
+          - name: steps-list
+            label: "Список етапів (Steps)"
+            fields:
+              - { name: title, label: "Заголовок секції", type: string }
+              
+              - name: steps
+                label: "Кроки процесу"
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: "Назва кроку", type: string }
+                  - { name: text, label: "Опис кроку", type: text }
