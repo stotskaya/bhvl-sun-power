@@ -3,12 +3,7 @@ media:
   output: /images
 
 content:
-  - name: sps_landing
-    label: "Лендінг розділу СЕС (Каталог)"
-    type: file
-    path: "content/sps/_index.md"
-    fields:
-      - { label: "Заголовок сторінки", name: "title", type: "string" }
+  
   - name: sps
     label: "CEC сторінки"
     type: collection
