@@ -26,15 +26,15 @@
     .lm-input.err  { border-color: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,.18); }
 
     /* modal — hidden by default, shown with .is-open */
-    #orderModal {
+    .modal-wrapper {
       display: none;
       position: fixed; inset: 0; z-index: 200;
       align-items: flex-end; justify-content: center;
     }
     @media (min-width: 640px) {
-      #orderModal { align-items: center; padding: 1.5rem; }
+      .modal-wrapper { align-items: center; padding: 1.5rem; }
     }
-    #orderModal.is-open { display: flex; }
+    .modal-wrapper.is-open { display: flex; }
 
     #modalBackdrop {
       position: absolute; inset: 0;
@@ -54,6 +54,7 @@
     }
     @media (min-width: 640px) {
       #modalPanel { max-width: 42rem; border-radius: 2.5rem; animation-name: popIn; }
+      #seoModal #modalPanel { max-width: 900px; }
     }
 
     @keyframes fadeIn  { from{opacity:0}  to{opacity:1} }

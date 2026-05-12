@@ -48,7 +48,7 @@
                             {{ if  .images }}
                                 {{ range  .images }}
                                 <div class="swiper-slide">
-                                    <img src="{{ . | relURL }}" alt="Solar Power Solutions" class="w-full h-full object-cover">
+                                    <img src="{{ .item | relURL }}" alt="Solar Power Solutions" class="w-full h-full object-cover">
                                 </div>
                                 {{ end }}
                             {{ else }}

@@ -2,7 +2,7 @@
 <section class="pt-32 pb-20 px-6 ">
     <div class="max-w-7xl mx-auto">
          {{ partial "breadcrumbs.html" . }} 
-         {{ if .Params.image }}
+         {{ if .Params.with_main_image  }}
         <div class="grid lg:grid-cols-2 gap-10 items-start">
             <div class="reveal visible glass-panel rounded-[2.5rem] p-6">
                 <div class="rounded-[2rem] overflow-hidden aspect-[4/4] bg-gray-100">
@@ -13,7 +13,7 @@
             <div class="reveal delay-150 visible">
                 <div>
                     <span class="lbl">{{ .Params.label }}</span>
-                    <h1 class="text-4xl lg:text-5xl font-light tracking-tight mb-5 leading-tight" style="line-height: 1;">
+                    <div  class="text-4xl lg:text-5xl font-light tracking-tight mb-5 leading-tight" style="line-height: 1;">
                        {{ $title := .Title }}
                         {{ $words := split $title " " }}
 
@@ -26,7 +26,7 @@
                         {{ range after 2 $words }}
                             {{ . }} 
                         {{ end }}
-                    </h1>
+                    </div>
                     <p class="text-gray-500 font-light leading-relaxed mb-8 text-base">
                         {{ .Params.description }}
                     </p>
@@ -84,10 +84,10 @@
                     <div class="flex flex-col sm:flex-row gap-4">
                     <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 btn-open-modal"
                      >
-                        Отримати розрахунок
+                         {{ .Params.main_button_text}}
                     </button>
                     <a href="#specs" class="glass-panel px-10 py-4 rounded-full font-medium hover:bg-white/60 transition-colors flex items-center justify-center gap-2">
-                        Дивитись комплекти <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-down" aria-hidden="true" class="lucide lucide-arrow-down w-4 h-4"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+                        {{ .Params.specs_button_text}}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-down" aria-hidden="true" class="lucide lucide-arrow-down w-4 h-4"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
                     </a>
                 </div>
                 </div>

@@ -24,7 +24,9 @@ content:
       - { name: attribute_3, label: "Attribute 3", type: string }
       - { name: image, label: "Main image", type: image }
       - { name: image_alt, label: "Image alt", type: string }
-
+      - { name: image_left, label: "Show Main image on the Page?", type: boolean, default: true }
+      - { name: main_button_text, label: "Main button Text", type: text }
+      - { name: specs_button_text, label: "Specs button Text", type: text }
       # FEATURES
       - name: features
         label: "Top features"
@@ -170,6 +172,11 @@ content:
               - { name: title, label: "Title", type: string }
               - { name: content, label: "Content", type: rich-text }
               - { name: button_text, label: "Button", type: string }
+          - name: seo-modal
+            label: "SEO Modal"
+            fields:
+              - { name: button_text, label: "Button Text", type: string }
+              - { name: seo_text, label: "Text", type: rich-text }
 
   - name: services
     label: "Послуги"
