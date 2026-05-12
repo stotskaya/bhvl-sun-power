@@ -284,4 +284,8 @@
         </div>
     </div>
 </section>
+{{ range .Params.sections }}
+    {{ $path := printf "sections/%s.html" .type }}
+    {{ partial $path . }}
+{{ end }}
 {{ end }}
