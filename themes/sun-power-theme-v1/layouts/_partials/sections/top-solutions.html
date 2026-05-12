@@ -72,7 +72,7 @@
                 <div class="w-4 h-4 rounded-full {{ if $isFeatured }} bg-amber-100 {{ else }} bg-amber-50 {{ end }} flex items-center justify-center shrink-0 mt-px">
                   <i data-lucide="check" class="w-2.5 h-2.5 {{ if $isFeatured }} text-amber-600 {{ else }} text-amber-500 {{ end }}"></i>
                 </div>
-                {{ . }}
+                {{ .item }}
               </li>
               {{ end }}
             </ul>
