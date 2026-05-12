@@ -125,11 +125,11 @@ content:
                 list: true
                 fields:
                   - { name: question, label: "Q", type: string }
-                  - { name: answer, label: "A", type: markdown }
+                  - { name: answer, label: "A", type: rich-text }
 
           - name: full-text-with-button
             label: "Full text CTA"
             fields:
               - { name: title, label: "Title", type: string }
-              - { name: content, label: "Content", type: markdown }
+              - { name: content, label: "Content", type: rich-text }
               - { name: button_text, label: "Button", type: string }
