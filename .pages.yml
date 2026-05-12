@@ -56,10 +56,10 @@ content:
                 label: "Image on the left?"
                 type: boolean
                 default: false
-              # ПЕРЕПИСУЄМО BODY_TEXT (спробуй 'markdown', якщо 'text' не проходить)
+             
               - name: body_text
                 label: "Text"
-                type: text
+                type: rich-text
 
           - name: system-specs
             label: "System specs"
