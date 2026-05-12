@@ -76,7 +76,7 @@ content:
               - { name: composition_title, label: "Comp Title", type: string }
               - name: composition_list
                 label: "Список обладнання"
-                type: rich-text
+                type: list
                 
               - name: installation_label 
                 label: "Inst Label"

@@ -23,7 +23,7 @@
             <div class="glass-card rounded-[2.5rem] p-6 md:p-10 reveal delay-150 {{ if eq $s.image_position "left" }} lg:order-last {{ else }} lg:order-first {{ end }}">
                 
                 {{/* Використовуємо $s для контенту */}}
-                {{ $s.body_text | markdownify }}
+                {{ $s.body_text | safeHTML }}
 
                 {{ with $s.button_text }}
                 <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-100 mt-6 btn-open-modal">
