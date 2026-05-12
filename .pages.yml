@@ -31,7 +31,10 @@ content:
       - name: features
         label: "Top features"
         type: object
-        list: true
+        list:
+          collapsible:
+              collapsed: true
+              summary: "{title}"
         fields:
           - { name: title, label: "Title", type: string }
           - { name: text, label: "Text", type: text }
