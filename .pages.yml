@@ -169,3 +169,147 @@ content:
               - { name: title, label: "Title", type: string }
               - { name: content, label: "Content", type: rich-text }
               - { name: button_text, label: "Button", type: string }
+
+  - name: services
+    label: "Послуги"
+    type: collection
+    path: "content/services"
+    filename: "{slug}.md"
+    fields:
+      - { label: "Повний заголовок (H1)", name: "title", type: "string" }
+      - { label: "Короткий заголовок", name: "short_title", type: "string" }
+      - { label: "Мітка (Label)", name: "label", type: "string" }
+      - { label: "SEO Опис", name: "description", type: "text" }
+      - { label: "Примітка (Note)", name: "note", type: "string" }
+      - { label: "Головне зображення", name: "image", type: "image" }
+      - { label: "Alt-текст зображення", name: "image_alt", type: "string" }
+      
+      - name: sections
+        label: "Sections"
+        type: block
+        list:
+          collapsible:
+              collapsed: true
+              summary: "{title}"
+        blockKey: type
+        blocks: 
+          - name: text-with-image
+            label: "Text with image"
+            fields: # Використовуй fields замість items
+              - { name: title, label: "Title", type: string }
+              - { name: image, label: "Image", type: image }
+              - { name: image_alt, label: "Alt", type: string }
+
+              - name: image_left
+                label: "Image on the left?"
+                type: boolean
+                default: false
+             
+              - name: body_text
+                label: "Text"
+                type: rich-text
+                
+          - name: service-process
+            label: "Service Process"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: subtitle, label: "Subtitle", type: string }
+              - { name: result_title, label: "Result Title", type: string }
+              - { name: result_subtitle, label: "Result Subtitle", type: string }
+              
+              - name: steps
+                label: "Етапи роботи"
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: "Заголовок етапу", type: string }
+                  - { name: text, label: "Опис етапу", type: text }
+
+              - name: comparison_negative
+                label: "Негативне порівняння"
+                type: object
+                fields:
+                  - { name: label, label: "Мітка (Label)", type: string }
+                  - { name: text, label: "Текст", type: text }
+
+              - name: comparison_positive
+                label: "Позитивне порівняння (A100)"
+                type: object
+                fields:
+                  - { name: label, label: "Мітка (Label)", type: string }
+                  - { name: text, label: "Текст", type: text }
+                  
+          - name: audit
+            label: "Audit / Situations"
+            fields:
+              - { name: title, label: "Заголовок", type: string }
+              - { name: description, label: "Опис", type: text }
+              
+              - name: situations
+                label: "Сценарії (Situations)"
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: "Заголовок сценарію", type: string }
+                  - { name: text, label: "Опис сценарію", type: text }
+
+              - { name: checklist_title, label: "Заголовок списку робіт", type: string }
+              
+              - name: documentation
+                label: "Склад робіт (Checklist)"
+                type: object
+                list: true
+                fields:
+                  - { name: item, label: "Пункт робіт", type: text }
+
+              - name: tags
+                label: "Переваги (Tags)"
+                type: object
+                list: true
+                fields:
+                  - { name: tag, label: "Тег", type: string }
+
+              - { name: cta_text, label: "Текст кнопки (CTA)", type: string }
+
+          - name: featured-levels
+            label: "Тарифи та формати робіт"
+            fields:
+              - { name: title, label: "Заголовок секції", type: string }
+              
+              - name: tiers
+                label: "Варіанти послуг (Tiers)"
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: "Мітка (напр. Базовий)", type: string }
+                  - { name: name, label: "Назва формату", type: string }
+                  - { name: description, label: "Опис", type: text }
+                  - { name: featured, label: "Акцентна картка (True/False)", type: boolean }
+                  - { name: cta, label: "Текст кнопки", type: string }
+                  
+                  - name: params
+                    label: "Технічні деталі (Параметри)"
+                    type: object
+                    list: true
+                    fields:
+                      - { name: key, label: "Параметр (напр. Термін)", type: string }
+                      - { name: value, label: "Значення", type: string }
+                      
+          - name: full-text-with-button
+            label: "Full text CTA"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: content, label: "Content", type: rich-text }
+              - { name: button_text, label: "Button", type: string }
+
+          - name: faq
+            label: "FAQ"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - name: items # Тут 'items' можна залишити як назву поля, але тип - list
+                label: "Questions"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: "Q", type: string }
+                  - { name: answer, label: "A", type: rich-text }
