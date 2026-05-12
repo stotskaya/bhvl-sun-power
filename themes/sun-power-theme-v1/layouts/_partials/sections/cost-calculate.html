@@ -9,7 +9,7 @@
             
                    
                     <div class="text-center mb-10">
-                          {{ with .Title }}
+                          {{ with .title }}
                          <h2 class="text-3xl md:text-4xl font-light text-center mb-5">
                             {{ $title := . }}
                             {{ $words := split $title " " }}
@@ -22,7 +22,7 @@
                         </h2>
                         {{ end }}
                          <p class="text-base font-light text-gray-500 max-w-2xl mx-auto italic">
-                            {{ .Params.description }}
+                            {{  .description }}
                         </p>
                     </div>
 
@@ -31,7 +31,7 @@
                 <form id="calc-form">
                     <!-- Три колонки вибору -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                        {{ range .Params.questions }}
+                        {{ range  .questions }}
                         <div class="glass-panel rounded-3xl p-6 border border-white/40 bg-white/20">
                             <div class="flex items-center gap-3 mb-6">
                                 <div class="w-1.5 h-6 bg-amber-400 rounded-full"></div>
@@ -56,22 +56,22 @@
                     <!-- CTA Блок -->
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
                         <button type="submit" class="w-full sm:w-auto bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-sm hover:bg-amber-500 hover:text-black transition-all shadow-2xl shadow-gray-200 flex items-center justify-center gap-3 group active:scale-95">
-                            {{ .Params.primary_btn }}
+                            {{  .primary_btn }}
                             <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
                         </button>
                         
                         <button type="button" class="w-full sm:w-auto glass-panel px-10 py-4 rounded-full font-bold text-sm hover:bg-white/60 transition-all flex items-center justify-center gap-3 text-gray-600 border border-white/50">
                             <i data-lucide="phone" class="w-4 h-4 text-amber-500"></i>
-                            {{ .Params.secondary_btn }}
+                            {{  .secondary_btn }}
                         </button>
                     </div>
                 </form>
 
                 <!-- Мікро-теги -->
                 <div class="flex flex-wrap items-center gap-3 mt-10 justify-center">
-                    {{ range $index, $tag := .Params.footer_tags }}
+                    {{ range $index, $tag := .footer_tags }}
                     <span class="text-[12px] font-light text-gray-400 opacity-80">{{ . }}</span>
-                    {{ if lt $index (sub (len $.Params.footer_tags) 1) }}
+                    {{ if lt $index (sub (len $.footer_tags) 1) }}
                     <span class="w-1 h-1 rounded-full bg-amber-50"></span>
                     {{ end }}
                     {{ end }}

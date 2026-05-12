@@ -3,7 +3,7 @@
 
     <!-- Заголовок -->
     <div class="text-center">
-        {{ with .Params.title }}
+        {{ with  .title }}
         <h2 class="text-3xl md:text-4xl font-light text-center mb-16">
             {{ $title := . }}
             {{ $words := split $title " " }}
@@ -17,7 +17,7 @@
         {{ end }}
     </div>
    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-10">
-    {{ range .Params.services }}
+    {{ range  .services }}
     <div class="reveal glass-card rounded-[1.5rem] flex flex-col relative overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-amber-500/5">
         
         <!-- Ефект світіння (Glow) -->

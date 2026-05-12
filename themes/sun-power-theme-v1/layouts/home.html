@@ -1,9 +1,8 @@
 {{ define "main" }}
 
-  {{ $sections := where .Site.RegularPages "Section" "home" }}
-
-  {{ range sort $sections "Params.weight" }}
-    {{ partial (printf "sections/%s.html" .Params.type) . }}
+  {{ range .Params.sections }}
+    {{ $path := printf "sections/%s.html" .type }}
+    {{ partial $path . }}
   {{ end }}
 
 {{ end }}

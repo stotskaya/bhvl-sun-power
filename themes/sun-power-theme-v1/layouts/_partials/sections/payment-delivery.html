@@ -3,7 +3,7 @@
     
     <!-- Заголовок -->
     <div class="text-center mb-14">
-       {{ with .Title }}
+       {{ with .title }}
             <h2 class="text-3xl md:text-4xl font-light text-center mb-5">
             {{ $title := . }}
             {{ $words := split $title " " }}
@@ -16,13 +16,13 @@
         </h2>
         {{ end }}
       <p class="text-base font-light text-gray-400 max-w-2xl mx-auto">
-        {{ .Params.description }}
+        {{  .description }}
       </p>
     </div>
 
     <!-- 3 картки -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-      {{ range .Params.cards }}
+      {{ range  .cards }}
         {{/* 1. Зберігаємо параметри КАРТКИ у змінні ПЕРЕД внутрішнім циклом */}}
         {{ $isFeatured := .featured }}
         {{ $cardItems := .items }}

@@ -3,7 +3,7 @@
 
     <!-- Заголовок -->
     <div class="text-center">
-        {{ with .Params.title }}
+        {{ with  .title }}
         <h2 class="text-3xl md:text-4xl font-light text-center mb-16">
             {{ $title := . }}
             {{ $words := split $title " " }}
@@ -19,7 +19,7 @@
 
     <!-- Сітка карток -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-        {{ range .Params.cards }}
+        {{ range .cards }}
         <div class="glass-card rounded-3xl flex flex-col card-lift overflow-hidden bg-white/40 border border-white/20 transition-all duration-500 hover:shadow-xl hover:shadow-amber-500/5 reveal">
             
             <!-- Зображення -->

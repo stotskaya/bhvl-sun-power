@@ -8,23 +8,23 @@
                 <span class="solar-gradient-text italic font-medium">відгуки</span>
             </h2>
             <p class="text-base font-light text-gray-400">
-                {{ .Params.description }}
+                {{ .description }}
             </p>
         </div>
 
         <!-- Сітка карток -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
              
-            {{ range $index, $element := first 2 (where .Site.RegularPages "Section" "projects").ByDate.Reverse }}
+            {{ range $index, $element := first 2 (where site.RegularPages "Section" "projects").ByDate.Reverse }}
              
             <div  class="reveal relative glass-card rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5">
-                <a href="{{ .Params.link | relURL }}" class="absolute inset-0 z-10"></a>
+                <a href="{{  .Params.link | relURL }}" class="absolute inset-0 z-10"></a>
                 <!-- Фото блок -->
                 <div class="relative h-64 overflow-hidden group">
                   
                     <!-- Реальне фото об'єкта -->
                     <div class="absolute inset-0 w-full h-full overflow-hidden">
-                        <img src="{{ .Params.image | relURL }}" alt="{{ .Params.title }}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <img src="{{  .Params.image | relURL }}" alt="{{  .Params.title }}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                     </div>
 
                     <!-- Amber shimmer смуга -->
@@ -36,7 +36,7 @@
 
                     <!-- Заголовок та клієнт -->
                     <div>
-                        <p class="text-[12.5px] font-medium text-amber-600 bg-amber-50 rounded-full px-4 py-1.5 border border-amber-100/50 w-fit mb-3">{{ .Params.category }}</p>
+                        <p class="text-[12.5px] font-medium text-amber-600 bg-amber-50 rounded-full px-4 py-1.5 border border-amber-100/50 w-fit mb-3">{{  .Params.category }}</p>
                         <h3 class="text-xl font-bold text-gray-900 leading-snug mb-1">{{ .Params.title }}</h3>
                         <div class="text-sm text-gray-500 font-light">{{ .Params.location }}</div>
                     </div>
@@ -81,7 +81,7 @@
                     </div>
 
                     <!-- Кнопка проєкту -->
-                    <a href="{{ .Params.link | relURL }}" class="mt-4 glass-panel w-full py-4 rounded-full text-xs font-bold text-gray-800 transition-all hover:bg-gray-900   flex items-center justify-center gap-2 group/btn">
+                    <a href="{{  .Params.link | relURL }}" class="mt-4 glass-panel w-full py-4 rounded-full text-xs font-bold text-gray-800 transition-all hover:bg-gray-900   flex items-center justify-center gap-2 group/btn">
                         Детальніше про проєкт
                         <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/btn:translate-x-1"></i>
                     </a>
