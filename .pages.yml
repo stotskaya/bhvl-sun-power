@@ -397,3 +397,173 @@ content:
           - { label: "Автор", name: "author", type: "string" }
           - { label: "Посада/Роль", name: "role", type: "string" }
           - { label: "Ініціали", name: "initials", type: "string" }
+
+
+  - name: home
+    label: "Головна сторінка"
+    type: file
+    path: "content/_index.md" 
+    fields:
+      - { label: "SEO Title", name: "title", type: "string" }
+      - name: sections
+        label: "Конструктор сторінки"
+        type: block
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        blockKey: type
+        blocks:
+          # --- HERO SECTION ---
+          - name: hero
+            label: "Hero блок"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: badge, label: "Badge", type: string }
+              - { name: body_text, label: "Text", type: text }
+              - name: images
+                label: "Слайдер зображень"
+                type: object
+                list: true
+                fields:
+                  - { name: item, label: "Image", type: image }
+              - { name: primary_btn, label: "Primary Button", type: string }
+              - { name: secondary_btn, label: "Secondary Button", type: string }
+          - name: top-solutions
+            label: "Топ рішення"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: description, label: "Description", type: text }
+              - name: products
+                label: "Товари"
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: "Label (напр. Базовий)", type: string }
+                  - { name: title, label: "Назва станції", type: string }
+                  - { name: subtitle, label: "Підзаголовок", type: string }
+                  - { name: price, label: "Ціна ($)", type: string }
+                  - { name: description, label: "Опис", type: text }
+                  - { name: featured, label: "Акцентна картка", type: boolean }
+                  - { name: badge, label: "Badge (Популярне)", type: string }
+                  - name: equipment
+                    label: "Комплектація"
+                    type: object
+                    list: true
+                    fields:
+                      - { name: item, label: "Пункт", type: string }
+          - name: featured-sps
+            label: "Категорії рішень (SPS)"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - name: cards
+                label: "Картки категорій"
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: "Верхня мітка", type: string }
+                  - { name: title, label: "Заголовок", type: string }
+                  - { name: image, label: "Фото", type: image }
+                  - { name: description, label: "Опис", type: text }
+                  - { name: badge, label: "Badge", type: string }
+                  - { name: link, label: "Link", type: string }
+                  - name: specs
+                    label: "Характеристики"
+                    type: object
+                    list: true
+                    fields:
+                      - { name: key, label: "Назва", type: string }
+                      - { name: value, label: "Значення", type: string }
+
+          - name: featured-services
+            label: "Наші послуги"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - name: services
+                label: "Список послуг"
+                type: object
+                list: true
+                fields:
+                  - { name: number, label: "№", type: string }
+                  - { name: title, label: "Назва", type: string }
+                  - { name: description, label: "Опис", type: text }
+                  - { name: image, label: "Фото", type: image }
+                  - { name: link, label: "Link", type: string }
+
+          - name: cost-calculate
+            label: "Калькулятор"
+            fields:
+              - { name: title, label: "Заголовок", type: string }
+              - { name: description, label: "Опис", type: text }
+              - name: questions
+                label: "Питання"
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: "Заголовок питання", type: string }
+                  - name: options
+                    label: "Варіанти"
+                    type: object
+                    list: true
+                    fields:
+                      - { name: text, label: "Текст відповіді", type: string }
+                      - { name: default, label: "Обрано за замовчуванням", type: boolean }
+              - { name: primary_btn, label: "Main Button", type: string }
+              - name: footer_tags
+                label: "Теги внизу"
+                type: object
+                list: true
+                fields: [{ name: item, label: "Tag", type: string }]
+
+          # --- PAYMENT & DELIVERY ---
+          - name: payment-delivery
+            label: "Оплата та доставка"
+            fields:
+              - { name: title, label: "Заголовок", type: string }
+              - { name: description, label: "Опис", type: text }
+              - name: cards
+                label: "Картки умов"
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: "Заголовок", type: string }
+                  - { name: icon, label: "Icon Name", type: string }
+                  - { name: featured, label: "Виділити", type: boolean }
+                  - name: items
+                    label: "Пункти"
+                    type: object
+                    list: true
+                    fields:
+                      - { name: subtitle, label: "Підзаголовок", type: string }
+                      - { name: text, label: "Опис", type: text }
+
+          # --- TEXT WITH IMAGE ---
+          - name: text-with-image
+            label: "Text with image"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: image, label: "Image", type: image }
+              - { name: image_alt, label: "Alt", type: string }
+              - { name: image_left, label: "Image on the left?", type: boolean, default: false }
+              - { name: body_text, label: "Text", type: rich-text }
+
+          # --- PROJECTS ---
+          - name: featured-projects
+            label: "Останні проєкти (Авто)"
+            fields:
+              - { name: title, label: "Title", type: string }
+
+          # --- FAQ ---
+          - name: faq
+            label: "FAQ"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - name: items
+                label: "Questions"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: "Q", type: string }
+                  - { name: answer, label: "A", type: rich-text }
+      
+     
