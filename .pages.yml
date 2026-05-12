@@ -1,14 +1,14 @@
 media:
-  input: static
-  output: /
+  input: static/images
+  output: /images
 
 content:
   - name: sps
     label: "SPS сторінки"
     type: collection
     path: "content/sps"
-    media_folder: "static/images/sps/"      # Порожньо означає "в тій же папці, де .md"
-    public_folder: "/images/sps/"     # Порожньо означає відносний шлях у самому коді
+    media_folder: "static/images/sps"      # Порожньо означає "в тій же папці, де .md"
+    public_folder: "/images/sps"     # Порожньо означає відносний шлях у самому коді
     filename: "{slug}.md"
     fields:
       - { name: title, label: "Title", type: string }
