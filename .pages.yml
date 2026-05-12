@@ -336,6 +336,13 @@ content:
                   - { name: title, label: "Назва кроку", type: string }
                   - { name: text, label: "Опис кроку", type: text }
 
+          - name: seo-modal
+            label: "SEO Modal"
+            title: "SEO"
+            fields:
+              - { name: button_text, label: "Button Text", type: string }
+              - { name: seo_text, label: "Text", type: rich-text }
+
   - name: projects
     label: "Наші роботи"
     type: collection
