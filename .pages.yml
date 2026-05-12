@@ -326,3 +326,65 @@ content:
                 fields:
                   - { name: title, label: "Назва кроку", type: string }
                   - { name: text, label: "Опис кроку", type: text }
+
+  - name: projects
+    label: "Послуги"
+    type: collection
+    path: "content/projects"
+    filename: "{slug}.md"
+    fields:
+      - { label: "Назва проєкту (H1)", name: "title", type: "string" }
+      - { label: "Коротка назва", name: "short_title", type: "string" }
+      - { label: "Мітка потужності", name: "power_label", type: "string" }
+      - { label: "Категорія", name: "category", type: "string" }
+      - { label: "Локація", name: "location", type: "string" }
+      - { label: "Головне фото", name: "image", type: "image" }
+      - { label: "Посилання", name: "link", type: "string" }
+    
+      # Блок статистики (3 головні картки)
+      - label: "Головна статистика (stats)"
+        name: "stats"
+        type: object
+        list: true
+        fields:
+          - { label: "Заголовок", name: "label", type: "string" }
+          - { label: "Значення", name: "value", type: "string" }
+          - { label: "Опис (підтекст)", name: "subtext", type: "string" }
+          - { label: "Іконка (напр. battery, sun)", name: "icon", type: "string" }
+    
+      # Блок Задача / Результат
+      - label: "Місія проєкту (Mission)"
+        name: "mission"
+        type: object
+        fields:
+          - { label: "Задача", name: "task", type: "text" }
+          - { label: "Результат", name: "result", type: "text" }
+    
+      # Таблиця параметрів
+      - label: "Таблиця параметрів (parameters)"
+        name: "parameters"
+        type: object
+        list: true
+        fields:
+          - { label: "Ключ (Параметр)", name: "key", type: "string" }
+          - { label: "Значення", name: "val", type: "string" }
+    
+      # Склад системи
+      - label: "Склад системи (components)"
+        name: "components"
+        type: object
+        list: true
+        fields:
+          - { label: "Назва пристрою", name: "name", type: "string" }
+          - { label: "Опис/Характеристики", name: "desc", type: "string" }
+          - { label: "Кількість", name: "qty", type: "string" }
+    
+      # Відгук клієнта
+      - label: "Відгук (Testimonial)"
+        name: "testimonial"
+        type: object
+        fields:
+          - { label: "Текст відгуку", name: "text", type: "text" }
+          - { label: "Автор", name: "author", type: "string" }
+          - { label: "Посада/Роль", name: "role", type: "string" }
+          - { label: "Ініціали", name: "initials", type: "string" }
