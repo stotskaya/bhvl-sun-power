@@ -2,8 +2,7 @@
 title: "Гарантії та сервісна відповідальність А100"
 type: "text-with-image"
 weight: 100
-image_position: "left" 
-id: ""
+image_left: true
 image: "/home/10-text-image/2.webp"
 image_alt: "Автономна СЕС"
 

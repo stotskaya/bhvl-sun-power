@@ -38,12 +38,10 @@ features:
 
 sections:
   - type: "text-with-image"
-    id: "about-ses"
-    image_position: "right" 
     title: "Що таке СЕС для ОСББ та які завдання вона вирішує?"
     image: "/images/sps/osbb-sps-1.webp"
     image_alt: "Автономна СЕС"
-
+    image_left: false
     body_text: |
        ### Розумна енергія для багатоквартирного будинку
 
@@ -159,11 +157,10 @@ sections:
           answer: "Рішення про модернізацію енергосистеми приймається загальними зборами ОСББ згідно з чинним законодавством. Ми надаємо професійне техніко-економічне обґрунтування, яке допоможе ініціативній групі наочно продемонструвати мешканцям вигоду від енергонезалежності, підвищення вартості нерухомості та швидку окупність проєкту."
 
   - type: "text-with-image"
-    id: "b"
-    image_position: "left" 
     title: ""
     image: "/images/sps/grid-tied-sps-4.webp"
     image_alt: "Автономна СЕС"
+    image_left: true
     button_text: "Отримати розрахунок для ОСББ"
 
     body_text: |

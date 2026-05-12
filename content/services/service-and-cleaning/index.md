@@ -12,7 +12,7 @@ image_alt: "Автономна сонячна електростанція Lumin
 sections:
   - type: "text-with-image"
     id: "about-ses"
-    image_position: "left" 
+    image_left: true 
     title: "Що таке професійний сервіс СЕС?"
     image: "/services/service-and-cleaning/2.webp"
     image_alt: "Автономна СЕС"
@@ -110,7 +110,7 @@ sections:
  
   - type: "text-with-image"
     id: "about-ses"
-    image_position: "right" 
+    image_left: right 
     title: "Технічний сервіс: ваш захист від втрат та поломок"
     image: "/services/service-and-cleaning/3.webp"
     image_alt: "Автономна СЕС"
@@ -170,7 +170,7 @@ sections:
        
   - type: "text-with-image"
     id: "b"
-    image_position: "left" 
+    image_left: true 
     title: ""
     image: "/services/service-and-cleaning/4.webp"
     image_alt: "Автономна СЕС"

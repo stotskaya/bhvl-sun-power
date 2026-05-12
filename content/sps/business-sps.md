@@ -36,7 +36,7 @@ features:
 sections:
   - type: "text-with-image"
     id: "about-ses"
-    image_position: "right" 
+    image_left: right  
     title: "Що таке СЕС для бізнесу та які завдання вона вирішує?"
     image: "/images/sps/business-sps-1.webp"
     image_alt: "Автономна СЕС"
@@ -159,7 +159,7 @@ sections:
 
   - type: "text-with-image"
     id: "b"
-    image_position: "left" 
+    image_left: true 
     title: ""
     image: "/images/sps/grid-tied-sps-4.webp"
     image_alt: "Автономна СЕС"

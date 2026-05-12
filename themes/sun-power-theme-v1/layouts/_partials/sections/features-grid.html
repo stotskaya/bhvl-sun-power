@@ -7,7 +7,7 @@
         {{ end }}
 
         <div class="grid lg:grid-cols-3 grid-cols-1 gap-10  items-center">
-            <div class="col-span-2 reveal delay-150 visible {{ if eq .image_position "left" }} lg:order-last {{ else }} lg:order-first {{ end }}">
+            <div class="col-span-2 reveal delay-150 visible">
               <div class="glass-card p-6 md:p-10 gap-6 rounded-[2.5rem] grid lg:grid-cols-2">
                     {{ range .features }}
                     <div class="flex items-start gap-4">
@@ -29,7 +29,7 @@
                     {{ end }}
                 </div>
             </div>
-            <div class="reveal visible {{ if eq .image_position "left" }} lg:order-first {{ else }} lg:order-last {{ end }} section-image" >
+            <div class="reveal visible" >
                 <div class="glass-panel rounded-[2.5rem] overflow-hidden shadow-sm section-image" style="height: 100%;">
                     <img src="{{ .image | absURL }}" alt="{{ .image_alt }}" class="solar-img w-full h-full object-cover" style="border-radius:2.5rem">
                 </div>

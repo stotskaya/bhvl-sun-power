@@ -34,7 +34,7 @@ features:
 sections:
   - type: "text-with-image"
     id: "about-ses"
-    image_position: "right" 
+    image_left: right  
     title: "Що таке мережева СЕС та коли вона потрібна?"
     image: "/images/sps/grid-tied-sps-1.webp"
     image_alt: "Автономна СЕС"
@@ -82,7 +82,7 @@ sections:
     
   - type: "text-with-image"
     id: "about-ses"
-    image_position: "left" 
+    image_left: true 
     title: "Окупність та ефективність мережевої СЕС"
     image: "/images/sps/grid-tied-sps-2.webp"
     image_alt: "Автономна СЕС"
@@ -118,7 +118,6 @@ sections:
 
   - type: "features-grid"
     id: "about-ses"
-    image_position: "right" 
     title: "Чому українці обирають автономні СЕС від А100"
     image: "/images/sps/grid-tied-sps-3.webp"
     image_alt: "Автономна СЕС"
@@ -177,7 +176,7 @@ sections:
 
   - type: "text-with-image"
     id: "b"
-    image_position: "left" 
+    image_left: true 
     title: ""
     image: "/images/sps/grid-tied-sps-4.webp"
     image_alt: "Автономна СЕС"

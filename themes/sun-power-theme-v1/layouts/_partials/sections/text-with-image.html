@@ -20,7 +20,7 @@
 
         <div class="grid lg:grid-cols-2 gap-10 items-center">
             
-            <div class="glass-card rounded-[2.5rem] p-6 md:p-10 reveal delay-150 {{ if eq $s.image_position "left" }} lg:order-last {{ else }} lg:order-first {{ end }}">
+            <div class="glass-card rounded-[2.5rem] p-6 md:p-10 reveal delay-150 {{ if $s.image_left }} lg:order-last {{ else }} lg:order-first {{ end }}">
                 
                 {{/* Використовуємо $s для контенту */}}
                 {{ $s.body_text | markdownify }}
@@ -33,7 +33,7 @@
             
             </div>
 
-            <div class="reveal {{ if eq $s.image_position "left" }} lg:order-first {{ else }} lg:order-last {{ end }}" style="height: 100%;">
+            <div class="reveal {{ if $s.image_left }} lg:order-first {{ else }} lg:order-last {{ end }}" style="height: 100%;">
                 <div class="glass-panel rounded-[2.5rem] overflow-hidden shadow-sm section-image" style="height: 100%;">
                     <img src="{{ $s.image | absURL }}" alt="{{ $s.image_alt }}" class="solar-img w-full h-full object-cover" style="border-radius:2.5rem">
                 </div>

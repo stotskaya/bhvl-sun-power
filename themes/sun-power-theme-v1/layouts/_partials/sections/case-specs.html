@@ -40,7 +40,7 @@
                 </button>
             </div>
 
-         <div class="reveal visible {{ if eq .image_position "left" }} lg:order-first {{ else }} lg:order-last {{ end }}" style="height: 100%;">
+         <div class="reveal visible {{ if .image_left }} lg:order-first {{ else }} lg:order-last {{ end }}" style="height: 100%;">
             <div class="glass-panel rounded-[2.5rem] overflow-hidden shadow-sm section-image" style="height: 100%;">
                 <img src="{{ .image | absURL }}" alt="{{ .image_alt }}" class="solar-img w-full h-full object-cover" style="border-radius:2.5rem">
             </div>

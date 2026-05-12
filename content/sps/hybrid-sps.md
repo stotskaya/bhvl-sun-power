@@ -33,11 +33,10 @@ features:
 
 sections:
   - type: "text-with-image"
-    id: "about-ses"
-    image_position: "right" 
     title: "Що таке гібридна СЕС та коли вона потрібна?"
     image: "/images/sps/hybrid-sps-1.webp"
     image_alt: "Автономна СЕС"
+    image_left: false
 
     body_text: |
                 ### Приватний будинок або офіс: Гібридна СЕС
@@ -80,12 +79,10 @@ sections:
     installation_text: "Монтаж та налаштування системи входять у вартість рішення «під ключ»."
     
   - type: "text-with-image"
-    id: "about-ses"
-    image_position: "left" 
     title: "Ефективність та надійність гібридної СЕС"
     image: "/images/sps/hybrid-sps-2.webp"
     image_alt: "Автономна СЕС"
-
+    image_left: true
     body_text: |
                 ### Коли варто встановити гібридну СЕС 
 
@@ -152,11 +149,10 @@ sections:
         answer: "Ви отримуєте повний офіційний супровід від виробника А100. Наші інженери дистанційно налаштовують систему онлайн-моніторингу у вашому смартфоні, а власні та партнерські сервісні бригади забезпечують оперативну технічну підтримку та виїзд на об’єкт у будь-якому куточку України протягом 48 годин."
 
   - type: "text-with-image"
-    id: "b"
-    image_position: "left" 
     title: ""
     image: "/images/sps/grid-tied-sps-4.webp"
     image_alt: "Автономна СЕС"
+    image_left: true
     button_text: "Отримати прорахунок"
 
     body_text: |

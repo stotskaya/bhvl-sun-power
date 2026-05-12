@@ -2,8 +2,7 @@
 title: "Екосистема А100: технології Вашої впевненості"
 type: "text-with-image"
 weight: 60
-image_position: "right" 
-id: ""
+image_left: true
 image: "/home/06-text-image/1.webp"
 image_alt: "Автономна СЕС"
 

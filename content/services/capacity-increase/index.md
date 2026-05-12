@@ -12,7 +12,7 @@ image_alt: "Автономна сонячна електростанція Lumin
 sections:
   - type: "text-with-image"
     id: "about-ses"
-    image_position: "left" 
+    image_left: true
     title: "Що таке модернізація та збільшення потужності СЕС?"
     image: "/services/capacity-increase/2.webp"
     image_alt: "Автономна СЕС"
@@ -110,7 +110,7 @@ sections:
  
   - type: "text-with-image"
     id: "about-ses"
-    image_position: "right" 
+    image_left: false
     title: "Модернізація: як зробити СЕС сучасною та безпечною"
     image: "/services/capacity-increase/3.webp"
     image_alt: "Автономна СЕС"
@@ -170,7 +170,7 @@ sections:
        
   - type: "text-with-image"
     id: "b"
-    image_position: "left" 
+    image_left: true
     title: ""
     image: "/services/design-and-energy-audit/4.webp"
     image_alt: "Автономна СЕС"

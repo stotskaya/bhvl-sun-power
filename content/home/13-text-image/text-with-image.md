@@ -1,8 +1,7 @@
 ---
 weight: 130
 type: "text-with-image"
-id: "b"
-image_position: "left" 
+image_left: true
 title: ""
 image: "/home/13-text-image/4.webp"
 image_alt: "Автономна СЕС"
