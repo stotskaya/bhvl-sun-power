@@ -259,6 +259,7 @@ content:
                 label: "Склад робіт (Checklist)"
                 type: object
                 list: true
+                
                 fields:
                   - { name: item, label: "Пункт робіт", type: text }
 
@@ -267,7 +268,7 @@ content:
                 type: object
                 list: true
                 fields:
-                  - { name: tag, label: "Тег", type: string }
+                  - { name: item, label: "Тег", type: string }
 
               - { name: cta_text, label: "Текст кнопки (CTA)", type: string }
 
