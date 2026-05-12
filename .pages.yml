@@ -45,10 +45,7 @@ content:
       - name: sections
         label: "Sections"
         type: block
-        list:
-          collapsible:
-              collapsed: true
-              summary: ""
+        list: true
         blockKey: type
         blocks: 
           - name: text-with-image
