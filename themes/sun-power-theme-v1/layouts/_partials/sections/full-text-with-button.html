@@ -8,7 +8,7 @@
                                 {{ $title := .title }}
 
             {{ $words := split $title " " }}
-
+          
             {{ $total := len $words }}
 
             {{ range first (sub $total 3) $words }}
@@ -32,11 +32,11 @@
                     {{ .content | markdownify }}
                 </div>
                 
-                {{ with .button_text }}
-                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-100 mt-8 btn-open-modal">
-                    {{ . }}
+                
+                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-amber-400 hover:border-amber-400 hover:text-black transition-all shadow-lg shadow-gray-100 mt-8 btn-open-modal" data-name="{{ .title }}"  data-desc="{{ .button_text }}" data-category="">
+                    {{ .button_text }}
                 </button>
-                {{ end }}
+                
             </div>
             
         </div>

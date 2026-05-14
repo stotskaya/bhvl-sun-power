@@ -23,14 +23,14 @@
             </div>
             
             <div class="flex flex-wrap gap-4">
-                {{ with  .primary_btn }}
-                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:scale-105 transition-transform btn-open-modal">
-                    {{ . }}
+               
+                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:scale-105 hover:bg-amber-400 hover:border-amber-400 hover:text-black transition-transform   btn-open-modal" data-name="{{ .badge }}" data-desc="{{ .primary_btn }}">
+                    {{ .primary_btn }}
                 </button>
-                {{ end }}
+                 
                 
                 {{ with  .secondary_btn }}
-                <a class="glass-panel px-10 py-4 rounded-full font-medium hover:bg-white/60 transition-colors flex items-center gap-2" href="/#top-solutions">
+                <a class="button mb-5 bg-white text-black px-10 py-4 rounded-full font-medium hover:bg-amber-400 hover:border-amber-400 hover:text-black   flex items-center gap-2" href="/#top-solutions">
                     {{ . }} <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>

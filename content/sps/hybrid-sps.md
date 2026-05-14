@@ -12,7 +12,7 @@ rating: 5+ років
 attribute_1: "Світло 24/7"
 attribute_2: "Автоматична робота"
 attribute_3: "Швидкий монтаж"
-image: "/images/sps/hybrid-sps-cover.webp"
+image: "/images/sps/hybrid-sps-4.webp"
 image_alt: "Мережева сонячна електростанція"
 with_main_image: true
 main_button_text: "Отримати розрахунок"
@@ -36,7 +36,7 @@ features:
 sections:
   - type: "text-with-image"
     title: "Що таке гібридна СЕС та коли вона потрібна?"
-    image: "/images/sps/hybrid-sps-1.webp"
+    image: "/images/sps/hybrid-sps-5.webp"
     image_alt: "Автономна СЕС"
     image_left: false
 
@@ -82,7 +82,7 @@ sections:
     
   - type: "text-with-image"
     title: "Ефективність та надійність гібридної СЕС"
-    image: "/images/sps/hybrid-sps-2.webp"
+    image: "/images/sps/hybrid-sps-6.webp"
     image_alt: "Автономна СЕС"
     image_left: true
     body_text: |
@@ -108,9 +108,9 @@ sections:
       - label: "висновок інженера"
         value: "Проєкт реалізовано з пріоритетом на максимальний час резервного живлення. Завдяки високій ємності батарей А100, будинок залишається повністю функціональним навіть у хмарну погоду без доступу до мережі"
 
-    image: "/images/sps/hybrid-sps-3.webp"
+    image: "/images/sps/hybrid-sps-2.webp"
     image_alt: "Автономна СЕС"
-    button_text: "Деталі кейсу"  
+    button_text: "Деталі кейсу" 
 
 
   - type: "steps-list"
@@ -152,7 +152,7 @@ sections:
 
   - type: "text-with-image"
     title: ""
-    image: "/images/sps/grid-tied-sps-4.webp"
+    image: "/images/sps/hybrid-sps-7.webp"
     image_alt: "Автономна СЕС"
     image_left: true
     button_text: "Отримати прорахунок"

@@ -7,7 +7,7 @@ note: "Отримайте детальний прорахунок вартост
 layout: "services" 
 image: "/images/services/design-and-energy-audit-cover.webp"
 image_alt: "Автономна сонячна електростанція Lumina"
-
+main_button_text: "Отримати прорахунок"
 
 sections:
   - type: "text-with-image"

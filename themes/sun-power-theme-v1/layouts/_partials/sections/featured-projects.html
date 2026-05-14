@@ -17,8 +17,8 @@
              
             {{ range $index, $element := first 2 (where site.RegularPages "Section" "projects").ByDate.Reverse }}
              
-            <div  class="reveal relative glass-card rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5">
-                <a href="{{  .Params.link | relURL }}" class="absolute inset-0 z-10"></a>
+            <div  class="reveal relative glass-panel rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5">
+                
                 <!-- Фото блок -->
                 <div class="relative h-64 overflow-hidden group">
                   
@@ -81,9 +81,9 @@
                     </div>
 
                     <!-- Кнопка проєкту -->
-                    <a href="{{  .Params.link | relURL }}" class="mt-4 glass-panel w-full py-4 rounded-full text-xs font-bold text-gray-800 transition-all hover:bg-gray-900   flex items-center justify-center gap-2 group/btn">
+                    <a href="{{  .Params.link | relURL }}" class="border border-gray-200 mt-4 bg-white text-black w-full py-4 rounded-full text-sm font-bold text-gray-800 transition-all hover:bg-amber-400 hover:border-amber-400 hover:text-black   flex items-center justify-center gap-2 group/btn">
                         Детальніше про проєкт
-                        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover/btn:translate-x-1"></i>
+                       
                     </a>
 
                 </div>
@@ -94,7 +94,7 @@
         <!-- Футер секції -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mt-8 reveal">
             
-            <a href="/projects/" class="bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-sm hover:bg-amber-500 hover:text-black transition-all shadow-xl shadow-gray-200 flex items-center gap-2 shrink-0 group">
+            <a href="/projects/" class="bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-sm hover:bg-amber-400 hover:border-amber-400 hover:text-black transition-all shadow-xl shadow-gray-200 flex items-center gap-2 shrink-0 group">
                 Переглянути всі проєкти
                 <i data-lucide="layout-grid" class="w-4 h-4 transition-transform group-hover:rotate-90"></i>
             </a>

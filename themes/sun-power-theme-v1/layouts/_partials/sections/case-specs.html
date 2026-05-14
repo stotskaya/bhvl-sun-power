@@ -34,8 +34,8 @@
                     {{ end }}
                 </div>
                 
-                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 w-full mt-6"
-                data-name="{{ .Title }}" data-category="{{ .Params.Short_title }}"  data-desc="{{ .Params.description }}" data-img="{{ .Params.image }}">
+                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-amber-400 hover:border-amber-400 hover:text-black transition-all shadow-lg shadow-gray-200 w-full mt-6 btn-open-modal" data-name="{{ .subtitle }}" data-desc="{{ .button_text }}"
+                >
                     {{ .button_text }}
                 </button>
             </div>

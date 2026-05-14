@@ -12,7 +12,7 @@ rating: 5+ років
 attribute_1: "Швидка окупність"
 attribute_2: "Максимальна економія вдень"
 attribute_3: "Швидкий монтаж"
-image: "/images/sps/grid-tied-sps-cover.webp"
+image: "/images/sps/grid-tied-sps-9.webp"
 image_alt: "Мережева сонячна електростанція"
 with_main_image: true
 main_button_text: "Отримати розрахунок"
@@ -38,7 +38,7 @@ sections:
     id: "about-ses"
     image_left: right  
     title: "Що таке мережева СЕС та коли вона потрібна?"
-    image: "/images/sps/grid-tied-sps-1.webp"
+    image: "/images/sps/grid-tied-sps-5.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -86,7 +86,7 @@ sections:
     id: "about-ses"
     image_left: true 
     title: "Окупність та ефективність мережевої СЕС"
-    image: "/images/sps/grid-tied-sps-2.webp"
+    image: "/images/sps/grid-tied-sps-6.webp"
     image_alt: "Автономна СЕС"
 
     body_text: |
@@ -121,7 +121,7 @@ sections:
   - type: "features-grid"
     id: "about-ses"
     title: "Чому українці обирають автономні СЕС від А100"
-    image: "/images/sps/grid-tied-sps-3.webp"
+    image: "/images/sps/grid-tied-sps-7.webp"
     image_alt: "Автономна СЕС"
     features:
       - title: "Швидкий сервіс"
@@ -180,7 +180,7 @@ sections:
     id: "b"
     image_left: true 
     title: ""
-    image: "/images/sps/grid-tied-sps-4.webp"
+    image: "/images/sps/grid-tied-sps-8.webp"
     image_alt: "Автономна СЕС"
     button_text: "Отримати прорахунок"
 

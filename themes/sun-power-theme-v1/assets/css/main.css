@@ -13,7 +13,12 @@ body {
     color: var(--charcoal);
     overflow-x: hidden;
 }
-
+button, .button{
+    cursor: pointer;
+}
+button:hover svg, .button:hover svg{
+    color: black;
+}
 /* Apple Liquid Glass Aesthetics */
 .glass-panel {
     background: var(--glass-bg);
@@ -48,7 +53,7 @@ body {
 }
 
 .solar-gradient-text {
-    background: linear-gradient(135deg, #f59e0b, #fcd34d);
+    background: linear-gradient(135deg, #f59e0b, #ffc300);
     -webkit-background-clip: text;
     padding-right: 15px;
     background-clip: text;
@@ -263,3 +268,42 @@ body {
     border-radius: 50%;
     background: #f59e0b;
 }
+.btn-open-seo-modal:hover, .btn-open-seo-modal:hover svg{
+    color: #d97706;
+}
+/* Плавний ефект для вибору опцій */
+    .calc-option label {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+        cursor: pointer;
+        padding: 0.65rem 0.85rem;
+        border-radius: 0.875rem;
+        border: 1px solid transparent;
+        transition: background 0.15s, border-color 0.15s;
+        font-size: 13px;
+        font-weight: 300;
+        color: #374151;
+        line-height: 1.55;
+    }
+    /* Стиль для вибраного радіо (якщо не використовуєте Peer з Tailwind) */
+    .calc-option input:checked + label {
+       background: rgba(251, 191, 36, .10);
+        border-color: rgba(251, 191, 36, .4);
+        color: #111827;
+        box-shadow: none;
+    }
+    .calc-option input:checked + label::before {
+        border-color: #fbbf24;
+        background: radial-gradient(circle, #fbbf24 40%, transparent 40%);
+    }
+    .calc-option label::before {
+        content: '';
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 1.5px solid #d1d5db;
+        flex-shrink: 0;
+        margin-top: 2px;
+        transition: border-color 0.15s, background 0.15s;
+    }

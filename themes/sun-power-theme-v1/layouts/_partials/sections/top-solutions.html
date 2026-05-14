@@ -80,7 +80,7 @@
 
           <!-- CTA -->
           <div class="mt-auto pt-2">
-            <button class="{{ if $isFeatured}} bg-gray-900 text-white hover:bg-gray-800 {{ else }} glass-panel hover:bg-white/60 {{ end }} w-full py-3.5 rounded-full text-sm font-medium transition-all flex items-center justify-center gap-2 btn-open-modal">
+            <button class="{{ if $isFeatured}} bg-gray-900 text-white  {{ else }} bg-white text-black  {{ end }} hover:bg-amber-400 hover:border-amber-400 hover:text-black w-full py-3.5 rounded-full text-sm font-medium transition-all flex items-center justify-center gap-2 btn-open-modal" data-name="{{ .title }}"  data-desc="{{ .button_text }}">
               {{  .button_text }}
               <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </button>

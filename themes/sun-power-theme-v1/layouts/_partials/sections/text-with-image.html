@@ -1,11 +1,10 @@
-{{/* Універсальний захват даних: якщо це сторінка, беремо .Params, якщо масив — беремо . */}}
-{{ $s := .Params | default . }}
 
-<section id="{{ .File.TranslationBaseName | default (index (split $s.title " ") 0 | urlize) }}" class="py-20 px-6 section-text-with-image">
+
+<section class="py-20 px-6 section-text-with-image">
     <div class="max-w-7xl mx-auto">
         
         {{/* Тепер замість .Title або .Params.title всюди використовуємо $s.title */}}
-        {{ with $s.title }}
+        {{ with .title }}
         <h2 class="text-4xl font-light text-center mb-14 tracking-tight reveal">
              {{ $title := . }}
              {{ $words := split $title " " }}
@@ -20,22 +19,22 @@
 
         <div class="grid lg:grid-cols-2 gap-10 items-center">
             
-            <div class="glass-card rounded-[2.5rem] p-6 md:p-10 reveal delay-150 {{ if $s.image_left }} lg:order-last {{ else }} lg:order-first {{ end }}">
+            <div class="glass-card rounded-[2.5rem] p-6 md:p-10 reveal delay-150 {{ if .image_left }} lg:order-last {{ else }} lg:order-first {{ end }}">
                 
                 {{/* Використовуємо $s для контенту */}}
-                {{ $s.body_text | markdownify }}
+                {{ .body_text | markdownify }}
 
-                {{ with $s.button_text }}
-                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-100 mt-6 btn-open-modal">
-                    {{ . }}
+                {{ if .button_text }}
+                <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-amber-400 hover:border-amber-400 hover:text-black transition-all shadow-lg shadow-gray-100 mt-6 btn-open-modal" data-name="" data-desc="{{ .button_text  }}">
+                    {{ .button_text }}
                 </button>
                 {{ end }}
             
             </div>
 
-            <div class="reveal {{ if $s.image_left }} lg:order-first {{ else }} lg:order-last {{ end }}" style="height: 100%;">
+            <div class="reveal {{ if .image_left }} lg:order-first {{ else }} lg:order-last {{ end }}" style="height: 100%;">
                 <div class="glass-panel rounded-[2.5rem] overflow-hidden shadow-sm section-image" style="height: 100%;">
-                    <img src="{{ $s.image | absURL }}" alt="{{ $s.image_alt }}" class="solar-img w-full h-full object-cover" style="border-radius:2.5rem">
+                    <img src="{{ .image | absURL }}" alt="{{ .image_alt }}" class="solar-img w-full h-full object-cover" style="border-radius:2.5rem">
                 </div>
             </div>
         </div>

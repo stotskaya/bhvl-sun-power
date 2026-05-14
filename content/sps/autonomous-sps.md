@@ -15,7 +15,7 @@ attribute_3: Швидкий монтаж
 main_button_text: "Отримати розрахунок"
 specs_button_text: "Дивитись комплекти"
 with_main_image: true
-image: /images/sps/autonomous-sps-1.webp
+image: /images/sps/autonomous-sps-5.webp
 image_alt: Автономна сонячна електростанція Lumina
 
 features:
@@ -35,7 +35,7 @@ features:
 sections:
   - type: text-with-image
     title: Що таке автономна СЕС та коли вона потрібна?
-    image: /images/sps/autonomous-sps-cover.webp
+    image: /images/sps/autonomous-sps-6.webp
     image_alt: Автономна СЕС
     image_left: false
     body_text: >+
@@ -82,7 +82,7 @@ sections:
     installation_text: Монтаж та налаштування системи входять у вартість рішення «під ключ».
   - type: text-with-image
     title: Ефективність автономної СЕС
-    image: /images/sps/autonomous-sps-2.webp
+    image: /images/sps/autonomous-sps-7.webp
     image_alt: Автономна СЕС
     image_left: false
     body_text: >-
@@ -132,7 +132,7 @@ sections:
   - type: features-grid
     id: about-ses
     title: Чому українці обирають автономні СЕС від А100
-    image: /images/sps/autonomous-sps-3.webp
+    image: /images/sps/autonomous-sps-8.webp
     image_alt: Автономна СЕС
     features:
       - title: Швидкий сервіс
@@ -200,7 +200,7 @@ sections:
           власники бренду A100, тому гарантуємо якість кожної комірки. Маємо
           власні монтажні бригади по всій Україні.
   - type: text-with-image
-    image: /images/sps/autonomous-sps-4.webp
+    image: /images/sps/autonomous-sps-9.webp
     image_alt: Автономна СЕС
     image_left: false
     body_text: >-

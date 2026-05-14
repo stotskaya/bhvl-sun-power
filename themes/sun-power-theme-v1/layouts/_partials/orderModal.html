@@ -1,80 +1,90 @@
-<div id="orderModal" class="modal-wrapper" role="dialog" aria-modal="true" aria-labelledby="mpName">
+<div id="orderModal" class="modal-wrapper " role="dialog" aria-modal="true" aria-labelledby="mpName">
 
   <div id="modalBackdrop"></div>
 
   <div id="modalPanel">
 
-    <!-- close btn -->
-    <button id="modalClose" aria-label="Закрити"
-      style="position:absolute;top:1.25rem;right:1.25rem;z-index:10;width:2.25rem;height:2.25rem;border-radius:9999px;background:rgba(255,255,255,.85);border:1px solid #f3f4f6;display:flex;align-items:center;justify-content:center;color:#9ca3af;cursor:pointer;">
-      <i data-lucide="x" class="w-4 h-4"></i>
+    
+    <button id="modalClose" aria-label="Закрити" style="position:absolute;top:1.25rem;right:1.25rem;z-index:10;width:2.25rem;height:2.25rem;border-radius:9999px;background:rgba(255,255,255,.85);border:1px solid #f3f4f6;display:flex;align-items:center;justify-content:center;color:#9ca3af;cursor:pointer;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-4 h-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
     </button>
 
-    <!-- drag handle on mobile -->
-    <div style="display:flex;justify-content:center;padding:1rem 0 .25rem;" class="sm:hidden">
-      <div style="width:2.5rem;height:.25rem;border-radius:9999px;background:#e5e7eb;"></div>
-    </div>
+    
+    
 
-    <div style="padding:1.5rem 1.5rem 2rem;" class="sm:!p-10">
+    <div style="padding:1.5rem 1.5rem 2rem;" class="sm:!p-10 grid grid-cols-2 gap-10">
 
-      <!-- ── HEADER ── -->
+     <div class="flex flex-col justify-between
+    "> 
       <div style="margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid #f3f4f6;">
         <span style="display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .85rem;border-radius:9999px;background:#f0fdf4;color:#15803d;font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.9rem;">
           <span style="width:.45rem;height:.45rem;border-radius:9999px;background:#22c55e;display:inline-block;animation:pulse 2s infinite;"></span>
           Завжди на зв'язку
         </span>
         <h2 id="mpName" style="font-size:clamp(1.3rem,4vw,1.7rem);font-weight:300;line-height:1.3;letter-spacing:-.02em;margin-bottom:.6rem;color:#111827;">
-          Залиште заявку —
+          Залиште заявку —<br>
+
           <span style="background:linear-gradient(135deg,#f59e0b,#fbbf24,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;font-weight:500;">ми відповімо.</span>
         </h2>
         <p style="font-size:.875rem;color:#6b7280;font-weight:300;line-height:1.65;max-width:30rem;">
-          Залиште заявку, і наші фахівці зв'яжуться з вами, щоб відповісти на всі ваші питання та допомогти.
+          Наші фахівці зв'яжуться з вами, щоб відповісти на всі ваші питання та допомогти.
         </p>
       </div>
+      <div style="display:flex;flex-direction: column;gap:.8rem;border-bottom:1px solid #f3f4f6;align-items:flex-start; ">
+        <p style="font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#9ca3af;">Ваш запит</p><div class="glass-panel p-5" style="border-radius: 20px; padding: 15px 20px; width: 100%;"
+>
+          <div style="color: rgb(180, 83, 9); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; width: fit-content;">{{ if .Params.short_title }}{{ .Params.short_title }} {{else}} A100 {{end}}</div>
+         <p id="mpFullName" style="font-size:0.85rem;font-weight:500;color:#111827;margin-bottom:.2rem;"></p>
+         <p id="mpDesc" style="font-size:.8rem;color:#6b7280;font-weight:300;line-height:1.55;"></p>
+         <p id="mpObject" style="font-size:.8rem;color:#6b7280;font-weight:300;line-height:1.55;"></p>
+         <p id="mpTask" style="font-size:.8rem;color:#6b7280;font-weight:300;line-height:1.55;"></p>
+         <p id="mpPower" style="font-size:.8rem;color:#6b7280;font-weight:300;line-height:1.55;"></p>
+        
+        </div>
+      </div>
+      
+      
+        
 
-      <!-- ── FORM + MANAGER ── -->
-      <div style="display:grid;gap:2rem;" class="sm:grid-cols-[1fr_auto]">
+      
 
-        <!-- FORM -->
-        <div>
-          <p style="font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#9ca3af;margin-bottom:1rem;">Ваші дані</p>
-          <form id="orderForm" novalidate style="display:flex;flex-direction:column;gap:.9rem;">
+      </div>
+    <div>
+          <p style="font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#9ca3af;margin-bottom:.8rem;">Ваші дані</p>
+          <form id="orderForm" novalidate="" style="display:flex;flex-direction:column;gap:.9rem;">
 
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem;">
+            <div style="display:grid;;gap:.9rem;">
               <div>
-                <label style="display:block;font-size:.8rem;font-weight:500;color:#374151;margin-bottom:.35rem;">Ім'я <span style="color:#f59e0b;">*</span></label>
-                <input name="nm" type="text" required autocomplete="name" placeholder="Олена Коваль" class="lm-input">
+                
+                <input name="nm" type="text" required="" autocomplete="name" placeholder="Олена Коваль" class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl
+outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400">
                 <p class="ferr" style="font-size:.7rem;color:#ef4444;margin-top:.3rem;display:none;"></p>
               </div>
               <div>
-                <label style="display:block;font-size:.8rem;font-weight:500;color:#374151;margin-bottom:.35rem;">Телефон <span style="color:#f59e0b;">*</span></label>
-                <input name="ph" type="tel" required autocomplete="tel" inputmode="tel" placeholder="+38 (050) 000-0000" class="lm-input">
+                
+                <input name="ph" type="tel" required="" autocomplete="tel" inputmode="tel" placeholder="+38 (050) 000-0000" class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl
+outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400">
                 <p class="ferr" style="font-size:.7rem;color:#ef4444;margin-top:.3rem;display:none;"></p>
               </div>
             </div>
+           
 
             <div>
-              <label style="display:block;font-size:.8rem;font-weight:500;color:#374151;margin-bottom:.35rem;">Email <span style="color:#f59e0b;">*</span></label>
-              <input name="em" type="email" required autocomplete="email" inputmode="email" placeholder="olena@mail.com" class="lm-input">
-              <p class="ferr" style="font-size:.7rem;color:#ef4444;margin-top:.3rem;display:none;"></p>
+              
+              <textarea name="notes" rows="3" placeholder="Зручний час, тип покриття даху…" class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl
+outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400" style="resize:none;"></textarea>
             </div>
 
-            <div>
-              <label style="display:block;font-size:.8rem;font-weight:500;color:#374151;margin-bottom:.35rem;">Коментар</label>
-              <textarea name="notes" rows="3" placeholder="Зручний час, тип покриття даху…" class="lm-input" style="resize:none;"></textarea>
-            </div>
-
-            <!-- consent -->
+            
             <div>
               <label style="display:flex;align-items:flex-start;gap:.65rem;cursor:pointer;">
                 <div id="cbBox" class="cb-box">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24"
-                       fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
                 <input id="cbInput" type="checkbox" style="position:absolute;opacity:0;pointer-events:none;">
-                <span style="font-size:.75rem;color:#6b7280;font-weight:300;line-height:1.6;padding-top:.05rem;">
+                <span style="font-size: 11px;color:#6b7280;font-weight:300;line-height: 1.4;padding-top:.05rem;">
                   Я даю згоду на обробку моїх персональних даних відповідно до
                   <a href="privacy-policy.html" target="_blank" style="color:#d97706;font-weight:500;">Політики конфіденційності</a>.
                   <span style="color:#f59e0b;">*</span>
@@ -87,34 +97,25 @@
 
             <div id="fStatus" style="display:none;border-radius:.75rem;padding:.75rem 1rem;font-size:.825rem;"></div>
 
-            <button id="fSubmit" type="submit"
-              style="width:100%;background:#111827;color:#fff;padding:.95rem 1.5rem;border-radius:9999px;font-size:.875rem;font-weight:500;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:0 8px 24px rgba(0,0,0,.12);transition:background .15s;">
-              <i data-lucide="send" class="w-4 h-4"></i>
-              Залишити заявку
-            </button>
+            <button id="fSubmit" type="submit" style="width:100%;background:#111827;color:#fff;padding:.95rem 1.5rem;border-radius:9999px;font-size:.875rem;font-weight:500;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:0 8px 24px rgba(0,0,0,.12);transition:background .15s;"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Залишити заявку</button>
 
-            <p style="text-align:center;font-size:.68rem;color:#9ca3af;">
-              Поля, позначені <span style="color:#f59e0b;">*</span>, є обов'язковими. Відповідаємо протягом 24 год.
+            <p style="text-align:center;font-size: 10px;color:#9ca3af;">
+              Поля, позначені <span style="color:#f59e0b;">*</span>, є обов'язковими.
+    Відповідаємо протягом 24 год.
             </p>
           </form>
-        </div>
+        </div></div>
 
-      
-
-      </div>
-    </div>
-
-    <!-- success overlay -->
+    
     <div id="orderSuccess">
       <div style="width:4rem;height:4rem;border-radius:9999px;background:#f0fdf4;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
-        <i data-lucide="check" style="width:2rem;height:2rem;color:#22c55e;"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" aria-hidden="true" style="width:2rem;height:2rem;color:#22c55e;" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"></path></svg>
       </div>
       <h3 style="font-size:1.4rem;font-weight:500;margin-bottom:.6rem;color:#111827;">Заявку отримано!</h3>
       <p style="font-size:.875rem;color:#6b7280;font-weight:300;line-height:1.6;max-width:17rem;">
         Олена зв'яжеться з вами впродовж 24 годин, щоб обговорити деталі та терміни.
       </p>
-      <button id="successClose"
-        style="margin-top:1.75rem;background:#111827;color:#fff;padding:.7rem 2rem;border-radius:9999px;font-size:.875rem;font-weight:500;border:none;cursor:pointer;">
+      <button id="successClose" style="margin-top:1.75rem;background:#111827;color:#fff;padding:.7rem 2rem;border-radius:9999px;font-size:.875rem;font-weight:500;border:none;cursor:pointer;">
         Закрити
       </button>
     </div>
@@ -151,26 +152,16 @@
     success.classList.remove('show');
     cbBox.classList.remove('on'); cbInput.checked = false;
     fSubmit.disabled = false;
+    
     if (d != null){
     fSubmit.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Залишити заявку';
 
     document.getElementById('mpFullName').textContent = d.name;
-    document.getElementById('mpCat').textContent      = d.cat;
-    document.getElementById('mpDesc').textContent     = d.desc;
+   document.getElementById('mpDesc').textContent      = d.desc;
     
-
-     const thumb = document.getElementById('mpThumb');
-    thumb.innerHTML = '';
-    
-      if (d.img) {
-        const img = document.createElement('img');
-        img.src = d.img; img.alt = d.name;
-        img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
-        thumb.appendChild(img);
-      } else {
-        thumb.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:#d1d5db"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>';
-      }
+   
     } 
+   
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
   }
@@ -180,7 +171,7 @@
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
   }
-  document.getElementById('modalClose').addEventListener('click', closeModal);
+  modal.querySelector('#modalClose').addEventListener('click', closeModal);
   document.getElementById('successClose').addEventListener('click', closeModal);
   backdrop.addEventListener('click', closeModal);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
@@ -198,6 +189,37 @@
     btn.addEventListener('click', e => {
       e.stopPropagation();
       const card = null;
+       document.getElementById('mpPower').textContent      = "";
+   document.getElementById('mpObject').textContent      = "";
+   document.getElementById('mpTask').textContent      = "";
+       const closestBtn = btn.closest('#calcForm');
+       console.log(closestBtn);
+     if (closestBtn != null) {
+      const checkedRadios = document.querySelectorAll('#calcForm input[type="radio"]:checked');
+
+            checkedRadios.forEach(radio => {
+               
+                const radioName = radio.name;
+              
+                const label = document.querySelector(`label[for="${radio.id}"]`);
+                if (!label) return; 
+
+                const selectedText = label.textContent.trim();
+
+               
+                const formattedName = radioName
+                    .replace(/[-_]([a-z])/g, match => match[1].toUpperCase()) // перетворює підкреслення
+                    .replace(/^[a-z]/, match => match.toUpperCase());         // робить першу літеру великою
+                
+                const targetId = `mp${formattedName}`;
+                const targetElement = document.getElementById(targetId);
+                  console.log(targetId);
+               
+                if (targetElement) {
+                    targetElement.textContent = selectedText;
+                }
+            });
+    } 
        openModal(card);
     });
   });
@@ -207,6 +229,8 @@
     form.querySelectorAll('.lm-input').forEach(i => i.classList.remove('err'));
     form.querySelectorAll('.ferr').forEach(p => p.style.display = 'none');
     cbErr.style.display = 'none';
+  
+
   }
   function fieldErr(inp, msg) {
     inp.classList.add('err');
@@ -217,10 +241,9 @@
     clearErrs(); let ok = true;
     const nm = form.querySelector('[name="nm"]');
     const ph = form.querySelector('[name="ph"]');
-    const em = form.querySelector('[name="em"]');
+
     if (!nm.value.trim()) { fieldErr(nm, "Будь ласка, вкажіть ваше ім'я."); ok = false; }
     if (!ph.value.trim()) { fieldErr(ph, 'Будь ласка, вкажіть телефон.');    ok = false; }
-    if (!/\S+@\S+\.\S+/.test(em.value)) { fieldErr(em, 'Введіть коректний email.'); ok = false; }
     if (!cbInput.checked) { cbErr.style.display = 'block'; ok = false; }
     return ok;
   }

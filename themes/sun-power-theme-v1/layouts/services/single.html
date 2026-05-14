@@ -28,9 +28,10 @@
                     </p>
                     <div class="mb-6 text-base font-medium ">{{ .Params.note }}</div>
                     <div class="flex flex-col sm:flex-row gap-4">
-                    <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 btn-open-modal"
+                    <button class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-amber-400 hover:border-amber-400 hover:text-black transition-all shadow-lg shadow-gray-200 btn-open-modal" data-name="{{.Title}}" data-desc="{{.Params.main_button_text}}" 
                      >
-                        Отримати прорахунок
+                     {{.Params.main_button_text}}
+                        
                     </button>
                 </div>
                 </div>
