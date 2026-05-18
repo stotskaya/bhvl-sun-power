@@ -266,16 +266,7 @@
               {{ .Params.description | plainify | truncate 30 }}
             </p>
 
-            {{ if .Params.price }}
-            <div class="mb-3">
-              <span
-                class="text-xl font-light"
-                aria-label="Price {{ .Params.price }}"
-              >
-                {{ .Params.price }}
-              </span>
-            </div>
-            {{ end }}
+           
 
             <div
               class="flex items-center justify-between relative z-20 gap-2 flex-col sm:flex-row"
