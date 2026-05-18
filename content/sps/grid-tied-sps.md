@@ -26,11 +26,11 @@ features:
   - title: "5 років гарантії"
     text: "Офіційна гарантія та сервісний супровід станцій по всій Україні."
     icon: "shield-check"
-    color: "blue"
+    color: "amber"
   - title: "Рішення під ключ"
     text: "Професійне проєктування та інтеграція системи для максимального заміщення споживання"
     icon: "leaf"
-    color: "green"
+    color: "amber"
 
 
 sections:
@@ -132,34 +132,36 @@ sections:
       - title: "Контроль якості"
         subtitle: "Використовуємо тільки перевірене обладнання Tier 1 з найвищим ККД на ринку."
         icon: "shield-check"
-        bg: "bg-blue-50"
-        text: "text-blue-500"
+        bg: "bg-amber-50"
+        text: "text-amber-500"
       - title: "Сертифіковані інженери"
         subtitle: "Сертифіковані інженери для безпечного монтажу та професійної настройки інверторів."
         icon: "graduation-cap"
-        bg: "bg-rose-50"
-        text: "text-rose-500"
+        bg: "bg-amber-50"
+        text: "text-amber-500"
       - title: "Власний склад"
         subtitle: "Швидка відправка та монтаж систем у будь-якому регіоні."
         icon: "package"
-        bg: "bg-purple-50"
-        text: "text-purple-500"
+        bg: "bg-amber-50"
+        text: "text-amber-500"
       - title: "Преміальні компоненти"
         subtitle: "Використовуємо панелі Tier 1 та інвертори Deye для максимальної генерації."
         icon: "cpu"
-        bg: "bg-green-50"
-        text: "text-green-500"
+        bg: "bg-amber-50"
+        text: "text-amber-500"
       - title: "Фіксований кошторис"
         subtitle: "Жодних прихованих переплат — ціна не змінюється після підписання договору."
         icon: "file-text"
-        bg: "bg-red-50"
-        text: "text-red-500"
+        bg: "bg-amber-50"
+        text: "text-amber-500"
 
   - type: "full-text-with-button"
     id: "energy-independence"
     title: "Економія та окупність доступні вже сьогодні"
     content: |
-      Скористайтеся пільговим кредитуванням від ПриватБанку під 0,1% річних на мережеві системи А100. Ми беремо на себе обслуговування підключеного обладнання під час всього періоду експлуатації.
+      Обладнання А100 підходить під державні програми фінансування бізнесу (зокрема «5-7-9%»). Ви оформлюєте кредит у ПриватБанку, а ми готуємо точний техніко-економічний розрахунок для схвалення вашої заявки та будуємо станцію «під ключ».
+
+      Програми кредитування енергонезалежності бізнесу на сайті ПриватБанку: https://privatbank.ua/business/energo-nezalegnist
     button_text: "Отримати консультацію"
 
   - type: "faq"
@@ -180,7 +182,7 @@ sections:
     id: "b"
     image_left: true 
     title: ""
-    image: "/images/sps/grid-tied-sps-8.webp"
+    image: "/images/services/service-and-cleaning-4.webp"
     image_alt: "Автономна СЕС"
     button_text: "Отримати прорахунок"
 

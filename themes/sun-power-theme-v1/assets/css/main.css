@@ -16,7 +16,9 @@ body {
 button, .button{
     cursor: pointer;
 }
- 
+ p a{
+  color:   #FDB813;
+ }
 /* ── Ambient background ───────────────────────────────── */
     .bg-ambient {
       position: fixed; inset: 0; z-index: -1;

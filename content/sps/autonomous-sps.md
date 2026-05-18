@@ -12,7 +12,7 @@ rating: 5+ років
 attribute_1: Енергонезалежність
 attribute_2: Власний склад
 attribute_3: Швидкий монтаж
-main_button_text: "Отримати розрахунок"
+main_button_text: "Розрахувати окупність"
 specs_button_text: "Дивитись комплекти"
 with_main_image: true
 image: /images/sps/autonomous-sps-5.webp
@@ -27,11 +27,11 @@ features:
   - title: 5 років гарантії
     text: Офіційна підтримка від виробника та швидкий сервіс під ключ.
     icon: shield-check
-    color: blue
+    color: amber
   - title: Рішення під ключ
     text: Професійне проєктування, монтаж та безкоштовний енергоаудит вашого об'єкта.
     icon: leaf
-    color: green
+    color: amber
 sections:
   - type: text-with-image
     title: Що таке автономна СЕС та коли вона потрібна?
@@ -50,7 +50,8 @@ sections:
 
       ### Де використовувати автономну СЕС:
 
-
+      - Пасіки, ферми та сільськогосподарські угіддя.
+      
       - Віддалені дачні будинки та котеджі.
 
       - Кемпінги, глемпінги та зони відпочинку.
@@ -169,9 +170,12 @@ sections:
         text: text-red-500
   - type: full-text-with-button
     title: Енергонезалежність доступна вже сьогодні
-    content: Скористуйтесь послугою пільгового кредитування від **ПриватБанку під
+    content: |
+      Скористуйтесь послугою пільгового кредитування від **ПриватБанку під
       0,1% річних**. Ми беремо на себе обслуговування підключеного обладнання
       під час всього періоду експлуатації.
+
+      Деталі кредитування “Джерела енергії” на сайті ПриватБанку: https://privatbank.ua/kredyty/dzherela-enerhiyi
     button_text: Отримати консультацію
   - type: faq
     title: FAQ
@@ -200,9 +204,10 @@ sections:
           власники бренду A100, тому гарантуємо якість кожної комірки. Маємо
           власні монтажні бригади по всій Україні.
   - type: text-with-image
-    image: /images/sps/autonomous-sps-9.webp
+    image: "/images/services/service-and-cleaning-4.webp"
     image_alt: Автономна СЕС
     image_left: false
+    button_text: "Отримати прорахунок"
     body_text: >-
       ## Готові забезпечити об’єкт надійною енергією?
 
