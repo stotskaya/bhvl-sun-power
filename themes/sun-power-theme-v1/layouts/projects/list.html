@@ -1,116 +1,315 @@
 {{ define "main" }}
+{{ $products := .RegularPagesRecursive }}
 {{ $categories := slice }}
-{{ range (where .Site.RegularPages "Section" "projects") }}
+{{ range $products }}
   {{ if .Params.category }}
     {{ $categories = $categories | append .Params.category }}
   {{ end }}
-  
 {{ end }}
-<div id="insights" class="py-28 px-6 bg-white/30 backdrop-blur-md" aria-labelledby="insights-title">
+{{ $categories = $categories | uniq }}
+
+<section id="projects" class="py-28 px-6 backdrop-blur-md" aria-labelledby="catalog-title">
     <div class="max-w-7xl mx-auto">
         {{ partial "breadcrumbs.html" . }} 
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-2 gap-8  ">
-            <div>
-                <h1 id="insights-title" class="text-4xl font-light ">{{ .Params.Title}}</h1>
-                <p class="text-gray-500 font-light max-w-2xl">{{ .Params.Subtitle }}</p>
+        
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-8  ">
+            <div class="w-full">
+                <h2 id="catalog-title" class="text-4xl font-light mb-4">{{ .Params.Title }}</h2>
+                <p class="text-gray-500 font-light">{{ .Params.Subtitle }}</p>
             </div>
-            <div class="flex flex-col gap-4 filters-wrapper">
-                <div class="flex flex-wrap items-center justify-start gap-2" aria-label="Categories">
-                    <button type="button" class="glass-card px-5 py-2 rounded-full text-sm font-medium hover:bg-white/80 transition-colors active" data-category="all" aria-pressed="true">Усі</button>
-                    {{ range ($categories | uniq) }}
-                    <button type="button" class="glass-card px-5 py-2 rounded-full text-sm font-medium hover:bg-white/80 transition-colors" data-category="{{ . | lower }}" aria-pressed="false">{{ . }}</button>
-                    {{ end }}
-                </div>
-            </div>
-        </div>
-        <div class=" flex flex-row md:flex-row md:items-center md:justify-between gap-4 active mb-10">
-            <div>
-              
-                <p class="text-lg font-light">
-                    <span id="resultsCount">0</span> проєктів
-                </p>
-            </div>
-            <div class="flex items-center gap-4">
-                <p id="resultsStatus" class="text-sm text-gray-500 font-light" aria-live="polite"></p>
-                <button id="clearFilters" type="button" class="text-sm font-medium flex items-center gap-2 border-b border-black pb-1 hover:text-amber-600 transition-colors">
-                    Очистити <i data-lucide="x" class="w-4 h-4" aria-hidden="true"></i>
-                </button>
-            </div>
-        </div>
-      
-        <div id="insightsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">  
-            {{ range .Paginator.Pages }}
             
-            <article class="reveal relative glass-card rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5" 
-                    data-category="{{ .Params.category | default "Дім" }}" 
-                   >
-                <a href="{{ .Params.link | relURL }}" class="absolute inset-0 z-10"></a>
-                <!-- Фото блок -->
-                <div class="relative h-64 overflow-hidden group">
-                    
-                    
-                        <p class="text-[10px] inline-block px-4 py-1.5 w-fit rounded-full text-amber-600 bg-amber-50 text-xs font-semibold tracking-widest uppercase" style="position:absolute; bottom: 5px; left: 20px; z-index: +1;">{{ .Params.category }}</p>
-                    <!-- Реальне фото об'єкта -->
-                    <div class="absolute inset-0 w-full h-full overflow-hidden">
-                         {{ if .Params.image }}
-                        <img src="{{ .Params.image }}" 
-                            alt="{{ .Title }}" 
-                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    {{ else }}
-                        <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300">No Image</div>
+            {{ if $categories }}
+            <div class="swiper categoriesSwiper w-[calc(100vw-3rem)] -mx-6 px-6 lg:mx-0 lg:px-0">
+                <div class="swiper-wrapper lg:flex lg:flex-wrap lg:gap-2 lg:justify-end">
+                    <div class="swiper-slide !w-auto">
+                        <a href="#" data-category="all" class="category-filter-btn px-5 py-2.5 rounded-full border border-amber-500 text-amber-500 bg-white text-sm font-medium transition-all whitespace-nowrap block">
+                            Усі
+                        </a>
+                    </div>
+                    {{ range $categories }}
+                    <div class="swiper-slide !w-auto">
+                        <a href="#" data-category="{{ . }}" class="category-filter-btn px-5 py-2.5 rounded-full border border-gray-200 hover:border-amber-500 hover:text-amber-500 text-gray-600 bg-white/50 backdrop-blur-sm text-sm font-medium transition-all whitespace-nowrap block">
+                            {{ . }}
+                        </a>
+                    </div>
                     {{ end }}
-                    </div>
-
-                    <!-- Amber shimmer смуга -->
-                    <div class="absolute bottom-0 left-0 right-0 h-0.5 amber-shimmer z-20"></div>
                 </div>
-
-                <!-- Тіло картки -->
-                <div class="p-7 flex flex-col gap-5 flex-1 bg-white/40 backdrop-blur-sm">
-
-                    <!-- Заголовок та клієнт -->
-                    <div class="flex-1">
-                        
-                        <h3 class="text-xl font-bold text-gray-900 leading-snug mb-1">{{ .Params.title }}</h3>
-                        <div class="text-[13px] text-gray-500 font-light">{{ .Params.location }}</div>
-                    </div>
-<div class="flex flex-col  gap-2 "> 
-                     {{ range .Params.stats }}
-                        <div class="flex items-center justify-between gap-4">
-                        <div class="flex flex-row items-center gap-3">
-                            <i data-lucide="{{ .icon }}" class="w-4 h-4 text-amber-500"></i>
-                            <span class="text-[12.5px] text-gray-400  ">{{ .label }}</span>
-                            
-                        </div>
-                        <div class="text-[12.5px] font-normal">{{ .value }}</div>
-                        </div>
-                    {{ end }}
-                    </div>
-                  
-                    <!-- Кнопка проєкту -->
-                    <a href="{{ .Params.link | relURL }}" class=" w-full  text-xs font-bold text-gray-800 transition-all hover:bg-gray-900   flex items-center justify-center gap-2 group/btn">
-                        Детальніше
-                        
-                    </a>
-
-                </div>
-      
-            </article>
-            {{ end }}
-        </div>
-        <nav id="insightsPagination" class="mt-16 flex items-center justify-center" aria-label="Insights pagination">
-            <div class="glass-panel rounded-full px-5 py-3 flex items-center gap-3">
-                <button id="prevPage" type="button" class="text-sm font-medium flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/60 transition-colors opacity-50 cursor-not-allowed" disabled="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-left" class="lucide lucide-chevron-left w-4 h-4" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
-                     
-                </button>
-                <div id="pageNumbers" class="flex items-center gap-2"><button type="button" class="w-10 h-10 rounded-full text-sm font-medium hover:bg-white/60 transition-colors bg-gray-900 text-white" aria-current="page">1</button><button type="button" class="w-10 h-10 rounded-full text-sm font-medium hover:bg-white/60 transition-colors glass-card">2</button></div>
-                <button id="nextPage" type="button" class="text-sm font-medium flex items-center gap-2 px-3 py-2 rounded-full hover:bg-white/60 transition-colors">
-                     
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" class="lucide lucide-chevron-right w-4 h-4" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
-                </button>
             </div>
-        </nav>   
+            {{ end }}
+            
+        </div>
+       
+        <div class="lg:hidden mb-6  ">
+            <button id="filtersToggle" type="button" class="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-full glass-panel font-medium transition-all hover:bg-white" aria-expanded="false" aria-controls="filtersPanel">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="2" x2="6" y1="14" y2="14"/><line x1="10" x2="14" y1="8" y2="8"/><line x1="18" x2="22" y1="16" y2="16"/></svg>
+                Фільтри <span id="mobileFiltersBadge" class="hidden bg-amber-500 text-white rounded-full px-2 py-0.5 text-[10px] font-bold">0</span>
+            </button>
+        </div>
+
+        <div class="grid lg:grid-cols-[320px_1fr] gap-8 items-start">
+          
+            <aside id="filtersPanel" class="hidden fixed inset-0 z-50 bg-white/95 backdrop-blur-xl p-6 overflow-y-auto lg:static lg:bg-transparent lg:backdrop-blur-none lg:p-6 lg:overflow-visible lg:block glass-panel lg:rounded-[2.5rem]">
+                <div class="sidebar-header flex-col items-start !flex mb-6 lg:mb-0">
+                    <div class="flex items-center justify-between w-full">
+                        <h2 class="text-2xl lg:text-base font-medium lg:font-normal">Фільтри</h2>
+                        <div class="flex items-center gap-4">
+                            <button id="resetFilters" type="button" class="hidden text-sm text-gray-500 hover:text-black transition-colors">Очистити</button>
+                            <button id="closeFiltersBtn" type="button" class="lg:hidden text-gray-500 hover:text-black bg-gray-100 rounded-full p-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="activeFiltersContainer" class="flex flex-wrap gap-2 mt-4 empty:hidden w-full"></div>
+                    <div id="resultsCountContainer" class=" mt-4 text-sm w-full"><span class="sidebar-meta font-light text-gray-500">Знайдено: </span><span class="font-medium"><span id="resultsCount"></span> проєктів</span></div>
+                </div>
+                
+                <form id="filtersForm" data-json-url="/projects/index.json">
+    {{ $filters := dict }}
+
+    {{ range $products }}
+        {{ $specsArray := default slice }}
+        {{ if .Params.specs }}
+            {{ $specsArray = .Params.specs }}
+        {{ else if .Params.parameters }}
+            {{ $specsArray = .Params.parameters }}
+        {{ end }}
+
+        {{ range $specsArray }}
+            {{ $key := .key }}
+            {{ $val := .val }}
+            
+            {{ if not (index $filters $key) }}
+                {{ $filters = merge $filters (dict $key (slice $val)) }}
+            {{ else }}
+                {{ $currentVals := index $filters $key }}
+                {{ if not (in $currentVals $val) }}
+                    {{ $newVals := $currentVals | append $val }}
+                    {{ $filters = merge $filters (dict $key $newVals) }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    {{ range $name, $values := $filters }}
+    <fieldset class="mb-8">
+        <legend>
+            <span class="legend-text">{{ $name }}</span>
+            <span class="legend-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9l6 6 6-6"/>
+                </svg>
+            </span>
+        </legend>
+        <div class="filter-body">
+            <div class="filter-body-inner">
+                {{ $filterName := $name | lower | anchorize }}
+                {{ range $values }}
+                <label>
+                    <input type="checkbox" name="{{ $filterName }}" value="{{ . }}">
+                    <span>{{ . }}</span>
+                </label>
+                {{ end }}
+            </div>
+        </div>
+    </fieldset>
+    {{ end }}
+
+    {{ if $categories }}
+    <fieldset class="mb-8">
+        <legend class="is-open">
+            <span class="legend-text">Категорія</span>
+            <span class="legend-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9l6 6 6-6"/>
+                </svg>
+            </span>
+        </legend>
+        <div class="filter-body is-open">
+            <div class="filter-body-inner" id="categoryFilterContainer">
+                {{ range $categories }}
+                <label>
+                    <input type="checkbox" name="category" value="{{ . }}">
+                    <span>{{ . }}</span>
+                </label>
+                {{ end }}
+            </div>
+        </div>
+    </fieldset>
+    {{ end }}
+
+</form>
+            </aside>
+
+            <section aria-label="Catalog results">
+                <div id="noResults" class="hidden glass-panel rounded-[2.5rem] p-6 md:p-10 text-center">
+                    <p class="text-xl font-medium mb-3">Не знайдено збігів</p>
+                    <p class="text-gray-500 font-light mb-8">Спробуйте змінити критерії фільтрації.</p>
+                    <button type="button" class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200" id="noResultsReset">
+                        Очистити фільтри
+                    </button>
+                </div>
+       
+                <div id="catalogGrid" class="grid sm:grid-cols-2 xl:grid-cols-2 gap-6" itemscope itemtype="https://schema.org/ItemList">  
+                    {{ range $products }}
+                    <article class="  relative glass-card rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5 h-fit" 
+                            data-category="{{ .Params.category | default "Дім" }}" data-id="{{ .File.UniqueID }}" >
+                        <meta itemprop="position" content="{{ .File.UniqueID }}">
+                   
+                        <!-- Фото блок -->
+                        <div class="relative h-64 overflow-hidden group">
+                            
+                            
+                              <div class="bg-amber-50 rounded-xl px-3.5 py-2 flex items-center gap-2" style="
+                                    position: absolute;
+                                    Z-INDEX: +1;
+                                    left: 20px;
+                                    bottom: 20px;
+                                    color: #111827;
+                                    padding: 10px;
+                                ">
+                                {{ if eq (lower .Params.category) "бізнес"}}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building-2" aria-hidden="true" class="lucide lucide-building-2 w-3.5 h-3.5 text-amber-400"><path d="M10 12h4"></path><path d="M10 8h4"></path><path d="M14 21v-3a2 2 0 0 0-4 0v3"></path><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"></path><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path></svg>
+                                <span class="text-xs font-medium  ">Бізнес</span>
+                                {{ else if eq (lower .Params.category) "дім"}}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="home" aria-hidden="true" class="lucide lucide-home w-3.5 h-3.5 text-amber-400"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                                <span class="text-xs font-medium  ">Дім</span>
+                                {{ else }}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building" aria-hidden="true" class="lucide lucide-building w-3.5 h-3.5 text-amber-400"><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M12 6h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M16 6h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path><path d="M8 6h.01"></path><path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path><rect x="4" y="2" width="16" height="20" rx="2"></rect></svg>
+                                <span class="text-xs font-medium  ">Осбб</span>
+                                {{end}}
+                                </div>
+                            <div class="absolute inset-0 w-full h-full overflow-hidden">
+                                 {{ if .Params.image }}
+                                <img src="{{ .Params.image }}" 
+                                    alt="{{ .Title }}" 
+                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                            {{ else if .Params.images }}
+                                {{ $firstImage := index .Params.images 0 }}
+                                <img src="{{ $firstImage }}" alt="{{ .Title }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                            {{ else }}
+                                <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300">No Image</div>
+                            {{ end }}
+                            </div>
+
+                            <!-- Amber shimmer смуга -->
+                            <div class="absolute bottom-0 left-0 right-0 h-0.5 amber-shimmer z-20"></div>
+                        </div>
+
+                        <!-- Тіло картки -->
+                        <div class="p-7 flex flex-col gap-5 flex-1 bg-white/40 backdrop-blur-sm">
+
+                            <!-- Заголовок та клієнт -->
+                            <div class="flex-1">
+                                
+                                <h3 class="text-xl font-bold text-gray-900 leading-snug mb-1" itemprop="name">{{ .Params.title | default .Title }}</h3>
+                                <div class="text-[13px] text-gray-500 font-light">{{ .Params.location }}</div>
+                            </div>
+        <div class="flex flex-col gap-2 "> 
+                             {{ range .Params.stats }}
+                                <div class="flex items-center justify-between gap-4">
+                                <div class="flex flex-row items-center gap-3">
+                                    <i data-lucide="{{ .icon }}" class="w-4 h-4 text-amber-500"></i>
+                                    <span class="text-[12.5px] text-gray-400  ">{{ .label }}</span>
+                                    
+                                </div>
+                                <div class="text-[12.5px] font-normal">{{ .value }}</div>
+                                </div>
+                            {{ end }}
+                            </div>
+                          
+                            <!-- Кнопка проєкту -->
+                            
+                            <div class="flex items-center justify-between relative z-20 gap-2">
+                                
+                                <button type="button" class=" flex-1 py-2 px-4 rounded-full border border-gray-200 text-sm font-medium hover:border-amber-500   hover:text-amber-500 transition-all text-center btn-open-modal"  data-name="{{ .Title }}" data-desc="Консультація"> 
+                                    Консультація
+                                </button>
+                                <a href="{{ .Params.link | default .RelPermalink }}" class="shrink-0 py-2 px-4 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-gray-900 transition-all shadow-md">
+                                    Детальніше
+                                </a>
+                            </div>
+
+                        </div>
+              
+                    </article>
+                    {{ end }}
+                </div>
+                
+                <nav class="mt-10 flex items-center justify-between gap-4 glass-panel rounded-full px-6 py-4" aria-label="Pagination">
+                    <button id="prevPage" type="button" class="text-sm font-medium flex items-center gap-2 hover:text-amber-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed" disabled>
+                        <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
+                    </button>
+                    <div id="pageNumbers" class="flex items-center gap-2" aria-label="Page numbers"></div>
+                    <button id="nextPage" type="button" class="text-sm font-medium flex items-center gap-2 hover:text-amber-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                        <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                    </button>
+                </nav>
+
+                <noscript>
+                    <div class="mt-6 glass-panel rounded-[2.5rem] p-6 text-sm text-gray-600 font-light">
+                        Фільтрація та пагінація вимагають JavaScript.
+                    </div>
+                </noscript>
+            </section>    
+        </div>
     </div>
-</div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Handling Swiper categories
+    const categoryBtns = document.querySelectorAll('.category-filter-btn');
+    const filtersForm = document.getElementById('filtersForm');
+    
+    if (categoryBtns.length && filtersForm) {
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Toggle active class on buttons
+                const isActive = btn.classList.contains('border-amber-500');
+                categoryBtns.forEach(b => {
+                    b.classList.remove('border-amber-500', 'text-amber-500', 'bg-white');
+                    b.classList.add('border-gray-200', 'text-gray-600', 'bg-white/50');
+                });
+                
+                const category = btn.dataset.category;
+                
+                // Toggle active states on the checkboxes
+                const cb = filtersForm.querySelector(`input[name="category"][value="${category}"]`);
+                
+                // Uncheck all other checkboxes programmatically
+                const checkboxes = filtersForm.querySelectorAll('input[name="category"]');
+                let changed = false;
+                checkboxes.forEach(c => {
+                    if (c !== cb && c.checked) {
+                        c.checked = false;
+                        changed = true;
+                    }
+                });
+                
+                if (!isActive) {
+                    btn.classList.add('border-amber-500', 'text-amber-500', 'bg-white');
+                    btn.classList.remove('border-gray-200', 'text-gray-600', 'bg-white/50');
+                    
+                    if (cb && !cb.checked) {
+                        cb.checked = true;
+                        changed = true;
+                    }
+                } else {
+                    if (cb && cb.checked) {
+                        cb.checked = false;
+                        changed = true;
+                    }
+                }
+                
+                if (changed) {
+                    const event = new Event('change', { bubbles: true });
+                    filtersForm.dispatchEvent(event);
+                }
+            });
+        });
+    }
+});
+</script>
 {{ end }}

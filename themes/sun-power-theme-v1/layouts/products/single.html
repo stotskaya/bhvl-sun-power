@@ -1,259 +1,347 @@
 {{ define "main" }}
 
-  <section class="py-28 px-6 bg-white/30 backdrop-blur-md" itemscope itemtype="https://schema.org/Product">
-    <div class="max-w-7xl mx-auto">
-        {{ partial "breadcrumbs.html" . }} 
-        <div class="max-w-7xl mx-auto px-4 md:px-6  pb-20 relative z-10">
-  <div class="grid lg:grid-cols-2 gap-6 items-start">
+<section
+  class="py-28 px-6 backdrop-blur-md"
+  itemscope
+  itemtype="https://schema.org/Product"
+>
+  <div class="max-w-7xl mx-auto">
+    {{ partial "breadcrumbs.html" . }}
+    <div class="max-w-7xl mx-auto px-4 md:px-6 pb-20 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-6 items-start">
+        <div class="flex flex-col gap-4 md-block">
+          <div class="glass-card rounded-[2rem] overflow-hidden">
+            <div class="relative bg-white">
+              {{ $firstImage := index .Params.images 0 }}
+              <img
+                id="mainImg"
+                src="{{ $firstImage }}"
+                alt="{{ .Title }}"
+                class="w-full h-[420px] object-contain p-6"
+              />
 
-    <div class="flex flex-col gap-4 md-block">
-  <div class="glass-card rounded-[2rem] overflow-hidden">
-    <div class="relative bg-white">
-      {{ $firstImage := index .Params.images 0 }}
-      <img id="mainImg" src="{{ $firstImage }}" alt="{{ .Title }}" class="w-full h-[420px] object-contain p-6">
-      
-      <div class="absolute bottom-4 right-4 glass-panel rounded-xl px-3 py-1.5 flex items-center gap-1.5">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zoom-in" aria-hidden="true" class="lucide lucide-zoom-in w-3.5 h-3.5 text-gray-400">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
-          <line x1="11" x2="11" y1="8" y2="14"></line>
-          <line x1="8" x2="14" y1="11" y2="11"></line>
-        </svg>
-        <span class="text-xs text-gray-400">Клікніть для збільшення</span>
+              <div
+                class="absolute bottom-4 right-4 glass-panel rounded-xl px-3 py-1.5 flex items-center gap-1.5"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  data-lucide="zoom-in"
+                  aria-hidden="true"
+                  class="lucide lucide-zoom-in w-3.5 h-3.5 text-gray-400"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+                  <line x1="11" x2="11" y1="8" y2="14"></line>
+                  <line x1="8" x2="14" y1="11" y2="11"></line>
+                </svg>
+                <span class="text-xs text-gray-400"
+                  >Клікніть для збільшення</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-6 gap-2">
+            {{ range .Params.images }}
+            <button
+              class="thumb glass-card rounded-2xl overflow-hidden"
+              onclick="setImg(this, '{{ . }}')"
+            >
+              <img src="{{ . }}" class="w-full object-contain p-1.5 bg-white" />
+            </button>
+            {{ end }}
+          </div>
+        </div>
+
+        <!-- ── ПРАВА: замовлення ── -->
+        <div class="flex flex-col gap-5" id="order">
+          <!-- Назва і ціна -->
+          <div class="overflow-hidden fade-up d2">
+            <div class="p-7 flex flex-col gap-4">
+              <span
+                class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-600 text-xs font-semibold tracking-widest uppercase mb-0 w-fit"
+                >{{ .Params.category }}</span
+              >
+              <div>
+                <h1 class="text-3xl font-medium leading-snug tracking-tight">
+                  {{ .Params.title }}
+                </h1>
+                <p class="text-sm font-light text-gray-400 mt-1">
+                  {{ .Params.description }}
+                </p>
+                <div
+                  class="flex flex-col gap-5 text-sm font-light text-gray-600 leading-relaxed"
+                >
+                  {{ .Params.full_description }}
+                </div>
+              </div>
+
+              <!-- Рейтинг -->
+
+              <!-- Ціна -->
+
+              <div class="flex flex-col gap-6">
+                <!-- CTA -->
+                <div class="grid sm:grid-cols-2 gap-3">
+                  <button
+                    class="bg-gray-900 text-white w-full py-4 rounded-full font-medium text-sm hover:bg-amber-500 hover:border-amber-400   transition-all shadow-lg shadow-gray-200 flex items-center justify-center gap-2 btn-open-modal"
+                    data-name="{{ .Params.title }}"
+                    data-desc="Запросити ціну"
+                  >
+                    Запросити ціну
+                  </button>
+                  <button
+                    class="w-full sm:w-auto bg-white px-10 py-4 rounded-full font-bold text-sm  border border-amber-500 hover:bg-amber-50   transition-all flex items-center justify-center gap-3 text-gray-600  btn-open-modal"
+                    data-name="{{ .Params.title }}"
+                    data-desc="Проконсультуватись"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      data-lucide="phone"
+                      aria-hidden="true"
+                      class="lucide lucide-phone w-4 h-4 text-amber-500 hover:text-white"
+                    >
+                      <path
+                        d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"
+                      ></path>
+                    </svg>
+                    Проконсультуватись
+                  </button>
+                </div>
+                <!-- Мікро-теги -->
+                <div class="flex flex-wrap items-center justify-center gap-1">
+                  <span class="text-xs font-light text-gray-400"
+                    >Офіційний імпортер</span
+                  >
+                  <span class="dot-sep"></span>
+                  <span class="text-xs font-light text-gray-400"
+                    >Є кредит 0.1%</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /right -->
+        </div>
+        <!-- /grid -->
       </div>
-    </div>
-  </div>
+      <div class="max-w-5xl mx-auto mt-10">
+        <div class="glass-panel rounded-[2rem] overflow-hidden fade-up d1">
+          <div class="p-6 pb-0 flex items-center gap-2">
+            <button class="tab-btn active" onclick="switchTab(this,'specs')">
+              Характеристики
+            </button>
+            <button class="tab-btn" onclick="switchTab(this,'desc')">
+              Опис
+            </button>
+            <button class="tab-btn" onclick="switchTab(this,'more')">
+              Додатково
+            </button>
+          </div>
 
-  <div class="grid grid-cols-6 gap-2">
-    {{ range .Params.images }}
-    <button class="thumb glass-card rounded-2xl overflow-hidden" onclick="setImg(this, '{{ . }}')">
-      <img src="{{ . }}" class="w-full  object-contain p-1.5 bg-white">
-    </button>
-    {{ end }}
-  </div>
-  
-</div>
-
-
-    <!-- ── ПРАВА: замовлення ── -->
-    <div class="flex flex-col gap-5 " id="order">
-
-      <!-- Назва і ціна -->
-      <div class=" overflow-hidden fade-up d2">
-        
-        <div class="p-7 flex flex-col gap-4">
-
-          <span class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-600 text-xs font-semibold tracking-widest uppercase mb-0 w-fit">Акумулятори</span><div>
-            
-            <h1 class="text-3xl font-medium leading-snug tracking-tight">{{   .Params.title }}</h1>
-            <p class="text-sm font-light text-gray-400 mt-1">{{   .Params.description }}</p>
-            <div class="flex flex-col gap-5 text-sm font-light text-gray-600 leading-relaxed">
+          <div id="tab-specs" class="tab-panel p-10 active">
+            {{ if .Params.specs }}
+            <div class="grid md:grid-cols-2 gap-x-8">
+              {{ range .Params.specs }}
+              <div class="spec-row">
+                <span class="spec-key">{{ .key }}</span>
+                <span class="spec-val">{{ .val }}</span>
+              </div>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+          <div id="tab-desc" class="tab-panel p-10">
+            <div
+              class="flex flex-col gap-5 text-sm font-light text-gray-600 leading-relaxed"
+            >
               {{ .Params.full_description }}
             </div>
           </div>
-
-          <!-- Рейтинг -->
-          
-
-          <!-- Ціна -->
-         
-            <div class="grid sm:grid-cols-2 gap-6 ">
-              <div class="glass-card rounded-2xl p-6">
-                <div class="flex items-center  justify-between">
-                    <span class="text-xs text-gray-400 tracking-widest uppercase">Вартість</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="tag" aria-hidden="true" class="lucide lucide-tag w-4 h-4 text-gray-300"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
-                </div>
-                <div class="text-3xl font-light mt-3">
-                    <div class="flex flew-row items-end gap-2">
-                        
-                        <span class="solar-gradient-text font-medium">{{ .Params.price }}</span>
-                    </div>
-                </div>
-            
-            </div>
-              <div class=" p-6">
-            <div class="flex items-center  justify-between mb-3 ">
-                    <span class="text-xs text-gray-400 tracking-widest uppercase">Кількість</span>
-                      </div>
-            <div class="flex items-center gap-3">
-              <button onclick="changeQty(-1)" class="w-10 h-10 rounded-full   flex items-center justify-center border  border-gray-500
-                             hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="minus" aria-hidden="true" class="lucide lucide-minus w-4 h-4"><path d="M5 12h14"></path></svg>
-              </button>
-              <span id="qty" class="w-12 text-center text-lg font-medium">1</span>
-              <button onclick="changeQty(1)" class="w-10 h-10 rounded-full  flex items-center justify-center border  border-gray-500
-                             hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" aria-hidden="true" class="lucide lucide-plus w-4 h-4"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
-              </button>
-              
+          <div id="tab-more" class="tab-panel p-10">
+            <div
+              class="flex flex-col gap-5 text-sm font-light text-gray-600 leading-relaxed"
+            >
+              {{ .Content }}
             </div>
           </div>
-
-            </div>
-          
-
-          <!-- Кількість -->
-          
-          <!-- CTA --><div class="flex flex-col items-center gap-3">
-          <button class="bg-gray-900 text-white w-full py-4 rounded-full font-medium text-sm
-                         hover:bg-amber-400 hover:border-amber-400 hover:text-black transition-all shadow-lg shadow-gray-200
-                         flex items-center justify-center gap-2 btn-open-modal" data-name="{{ .Params.title }}" data-desc="Замовити">
-            Замовити
-              </button>
-          <button class="glass-panel w-full py-3.5 rounded-full text-sm font-light
-                         hover:bg-white/70 transition-colors flex items-center justify-center gap-2 text-gray-600">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" aria-hidden="true" class="lucide lucide-phone w-4 h-4 text-amber-500"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
-            Проконсультуватись
-          </button>
-</div>
-          <!-- Мікро-теги -->
-          <div class="flex flex-wrap items-center justify-center gap-1 pt-1">
-            
-            
-            <span class="text-xs font-light text-gray-400">Офіційний імпортер</span>
-            <span class="dot-sep"></span>
-            <span class="text-xs font-light text-gray-400">Є кредит 0.1%</span>
-          </div>
-
         </div>
       </div>
-
-   
-
-    </div><!-- /right -->
-  </div><!-- /grid -->
-<div class="max-w-5xl mx-auto mt-10">
-  <div class="glass-panel rounded-[2rem] overflow-hidden fade-up d1">
-    <div class="p-6 pb-0 flex items-center gap-2  ">
-        <button class="tab-btn active" onclick="switchTab(this,'specs')">Характеристики</button>
-         <button class="tab-btn" onclick="switchTab(this,'more')">Додатково</button>
     </div>
+    {{ $related := where .CurrentSection.RegularPages ".RelPermalink" "ne"
+    .RelPermalink }} {{ $related = $related | first 4 }} {{ if gt (len $related)
+    0 }}
+    <div class="mt-16">
+      <div class="flex items-center justify-between mb-6">
+        <p
+          class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400"
+        >
+          Схожі товари
+        </p>
+        <a
+          href="/products"
+          class="text-sm font-light text-amber-600 hover:text-amber-700 no-underline flex items-center gap-1"
+        >
+          Весь каталог
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            data-lucide="arrow-right"
+            aria-hidden="true"
+            class="lucide lucide-arrow-right w-3.5 h-3.5"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {{ range $related }}
+        <article
+          class="glass-card group p-6 rounded-[2rem] h-fit"
+          data-price="{{ .Params.price }}"
+          data-id="{{ .File.UniqueID }}"
+        >
+          <meta itemprop="position" content="{{ .File.UniqueID }}" />
 
-    <div id="tab-specs" class="tab-panel p-10 active">
-      {{ if .Params.specs }}
-      <div class="grid md:grid-cols-2 gap-x-8">
-        {{ range .Params.specs }}
-        <div class="spec-row">
-          <span class="spec-key">{{ .key }}</span>
-          <span class="spec-val">{{ .val }}</span>
-        </div>
+          <a
+            href="{{ .RelPermalink }}"
+            class="absolute inset-0 z-10"
+            aria-label="View {{ .Title }}"
+          ></a>
+
+          <div
+            class="aspect-square rounded-2xl bg-gray-50 mb-6 overflow-hidden flex items-center justify-center"
+          >
+            {{ if .Params.images }} {{ $firstImage := index .Params.images 0 }}
+            <img
+              src="{{ $firstImage | relURL }}"
+              alt="{{ .Title }}"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              itemprop="image"
+            />
+            {{ else }}
+            <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
+            {{ end }}
+          </div>
+
+          <div class="px-2">
+            <div
+              class="text-[10px] text-amber-600 uppercase tracking-widest mb-2 relative z-20"
+              itemprop="category"
+            >
+              {{ with .CurrentSection }} {{ if ne .RelPermalink "/products/" }}
+              <span class="block">{{ .Title }}</span>
+              {{ end }} {{ end }}
+            </div>
+
+            <h3 class="font-medium text-[14px] mb-1" itemprop="name">
+              {{ .Title | truncate 50}}
+            </h3>
+
+            <p class="text-xs text-gray-500 font-light mb-2 line-clamp-2">
+              {{ .Params.description | plainify | truncate 30 }}
+            </p>
+
+            {{ if .Params.price }}
+            <div class="mb-3">
+              <span
+                class="text-xl font-light"
+                aria-label="Price {{ .Params.price }}"
+              >
+                {{ .Params.price }}
+              </span>
+            </div>
+            {{ end }}
+
+            <div
+              class="flex items-center justify-between relative z-20 gap-2 flex-col sm:flex-row"
+            >
+              <a
+                href="{{ .RelPermalink }}"
+                class="w-full sm:flex-1 py-2 px-4 rounded-full border border-gray-200 text-sm font-medium hover:border-black transition-all text-center"
+              >
+                Детальніше
+              </a>
+              <button
+                type="button"
+                class="w-full sm:w-auto shrink-0 py-2 px-4 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-amber-600 transition-all shadow-md btn-open-modal"
+                data-name="{{ .Title }}"
+                data-desc="Замовити"
+              >
+                Замовити
+              </button>
+            </div>
+          </div>
+        </article>
         {{ end }}
       </div>
-      {{ end }}
     </div>
-   
-    <div id="tab-more" class="tab-panel p-10">
-      <div class="flex flex-col gap-5 text-sm font-light text-gray-600 leading-relaxed">
-        {{ .Content }}
-      </div>
-    </div>
+    {{ end }}
   </div>
-</div>
-
- 
-
-</div>
-<div class="mt-16">
-    <div class="flex items-center justify-between mb-6">
-      <p class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400">Схожі товари</p>
-      <a href="/catalog/batteries" class="text-sm font-light text-amber-600 hover:text-amber-700 no-underline flex items-center gap-1">
-        Весь каталог <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" aria-hidden="true" class="lucide lucide-arrow-right w-3.5 h-3.5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-      </a>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
-        <div class="bg-white p-4 flex items-center justify-center h-32">
-          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="battery-charging" aria-hidden="true" class="lucide lucide-battery-charging w-6 h-6 text-amber-500"><path d="m11 7-3 5h4l-3 5"></path><path d="M14.856 6H16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.935"></path><path d="M22 14v-4"></path><path d="M5.14 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2.936"></path></svg>
-          </div>
-        </div>
-        <div class="p-4">
-          <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Модуль 10.76 кВт·год</p>
-          <p class="text-sm font-medium text-gray-900">A100 МТ-LFP × 2</p>
-          <p class="text-xs font-light text-gray-400 mt-0.5">Комплект 2 модулі</p>
-          <p class="text-sm solar-gradient-text mt-2 font-medium">від $1 850</p>
-        </div>
-      </div>
-      <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
-        <div class="bg-white p-4 flex items-center justify-center h-32">
-          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" aria-hidden="true" class="lucide lucide-zap w-6 h-6 text-amber-500"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
-          </div>
-        </div>
-        <div class="p-4">
-          <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Інвертор</p>
-          <p class="text-sm font-medium text-gray-900">Deye SUN-6K-SG04LP3</p>
-          <p class="text-xs font-light text-gray-400 mt-0.5">6 кВт · 3-фазний</p>
-          <p class="text-sm solar-gradient-text mt-2 font-medium">від $780</p>
-        </div>
-      </div>
-      <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
-        <div class="bg-white p-4 flex items-center justify-center h-32">
-          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sun" aria-hidden="true" class="lucide lucide-sun w-6 h-6 text-amber-500"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-          </div>
-        </div>
-        <div class="p-4">
-          <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Сонячна панель</p>
-          <p class="text-sm font-medium text-gray-900">JA Solar 590 Вт</p>
-          <p class="text-xs font-light text-gray-400 mt-0.5">Tier 1 · Монокристал</p>
-          <p class="text-sm solar-gradient-text mt-2 font-medium">від $140</p>
-        </div>
-      </div>
-      <div class="glass-card rounded-[1.75rem] overflow-hidden hover-card flex flex-col">
-        <div class="bg-white p-4 flex items-center justify-center h-32">
-          <div class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="package" aria-hidden="true" class="lucide lucide-package w-6 h-6 text-amber-500"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path><path d="M12 22V12"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><path d="m7.5 4.27 9 5.15"></path></svg>
-          </div>
-        </div>
-        <div class="p-4">
-          <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Готовий комплект</p>
-          <p class="text-sm font-medium text-gray-900">Базовий резерв 6 кВт</p>
-          <p class="text-xs font-light text-gray-400 mt-0.5">Інвертор + АКБ + панелі</p>
-          <p class="text-sm solar-gradient-text mt-2 font-medium">від $3 200</p>
-        </div>
-      </div>
-    </div>
-  </div>
-    </div>
-    
-    </section>
-    <script>
+</section>
+<script>
   lucide.createIcons();
 
   // Галерея
   function setImg(btn, src) {
-    document.getElementById('mainImg').src = src;
-    document.querySelectorAll('.thumb').forEach(t => {
-      t.classList.remove('active','ring-2','ring-amber-400','ring-offset-1');
+    document.getElementById("mainImg").src = src;
+    document.querySelectorAll(".thumb").forEach((t) => {
+      t.classList.remove("active", "ring-2", "ring-amber-400", "ring-offset-1");
     });
-    btn.classList.add('active','ring-2','ring-amber-400','ring-offset-1');
+    btn.classList.add("active", "ring-2", "ring-amber-400", "ring-offset-1");
   }
 
   // Tabs
   function switchTab(btn, tab) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-'+tab).classList.add('active');
-  }
-
-  // Кількість
-  let qty = 1;
-  function changeQty(d) {
-    qty = Math.max(1, Math.min(15, qty + d));
-    document.getElementById('qty').textContent = qty;
-    document.getElementById('totalKwh').textContent = (qty * 5.38).toFixed(2);
+    document
+      .querySelectorAll(".tab-btn")
+      .forEach((b) => b.classList.remove("active"));
+    document
+      .querySelectorAll(".tab-panel")
+      .forEach((p) => p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("tab-" + tab).classList.add("active");
   }
 
   // Accordion
   function toggleAcc(btn) {
     const body = btn.nextElementSibling;
-    const icon = btn.querySelector('.acc-icon');
-    const open = body.classList.contains('open');
-    document.querySelectorAll('.acc-body.open').forEach(b => b.classList.remove('open'));
-    document.querySelectorAll('.acc-icon.open').forEach(i => i.classList.remove('open'));
-    if (!open) { body.classList.add('open'); icon.classList.add('open'); }
+    const icon = btn.querySelector(".acc-icon");
+    const open = body.classList.contains("open");
+    document
+      .querySelectorAll(".acc-body.open")
+      .forEach((b) => b.classList.remove("open"));
+    document
+      .querySelectorAll(".acc-icon.open")
+      .forEach((i) => i.classList.remove("open"));
+    if (!open) {
+      body.classList.add("open");
+      icon.classList.add("open");
+    }
   }
 </script>
 {{ end }}

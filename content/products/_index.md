@@ -1,8 +1,10 @@
 ---
 title: "Каталог"
 layout: "list"
-subtitle: "Products and services curated for elegant, resilient residential energy."
-
+subtitle: ""
+outputs:
+  - HTML
+  - JSON
 SEO_title:  Обладнання для сонячних електростанцій та СНЕ | Каталог А100
 SEO_description: "Купити обладнання для СЕС: гібридні інвертори Deye, акумулятори А100 LiFePO4, сонячні панелі Tier 1. Надійне залізо для енергонезалежності в наявності на складі. Гарантія та сервіс по всій Україні!"
 

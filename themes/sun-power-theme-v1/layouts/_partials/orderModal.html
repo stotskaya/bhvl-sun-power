@@ -33,7 +33,19 @@
       <div style="display:flex;flex-direction: column;gap:.8rem;border-bottom:1px solid #f3f4f6;align-items:flex-start; ">
         <p style="font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#9ca3af;">Ваш запит</p><div class="glass-panel p-5" style="border-radius: 20px; padding: 15px 20px; width: 100%;"
 >
-          <div style="color: rgb(180, 83, 9); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; width: fit-content;">{{ if .Params.short_title }}{{ .Params.short_title }} {{else}} A100 {{end}}</div>
+          <div style="color: rgb(180, 83, 9); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; width: fit-content;">
+            {{ if $.Params.short_title }}
+              {{ $.Params.short_title }}
+            {{ else if .Params.category}}
+              {{ .Params.category }}
+            {{ else if eq $.Section "products" }}
+                {{ $.Title }}
+                {{ else if eq $.Section "projects" }}
+                {{ $.Title }}
+            {{ else }}
+                A100
+            {{ end }}
+          </div>
          <p id="mpFullName" style="font-size:0.85rem;font-weight:500;color:#111827;margin-bottom:.2rem;"></p>
          <p id="mpDesc" style="font-size:.8rem;color:#6b7280;font-weight:300;line-height:1.55;"></p>
          <p id="mpObject" style="font-size:.8rem;color:#6b7280;font-weight:300;line-height:1.55;"></p>

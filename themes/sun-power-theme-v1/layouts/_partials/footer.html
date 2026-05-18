@@ -8,10 +8,38 @@
             <p class="text-gray-400 font-light max-w-sm">
                 {{ .Site.Params.footerDescription }}
             </p>
+
+                        <div class="flex items-center gap-4 mt-6 relative z-20">
+                <a href="tel:{{ .Site.Params.phone | default "+380000000000" }}" 
+                class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-500 hover:text-amber-500 hover:bg-white transition-all shadow-sm" 
+                title="Зателефонувати" aria-label="Телефон">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+
+                <a href="mailto:{{ .Site.Params.email | default "info@example.com" }}" 
+                class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-500 hover:text-amber-500 hover:bg-white transition-all shadow-sm" 
+                title="Написати листа" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </a>
+
+                <a href="{{ .Site.Params.telegram | default "https://t.me/username" }}" 
+                target="_blank" rel="noopener noreferrer" 
+                class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-500 hover:text-amber-500 hover:bg-white transition-all shadow-sm" 
+                title="Telegram" aria-label="Telegram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                </a>
+
+                <a href="viber://chat?number=%2B{{ .Site.Params.viber | default "380000000000" }}" 
+                target="_blank" rel="noopener noreferrer" 
+                class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-500 hover:text-amber-500 hover:bg-white transition-all shadow-sm" 
+                title="Viber" aria-label="Viber">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512" fill="currentColor"><path d="M444 49.1C388.1 14.2 316.5 0 242.4 0 111.4 0 5.1 91 5.1 203.1c0 40 10.1 79.1 29.2 113.2l-30 148.6c-2.4 11.9 8.2 21.6 19.7 18l143.1-44.9c32.1 16 67.9 24.5 104.1 24.5 131 0 237.3-91 237.3-203.1C508.5 146.5 484.5 88.8 444 49.1zm-60.8 281.6c-10.7 20.3-33.1 31.8-54.8 31.8-19.1 0-38.4-5.3-60.3-16.7-32.9-17.1-66.7-44.5-95.2-77.1-28.5-32.6-47.8-65.5-54.4-92.4-5.2-21.2.6-45.7 15.6-62 13-14.1 33.1-17.5 47.7-8.3l29.8 18.8c12.7 8 16.3 24.4 8.7 37.1l-11.4 19.3c-4.3 7.3-3.2 16.6 2.8 22.7 19.9 20.3 43.1 38 65.6 49.8 6.5 3.4 14.5 2.5 19.8-2.5l16.1-15.1c10.3-9.7 26.6-9.5 36.8.6l31 32.1c11.5 11.9 11.4 30.6-2.7 41.9z"/></svg>
+                </a>
+            </div>
         </div>
 
         <div>
-            <h5 class="font-medium mb-8">Меню</h5>
+            <h5 class="font-medium mb-8">Рішення</h5>
             <ul class="space-y-4 text-sm text-gray-500 font-light">
                 {{ range .Site.Menus.footer_nav }}
                 <li><a href="{{ .URL | relURL }}" class="hover:text-amber-500 transition-colors">{{ .Name }}</a></li>
@@ -20,7 +48,7 @@
         </div>
 
         <div>
-            <h5 class="font-medium mb-8">Соцмережі</h5>
+            <h5 class="font-medium mb-8">Компанія</h5>
             <ul class="space-y-4 text-sm text-gray-500 font-light">
                 {{ range .Site.Menus.footer_social }}
                 <li><a href="{{ .URL | safeURL }}" target="_blank" class="hover:text-amber-500 transition-colors">{{ .Name }}</a></li>

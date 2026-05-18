@@ -1,0 +1,217 @@
+{{ define "main" }}
+<section id="calculator" class="py-28 px-6 bg-white/30 backdrop-blur-md">
+  <div class="max-w-5xl mx-auto">
+    {{ partial "breadcrumbs.html" . }}
+
+    <header class="mb-12 reveal visible text-center">
+      <span class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase mb-6">
+        {{ .Params.badge | default "Підбір рішення" }}
+      </span>
+      <h1 class="text-5xl lg:text-6xl font-light tracking-tight leading-[1.06] mb-6">
+        {{ $title := .Title }}
+        {{ $words := split $title " " }}
+        {{ $total := len $words }}
+        {{ range first (sub $total 1) $words }}{{ . }} {{ end }}
+        <span class="solar-gradient-text italic font-medium">
+          {{ range last 1 $words }}{{ . }}{{ end }}
+        </span>
+      </h1>
+      {{ with .Params.subtitle }}
+        <p class="text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+          {{ . }}
+        </p>
+      {{ end }}
+    </header>
+
+    <form id="calc-form" novalidate class="glass-panel rounded-[2.5rem] p-7 sm:p-10 md:p-12 lg:p-14 space-y-12 md:space-y-14 reveal visible delay-150">
+
+      <div id="calc-error" class="hidden rounded-2xl bg-red-50 text-red-700 px-5 py-4 text-sm font-medium"></div>
+
+      <fieldset class="space-y-6">
+        <div class="flex items-center gap-4">
+          <span class="calc-step-num">1</span>
+          <div class="min-w-0">
+            <span class="text-xs uppercase tracking-widest text-gray-400">Тип станції</span>
+            <legend class="block text-lg md:text-xl font-medium text-gray-900 mt-0.5">Оберіть тип системи</legend>
+          </div>
+        </div>
+        <div id="calc-station-type" class="grid sm:grid-cols-2 gap-4"></div>
+      </fieldset>
+
+      <fieldset class="space-y-6">
+        <div class="flex items-center gap-4">
+          <span class="calc-step-num">2</span>
+          <div class="min-w-0">
+            <span class="text-xs uppercase tracking-widest text-gray-400">Мережа</span>
+            <legend class="block text-lg md:text-xl font-medium text-gray-900 mt-0.5">Тип мережі, фаз</legend>
+          </div>
+        </div>
+        <div id="calc-phases" class="grid sm:grid-cols-2 gap-4"></div>
+      </fieldset>
+
+      <fieldset class="space-y-6">
+        <div class="flex items-center gap-4">
+          <span class="calc-step-num">3</span>
+          <div class="min-w-0">
+            <span class="text-xs uppercase tracking-widest text-gray-400">Потужність</span>
+            <legend class="block text-lg md:text-xl font-medium text-gray-900 mt-0.5">Потужність станції, кВт</legend>
+          </div>
+        </div>
+        <div id="calc-power" class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3"></div>
+      </fieldset>
+
+      <fieldset class="space-y-6">
+        <div class="flex items-center gap-4">
+          <span class="calc-step-num">4</span>
+          <div class="min-w-0">
+            <span class="text-xs uppercase tracking-widest text-gray-400">Споживання</span>
+            <legend class="block text-lg md:text-xl font-medium text-gray-900 mt-0.5">Місячне споживання, кВт·год</legend>
+          </div>
+        </div>
+        <div class="max-w-md">
+          <label for="calc-consumption" class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Вкажіть значення</label>
+          <div class="relative">
+            <input id="calc-consumption"
+                   name="consumption"
+                   type="number"
+                   inputmode="decimal"
+                   min="1"
+                   step="1"
+                   placeholder="напр. 450"
+                   class="lm-input pr-24" />
+            <span class="absolute right-5 top-1/2 -translate-y-1/2 text-sm text-gray-400 font-light pointer-events-none">кВт·год</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="space-y-6">
+        <div class="flex items-center gap-4">
+          <span class="calc-step-num">5</span>
+          <div class="min-w-0">
+            <span class="text-xs uppercase tracking-widest text-gray-400">Комплектація</span>
+            <legend class="block text-lg md:text-xl font-medium text-gray-900 mt-0.5">Необхідність сонячних панелей</legend>
+          </div>
+        </div>
+        <div id="calc-panels" class="grid sm:grid-cols-2 gap-4"></div>
+      </fieldset>
+
+    </form>
+
+    <div id="calc-result" class="glass-panel rounded-[2.5rem] p-7 sm:p-10 md:p-12 lg:p-14 mt-8 reveal visible">
+      <div class="flex items-start gap-4 mb-8 pb-8 border-b border-white/60">
+        <span class="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center shrink-0">
+          <i data-lucide="bar-chart-3" class="w-6 h-6 text-amber-500"></i>
+        </span>
+        <div class="min-w-0">
+          <span class="text-xs uppercase tracking-widest text-gray-400">Результати розрахунку</span>
+          <h2 class="text-2xl md:text-3xl font-light mt-1">
+            Параметри <span class="solar-gradient-text italic font-medium">конфігурації</span>
+          </h2>
+        </div>
+      </div>
+
+      <div id="calc-result-empty" class="glass-card rounded-2xl p-6 md:p-8 mb-6 flex items-start gap-4 text-sm text-gray-500 font-light leading-relaxed">
+        <i data-lucide="hand" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+        <span>Оберіть тип станції, тип мережі та потужність — розрахунок з’явиться автоматично.</span>
+      </div>
+
+      <div id="calc-result-notfound" class="hidden glass-card rounded-2xl p-6 md:p-8 mb-6 flex items-start gap-4 text-sm text-amber-700 font-light leading-relaxed">
+        <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+        <span>Для обраної комбінації параметрів у каталозі немає типового рішення. Залиште заявку — інженер підготує індивідуальний розрахунок.</span>
+      </div>
+
+      <div id="calc-result-items" class="hidden grid sm:grid-cols-2 gap-4 mb-8"></div>
+
+      <div id="calc-result-bundles" class="hidden grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-8"></div>
+
+      <div class="pt-8 border-t border-white/60 flex flex-col gap-5 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-8">
+        <p class="text-xs text-gray-400 font-light leading-relaxed md:flex-1 md:min-w-[16rem] md:max-w-xl">
+          Залиште заявку — наш інженер підготує детальний розрахунок з урахуванням ваших умов та надішле комерційну пропозицію.
+        </p>
+        <button type="button"
+                class="btn-open-modal w-full md:w-auto bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 flex items-center justify-center gap-2 shrink-0" data-name="Отримати персональний розрахунок">
+          <i data-lucide="send" class="w-4 h-4"></i>
+          Отримати персональний розрахунок
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .calc-step-num {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    background: oklch(98.7% 0.022 95.277);
+    color: #f59e0b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .calc-option {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.6);
+  }
+  .calc-option:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(253, 184, 19, 0.35);
+    transform: translateY(-2px);
+  }
+  .calc-option.is-selected {
+    background: rgba(255, 251, 235, 0.95);
+    border-color: var(--solar-amber);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.18);
+  }
+  .calc-option:focus-visible {
+    outline: 2px solid var(--solar-amber);
+    outline-offset: 2px;
+  }
+
+  .calc-bundle {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    position: relative;
+  }
+  .calc-bundle-highlighted {
+    background: linear-gradient(155deg, rgba(255, 251, 235, 0.95), rgba(255, 255, 255, 0.85));
+    border: 2px solid var(--solar-amber);
+    box-shadow: 0 16px 40px rgba(245, 158, 11, 0.18);
+  }
+  .calc-bundle-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+  }
+  .calc-bundle-row:last-of-type {
+    border-bottom: none;
+  }
+  .calc-bundle-row-label {
+    font-size: 0.8125rem;
+    color: #6b7280;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .calc-bundle-row-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #111827;
+    flex-shrink: 0;
+  }
+  .calc-bundle-row-value-unit {
+    font-size: 0.7rem;
+    color: #9ca3af;
+    font-weight: 400;
+    margin-left: 0.2rem;
+  }
+</style>
+
+<script src="{{ "js/calculator.js" | relURL }}?v={{ now.Unix }}" defer></script>
+{{ end }}

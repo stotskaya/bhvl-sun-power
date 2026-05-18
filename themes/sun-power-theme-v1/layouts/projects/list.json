@@ -1,0 +1,10 @@
+{{- $products := .Pages -}}
+{{- if eq .RelPermalink "/projects/" -}}
+    {{- $products = .RegularPagesRecursive -}}
+{{- end -}}
+[
+  {{- range $index, $page := $products -}}
+    {{- if $index -}},{{- end -}}
+    {{- dict "id" .File.UniqueID "title" .Title "permalink" .RelPermalink  "parameters" (.Params.parameters | default slice) | jsonify -}}
+  {{- end -}}
+]

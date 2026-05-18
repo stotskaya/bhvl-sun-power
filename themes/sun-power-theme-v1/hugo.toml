@@ -1,12 +1,15 @@
 baseURL = 'https://bhvl-sun-power.pages.dev/'
-languageCode = 'en-US'
+languageCode = 'uk-UA'
 title = 'A100 СЕС Запоріжжя'
+ 
 
 [params]
     brandName = "A100"
     headerButtonText = "Зателефонувати"
     footerDescription = "Робимо Україну енергонезалежною та екологічно безпечною"
     copyrightText = "А100 СЕС Запоріжжя. Всі права захищені."
+    phone = "12345678"
+
 
 [menus]
 
@@ -76,40 +79,40 @@ title = 'A100 СЕС Запоріжжя'
 
   [[menu.main]]
     name = "Готові комплекти "
-    url = "/catalog/ready"
+    url = "/products/ready-sets/"
     parent = "catalog"     
     weight = 1
     params = { subname = "5, 10, 20, 50 кВт" }
 
   [[menu.main]]
     name = "Сонячні панелі"
-    url = "/catalog/sun"
+    url = "/products/solar-panels/"
     parent = "catalog"     
     weight = 2
     params = { subname = "в т.ч. бренд А100" }
 
   [[menu.main]]
     name = "Інвертори"
-    url = "/catalog/inventors"
+    url = "/products/inverters/"
     parent = "catalog"     
     weight = 3
 
   [[menu.main]]
     name = "Акумулятори"
-    url = "/catalog/ackum"
+    url = "/products/akumulyatory/"
     parent = "catalog"     
     weight = 4
 
   [[menu.main]]
     name = "Комплектуючі"
-    url = "/catalog/komlp"
+    url = "/products/accessories/"
     parent = "catalog"     
     weight = 5
     params = { subname = "Кріплення, захист" }
 
   [[menu.main]]
     name = "Бренд А100"
-    url = "/catalog/a100"
+    url = "/products/a100/"
     parent = "catalog"     
     weight = 6
     params = { subname = "Ексклюзив" }
@@ -156,40 +159,37 @@ title = 'A100 СЕС Запоріжжя'
     weight = 60
 
   
-
-  [[menu.footer_nav]]
-    name = "Філософія"
-    url = "#philosophy"
+   [[menu.footer_nav]]
+    name = "СЕС для дому"
+    url = "/sps/home-sps/"    
     weight = 10
-
-  [[menu.footer_nav]]
-    name = "Системи"
-    url = "#systems"
-    weight = 20
-
-  [[menu.footer_nav]]
-    name = "Рішення"
-    url = "#solutions"
-    weight = 30
   
   [[menu.footer_nav]]
-    name = "Блог"
-    url = "/journal"
+    name = "СЕС для бізнесу"
+    url = "/sps/business-sps/" 
+    weight = 20
+
+   [[menu.footer_nav]]
+    name = "СЕС для ОСББ"
+    url = "/sps/osbb-sps/"   
+    weight = 30
+  
+   [[menu.footer_nav]]
+    name = "Резервне живлення"
+    url = "/sps/reserve-sps/"
     weight = 40
 
-  [[menu.footer_social]]
-    name = "Instagram"
-    url = "/"
-    weight = 10
+
+ 
 
   [[menu.footer_social]]
-    name = "LinkedIn"
-    url = "/"
+    name = "Наші роботи"
+    url = "/projects/"
     weight = 20
 
   [[menu.footer_social]]
-    name = "Twitter"
-    url = "/"
+    name = "Блог"
+    url = "/journal/"
     weight = 30
 
   [[menu.subfooter_nav]]
@@ -202,3 +202,5 @@ title = 'A100 СЕС Запоріжжя'
   [module.hugoVersion]
     extended = false
     min = '0.146.0'
+
+

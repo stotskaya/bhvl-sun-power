@@ -1,104 +1,154 @@
 <section class="py-20 px-6 relative z-10">
-    <div class="max-w-7xl mx-auto">
+  <div class="max-w-7xl mx-auto">
+    <!-- Заголовок -->
+    <div class="text-center mb-14">
+      <h2
+        class="text-3xl md:text-4xl font-light tracking-tight mb-4 text-gray-900"
+      >
+        Реалізовані проєкти та
+        <span class="solar-gradient-text italic font-medium">відгуки</span>
+      </h2>
+      <p class="text-base font-light text-gray-400">{{ .description }}</p>
+    </div>
 
-        <!-- Заголовок -->
-        <div class="text-center mb-14">
-            <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-4 text-gray-900">
-                Реалізовані проєкти та
-                <span class="solar-gradient-text italic font-medium">відгуки</span>
-            </h2>
-            <p class="text-base font-light text-gray-400">
-                {{ .description }}
-            </p>
+    <!-- Сітка карток -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+      {{ range $index, $element := first 2 (where site.RegularPages "Section"
+      "projects").ByDate.Reverse }}
+
+      <div
+        class="reveal relative glass-panel rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5"
+      >
+        <!-- Фото блок -->
+        <div class="relative h-64 overflow-hidden group">
+          <!-- Реальне фото об'єкта -->
+          <div class="absolute inset-0 w-full h-full overflow-hidden">
+            {{ $firstImage := index .Params.images 0 }}
+            <img
+              src="{{ $firstImage }}"
+              alt="{{  .Params.title }}"
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            />
+          </div>
+
+          <!-- Amber shimmer смуга -->
+          <div
+            class="absolute bottom-0 left-0 right-0 h-0.5 amber-shimmer z-20"
+          ></div>
         </div>
 
-        <!-- Сітка карток -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-             
-            {{ range $index, $element := first 2 (where site.RegularPages "Section" "projects").ByDate.Reverse }}
-             
-            <div  class="reveal relative glass-panel rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5">
-                
-                <!-- Фото блок -->
-                <div class="relative h-64 overflow-hidden group">
-                  
-                    <!-- Реальне фото об'єкта -->
-                    <div class="absolute inset-0 w-full h-full overflow-hidden">
-                        <img src="{{  .Params.image | relURL }}" alt="{{  .Params.title }}" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                    </div>
-
-                    <!-- Amber shimmer смуга -->
-                    <div class="absolute bottom-0 left-0 right-0 h-0.5 amber-shimmer z-20"></div>
-                </div>
-
-                <!-- Тіло картки -->
-                <div class="p-8 flex flex-col gap-6 flex-1 bg-white/40 backdrop-blur-sm">
-
-                    <!-- Заголовок та клієнт -->
-                    <div>
-                        <p class="text-[12.5px] font-medium text-amber-600 bg-amber-50 rounded-full px-4 py-1.5 border border-amber-100/50 w-fit mb-3">{{  .Params.category }}</p>
-                        <h3 class="text-xl font-bold text-gray-900 leading-snug mb-1">{{ .Params.title }}</h3>
-                        <div class="text-sm text-gray-500 font-light">{{ .Params.location }}</div>
-                    </div>
-                    <div class="grid grid-cols-3 gap-4"> 
-                     {{ range .Params.stats }}
-                        <div class="glass-panel rounded-[1.75rem] px-5 py-5 hover-card">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] text-gray-400 tracking-widest uppercase mb-2">{{ .label }}</span>
-                            <i data-lucide="{{ .icon }}" class="w-4 h-4 text-amber-500"></i>
-                        </div>
-                        <div class="text-[14px] font-normal">{{ .value }}</div>
-                        </div>
-                    {{ end }}
-                    </div>
-                  
-
-                    <!-- Відгук -->
-                    <div class="flex flex-col gap-4 flex-1">
-                        <span class="text-[9px] text-gray-400 tracking-widest uppercase font-bold">Відгук</span>
-                        <div class="flex-1">
-                            <p class="text-sm font-light text-gray-600 leading-relaxed italic relative pl-4 border-l-2 border-amber-600/30">
-                                {{ .Params.testimonial.text }}
-                            </p>
-                        </div>
-                        
-                        <!-- Автор відгуку -->
-                        <div class="flex items-center gap-3 pt-2">
-                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0 border border-gray-200">
-                                <i data-lucide="user" class="w-5 h-5 text-gray-400"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs font-bold text-gray-900">{{ .Params.testimonial.author }}</p>
-                                <p class="text-[10px] text-gray-400">{{ .Params.testimonial.role }}</p>
-                            </div>
-                            <!-- Рейтинг зірками -->
-                            <div class="ml-auto flex gap-0.5">
-                                {{ range seq .Params.testimonial.rating }}
-                                <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
-                                {{ end }}
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Кнопка проєкту -->
-                    <a href="{{  .Params.link | relURL }}" class="border border-gray-200 mt-4 bg-white text-black w-full py-4 rounded-full text-sm font-bold text-gray-800 transition-all hover:bg-amber-400 hover:border-amber-400 hover:text-black   flex items-center justify-center gap-2 group/btn">
-                        Детальніше про проєкт
-                       
-                    </a>
-
-                </div>
+        <!-- Тіло картки -->
+        <div
+          class="p-8 flex flex-col gap-6 flex-1 bg-white/40 backdrop-blur-sm"
+        >
+          <!-- Заголовок та клієнт -->
+          <div>
+            <p
+              class="text-[12.5px] font-medium text-amber-600 bg-amber-50 rounded-full px-4 py-1.5 border border-amber-100/50 w-fit mb-3"
+            >
+              {{ .Params.category }}
+            </p>
+            <h3 class="text-xl font-bold text-gray-900 leading-snug mb-1">
+              {{ .Params.title }}
+            </h3>
+            <div class="text-sm text-gray-500 font-light">
+              {{ .Params.location }}
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+            {{ range .Params.stats }}
+            <div
+              class="glass-panel rounded-[1.75rem] px-4 py-4 md:px-5 md:py-5 hover-card"
+            >
+              <div class="flex items-center justify-between">
+                <span
+                  class="text-[10px] text-gray-400 tracking-widest uppercase mb-2"
+                  >{{ .label }}</span
+                >
+                <i data-lucide="{{ .icon }}" class="w-4 h-4 text-amber-500"></i>
+              </div>
+              <div class="text-[14px] font-normal">{{ .value }}</div>
             </div>
             {{ end }}
-        </div>
+          </div>
 
-        <!-- Футер секції -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mt-8 reveal">
-            
-            <a href="/projects/" class="bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-sm hover:bg-amber-400 hover:border-amber-400 hover:text-black transition-all shadow-xl shadow-gray-200 flex items-center gap-2 shrink-0 group">
-                Переглянути всі проєкти
-                <i data-lucide="layout-grid" class="w-4 h-4 transition-transform group-hover:rotate-90"></i>
+          <!-- Відгук -->
+          <div class="flex flex-col gap-4 flex-1">
+            <span
+              class="text-[9px] text-gray-400 tracking-widest uppercase font-bold"
+              >Відгук</span
+            >
+            <div class="flex-1">
+              <p
+                class="text-sm font-light text-gray-600 leading-relaxed italic relative pl-4 border-l-2 border-amber-600/30"
+              >
+                {{ .Params.testimonial.text }}
+              </p>
+            </div>
+
+            <!-- Автор відгуку -->
+            <div class="flex items-center gap-3 pt-2">
+              <div
+                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0 border border-gray-200"
+              >
+                <i data-lucide="user" class="w-5 h-5 text-gray-400"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-gray-900">
+                  {{ .Params.testimonial.author }}
+                </p>
+                <p class="text-[10px] text-gray-400">
+                  {{ .Params.testimonial.role }}
+                </p>
+              </div>
+              <!-- Рейтинг зірками -->
+              <div class="ml-auto flex gap-0.5">
+                {{ range seq .Params.testimonial.rating }}
+                <i
+                  data-lucide="star"
+                  class="w-3.5 h-3.5 text-amber-400 fill-amber-400"
+                ></i>
+                {{ end }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Кнопка проєкту -->
+          <div class="flex items-center justify-between relative z-20 gap-2">
+            <button
+              type="button"
+              class="py-2 px-4 rounded-full border border-gray-200 text-sm font-medium hover:border-amber-500 hover:text-amber-500 transition-all text-center btn-open-modal w-full"
+              data-name="{{ .Title }}"
+              data-desc="Консультація"
+            >
+              Консультація
+            </button>
+            <a
+              href="{{ .Params.link | default .RelPermalink }}"
+              class="py-2 px-4 text-center rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-gray-900 transition-all shadow-md w-full"
+            >
+              Детальніше
             </a>
+          </div>
         </div>
-
+      </div>
+      {{ end }}
     </div>
+
+    <!-- Футер секції -->
+    <div
+      class="flex flex-col sm:flex-row items-center justify-center gap-8 mt-8 reveal"
+    >
+      <a
+        href="/projects/"
+        class="bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-sm hover:bg-amber-500   transition-all shadow-xl shadow-gray-200 flex items-center gap-2 shrink-0 group"
+      >
+        Переглянути всі проєкти
+        <i
+          data-lucide="layout-grid"
+          class="w-4 h-4 transition-transform group-hover:rotate-90"
+        ></i>
+      </a>
+    </div>
+  </div>
 </section>
