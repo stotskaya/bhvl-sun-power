@@ -217,6 +217,26 @@
               {{ end }}
             </div>
           </div>
+          <div class="grid md:grid-cols-2 gap-x-10">
+            {{ $params_else := .Params.parameters_else }} {{ $break := div (add (len
+            $params) 1) 2 }}
+            <div>
+              {{ range (first $break $params_else) }}
+              <div class="spec-row">
+                <span class="spec-key">{{ .key }}</span>
+                <span class="spec-val">{{ .val }}</span>
+              </div>
+              {{ end }}
+            </div>
+            <div>
+              {{ range (after $break $params_else) }}
+              <div class="spec-row">
+                <span class="spec-key">{{ .key }}</span>
+                <span class="spec-val">{{ .val }}</span>
+              </div>
+              {{ end }}
+            </div>
+          </div>
         </div>
 
         <div class="glass-card rounded-[2rem] p-8 fu d4">

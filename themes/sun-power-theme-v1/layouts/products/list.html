@@ -152,20 +152,18 @@
     {{ $products := .RegularPagesRecursive }}
     
     {{ range $products }}
-    <article class="glass-card group p-6 rounded-[2rem] h-fit" data-price="{{ .Params.price }}" data-id="{{ .File.UniqueID }}">     <meta itemprop="position" content="{{ .File.UniqueID }}">
+    <article class="relative glass-card group rounded-[2rem] h-fit overflow-hidden" data-price="{{ .Params.price }}" data-id="{{ .File.UniqueID }}">     <meta itemprop="position" content="{{ .File.UniqueID }}">
                         
-                        <a href="{{ .RelPermalink }}" class="absolute inset-0 z-10" aria-label="View {{ .Title }}"></a>
-
-                        <div class="aspect-square rounded-2xl bg-gray-50 mb-6 overflow-hidden flex items-center justify-center">
+                        <div class="aspect-square bg-gray-50 flex items-center justify-center">
                             {{ if .Params.images }}
                                 {{ $firstImage := index .Params.images 0 }}
-                                <img src="{{ $firstImage | relURL }}" alt="{{ .Title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" itemprop="image">
+                                <img src="{{ $firstImage | relURL }}" alt="{{ .Title }}" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" itemprop="image">
                             {{ else }}
                                 <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
                             {{ end }}
                         </div>
 
-                        <div class="px-2">
+                        <div class="p-6">
                             <div class="text-[10px] text-amber-600 uppercase tracking-widest mb-2 relative z-20" itemprop="category">
                                 {{/* 4. ВИПРАВЛЕНО: Виводимо назву фізичної категорії через CurrentSection як простий текст (span замість посилання a), щоб не ламати HTML валідацію всередині картки-посилання */}}
                                 {{ with .CurrentSection }}
@@ -183,11 +181,11 @@
                             
                            
                             
-                            <div class="flex items-center justify-between relative z-20 gap-2">
-                                <a href="{{ .RelPermalink }}" class=" flex-1 py-2 px-4 rounded-full border border-gray-200 text-sm font-medium hover:border-amber-500   hover:text-amber-500 transition-all text-center">
+                            <div class="flex items-center justify-between gap-2">
+                                <a href="{{ .RelPermalink }}" class="flex-1 py-2 px-4 rounded-full border border-gray-200 text-sm font-medium hover:border-amber-500 hover:text-amber-500 group-hover:border-amber-500 group-hover:text-amber-500 transition-all text-center before:absolute before:inset-0 before:z-10">
                                     Детальніше
                                 </a>
-                                <button type="button" class="shrink-0 py-2 px-4 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-gray-900 transition-all shadow-md btn-open-modal"  data-name="{{ .Title }}" data-desc="Замовити"> 
+                                <button type="button" class="relative z-30 shrink-0 py-2 px-4 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-gray-900 transition-all shadow-md btn-open-modal" data-name="{{ .Title }}" data-desc="Замовити"> 
                                     Замовити
                                 </button>
                             </div>

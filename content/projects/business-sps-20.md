@@ -2,7 +2,7 @@
 title: "Промислова гібридна СЕС 20 кВт"
 short_title: "Промислова гібридна СЕС "
 layout: "projects"
-power_label: "5 кВт"
+power_label: "20 кВт"
 category: "Бізнес"
 location: "Виробничий цех (монтаж на скатних дахах підприємства)"
 images:
@@ -13,16 +13,16 @@ link: "/projects/business-sps-20"
 # Три головні картки статистики
 stats:
   - label: "Панелі"
-    value: "2,6 кВт"
-    subtext: "6 панелей × 435 Вт"
+    value: "28,1 кВт"
+    subtext: "Орієнтація Схід/Захід"
     icon: "battery"
   - label: "Інвертор"
-    value: "5.2 кВт"
-    subtext: "Гібридний Voltronic"
+    value: "20 кВт"
+    subtext: "Deye"
     icon: "PlugZap"
   - label: "АКБ"
-    value: "5 кВт год"
-    subtext: "LiFePO4 · A100"
+    value: "60 кВт⋅год"
+    subtext: "4 блоки А100 по 15 кВт⋅год"
     icon: "sun"
 
 # Блок Задача / Результат
@@ -42,6 +42,8 @@ parameters:
   - { key: "Тип монтажу", val: "Скатні дахи (орієнтація Схід/Захід)" }
   - { key: "Тип системи", val: "Промислова гібридна" }
   - { key: "Потужність СЕС", val: "28,1 кВт" }
+
+parameters_else:
   - { key: "Інвертор", val: "Deye 20 кВт (3-фазний)" }
   - { key: "Ємність АКБ", val: "А100 60 кВт⋅год" }
   - { key: "Термін монтажу", val: "6 робочих днів" }
@@ -55,7 +57,7 @@ components:
   - name: "Акумуляторний блок А100 (15 кВт⋅год)"
     desc: "LiFePO4 · BMS · Bluetooth-моніторинг"
     qty: "×4"
-  - name: "Сонячні панелі Jinko Solar Tier 1"
+  - name: "Сонячні панелі Jinko Solar Tier 1 (580 Вт / 590 Вт)"
     desc: "Монокристалічні · Grade A"
     qty: "×48"
   - name: "Система захисту та кріплень"

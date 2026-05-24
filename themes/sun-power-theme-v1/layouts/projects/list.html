@@ -151,7 +151,7 @@
        
                 <div id="catalogGrid" class="grid sm:grid-cols-2 xl:grid-cols-2 gap-6" itemscope itemtype="https://schema.org/ItemList">  
                     {{ range $products }}
-                    <article class="  relative glass-card rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5 h-fit" 
+                    <article class="group relative glass-card rounded-[2.5rem] overflow-hidden project-card flex flex-col transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/5 h-fit" 
                             data-category="{{ .Params.category | default "Дім" }}" data-id="{{ .File.UniqueID }}" >
                         <meta itemprop="position" content="{{ .File.UniqueID }}">
                    
@@ -219,12 +219,12 @@
                           
                             <!-- Кнопка проєкту -->
                             
-                            <div class="flex items-center justify-between relative z-20 gap-2">
+                            <div class="flex items-center justify-between gap-2">
                                 
-                                <button type="button" class=" flex-1 py-2 px-4 rounded-full border border-gray-200 text-sm font-medium hover:border-amber-500   hover:text-amber-500 transition-all text-center btn-open-modal"  data-name="{{ .Title }}" data-desc="Консультація"> 
+                                <button type="button" class="relative z-30 flex-1 py-2 px-4 rounded-full border border-gray-200 text-sm font-medium hover:border-amber-500 hover:text-amber-500 transition-all text-center btn-open-modal" data-name="{{ .Title }}" data-desc="Консультація"> 
                                     Консультація
                                 </button>
-                                <a href="{{ .Params.link | default .RelPermalink }}" class="shrink-0 py-2 px-4 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-gray-900 transition-all shadow-md">
+                                <a href="{{ .Params.link | default .RelPermalink }}" class="shrink-0 py-2 px-4 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-gray-900 group-hover:bg-gray-900 transition-all shadow-md before:absolute before:inset-0 before:z-10">
                                     Детальніше
                                 </a>
                             </div>
