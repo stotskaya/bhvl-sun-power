@@ -152,8 +152,8 @@ sections:
       документальний супровід та допомогу в отриманні грантів, щоб модернізація
       будинку була доступною кожному мешканцю.
 
-      Програми фінансування для ОСББ на сайті ПриватБанку: https://privatbank.ua/business/teplyje-kredity-dl-a-osmd-i-zhsk
-    button_text: Консультація щодо фінансування
+      Програми фінансування для ОСББ на сайті ПриватБанку: https://privatbank.ua/business/teplyje-kredity-dl-a-osmd-i-zhsk
+    button_text: "Консультація щодо фінансування"
   - type: faq
     title: FAQ
     items:

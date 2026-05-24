@@ -176,7 +176,7 @@ sections:
       під час всього періоду експлуатації.
 
       Деталі кредитування “Джерела енергії” на сайті ПриватБанку: https://privatbank.ua/kredyty/dzherela-enerhiyi
-    button_text: Отримати консультацію
+    button_text: "Отримати консультацію"
   - type: faq
     title: FAQ
     items:

@@ -161,8 +161,8 @@ sections:
       родина отримала власну електростанцію без великих одноразових навантажень
       на бюджет.
 
-      Деталі кредитування “Джерела енергії” на сайті ПриватБанку:  https://privatbank.ua/kredyty/dzherela-enerhiyi
-    button_text: Отримати консультацію по кредиту
+      Деталі кредитування “Джерела енергії” на сайті ПриватБанку: https://privatbank.ua/kredyty/dzherela-enerhiyi
+    button_text: "Отримати консультацію по кредиту"
   - type: faq
     title: FAQ
     items:
