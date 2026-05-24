@@ -147,7 +147,7 @@ sections:
       техніко-економічне обґрунтування (ТЕО) окупності для банку та візьмуть на
       себе весь документальний супровід проєкту.
 
-      Програми кредитування для бізнесу на сайті ПриватБанку: https://privatbank.ua/business/credit-for-business-continuity
+      Програми кредитування для бізнесу на сайті ПриватБанку: https://privatbank.ua/business/credit-for-business-continuity
     button_text: "Отримати консультацію"
   - type: faq
     title: FAQ
