@@ -1100,7 +1100,7 @@ content:
             list:
               collapsible:
                 collapsed: true
-                summary: "{name}"
+                summary: "{name} (батько: {parent}, вага: {weight})"
             fields:
               - {
                   name: name,
