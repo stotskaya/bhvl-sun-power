@@ -38,11 +38,6 @@
                     {{ .Params.description }}
                 </p>
 
-                <div class="flex flex-wrap gap-2 mb-10" aria-label="Tags">
-                    {{ range .Params.tags }}
-                    <span class="glass-card px-3 py-1.5 rounded-full text-xs font-medium">{{ . }}</span>
-                    {{ end }}
-                </div>
 
                 <div class="aspect-[16/9] rounded-[2.5rem] overflow-hidden glass-panel p-4">
                     <img src="{{ .Params.image }}" 
@@ -62,6 +57,54 @@
                 </div>
             </article>
         </div>
+
+        <!-- Секція з іншими статтями -->
+        {{ $related := where (where site.RegularPages "Section" "journal") "Permalink" "ne" .Permalink }}
+        {{ if $related }}
+        <div class="mt-24 border-t border-gray-100 pt-16 reveal mt-16">
+            <h2 class="text-3xl font-light mb-10 text-start">
+                Читайте <span class="solar-gradient-text italic font-medium">також</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {{ range first 3 $related }}
+                <article class="flex flex-col">
+                    <div class="aspect-[16/10] rounded-3xl overflow-hidden mb-6">
+                        {{ if .Params.image }}
+                            <img src="{{ .Params.image }}" 
+                                 alt="{{ .Title }}" 
+                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                        {{ else }}
+                            <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300">No Image</div>
+                        {{ end }}
+                    </div>
+
+                    <div class="flex items-center justify-between gap-6 mb-3">
+                        <span class="text-xs font-medium text-amber-600">
+                            {{ .Params.category | default "Екологічність" }}
+                        </span>
+                        <span class="text-xs text-gray-400 tracking-widest uppercase">
+                            {{ .Params.editorial_type | default "Стаття" }}
+                        </span>
+                    </div>
+
+                    <h3 class="text-xl font-medium mb-4 leading-tight">
+                        <a href="{{ .RelPermalink }}" class="hover:text-amber-600 transition-colors">
+                            {{ .Title | safeHTML }}
+                        </a>
+                    </h3>
+
+                    <p class="text-gray-500 font-light text-sm mb-5 flex-1">
+                        {{ .Params.description | truncate 120 }}
+                    </p>
+
+                    <a href="{{ .RelPermalink }}" class="text-sm font-medium border-b border-gray-200 pb-1 hover:text-amber-600 transition-colors inline-block w-fit">
+                        Читати
+                    </a>
+                </article>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
     </div>
 </article>
 {{ end }}

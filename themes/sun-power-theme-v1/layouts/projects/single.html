@@ -39,9 +39,9 @@
               <div class="swiper-wrapper">
                 {{ range .Params.images }}
                 <div
-                  class="swiper-slide"
+                  class="swiper-slide bg-white"
                 >
-                  <img src="{{ . }}" class=" object-contain" />
+                  <img src="{{ . }}" class=" object-contain bg-white" />
                 </div>
                 {{ end }}
               </div>
@@ -50,11 +50,11 @@
             </div>
             {{ else }}
             <div
-              class="w-full h-full flex items-center justify-center bg-gray-50/50"
+              class="w-full h-full flex items-center justify-center bg-white"
             >
               <img
                 src="{{ .Params.image }}"
-                class="w-full h-full object-contain"
+                class="w-full h-full object-contain bg-white"
               />
             </div>
             {{ end }}

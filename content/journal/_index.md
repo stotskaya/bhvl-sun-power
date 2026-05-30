@@ -1,6 +1,6 @@
 ---
-title: "Insights"
-subtitle: "A curated stream of editorial notes, deep dives, and practical guides."
+title: "Блог"
+subtitle: "Добірка редакційних нотаток, глибоких досліджень та практичних порад."
 layout: "list"
 cascade:
   type: "journal" 

@@ -1,0 +1,32 @@
+<section class="py-20 px-6 section-text-with-image">
+  <div class="max-w-7xl mx-auto">
+    {{/* Тепер замість .Title або .Params.title всюди використовуємо $s.title
+    */}} {{ with .title }}
+    <h2 class="text-4xl font-light text-center mb-14 tracking-tight reveal">
+      {{ $title := . }} {{ $words := split $title " " }}
+
+      <span class="solar-gradient-text italic font-medium">
+        {{ range first 3 $words }}{{ . }} {{ end }} </span
+      ><br />
+
+      {{ range after 3 $words }}{{ . }} {{ end }}
+    </h2>
+    {{ end }}
+
+    <div class="grid lg:grid-cols-2 gap-10 items-start glass-card rounded-[2.5rem] p-10 ">
+      <div
+        class="reveal delay-150 "
+      >
+      {{ .body_text_1 | markdownify }}
+        
+      </div>
+
+      <div
+        class=" reveal delay-150 "
+
+      >
+       {{ .body_text_2 | markdownify }}
+      </div>
+    </div>
+  </div>
+</section>

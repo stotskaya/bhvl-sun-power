@@ -22,9 +22,11 @@ content:
       - { name: attribute_1, label: "Attribute 1", type: string }
       - { name: attribute_2, label: "Attribute 2", type: string }
       - { name: attribute_3, label: "Attribute 3", type: string }
+      - { name: layout, label: "Layout", type: string, default: "sps" }
       - { name: image, label: "Main image", type: image }
       - { name: image_alt, label: "Image alt", type: string }
-      - { name: image_left, label: "Show Main image on the Page?", type: boolean, default: true }
+      - { name: with_main_image, label: "Show Main image on the Page?", type: boolean, default: true }
+      - { name: image_left, label: "Image left (Fallback/Legacy)?", type: boolean, default: true }
       - { name: main_button_text, label: "Main button Text", type: text }
       - { name: specs_button_text, label: "Specs button Text", type: text }
       # FEATURES
@@ -54,6 +56,7 @@ content:
           - name: text-with-image
             label: "Text with image"
             fields: # Використовуй fields замість items
+              - { name: id, label: "ID", type: string }
               - { name: title, label: "Title", type: string }
               - { name: image, label: "Image", type: image }
               - { name: image_alt, label: "Alt", type: string }
@@ -66,6 +69,7 @@ content:
               - name: body_text
                 label: "Text"
                 type: rich-text
+              - { name: button_text, label: "Button Text", type: string }
 
           - name: features-row
             label: "Features row"
@@ -84,6 +88,7 @@ content:
           - name: case-specs
             label: "Case Specs"
             fields:
+              - { name: id, label: "ID", type: string }
               - { name: title, label: "Title", type: string }
               - { name: subtitle, label: "SubTitle", type: string }
               - name: specs
@@ -93,6 +98,10 @@ content:
                 fields:
                    - { name: label, label: "Label", type: string }
                    - { name: value, label: "Value", type: text }
+              - { name: image, label: "Image", type: image }
+              - { name: image_alt, label: "Image Alt", type: string }
+              - { name: image_left, label: "Image on the left?", type: boolean, default: false }
+              - { name: button_text, label: "Button Text", type: string }
               
           - name: system-specs
             label: "System specs"
@@ -169,6 +178,7 @@ content:
           - name: full-text-with-button
             label: "Full text CTA"
             fields:
+              - { name: id, label: "ID", type: string }
               - { name: title, label: "Title", type: string }
               - { name: content, label: "Content", type: rich-text }
               - { name: button_text, label: "Button", type: string }
@@ -351,12 +361,17 @@ content:
     path: "content/projects"
     filename: "{slug}.md"
     fields:
+      - { label: "Шаблон (layout)", name: "layout", type: "string", default: "projects" }
       - { label: "Назва проєкту (H1)", name: "title", type: "string" }
       - { label: "Коротка назва", name: "short_title", type: "string" }
       - { label: "Мітка потужності", name: "power_label", type: "string" }
       - { label: "Категорія", name: "category", type: "string" }
       - { label: "Локація", name: "location", type: "string" }
       - { label: "Головне фото", name: "image", type: "image" }
+      - label: "Галерея зображень (images)"
+        name: "images"
+        type: list
+        field: { label: "Зображення", type: image }
       - { label: "Посилання", name: "link", type: "string" }
     
       # Блок статистики (3 головні картки)
@@ -380,10 +395,31 @@ content:
         fields:
           - { label: "Задача", name: "task", type: "text" }
           - { label: "Результат", name: "result", type: "text" }
+          - { label: "Рішення (solution)", name: "solution", type: "text" }
+          - label: "Додаткові специфікації результату (results_specs)"
+            name: "results_specs"
+            type: object
+            list: true
+            fields:
+              - { label: "Ключ", name: "key", type: "string" }
+              - { label: "Значення", name: "val", type: "string" }
     
+      # Таблиця параметрів
       # Таблиця параметрів
       - label: "Таблиця параметрів (parameters)"
         name: "parameters"
+        type: object
+        list:
+          collapsible:
+              collapsed: true
+              summary: "{key}"
+        fields:
+          - { label: "Ключ (Параметр)", name: "key", type: "string" }
+          - { label: "Значення", name: "val", type: "string" }
+
+      # Додаткові параметри
+      - label: "Додаткові параметри"
+        name: "parameters_else"
         type: object
         list:
           collapsible:
@@ -415,7 +451,295 @@ content:
           - { label: "Автор", name: "author", type: "string" }
           - { label: "Посада/Роль", name: "role", type: "string" }
           - { label: "Ініціали", name: "initials", type: "string" }
+          - { label: "Рейтинг (зірки)", name: "rating", type: "number" }
 
+  - name: journal
+    label: "Блог / Журнал"
+    type: collection
+    path: "content/journal"
+    filename: "{slug}/index.md"
+    fields:
+      - { label: "Заголовок (Title)", name: "title", type: "string" }
+      - { label: "Дата публікації", name: "date", type: "datetime" }
+      - { label: "Чернетка (Draft)", name: "draft", type: "boolean", default: false }
+      - { label: "Шаблон (layout)", name: "layout", type: "string", default: "single" }
+      - { label: "Тип (type)", name: "type", type: "string", default: "journal" }
+      - { label: "Категорія", name: "category", type: "string" }
+      - { label: "Тип редакційного матеріалу", name: "editorial_type", type: "string" }
+      - { label: "Час читання", name: "reading_time", type: "string" }
+      - { label: "Опис (Description)", name: "description", type: "text" }
+      - { label: "Головне зображення", name: "image", type: "image" }
+      - { label: "Alt-текст зображення", name: "image_alt", type: "string" }
+      - { label: "Автор", name: "author", type: "string", default: "Редакція А100" }
+
+  - name: products
+    label: "Товари / Каталог"
+    type: collection
+    path: "content/products"
+    filename: "{folder}/{slug}.md"
+    fields:
+      - { label: "Заголовок (Title)", name: "title", type: "string" }
+      - { label: "Короткий опис", name: "description", type: "string" }
+      - { label: "Шаблон (layout)", name: "layout", type: "string", default: "single" }
+      - name: category
+        label: "Категорія"
+        type: select
+        options:
+          - { label: "A100", value: "A100" }
+          - { label: "Аксесуари", value: "Аксесуари" }
+          - { label: "Акумулятори", value: "Акумулятори" }
+          - { label: "Інвертори", value: "Інвертори" }
+          - { label: "Готові комплекти", value: "Готові комплекти" }
+          - { label: "Сонячні панелі", value: "Сонячні панелі" }
+          - { label: "Комплектуючі", value: "Комплектуючі" }
+      - { label: "Ціна", name: "price", type: "string" }
+      - label: "Галерея зображень (images)"
+        name: "images"
+        type: list
+        field: { label: "Зображення", type: image }
+      - { label: "Повний опис", name: "full_description", type: "text" }
+      - label: "Характеристики (specs)"
+        name: "specs"
+        type: object
+        list: true
+        fields:
+          - { label: "Параметр", name: "key", type: "string" }
+          - { label: "Значення", name: "val", type: "string" }
+
+  
+  - name: calculator_basic
+    label: "Калькулятор — таблиця basic"
+    description: "Базова таблиця конфігурацій станцій для розрахунку вартості."
+    path: themes/sun-power-theme-v1/static/data/calculator/basic.json
+    type: file
+    format: json
+    fields:
+      - name: basic
+        label: "Записи (рядки таблиці)"
+        type: object
+        list:
+          min: 36
+          max: 36
+          collapsible:
+            collapsed: true
+            summary: "{station_type} · {network_phase}ф · {power_kwt} кВт"
+        fields:
+          # ── Ідентифікаційні поля (ключ запису, не редагувати) ─────
+          - name: "power_kwt"
+            label: "🔒 Потужність, кВт"
+            description: "Ідентифікаційне поле. Разом із фазами та типом станції утворює унікальний ключ — не редагувати після створення."
+            type: number
+            required: true
+            readonly: true
+            options:
+              readonly: true
+
+          - name: "network_phase"
+            label: "🔒 Тип мережі, фаз"
+            description: "Ідентифікаційне поле. He редагувати після створення."
+            type: select
+            required: true
+            readonly: true
+            options:
+              readonly: true
+              values:
+                - { value: 1, label: "1 фаза" }
+                - { value: 3, label: "3 фази" }
+
+          - name: "station_type"
+            label: "🔒 Тип станції"
+            description: "Ідентифікаційне поле. He редагувати після створення."
+            type: select
+            required: true
+            readonly: true
+            options:
+              readonly: true
+              values:
+                - { value: "hybrid", label: "гібридна" }
+                - { value: "grid", label: "мережева" }
+
+          # ── Інвертор ──────────────────────────────────────────────
+          - name: "min_price_inverter_usd"
+            label: "Мін. ціна інвертора, $"
+            type: number
+
+          - name: "string_voltage"
+            label: "Напруга на стринг, B"
+            type: number
+
+          # ── Панелі (рекомендована конфігурація) ───────────────────
+          - name: "panels_rec_qty"
+            label: "Панелей, рек"
+            type: number
+
+          - name: "strings_rec_qty"
+            label: "Стрингів, рек"
+            type: number
+
+          - name: "pv_power_rec"
+            label: "PV потужність, рек, кВт"
+            type: number
+
+          # ── Панелі (мінімальна конфігурація) ──────────────────────
+          - name: "panels_min_qty"
+            label: "Мінімум панелей, шт"
+            type: number
+
+          - name: "strings_min_qty"
+            label: "Стрингів, мін"
+            type: number
+
+          - name: "pv_power_min"
+            label: "PV потужність, мін, кВт"
+            type: number
+
+          # ── Ціни панелей та кріплень ──────────────────────────────
+          - name: "price_panels_rec"
+            label: "Ціна панелей, рек, $"
+            type: number
+
+          - name: "price_panels_min"
+            label: "Ціна панелей, мін, $"
+            type: number
+
+          - name: "price_mounts_rec"
+            label: "Ціна кріплень, рек, $"
+            type: number
+
+          - name: "price_mounts_min"
+            label: "Ціна кріплень, мін, $"
+            type: number
+
+          # ── АКБ ───────────────────────────────────────────────────
+          - name: "battery_config"
+            label: "АКБ, конфігурація"
+            type: select
+            options:
+              creatable: true
+              values:
+                - "без акб"
+                - "A100_5"
+                - "A100_16"
+                - "Deye_HV_5_BMS_30"
+                - "Deye_HV_5_BMS_50"
+
+          - name: "usable_capacity_kwt"
+            label: "Корисна ємність, кВт·год"
+            type: number
+
+          - name: "battery_qty"
+            label: "АКБ, кількість"
+            type: number
+
+          - name: "battery_price"
+            label: "АКБ, ціна, $"
+            type: number
+
+          # ── Кабель AC ─────────────────────────────────────────────
+          - name: "cable_ac_type"
+            label: "Кабель AC, переріз"
+            type: select
+            options:
+              creatable: true
+              values:
+                - "4x4"
+                - "4x6"
+                - "4x10"
+                - "1x16"
+                - "1x25"
+                - "1x35"
+                - "1x50"
+                - "1x90"
+
+          - name: "cable_ac_length_m"
+            label: "Кабель AC, довжина, м"
+            type: number
+
+          - name: "cable_ac_price"
+            label: "Кабель AC, ціна, $"
+            type: number
+
+          # ── Кабель DC ─────────────────────────────────────────────
+          - name: "cable_dc_type"
+            label: "Кабель DC, тип"
+            type: string
+            default: "DC"
+
+          - name: "cable_dc_length_rec_m"
+            label: "Кабель DC, довжина, рек, м"
+            type: number
+
+          - name: "cable_dc_length_min_m"
+            label: "Кабель DC, довжина, мін, м"
+            type: number
+
+          - name: "cable_dc_price_rec"
+            label: "Кабель DC, ціна, рек, $"
+            type: number
+
+          - name: "cable_dc_price_min"
+            label: "Кабель DC, ціна, мін, $"
+            type: number
+
+          # ── Захист AC ─────────────────────────────────────────────
+          - name: "protection_ac_type"
+            label: "Захист та комутація AC"
+            type: select
+            options:
+              creatable: true
+              values:
+                - "AC 1Ф до 12 квт"
+                - "AC 1Ф до 20 квт"
+                - "AC 3Ф до 12 квт"
+                - "AC 3Ф до 60 квт"
+                - "AC 3Ф до 120 квт"
+                - "AC 3Ф до 200 квт"
+                - "AC 3Ф до 350 квт"
+
+          - name: "protection_ac_price"
+            label: "Захист AC, ціна, $"
+            type: number
+
+          # ── Захист DC ─────────────────────────────────────────────
+          - name: "protection_dc_type"
+            label: "Захист та комутація DC"
+            type: string
+            default: "DC"
+
+          - name: "protection_dc_price_rec"
+            label: "Захист DC, ціна, рек, $"
+            type: number
+
+          - name: "protection_dc_price_min"
+            label: "Захист DC, ціна, мін, $"
+            type: number
+
+          # ── Робота (монтаж) ───────────────────────────────────────
+          - name: "work_inverter"
+            label: "Робота, інвертор, $"
+            type: number
+
+          - name: "work_panels_rec_flat"
+            label: "Робота, панель, рек, плоска криша, $"
+            type: number
+
+          - name: "work_panels_min_flat"
+            label: "Робота, панель, мін, плоска криша, $"
+            type: number
+
+          # ── Підсумкові ціни ───────────────────────────────────────
+          - name: "price_no_sun"
+            label: "Ціна без сонця, $"
+            type: number
+
+          - name: "price_kit_rec"
+            label: "Ціна комплекта, рек, $"
+            type: number
+
+          - name: "price_kit_base"
+            label: "Ціна комплекта, баз, $"
+            type: number
+    
 
   - name: home
     label: "Головна сторінка"

@@ -4,7 +4,7 @@
     <!-- Заголовок -->
     <div class="text-center">
         {{ with  .title }}
-        <h2 class="text-3xl md:text-4xl font-light text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-light text-center mb-6">
             {{ $title := . }}
             {{ $words := split $title " " }}
 
@@ -25,7 +25,7 @@
             style="background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, transparent 70%)">
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 flex-1">
+        <div class="grid grid-cols-1 {{ if .image }} md:grid-cols-2 {{ end }} flex-1">
         <!-- Текстовий блок -->
         <div class="p-7 flex flex-col gap-2">
             
@@ -36,18 +36,20 @@
             <p class="text-[13px] font-light text-gray-500 leading-relaxed flex-1 mb-3">
             {{ .description }}
             </p>
-
+            {{ if .link }}
             <a href="{{ .link | relURL }}" class="text-[11px] font-bold border-b border-gray-200 pb-1 w-fit hover:border-amber-500 hover:text-amber-600 transition-colors">
             Докладніше
             </a>
+            {{ end }}
         </div>
-
+        {{ if .image }}
         <!-- Блок зображення -->
         <div class="relative overflow-hidden min-h-[200px]">
             <div class="w-full h-full flex items-center justify-center bg-slate-800 section-image" style="min-height: 250px;">
                 <img src="{{ .image | relURL }}" alt="{{ .title }}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
             </div>
         </div>
+        {{ end }}
         </div>
     </div>
     {{ end }}
