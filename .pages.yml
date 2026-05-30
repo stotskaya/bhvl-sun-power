@@ -909,4 +909,148 @@ content:
                   - { name: question, label: "Q", type: string }
                   - { name: answer, label: "A", type: rich-text }
       
-     
+  - name: about_us
+    label: "Про компанію"
+    type: file
+    path: "content/about-us.md"
+    fields:
+      - { name: title, label: "Title", type: string }
+      - { name: layout, label: "Layout", type: string, default: "about-us", readonly: true }
+      - { name: short_title, label: "Short title", type: string }
+      - { name: label, label: "Label", type: string }
+      - { name: description, label: "Description", type: text }
+      - { name: main_button_text, label: "Main button text", type: string }
+      - name: features
+        label: "Features"
+        type: object
+        list: true
+        fields:
+          - { name: title, label: "Title", type: string }
+      - name: sections
+        label: "Sections"
+        type: block
+        blockKey: type
+        blocks:
+          - name: text-with-image
+            label: "Text with image"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: image, label: "Image", type: image }
+              - { name: image_alt, label: "Alt", type: string }
+              - { name: image_left, label: "Image left?", type: boolean }
+              - { name: body_text, label: "Text", type: rich-text }
+              - { name: button_text, label: "Button text", type: string }
+          - name: text-two-cols
+            label: "Text two columns"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: body_text_1, label: "Body Text 1", type: rich-text }
+              - { name: body_text_2, label: "Body Text 2", type: rich-text }
+          - name: steps-list
+            label: "Steps list"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - name: steps
+                label: "Steps"
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: "Title", type: string }
+                  - { name: text, label: "Text", type: text }
+          - name: features-row
+            label: "Features row"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - name: steps
+                label: "Steps"
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: "Title", type: string }
+                  - { name: subtitle, label: "Subtitle", type: string }
+                  - { name: text, label: "Text", type: text }
+          - name: featured-services
+            label: "Featured services"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - name: services
+                label: "Services"
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: "Title", type: string }
+                  - { name: description, label: "Description", type: text }
+          - name: faq
+            label: "FAQ"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - name: items
+                label: "Questions"
+                type: object
+                list: true
+                fields:
+                  - { name: question, label: "Question", type: string }
+                  - { name: answer, label: "Answer", type: rich-text }
+
+  - name: config
+    label: "Налаштування сайту"
+    path: themes/sun-power-theme-v1/hugo.toml
+    type: file
+    format: toml
+    fields:
+      - { name: baseURL, label: "Базова URL-адреса", type: string }
+      - { name: languageCode, label: "Код мови", type: string }
+      - { name: title, label: "Назва сайту (Заголовок)", type: string }
+      - name: params
+        label: "Параметри сайту"
+        type: object
+        fields:
+          - { name: brandName, label: "Назва бренду", type: string }
+          - { name: headerButtonText, label: "Текст кнопки в шапці", type: string }
+          - { name: footerDescription, label: "Опис у футері", type: string }
+          - { name: copyrightText, label: "Текст копірайту", type: string }
+          - { name: phone, label: "Номер телефону", type: string }
+      - name: menu
+        label: "Меню та Навігація"
+        type: object
+        fields:
+          - name: main
+            label: "Головне меню"
+            type: object
+            list: true
+            fields:
+              - { name: name, label: "Назва пункту", type: string }
+              - { name: url, label: "URL посилання", type: string }
+              - { name: identifier, label: "Ідентифікатор (якщо є)", type: string }
+              - { name: parent, label: "Батьківський пункт (ідентифікатор)", type: string }
+              - { name: weight, label: "Порядок (вага)", type: number }
+              - name: params
+                label: "Параметри пункту"
+                type: object
+                fields:
+                  - { name: subname, label: "Підзаголовок", type: string }
+                  - { name: bold, label: "Жирний шрифт?", type: boolean }
+          - name: footer_nav
+            label: "Меню у футері (Навігація)"
+            type: object
+            list: true
+            fields:
+              - { name: name, label: "Назва пункту", type: string }
+              - { name: url, label: "URL посилання", type: string }
+              - { name: weight, label: "Порядок (вага)", type: number }
+          - name: footer_social
+            label: "Меню у футері (Корисне / Соц. лінки)"
+            type: object
+            list: true
+            fields:
+              - { name: name, label: "Назва пункту", type: string }
+              - { name: url, label: "URL посилання", type: string }
+              - { name: weight, label: "Порядок (вага)", type: number }
+          - name: subfooter_nav
+            label: "Меню в самому низу (Subfooter)"
+            type: object
+            list: true
+            fields:
+              - { name: name, label: "Назва пункту", type: string }
+              - { name: url, label: "URL посилання", type: string }
+              - { name: weight, label: "Порядок (вага)", type: number }
