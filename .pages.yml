@@ -3,7 +3,6 @@ media:
   output: /images
 
 content:
-  
   - name: sps
     label: "CEC сторінки"
     type: collection
@@ -25,8 +24,18 @@ content:
       - { name: layout, label: "Layout", type: string, default: "sps" }
       - { name: image, label: "Main image", type: image }
       - { name: image_alt, label: "Image alt", type: string }
-      - { name: with_main_image, label: "Show Main image on the Page?", type: boolean, default: true }
-      - { name: image_left, label: "Image left (Fallback/Legacy)?", type: boolean, default: true }
+      - {
+          name: with_main_image,
+          label: "Show Main image on the Page?",
+          type: boolean,
+          default: true,
+        }
+      - {
+          name: image_left,
+          label: "Image left (Fallback/Legacy)?",
+          type: boolean,
+          default: true,
+        }
       - { name: main_button_text, label: "Main button Text", type: text }
       - { name: specs_button_text, label: "Specs button Text", type: text }
       # FEATURES
@@ -35,8 +44,8 @@ content:
         type: object
         list:
           collapsible:
-              collapsed: true
-              summary: "{title}"
+            collapsed: true
+            summary: "{title}"
         fields:
           - { name: title, label: "Title", type: string }
           - { name: text, label: "Text", type: text }
@@ -49,10 +58,10 @@ content:
         type: block
         list:
           collapsible:
-              collapsed: true
-              summary: "{title}"
+            collapsed: true
+            summary: "{title}"
         blockKey: type
-        blocks: 
+        blocks:
           - name: text-with-image
             label: "Text with image"
             fields: # Використовуй fields замість items
@@ -65,7 +74,7 @@ content:
                 label: "Image on the left?"
                 type: boolean
                 default: false
-             
+
               - name: body_text
                 label: "Text"
                 type: rich-text
@@ -75,7 +84,7 @@ content:
             label: "Features row"
             fields:
               - { name: title, label: "Title", type: string }
-             
+
               - name: steps
                 label: "Features"
                 type: object
@@ -84,7 +93,7 @@ content:
                   - { name: title, label: "Title", type: string }
                   - { name: subtitle, label: "Subtitle", type: string }
                   - { name: text, label: "Text", type: text }
-           
+
           - name: case-specs
             label: "Case Specs"
             fields:
@@ -96,13 +105,18 @@ content:
                 type: object
                 list: true
                 fields:
-                   - { name: label, label: "Label", type: string }
-                   - { name: value, label: "Value", type: text }
+                  - { name: label, label: "Label", type: string }
+                  - { name: value, label: "Value", type: text }
               - { name: image, label: "Image", type: image }
               - { name: image_alt, label: "Image Alt", type: string }
-              - { name: image_left, label: "Image on the left?", type: boolean, default: false }
+              - {
+                  name: image_left,
+                  label: "Image on the left?",
+                  type: boolean,
+                  default: false,
+                }
               - { name: button_text, label: "Button Text", type: string }
-              
+
           - name: system-specs
             label: "System specs"
             fields:
@@ -124,14 +138,13 @@ content:
                   - name: item
                     label: Пункт
                     type: text
-                
-              - name: installation_label 
+
+              - name: installation_label
                 label: "Inst Label"
                 type: string
               - name: installation_text
                 label: "Inst Text"
                 type: text
-
 
           - name: steps-list
             label: "Steps list"
@@ -203,16 +216,16 @@ content:
       - { label: "Примітка (Note)", name: "note", type: "string" }
       - { label: "Головне зображення", name: "image", type: "image" }
       - { label: "Alt-текст зображення", name: "image_alt", type: "string" }
-      
+
       - name: sections
         label: "Sections"
         type: block
         list:
           collapsible:
-              collapsed: true
-              summary: "{title}"
+            collapsed: true
+            summary: "{title}"
         blockKey: type
-        blocks: 
+        blocks:
           - name: text-with-image
             label: "Text with image"
             fields: # Використовуй fields замість items
@@ -224,19 +237,23 @@ content:
                 label: "Image on the left?"
                 type: boolean
                 default: false
-             
+
               - name: body_text
                 label: "Text"
                 type: rich-text
-                
+
           - name: service-process
             label: "Service Process"
             fields:
               - { name: title, label: "Title", type: string }
               - { name: subtitle, label: "Subtitle", type: string }
               - { name: result_title, label: "Result Title", type: string }
-              - { name: result_subtitle, label: "Result Subtitle", type: string }
-              
+              - {
+                  name: result_subtitle,
+                  label: "Result Subtitle",
+                  type: string,
+                }
+
               - name: steps
                 label: "Етапи роботи"
                 type: object
@@ -258,13 +275,13 @@ content:
                 fields:
                   - { name: label, label: "Мітка (Label)", type: string }
                   - { name: text, label: "Текст", type: text }
-                  
+
           - name: audit
             label: "Audit / Situations"
             fields:
               - { name: title, label: "Заголовок", type: string }
               - { name: description, label: "Опис", type: text }
-              
+
               - name: situations
                 label: "Сценарії (Situations)"
                 type: object
@@ -273,13 +290,17 @@ content:
                   - { name: title, label: "Заголовок сценарію", type: string }
                   - { name: text, label: "Опис сценарію", type: text }
 
-              - { name: checklist_title, label: "Заголовок списку робіт", type: string }
-              
+              - {
+                  name: checklist_title,
+                  label: "Заголовок списку робіт",
+                  type: string,
+                }
+
               - name: documentation
                 label: "Склад робіт (Checklist)"
                 type: object
                 list: true
-                
+
                 fields:
                   - { name: item, label: "Пункт робіт", type: text }
 
@@ -296,26 +317,38 @@ content:
             label: "Тарифи та формати робіт"
             fields:
               - { name: title, label: "Заголовок секції", type: string }
-              
+
               - name: tiers
                 label: "Варіанти послуг (Tiers)"
                 type: object
                 list: true
                 fields:
-                  - { name: label, label: "Мітка (напр. Базовий)", type: string }
+                  - {
+                      name: label,
+                      label: "Мітка (напр. Базовий)",
+                      type: string,
+                    }
                   - { name: name, label: "Назва формату", type: string }
                   - { name: description, label: "Опис", type: text }
-                  - { name: featured, label: "Акцентна картка (True/False)", type: boolean }
+                  - {
+                      name: featured,
+                      label: "Акцентна картка (True/False)",
+                      type: boolean,
+                    }
                   - { name: cta, label: "Текст кнопки", type: string }
-                  
+
                   - name: params
                     label: "Технічні деталі (Параметри)"
                     type: object
                     list: true
                     fields:
-                      - { name: key, label: "Параметр (напр. Термін)", type: string }
+                      - {
+                          name: key,
+                          label: "Параметр (напр. Термін)",
+                          type: string,
+                        }
                       - { name: value, label: "Значення", type: string }
-                      
+
           - name: full-text-with-button
             label: "Full text CTA"
             fields:
@@ -338,7 +371,7 @@ content:
             label: "Список етапів (Steps)"
             fields:
               - { name: title, label: "Заголовок секції", type: string }
-              
+
               - name: steps
                 label: "Кроки процесу"
                 type: object
@@ -354,14 +387,19 @@ content:
               - { name: seo_text, label: "Text", type: rich-text }
       - { name: SEO_title, label: "SEO title", type: text }
       - { name: SEO_description, label: "SEO description", type: text }
-      
+
   - name: projects
     label: "Наші роботи"
     type: collection
     path: "content/projects"
     filename: "{slug}.md"
     fields:
-      - { label: "Шаблон (layout)", name: "layout", type: "string", default: "projects" }
+      - {
+          label: "Шаблон (layout)",
+          name: "layout",
+          type: "string",
+          default: "projects",
+        }
       - { label: "Назва проєкту (H1)", name: "title", type: "string" }
       - { label: "Коротка назва", name: "short_title", type: "string" }
       - { label: "Мітка потужності", name: "power_label", type: "string" }
@@ -373,21 +411,25 @@ content:
         type: list
         field: { label: "Зображення", type: image }
       - { label: "Посилання", name: "link", type: "string" }
-    
+
       # Блок статистики (3 головні картки)
       - label: "Головна статистика (stats)"
         name: "stats"
         type: object
         list:
           collapsible:
-              collapsed: true
-              summary: "{label}"
+            collapsed: true
+            summary: "{label}"
         fields:
           - { label: "Заголовок", name: "label", type: "string" }
           - { label: "Значення", name: "value", type: "string" }
           - { label: "Опис (підтекст)", name: "subtext", type: "string" }
-          - { label: "Іконка (напр. battery, sun)", name: "icon", type: "string" }
-    
+          - {
+              label: "Іконка (напр. battery, sun)",
+              name: "icon",
+              type: "string",
+            }
+
       # Блок Задача / Результат
       - label: "Місія проєкту (Mission)"
         name: "mission"
@@ -403,7 +445,7 @@ content:
             fields:
               - { label: "Ключ", name: "key", type: "string" }
               - { label: "Значення", name: "val", type: "string" }
-    
+
       # Таблиця параметрів
       # Таблиця параметрів
       - label: "Таблиця параметрів (parameters)"
@@ -411,8 +453,8 @@ content:
         type: object
         list:
           collapsible:
-              collapsed: true
-              summary: "{key}"
+            collapsed: true
+            summary: "{key}"
         fields:
           - { label: "Ключ (Параметр)", name: "key", type: "string" }
           - { label: "Значення", name: "val", type: "string" }
@@ -423,25 +465,25 @@ content:
         type: object
         list:
           collapsible:
-              collapsed: true
-              summary: "{key}"
+            collapsed: true
+            summary: "{key}"
         fields:
           - { label: "Ключ (Параметр)", name: "key", type: "string" }
           - { label: "Значення", name: "val", type: "string" }
-    
+
       # Склад системи
       - label: "Склад системи (components)"
         name: "components"
         type: object
         list:
           collapsible:
-              collapsed: true
-              summary: "{name}"
+            collapsed: true
+            summary: "{name}"
         fields:
           - { label: "Назва пристрою", name: "name", type: "string" }
           - { label: "Опис/Характеристики", name: "desc", type: "string" }
           - { label: "Кількість", name: "qty", type: "string" }
-    
+
       # Відгук клієнта
       - label: "Відгук (Testimonial)"
         name: "testimonial"
@@ -461,16 +503,40 @@ content:
     fields:
       - { label: "Заголовок (Title)", name: "title", type: "string" }
       - { label: "Дата публікації", name: "date", type: "datetime" }
-      - { label: "Чернетка (Draft)", name: "draft", type: "boolean", default: false }
-      - { label: "Шаблон (layout)", name: "layout", type: "string", default: "single" }
-      - { label: "Тип (type)", name: "type", type: "string", default: "journal" }
+      - {
+          label: "Чернетка (Draft)",
+          name: "draft",
+          type: "boolean",
+          default: false,
+        }
+      - {
+          label: "Шаблон (layout)",
+          name: "layout",
+          type: "string",
+          default: "single",
+        }
+      - {
+          label: "Тип (type)",
+          name: "type",
+          type: "string",
+          default: "journal",
+        }
       - { label: "Категорія", name: "category", type: "string" }
-      - { label: "Тип редакційного матеріалу", name: "editorial_type", type: "string" }
+      - {
+          label: "Тип редакційного матеріалу",
+          name: "editorial_type",
+          type: "string",
+        }
       - { label: "Час читання", name: "reading_time", type: "string" }
       - { label: "Опис (Description)", name: "description", type: "text" }
       - { label: "Головне зображення", name: "image", type: "image" }
       - { label: "Alt-текст зображення", name: "image_alt", type: "string" }
-      - { label: "Автор", name: "author", type: "string", default: "Редакція А100" }
+      - {
+          label: "Автор",
+          name: "author",
+          type: "string",
+          default: "Редакція А100",
+        }
 
   - name: products
     label: "Товари / Каталог"
@@ -480,7 +546,12 @@ content:
     fields:
       - { label: "Заголовок (Title)", name: "title", type: "string" }
       - { label: "Короткий опис", name: "description", type: "string" }
-      - { label: "Шаблон (layout)", name: "layout", type: "string", default: "single" }
+      - {
+          label: "Шаблон (layout)",
+          name: "layout",
+          type: "string",
+          default: "single",
+        }
       - name: category
         label: "Категорія"
         type: select
@@ -506,7 +577,6 @@ content:
           - { label: "Параметр", name: "key", type: "string" }
           - { label: "Значення", name: "val", type: "string" }
 
-  
   - name: calculator_basic
     label: "Калькулятор — таблиця basic"
     description: "Базова таблиця конфігурацій станцій для розрахунку вартості."
@@ -739,12 +809,11 @@ content:
           - name: "price_kit_base"
             label: "Ціна комплекта, баз, $"
             type: number
-    
 
   - name: home
     label: "Головна сторінка"
     type: file
-    path: "content/_index.md" 
+    path: "content/_index.md"
     fields:
       - { label: "SEO Title", name: "title", type: "string" }
       - name: sections
@@ -781,7 +850,11 @@ content:
                 type: object
                 list: true
                 fields:
-                  - { name: label, label: "Label (напр. Базовий)", type: string }
+                  - {
+                      name: label,
+                      label: "Label (напр. Базовий)",
+                      type: string,
+                    }
                   - { name: title, label: "Назва станції", type: string }
                   - { name: subtitle, label: "Підзаголовок", type: string }
                   - { name: price, label: "Ціна ($)", type: string }
@@ -850,7 +923,11 @@ content:
                     list: true
                     fields:
                       - { name: text, label: "Текст відповіді", type: string }
-                      - { name: default, label: "Обрано за замовчуванням", type: boolean }
+                      - {
+                          name: default,
+                          label: "Обрано за замовчуванням",
+                          type: boolean,
+                        }
               - { name: primary_btn, label: "Main Button", type: string }
               - name: footer_tags
                 label: "Теги внизу"
@@ -887,7 +964,12 @@ content:
               - { name: title, label: "Title", type: string }
               - { name: image, label: "Image", type: image }
               - { name: image_alt, label: "Alt", type: string }
-              - { name: image_left, label: "Image on the left?", type: boolean, default: false }
+              - {
+                  name: image_left,
+                  label: "Image on the left?",
+                  type: boolean,
+                  default: false,
+                }
               - { name: body_text, label: "Text", type: rich-text }
 
           # --- PROJECTS ---
@@ -908,14 +990,20 @@ content:
                 fields:
                   - { name: question, label: "Q", type: string }
                   - { name: answer, label: "A", type: rich-text }
-      
+
   - name: about_us
     label: "Про компанію"
     type: file
     path: "content/about-us.md"
     fields:
       - { name: title, label: "Title", type: string }
-      - { name: layout, label: "Layout", type: string, default: "about-us", readonly: true }
+      - {
+          name: layout,
+          label: "Layout",
+          type: string,
+          default: "about-us",
+          readonly: true,
+        }
       - { name: short_title, label: "Short title", type: string }
       - { name: label, label: "Label", type: string }
       - { name: description, label: "Description", type: text }
@@ -993,116 +1081,216 @@ content:
                   - { name: answer, label: "Answer", type: rich-text }
 
   - name: config
-  label: "Налаштування сайту"
-  path: themes/sun-power-theme-v1/hugo.toml
-  type: file
-  format: toml
-  fields:
-    - name: site_settings_tabs
-      type: object
-      options:
-        type: tab  # Створює горизонтальні вкладки для розділення рівнів
-      fields:
-        
-        # ── Вкладка 1: Основні технічні налаштування ────────────────
-        - name: main_tech_settings
-          label: "⚙️ Основне"
-          type: object
-          fields:
-            - { name: baseURL, label: "Базова URL-адреса", type: string, description: "Наприклад: https://sunpower.com.ua/" }
-            - { name: languageCode, label: "Код мови", type: string, default: "uk" }
-            - { name: title, label: "Назва сайту (Заголовок в браузері)", type: string }
+    label: "Налаштування сайту"
+    path: themes/sun-power-theme-v1/hugo.toml
+    type: file
+    format: toml
+    fields:
+      - name: site_settings_tabs
+        type: object
+        options:
+          type: tab # Створює горизонтальні вкладки для розділення рівнів
+        fields:
+          # ── Вкладка 1: Основні технічні налаштування ────────────────
+          - name: main_tech_settings
+            label: "⚙️ Основне"
+            type: object
+            fields:
+              - {
+                  name: baseURL,
+                  label: "Базова URL-адреса",
+                  type: string,
+                  description: "Наприклад: https://sunpower.com.ua/",
+                }
+              - {
+                  name: languageCode,
+                  label: "Код мови",
+                  type: string,
+                  default: "uk",
+                }
+              - {
+                  name: title,
+                  label: "Назва сайту (Заголовок в браузері)",
+                  type: string,
+                }
 
-        # ── Вкладка 2: Контакти, тексти та параметри сайту ──────────
-        - name: params
-          label: "📝 Контакти та Тексти"
-          type: object
-          fields:
-            - name: brand_group
-              label: "Брендинг"
-              type: fieldset  # Візуально об'єднує поля в рамку
-              fields:
-                - { name: brandName, label: "Назва бренду", type: string }
-                - { name: headerButtonText, label: "Текст кнопки в шапці", type: string }
-            
-            - name: footer_group
-              label: "Контакти та Футер"
-              type: fieldset  # Візуально об'єднує поля в рамку
-              fields:
-                - { name: phone, label: "Номер телефону", type: string }
-                - { name: footerDescription, label: "Опис у футері", type: string }
-                - { name: copyrightText, label: "Текст копірайту", type: string }
+          # ── Вкладка 2: Контакти, тексти та параметри сайту ──────────
+          - name: params
+            label: "📝 Контакти та Тексти"
+            type: object
+            fields:
+              - name: brand_group
+                label: "Брендинг"
+                type: fieldset # Візуально об'єднує поля в рамку
+                fields:
+                  - { name: brandName, label: "Назва бренду", type: string }
+                  - {
+                      name: headerButtonText,
+                      label: "Текст кнопки в шапці",
+                      type: string,
+                    }
 
-        # ── Вкладка 3: Керування всіма меню сайту ────────────────────
-        - name: menu
-          label: "🗺️ Навігація (Меню)"
-          type: object
-          fields:
-            
-            # 1. Головне меню (в шапці)
-            - name: main
-              label: "🏠 Головне меню (Шапка сайту)"
-              type: object
-              list: true
-              options:
-                collapsible: true
-                collapsed: true
-                summary: "{name} (Порядок: {weight})"  # Показує назву пункту без розгортання
-              fields:
-                - { name: name, label: "Назва пункту меню", type: string, required: true }
-                - { name: url, label: "URL посилання", type: string, required: true, description: "Наприклад: /calculator/ або /about/" }
-                - name: hierarchy_group
-                  label: "Ієрархія (Підпункти)"
-                  type: fieldset
-                  fields:
-                    - { name: identifier, label: "Унікальний ID пункту", type: string, description: "Потрібен, якщо є підпункти (наприклад: services)" }
-                    - { name: parent, label: "Батьківський пункт (Вкажіть ID)", type: string, description: "Якщо це підпункт, вкажіть ID батька" }
-                - { name: weight, label: "Порядок (Вага)", type: number, default: 10, description: "Чим менше число, тим лівіше пункт" }
-                - name: params
-                  label: "✨ Стилізація та дизайн"
-                  type: object
-                  fields:
-                    - { name: subname, label: "Додатковий підзаголовок", type: string }
-                    - { name: bold, label: "Виділити жирним шрифтом?", type: boolean }
+              - name: footer_group
+                label: "Контакти та Футер"
+                type: fieldset # Візуально об'єднує поля в рамку
+                fields:
+                  - { name: phone, label: "Номер телефону", type: string }
+                  - {
+                      name: footerDescription,
+                      label: "Опис у футері",
+                      type: string,
+                    }
+                  - {
+                      name: copyrightText,
+                      label: "Текст копірайту",
+                      type: string,
+                    }
 
-            # 2. Меню у футері (Основна навігація)
-            - name: footer_nav
-              label: "📂 Меню у футері — Колонна 1 (Навігація)"
-              type: object
-              list: true
-              options:
-                collapsible: true
-                collapsed: true
-                summary: "{name}"
-              fields:
-                - { name: name, label: "Назва пункту", type: string, required: true }
-                - { name: url, label: "URL посилання", type: string, required: true }
-                - { name: weight, label: "Порядок (Вага)", type: number, default: 10 }
+          # ── Вкладка 3: Керування всіма меню сайту ────────────────────
+          - name: menu
+            label: "🗺️ Навігація (Меню)"
+            type: object
+            fields:
+              # 1. Головне меню (в шапці)
+              - name: main
+                label: "🏠 Головне меню (Шапка сайту)"
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{name}"
+                fields:
+                  - {
+                      name: name,
+                      label: "Назва пункту меню",
+                      type: string,
+                      required: true,
+                    }
+                  - {
+                      name: url,
+                      label: "URL посилання",
+                      type: string,
+                      required: true,
+                      description: "Наприклад: /calculator/ або /about/",
+                    }
+                  - name: hierarchy_group
+                    label: "Ієрархія (Підпункти)"
+                    type: fieldset
+                    fields:
+                      - {
+                          name: identifier,
+                          label: "Унікальний ID пункту",
+                          type: string,
+                          description: "Потрібен, якщо є підпункти (наприклад: services)",
+                        }
+                      - {
+                          name: parent,
+                          label: "Батьківський пункт (Вкажіть ID)",
+                          type: string,
+                          description: "Якщо це підпункт, вкажіть ID батька",
+                        }
+                  - {
+                      name: weight,
+                      label: "Порядок (Вага)",
+                      type: number,
+                      default: 10,
+                      description: "Чим менше число, тим лівіше пункт",
+                    }
+                  - name: params
+                    label: "✨ Стилізація та дизайн"
+                    type: object
+                    fields:
+                      - {
+                          name: subname,
+                          label: "Додатковий підзаголовок",
+                          type: string,
+                        }
+                      - {
+                          name: bold,
+                          label: "Виділити жирним шрифтом?",
+                          type: boolean,
+                        }
 
-            # 3. Меню у футері (Корисне / Соц. лінки)
-            - name: footer_social
-              label: "🔗 Меню у футері — Колонна 2 (Соц. лінки / Корисне)"
-              type: object
-              list: true
-              options:
-                collapsible: true
-                collapsed: true
-                summary: "{name}"
-              fields:
-                - { name: name, label: "Назва пункту", type: string, required: true }
-                - { name: url, label: "URL посилання", type: string, required: true }
-                - { name: weight, label: "Порядок (Вага)", type: number, default: 10 }
+              # 2. Меню у футері (Основна навігація)
+              - name: footer_nav
+                label: "📂 Меню у футері — Колонна 1 (Навігація)"
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{name}"
+                fields:
+                  - {
+                      name: name,
+                      label: "Назва пункту",
+                      type: string,
+                      required: true,
+                    }
+                  - {
+                      name: url,
+                      label: "URL посилання",
+                      type: string,
+                      required: true,
+                    }
+                  - {
+                      name: weight,
+                      label: "Порядок (Вага)",
+                      type: number,
+                      default: 10,
+                    }
 
-            # 4. Самий низ (Subfooter)
-            - name: subfooter_nav
-              label: "🔒 Меню в самому низу (Політики / Копірайт)"
-              type: object
-              list: true
-              options:
-                collapsible: true
-                collapsed: true
-                summary: "{name}"
-              fields:
-                - { name: name, label: "Назва пункту", type: string, required: true }
-                - { name: url, label: "URL посилання", type: string, required: true }
-                - { name: weight, label: "Порядок (Вага)", type: number, default: 10 }
+              # 3. Меню у футері (Корисне / Соц. лінки)
+              - name: footer_social
+                label: "🔗 Меню у футері — Колонна 2 (Соц. лінки / Корисне)"
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{name}"
+                fields:
+                  - {
+                      name: name,
+                      label: "Назва пункту",
+                      type: string,
+                      required: true,
+                    }
+                  - {
+                      name: url,
+                      label: "URL посилання",
+                      type: string,
+                      required: true,
+                    }
+                  - {
+                      name: weight,
+                      label: "Порядок (Вага)",
+                      type: number,
+                      default: 10,
+                    }
+
+              # 4. Самий низ (Subfooter)
+              - name: subfooter_nav
+                label: "🔒 Меню в самому низу (Політики / Копірайт)"
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{name}"
+                fields:
+                  - {
+                      name: name,
+                      label: "Назва пункту",
+                      type: string,
+                      required: true,
+                    }
+                  - {
+                      name: url,
+                      label: "URL посилання",
+                      type: string,
+                      required: true,
+                    }
+                  - {
+                      name: weight,
+                      label: "Порядок (Вага)",
+                      type: number,
+                      default: 10,
+                    }
