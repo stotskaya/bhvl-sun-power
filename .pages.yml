@@ -993,64 +993,116 @@ content:
                   - { name: answer, label: "Answer", type: rich-text }
 
   - name: config
-    label: "Налаштування сайту"
-    path: themes/sun-power-theme-v1/hugo.toml
-    type: file
-    format: toml
-    fields:
-      - { name: baseURL, label: "Базова URL-адреса", type: string }
-      - { name: languageCode, label: "Код мови", type: string }
-      - { name: title, label: "Назва сайту (Заголовок)", type: string }
-      - name: params
-        label: "Параметри сайту"
-        type: object
-        fields:
-          - { name: brandName, label: "Назва бренду", type: string }
-          - { name: headerButtonText, label: "Текст кнопки в шапці", type: string }
-          - { name: footerDescription, label: "Опис у футері", type: string }
-          - { name: copyrightText, label: "Текст копірайту", type: string }
-          - { name: phone, label: "Номер телефону", type: string }
-      - name: menu
-        label: "Меню та Навігація"
-        type: object
-        fields:
-          - name: main
-            label: "Головне меню"
-            type: object
-            list: true
-            fields:
-              - { name: name, label: "Назва пункту", type: string }
-              - { name: url, label: "URL посилання", type: string }
-              - { name: identifier, label: "Ідентифікатор (якщо є)", type: string }
-              - { name: parent, label: "Батьківський пункт (ідентифікатор)", type: string }
-              - { name: weight, label: "Порядок (вага)", type: number }
-              - name: params
-                label: "Параметри пункту"
-                type: object
-                fields:
-                  - { name: subname, label: "Підзаголовок", type: string }
-                  - { name: bold, label: "Жирний шрифт?", type: boolean }
-          - name: footer_nav
-            label: "Меню у футері (Навігація)"
-            type: object
-            list: true
-            fields:
-              - { name: name, label: "Назва пункту", type: string }
-              - { name: url, label: "URL посилання", type: string }
-              - { name: weight, label: "Порядок (вага)", type: number }
-          - name: footer_social
-            label: "Меню у футері (Корисне / Соц. лінки)"
-            type: object
-            list: true
-            fields:
-              - { name: name, label: "Назва пункту", type: string }
-              - { name: url, label: "URL посилання", type: string }
-              - { name: weight, label: "Порядок (вага)", type: number }
-          - name: subfooter_nav
-            label: "Меню в самому низу (Subfooter)"
-            type: object
-            list: true
-            fields:
-              - { name: name, label: "Назва пункту", type: string }
-              - { name: url, label: "URL посилання", type: string }
-              - { name: weight, label: "Порядок (вага)", type: number }
+  label: "Налаштування сайту"
+  path: themes/sun-power-theme-v1/hugo.toml
+  type: file
+  format: toml
+  fields:
+    - name: site_settings_tabs
+      type: object
+      options:
+        type: tab  # Створює горизонтальні вкладки для розділення рівнів
+      fields:
+        
+        # ── Вкладка 1: Основні технічні налаштування ────────────────
+        - name: main_tech_settings
+          label: "⚙️ Основне"
+          type: object
+          fields:
+            - { name: baseURL, label: "Базова URL-адреса", type: string, description: "Наприклад: https://sunpower.com.ua/" }
+            - { name: languageCode, label: "Код мови", type: string, default: "uk" }
+            - { name: title, label: "Назва сайту (Заголовок в браузері)", type: string }
+
+        # ── Вкладка 2: Контакти, тексти та параметри сайту ──────────
+        - name: params
+          label: "📝 Контакти та Тексти"
+          type: object
+          fields:
+            - name: brand_group
+              label: "Брендинг"
+              type: fieldset  # Візуально об'єднує поля в рамку
+              fields:
+                - { name: brandName, label: "Назва бренду", type: string }
+                - { name: headerButtonText, label: "Текст кнопки в шапці", type: string }
+            
+            - name: footer_group
+              label: "Контакти та Футер"
+              type: fieldset  # Візуально об'єднує поля в рамку
+              fields:
+                - { name: phone, label: "Номер телефону", type: string }
+                - { name: footerDescription, label: "Опис у футері", type: string }
+                - { name: copyrightText, label: "Текст копірайту", type: string }
+
+        # ── Вкладка 3: Керування всіма меню сайту ────────────────────
+        - name: menu
+          label: "🗺️ Навігація (Меню)"
+          type: object
+          fields:
+            
+            # 1. Головне меню (в шапці)
+            - name: main
+              label: "🏠 Головне меню (Шапка сайту)"
+              type: object
+              list: true
+              options:
+                collapsible: true
+                collapsed: true
+                summary: "{name} (Порядок: {weight})"  # Показує назву пункту без розгортання
+              fields:
+                - { name: name, label: "Назва пункту меню", type: string, required: true }
+                - { name: url, label: "URL посилання", type: string, required: true, description: "Наприклад: /calculator/ або /about/" }
+                - name: hierarchy_group
+                  label: "Ієрархія (Підпункти)"
+                  type: fieldset
+                  fields:
+                    - { name: identifier, label: "Унікальний ID пункту", type: string, description: "Потрібен, якщо є підпункти (наприклад: services)" }
+                    - { name: parent, label: "Батьківський пункт (Вкажіть ID)", type: string, description: "Якщо це підпункт, вкажіть ID батька" }
+                - { name: weight, label: "Порядок (Вага)", type: number, default: 10, description: "Чим менше число, тим лівіше пункт" }
+                - name: params
+                  label: "✨ Стилізація та дизайн"
+                  type: object
+                  fields:
+                    - { name: subname, label: "Додатковий підзаголовок", type: string }
+                    - { name: bold, label: "Виділити жирним шрифтом?", type: boolean }
+
+            # 2. Меню у футері (Основна навігація)
+            - name: footer_nav
+              label: "📂 Меню у футері — Колонна 1 (Навігація)"
+              type: object
+              list: true
+              options:
+                collapsible: true
+                collapsed: true
+                summary: "{name}"
+              fields:
+                - { name: name, label: "Назва пункту", type: string, required: true }
+                - { name: url, label: "URL посилання", type: string, required: true }
+                - { name: weight, label: "Порядок (Вага)", type: number, default: 10 }
+
+            # 3. Меню у футері (Корисне / Соц. лінки)
+            - name: footer_social
+              label: "🔗 Меню у футері — Колонна 2 (Соц. лінки / Корисне)"
+              type: object
+              list: true
+              options:
+                collapsible: true
+                collapsed: true
+                summary: "{name}"
+              fields:
+                - { name: name, label: "Назва пункту", type: string, required: true }
+                - { name: url, label: "URL посилання", type: string, required: true }
+                - { name: weight, label: "Порядок (Вага)", type: number, default: 10 }
+
+            # 4. Самий низ (Subfooter)
+            - name: subfooter_nav
+              label: "🔒 Меню в самому низу (Політики / Копірайт)"
+              type: object
+              list: true
+              options:
+                collapsible: true
+                collapsed: true
+                summary: "{name}"
+              fields:
+                - { name: name, label: "Назва пункту", type: string, required: true }
+                - { name: url, label: "URL посилання", type: string, required: true }
+                - { name: weight, label: "Порядок (Вага)", type: number, default: 10 }
