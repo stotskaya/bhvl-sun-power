@@ -88,7 +88,10 @@ content:
               - name: steps
                 label: "Features"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - { name: title, label: "Title", type: string }
                   - { name: subtitle, label: "Subtitle", type: string }
@@ -103,7 +106,10 @@ content:
               - name: specs
                 label: "Specs"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{label}"
                 fields:
                   - { name: label, label: "Label", type: string }
                   - { name: value, label: "Value", type: text }
@@ -125,7 +131,10 @@ content:
               - name: specs
                 label: "Specs"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{label}"
                 fields:
                   - { name: label, label: "Label", type: string }
                   - { name: value, label: "Value", type: string }
@@ -133,7 +142,10 @@ content:
               - name: composition_list
                 label: "Список обладнання"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{item}"
                 fields:
                   - name: item
                     label: Пункт
@@ -153,7 +165,10 @@ content:
               - name: steps
                 label: "Steps"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - { name: title, label: "Title", type: string }
                   - { name: text, label: "Text", type: text }
@@ -168,7 +183,10 @@ content:
               - name: features
                 label: "Features"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - { name: title, type: string }
                   - { name: subtitle, type: string }
@@ -381,7 +399,10 @@ content:
               - name: steps
                 label: "Кроки процесу"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - { name: title, label: "Назва кроку", type: string }
                   - { name: text, label: "Опис кроку", type: text }
@@ -415,7 +436,8 @@ content:
       - label: "Галерея зображень (images)"
         name: "images"
         type: list
-        field: { label: "Зображення", type: image }
+        field:
+          type: image
       - { label: "Посилання", name: "link", type: "string" }
 
       # Блок статистики (3 головні картки)
@@ -817,7 +839,10 @@ content:
               - name: products
                 label: "Товари"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - {
                       name: label,
@@ -834,7 +859,10 @@ content:
                   - name: equipment
                     label: "Комплектація"
                     type: object
-                    list: true
+                    list:
+                      collapsible:
+                        collapsed: true
+                        summary: "{item}"
                     fields:
                       - { name: item, label: "Пункт", type: string }
           - name: featured-sps
@@ -867,7 +895,10 @@ content:
               - name: services
                 label: "Список послуг"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - { name: number, label: "№", type: string }
                   - { name: title, label: "Назва", type: string }
@@ -883,13 +914,19 @@ content:
               - name: questions
                 label: "Питання"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{label}"
                 fields:
                   - { name: label, label: "Заголовок питання", type: string }
                   - name: options
                     label: "Варіанти"
                     type: object
-                    list: true
+                    list:
+                      collapsible:
+                        collapsed: true
+                        summary: "{text}"
                     fields:
                       - { name: text, label: "Текст відповіді", type: string }
                       - {
@@ -901,7 +938,10 @@ content:
               - name: footer_tags
                 label: "Теги внизу"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{item}"
                 fields: [{ name: item, label: "Tag", type: string }]
 
           # --- PAYMENT & DELIVERY ---
@@ -913,7 +953,10 @@ content:
               - name: cards
                 label: "Картки умов"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - { name: title, label: "Заголовок", type: string }
                   - { name: icon, label: "Icon Name", type: string }
@@ -1020,7 +1063,10 @@ content:
               - name: steps
                 label: "Steps"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - { name: title, label: "Title", type: string }
                   - { name: text, label: "Text", type: text }
@@ -1031,7 +1077,10 @@ content:
               - name: steps
                 label: "Steps"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - { name: title, label: "Title", type: string }
                   - { name: subtitle, label: "Subtitle", type: string }
@@ -1043,7 +1092,10 @@ content:
               - name: services
                 label: "Services"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
                 fields:
                   - { name: title, label: "Title", type: string }
                   - { name: description, label: "Description", type: text }
