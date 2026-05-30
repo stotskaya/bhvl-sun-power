@@ -183,7 +183,10 @@ content:
               - name: items # Тут 'items' можна залишити як назву поля, але тип - list
                 label: "Questions"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{question}"
                 fields:
                   - { name: question, label: "Q", type: string }
                   - { name: answer, label: "A", type: rich-text }
@@ -363,7 +366,10 @@ content:
               - name: items # Тут 'items' можна залишити як назву поля, але тип - list
                 label: "Questions"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{question}"
                 fields:
                   - { name: question, label: "Q", type: string }
                   - { name: answer, label: "A", type: rich-text }
@@ -915,7 +921,10 @@ content:
                   - name: items
                     label: "Пункти"
                     type: object
-                    list: true
+                    list:
+                      collapsible:
+                        collapsed: true
+                        summary: "{subtitle}"
                     fields:
                       - { name: subtitle, label: "Підзаголовок", type: string }
                       - { name: text, label: "Опис", type: text }
@@ -949,7 +958,10 @@ content:
               - name: items
                 label: "Questions"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{question}"
                 fields:
                   - { name: question, label: "Q", type: string }
                   - { name: answer, label: "A", type: rich-text }
@@ -1042,7 +1054,10 @@ content:
               - name: items
                 label: "Questions"
                 type: object
-                list: true
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{question}"
                 fields:
                   - { name: question, label: "Question", type: string }
                   - { name: answer, label: "Answer", type: rich-text }
@@ -1104,7 +1119,7 @@ content:
             list:
               collapsible:
                 collapsed: true
-                summary: "{name} (батько: {parent}, вага: {weight})"
+                summary: "{name} (Меню: {parent}, рівень: {weight})"
             fields:
               - {
                   name: name,
