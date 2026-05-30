@@ -1086,198 +1086,186 @@ content:
     type: file
     format: toml
     fields:
-      - name: site_settings_tabs
+      - {
+          name: baseURL,
+          label: "Базова URL-адреса",
+          type: string,
+          description: "Наприклад: https://sunpower.com.ua/",
+        }
+      - {
+          name: languageCode,
+          label: "Код мови",
+          type: string,
+          default: "uk",
+        }
+      - {
+          name: title,
+          label: "Назва сайту (Заголовок в браузері)",
+          type: string,
+        }
+
+      - name: params
+        label: "📝 Контакти та Тексти"
         type: object
-        options:
-          type: tab # Створює горизонтальні вкладки для розділення рівнів
         fields:
-          # ── Вкладка 1: Основні технічні налаштування ────────────────
-          - name: main_tech_settings
-            label: "⚙️ Основне"
+          - { name: brandName, label: "Назва бренду", type: string }
+          - {
+              name: headerButtonText,
+              label: "Текст кнопки в шапці",
+              type: string,
+            }
+          - { name: phone, label: "Номер телефону", type: string }
+          - {
+              name: footerDescription,
+              label: "Опис у футері",
+              type: string,
+            }
+          - {
+              name: copyrightText,
+              label: "Текст копірайту",
+              type: string,
+            }
+
+      - name: menu
+        label: "🗺️ Навігація (Меню)"
+        type: object
+        fields:
+          # 1. Головне меню (в шапці)
+          - name: main
+            label: "🏠 Головне меню (Шапка сайту)"
             type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name}"
             fields:
               - {
-                  name: baseURL,
-                  label: "Базова URL-адреса",
+                  name: name,
+                  label: "Назва пункту меню",
                   type: string,
-                  description: "Наприклад: https://sunpower.com.ua/",
+                  required: true,
                 }
               - {
-                  name: languageCode,
-                  label: "Код мови",
+                  name: url,
+                  label: "URL посилання",
                   type: string,
-                  default: "uk",
+                  required: true,
+                  description: "Наприклад: /calculator/ або /about/",
                 }
               - {
-                  name: title,
-                  label: "Назва сайту (Заголовок в браузері)",
+                  name: identifier,
+                  label: "Унікальний ID пункту",
                   type: string,
+                  description: "Потрібен, якщо є підпункти (наприклад: services)",
                 }
+              - {
+                  name: parent,
+                  label: "Батьківський пункт (Вкажіть ID)",
+                  type: string,
+                  description: "Якщо це підпункт, вкажіть ID батька",
+                }
+              - {
+                  name: weight,
+                  label: "Порядок (Вага)",
+                  type: number,
+                  default: 10,
+                  description: "Чим менше число, тим лівіше пункт",
+                }
+              - name: params
+                label: "✨ Стилізація та дизайн"
+                type: object
+                fields:
+                  - {
+                      name: subname,
+                      label: "Додатковий підзаголовок",
+                      type: string,
+                    }
+                  - {
+                      name: bold,
+                      label: "Виділити жирним шрифтом?",
+                      type: boolean,
+                    }
 
-          # ── Вкладка 2: Контакти, тексти та параметри сайту ──────────
-          - name: params
-            label: "📝 Контакти та Тексти"
+          # 2. Меню у футері (Основна навігація)
+          - name: footer_nav
+            label: "📂 Меню у футері — Колонна 1 (Навігація)"
             type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name}"
             fields:
-              - { name: brandName, label: "Назва бренду", type: string }
               - {
-                  name: headerButtonText,
-                  label: "Текст кнопки в шапці",
+                  name: name,
+                  label: "Назва пункту",
                   type: string,
-                }
-              - { name: phone, label: "Номер телефону", type: string }
-              - {
-                  name: footerDescription,
-                  label: "Опис у футері",
-                  type: string,
+                  required: true,
                 }
               - {
-                  name: copyrightText,
-                  label: "Текст копірайту",
+                  name: url,
+                  label: "URL посилання",
                   type: string,
+                  required: true,
+                }
+              - {
+                  name: weight,
+                  label: "Порядок (Вага)",
+                  type: number,
+                  default: 10,
                 }
 
-          # ── Вкладка 3: Керування всіма меню сайту ────────────────────
-          - name: menu
-            label: "🗺️ Навігація (Меню)"
+          # 3. Меню у футері (Корисне / Соц. лінки)
+          - name: footer_social
+            label: "🔗 Меню у футері — Колонна 2 (Соц. лінки / Корисне)"
             type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name}"
             fields:
-              # 1. Головне меню (в шапці)
-              - name: main
-                label: "🏠 Головне меню (Шапка сайту)"
-                type: object
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{name}"
-                fields:
-                  - {
-                      name: name,
-                      label: "Назва пункту меню",
-                      type: string,
-                      required: true,
-                    }
-                  - {
-                      name: url,
-                      label: "URL посилання",
-                      type: string,
-                      required: true,
-                      description: "Наприклад: /calculator/ або /about/",
-                    }
-                  - {
-                      name: identifier,
-                      label: "Унікальний ID пункту",
-                      type: string,
-                      description: "Потрібен, якщо є підпункти (наприклад: services)",
-                    }
-                  - {
-                      name: parent,
-                      label: "Батьківський пункт (Вкажіть ID)",
-                      type: string,
-                      description: "Якщо це підпункт, вкажіть ID батька",
-                    }
-                  - {
-                      name: weight,
-                      label: "Порядок (Вага)",
-                      type: number,
-                      default: 10,
-                      description: "Чим менше число, тим лівіше пункт",
-                    }
-                  - name: params
-                    label: "✨ Стилізація та дизайн"
-                    type: object
-                    fields:
-                      - {
-                          name: subname,
-                          label: "Додатковий підзаголовок",
-                          type: string,
-                        }
-                      - {
-                          name: bold,
-                          label: "Виділити жирним шрифтом?",
-                          type: boolean,
-                        }
+              - {
+                  name: name,
+                  label: "Назва пункту",
+                  type: string,
+                  required: true,
+                }
+              - {
+                  name: url,
+                  label: "URL посилання",
+                  type: string,
+                  required: true,
+                }
+              - {
+                  name: weight,
+                  label: "Порядок (Вага)",
+                  type: number,
+                  default: 10,
+                }
 
-              # 2. Меню у футері (Основна навігація)
-              - name: footer_nav
-                label: "📂 Меню у футері — Колонна 1 (Навігація)"
-                type: object
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{name}"
-                fields:
-                  - {
-                      name: name,
-                      label: "Назва пункту",
-                      type: string,
-                      required: true,
-                    }
-                  - {
-                      name: url,
-                      label: "URL посилання",
-                      type: string,
-                      required: true,
-                    }
-                  - {
-                      name: weight,
-                      label: "Порядок (Вага)",
-                      type: number,
-                      default: 10,
-                    }
-
-              # 3. Меню у футері (Корисне / Соц. лінки)
-              - name: footer_social
-                label: "🔗 Меню у футері — Колонна 2 (Соц. лінки / Корисне)"
-                type: object
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{name}"
-                fields:
-                  - {
-                      name: name,
-                      label: "Назва пункту",
-                      type: string,
-                      required: true,
-                    }
-                  - {
-                      name: url,
-                      label: "URL посилання",
-                      type: string,
-                      required: true,
-                    }
-                  - {
-                      name: weight,
-                      label: "Порядок (Вага)",
-                      type: number,
-                      default: 10,
-                    }
-
-              # 4. Самий низ (Subfooter)
-              - name: subfooter_nav
-                label: "🔒 Меню в самому низу (Політики / Копірайт)"
-                type: object
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "{name}"
-                fields:
-                  - {
-                      name: name,
-                      label: "Назва пункту",
-                      type: string,
-                      required: true,
-                    }
-                  - {
-                      name: url,
-                      label: "URL посилання",
-                      type: string,
-                      required: true,
-                    }
-                  - {
-                      name: weight,
-                      label: "Порядок (Вага)",
-                      type: number,
-                      default: 10,
-                    }
+          # 4. Самий низ (Subfooter)
+          - name: subfooter_nav
+            label: "🔒 Меню в самому низу (Політики / Копірайт)"
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name}"
+            fields:
+              - {
+                  name: name,
+                  label: "Назва пункту",
+                  type: string,
+                  required: true,
+                }
+              - {
+                  name: url,
+                  label: "URL посилання",
+                  type: string,
+                  required: true,
+                }
+              - {
+                  name: weight,
+                  label: "Порядок (Вага)",
+                  type: number,
+                  default: 10,
+                }
