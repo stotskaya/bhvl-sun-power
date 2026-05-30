@@ -436,8 +436,10 @@ content:
       - label: "Галерея зображень (images)"
         name: "images"
         type: list
-        field:
-          type: image
+        fields:
+          - label: "Фото"
+            name: "url"     # або "image", як вам зручніше для фронтенду
+            type: image
       - { label: "Посилання", name: "link", type: "string" }
 
       # Блок статистики (3 головні картки)
