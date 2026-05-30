@@ -1119,32 +1119,23 @@ content:
             label: "📝 Контакти та Тексти"
             type: object
             fields:
-              - name: brand_group
-                label: "Брендинг"
-                type: fieldset # Візуально об'єднує поля в рамку
-                fields:
-                  - { name: brandName, label: "Назва бренду", type: string }
-                  - {
-                      name: headerButtonText,
-                      label: "Текст кнопки в шапці",
-                      type: string,
-                    }
-
-              - name: footer_group
-                label: "Контакти та Футер"
-                type: fieldset # Візуально об'єднує поля в рамку
-                fields:
-                  - { name: phone, label: "Номер телефону", type: string }
-                  - {
-                      name: footerDescription,
-                      label: "Опис у футері",
-                      type: string,
-                    }
-                  - {
-                      name: copyrightText,
-                      label: "Текст копірайту",
-                      type: string,
-                    }
+              - { name: brandName, label: "Назва бренду", type: string }
+              - {
+                  name: headerButtonText,
+                  label: "Текст кнопки в шапці",
+                  type: string,
+                }
+              - { name: phone, label: "Номер телефону", type: string }
+              - {
+                  name: footerDescription,
+                  label: "Опис у футері",
+                  type: string,
+                }
+              - {
+                  name: copyrightText,
+                  label: "Текст копірайту",
+                  type: string,
+                }
 
           # ── Вкладка 3: Керування всіма меню сайту ────────────────────
           - name: menu
@@ -1173,22 +1164,18 @@ content:
                       required: true,
                       description: "Наприклад: /calculator/ або /about/",
                     }
-                  - name: hierarchy_group
-                    label: "Ієрархія (Підпункти)"
-                    type: fieldset
-                    fields:
-                      - {
-                          name: identifier,
-                          label: "Унікальний ID пункту",
-                          type: string,
-                          description: "Потрібен, якщо є підпункти (наприклад: services)",
-                        }
-                      - {
-                          name: parent,
-                          label: "Батьківський пункт (Вкажіть ID)",
-                          type: string,
-                          description: "Якщо це підпункт, вкажіть ID батька",
-                        }
+                  - {
+                      name: identifier,
+                      label: "Унікальний ID пункту",
+                      type: string,
+                      description: "Потрібен, якщо є підпункти (наприклад: services)",
+                    }
+                  - {
+                      name: parent,
+                      label: "Батьківський пункт (Вкажіть ID)",
+                      type: string,
+                      description: "Якщо це підпункт, вкажіть ID батька",
+                    }
                   - {
                       name: weight,
                       label: "Порядок (Вага)",
