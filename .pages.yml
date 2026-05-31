@@ -585,10 +585,10 @@ content:
           max: 36
           collapsible:
             collapsed: true
-            summary: "{station_type} · {network_phase}ф · {power_kwt} кВт"
+            summary: "{тип_станції} · {тип_мережі_фаз}ф · {потужність_квт} кВт"
         fields:
           # ── Ідентифікаційні поля (ключ запису, не редагувати) ─────
-          - name: "power_kwt"
+          - name: "потужність_квт"
             label: "🔒 Потужність, кВт"
             description: "Ідентифікаційне поле. Разом із фазами та типом станції утворює унікальний ключ — не редагувати після створення."
             type: number
@@ -597,7 +597,7 @@ content:
             options:
               readonly: true
 
-          - name: "network_phase"
+          - name: "тип_мережі_фаз"
             label: "🔒 Тип мережі, фаз"
             description: "Ідентифікаційне поле. He редагувати після створення."
             type: select
@@ -609,7 +609,7 @@ content:
                 - { value: 1, label: "1 фаза" }
                 - { value: 3, label: "3 фази" }
 
-          - name: "station_type"
+          - name: "тип_станції"
             label: "🔒 Тип станції"
             description: "Ідентифікаційне поле. He редагувати після створення."
             type: select
@@ -622,59 +622,59 @@ content:
                 - { value: "grid", label: "мережева" }
 
           # ── Інвертор ──────────────────────────────────────────────
-          - name: "min_price_inverter_usd"
+          - name: "мін_ціна_інв_usd"
             label: "Мін. ціна інвертора, $"
             type: number
 
-          - name: "string_voltage"
+          - name: "напруга_на_стринг"
             label: "Напруга на стринг, B"
             type: number
 
           # ── Панелі (рекомендована конфігурація) ───────────────────
-          - name: "panels_rec_qty"
+          - name: "панелей_рек"
             label: "Панелей, рек"
             type: number
 
-          - name: "strings_rec_qty"
+          - name: "стрингів_рек"
             label: "Стрингів, рек"
             type: number
 
-          - name: "pv_power_rec"
+          - name: "pv_потужність_рек"
             label: "PV потужність, рек, кВт"
             type: number
 
           # ── Панелі (мінімальна конфігурація) ──────────────────────
-          - name: "panels_min_qty"
+          - name: "мінімум_панелей_шт"
             label: "Мінімум панелей, шт"
             type: number
 
-          - name: "strings_min_qty"
+          - name: "стрингів_мін"
             label: "Стрингів, мін"
             type: number
 
-          - name: "pv_power_min"
+          - name: "pv_потужність_мін"
             label: "PV потужність, мін, кВт"
             type: number
 
           # ── Ціни панелей та кріплень ──────────────────────────────
-          - name: "price_panels_rec"
+          - name: "ціна_панелей_рек"
             label: "Ціна панелей, рек, $"
             type: number
 
-          - name: "price_panels_min"
+          - name: "ціна_панелей_мін"
             label: "Ціна панелей, мін, $"
             type: number
 
-          - name: "price_mounts_rec"
+          - name: "ціна_кріплення_рек"
             label: "Ціна кріплень, рек, $"
             type: number
 
-          - name: "price_mounts_min"
+          - name: "ціна_кріплення_мін"
             label: "Ціна кріплень, мін, $"
             type: number
 
           # ── АКБ ───────────────────────────────────────────────────
-          - name: "battery_config"
+          - name: "акб_конфігурація"
             label: "АКБ, конфігурація"
             type: select
             options:
@@ -686,20 +686,20 @@ content:
                 - "Deye_HV_5_BMS_30"
                 - "Deye_HV_5_BMS_50"
 
-          - name: "usable_capacity_kwt"
+          - name: "корисна_ємність_квт"
             label: "Корисна ємність, кВт·год"
             type: number
 
-          - name: "battery_qty"
+          - name: "акб_кількість"
             label: "АКБ, кількість"
             type: number
 
-          - name: "battery_price"
+          - name: "акб_ціна"
             label: "АКБ, ціна, $"
             type: number
 
           # ── Кабель AC ─────────────────────────────────────────────
-          - name: "cable_ac_type"
+          - name: "кабель_ac"
             label: "Кабель AC, переріз"
             type: select
             options:
@@ -714,38 +714,38 @@ content:
                 - "1x50"
                 - "1x90"
 
-          - name: "cable_ac_length_m"
+          - name: "кабель_ac_довжина_м"
             label: "Кабель AC, довжина, м"
             type: number
 
-          - name: "cable_ac_price"
+          - name: "кабель_ac_ціна"
             label: "Кабель AC, ціна, $"
             type: number
 
           # ── Кабель DC ─────────────────────────────────────────────
-          - name: "cable_dc_type"
+          - name: "кабель_dc"
             label: "Кабель DC, тип"
             type: string
             default: "DC"
 
-          - name: "cable_dc_length_rec_m"
+          - name: "кабель_dc_довжина_рек_м"
             label: "Кабель DC, довжина, рек, м"
             type: number
 
-          - name: "cable_dc_length_min_m"
+          - name: "кабель_dc_довжина_мін_м"
             label: "Кабель DC, довжина, мін, м"
             type: number
 
-          - name: "cable_dc_price_rec"
+          - name: "кабель_dc_ціна_рек"
             label: "Кабель DC, ціна, рек, $"
             type: number
 
-          - name: "cable_dc_price_min"
+          - name: "кабель_dc_ціна_мін"
             label: "Кабель DC, ціна, мін, $"
             type: number
 
           # ── Захист AC ─────────────────────────────────────────────
-          - name: "protection_ac_type"
+          - name: "захист_ac"
             label: "Захист та комутація AC"
             type: select
             options:
@@ -759,47 +759,47 @@ content:
                 - "AC 3Ф до 200 квт"
                 - "AC 3Ф до 350 квт"
 
-          - name: "protection_ac_price"
+          - name: "захист_ac_ціна"
             label: "Захист AC, ціна, $"
             type: number
 
           # ── Захист DC ─────────────────────────────────────────────
-          - name: "protection_dc_type"
+          - name: "захист_dc"
             label: "Захист та комутація DC"
             type: string
             default: "DC"
 
-          - name: "protection_dc_price_rec"
+          - name: "захист_dc_ціна_рек"
             label: "Захист DC, ціна, рек, $"
             type: number
 
-          - name: "protection_dc_price_min"
+          - name: "захист_dc_ціна_мін"
             label: "Захист DC, ціна, мін, $"
             type: number
 
           # ── Робота (монтаж) ───────────────────────────────────────
-          - name: "work_inverter"
+          - name: "робота_інвертор"
             label: "Робота, інвертор, $"
             type: number
 
-          - name: "work_panels_rec_flat"
+          - name: "робота_панель_рек_плоска"
             label: "Робота, панель, рек, плоска криша, $"
             type: number
 
-          - name: "work_panels_min_flat"
+          - name: "робота_панель_мін_плоска"
             label: "Робота, панель, мін, плоска криша, $"
             type: number
 
           # ── Підсумкові ціни ───────────────────────────────────────
-          - name: "price_no_sun"
+          - name: "ціна_без_сонця"
             label: "Ціна без сонця, $"
             type: number
 
-          - name: "price_kit_rec"
+          - name: "ціна_комплекта_рек"
             label: "Ціна комплекта, рек, $"
             type: number
 
-          - name: "price_kit_base"
+          - name: "ціна_комплекта_баз"
             label: "Ціна комплекта, баз, $"
             type: number
 
