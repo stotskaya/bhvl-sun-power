@@ -21,7 +21,6 @@ content:
       - { name: attribute_1, label: "Attribute 1", type: string }
       - { name: attribute_2, label: "Attribute 2", type: string }
       - { name: attribute_3, label: "Attribute 3", type: string }
-      - { name: layout, label: "Layout", type: string, default: "sps" }
       - { name: image, label: "Main image", type: image }
       - { name: image_alt, label: "Image alt", type: string }
       - {
@@ -421,25 +420,20 @@ content:
     path: "content/projects"
     filename: "{slug}.md"
     fields:
-      - {
-          label: "Шаблон (layout)",
-          name: "layout",
-          type: "string",
-          default: "projects",
-        }
       - { label: "Назва проєкту (H1)", name: "title", type: "string" }
       - { label: "Коротка назва", name: "short_title", type: "string" }
       - { label: "Мітка потужності", name: "power_label", type: "string" }
       - { label: "Категорія", name: "category", type: "string" }
       - { label: "Локація", name: "location", type: "string" }
-      - { label: "Головне фото", name: "image", type: "image" }
       - label: "Галерея зображень (images)"
         name: "images"
-        type: list
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
         fields:
-          - label: "Фото"
-            name: "url"     # або "image", як вам зручніше для фронтенду
-            type: image
+          - { label: "Фото", name: "url", type: image }
       - { label: "Посилання", name: "link", type: "string" }
 
       # Блок статистики (3 головні картки)
@@ -538,12 +532,6 @@ content:
           name: "draft",
           type: "boolean",
           default: false,
-        }
-      - {
-          label: "Шаблон (layout)",
-          name: "layout",
-          type: "string",
-          default: "single",
         }
       - {
           label: "Тип (type)",
@@ -1017,13 +1005,6 @@ content:
     path: "content/about-us.md"
     fields:
       - { name: title, label: "Title", type: string }
-      - {
-          name: layout,
-          label: "Layout",
-          type: string,
-          default: "about-us",
-          readonly: true,
-        }
       - { name: short_title, label: "Short title", type: string }
       - { name: label, label: "Label", type: string }
       - { name: description, label: "Description", type: text }
