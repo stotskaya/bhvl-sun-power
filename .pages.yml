@@ -227,6 +227,7 @@ content:
   - name: services
     label: "Послуги"
     type: collection
+    exclude: ["_index.md"]
     path: "content/services"
     filename: "{slug}.md"
     fields:
@@ -418,6 +419,7 @@ content:
   - name: projects
     label: "Наші роботи"
     type: collection
+    exclude: ["_index.md"]
     path: "content/projects"
     filename: "{slug}.md"
     fields:
@@ -529,6 +531,7 @@ content:
   - name: journal
     label: "Блог / Журнал"
     type: collection
+    exclude: ["_index.md"]
     path: "content/journal"
     filename: "{slug}/index.md"
     fields:
@@ -1298,6 +1301,7 @@ content:
   - name: products
     label: "Товари / Каталог"
     type: collection
+    exclude: ["_index.md"]
     path: "content/products"
     filename: "{folder}/{slug}.md"
     fields:
