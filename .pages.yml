@@ -425,15 +425,12 @@ content:
       - { label: "Мітка потужності", name: "power_label", type: "string" }
       - { label: "Категорія", name: "category", type: "string" }
       - { label: "Локація", name: "location", type: "string" }
-      - label: "Галерея зображень (images)"
-        name: "images"
+      - name: images
+        label: "Слайдер зображень"
         type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{label}"
+        list: true
         fields:
-          - { label: "Фото", name: "url", type: image }
+          - { name: item, label: "Image", type: image }
       - { label: "Посилання", name: "link", type: "string" }
 
       # Блок статистики (3 головні картки)
@@ -1286,3 +1283,42 @@ content:
                   type: number,
                   default: 10,
                 }
+
+  - name: products
+    label: "Товари / Каталог"
+    type: collection
+    path: "content/products"
+    filename: "{folder}/{slug}.md"
+    fields:
+      - { label: "Заголовок (Title)", name: "title", type: "string" }
+      - { label: "Короткий опис", name: "description", type: "string" }
+      - {
+          label: "Шаблон (layout)",
+          name: "layout",
+          type: "string",
+          default: "single",
+        }
+      - name: category
+        label: "Категорія"
+        type: select
+        options:
+          - { label: "A100", value: "A100" }
+          - { label: "Аксесуари", value: "Аксесуари" }
+          - { label: "Акумулятори", value: "Акумулятори" }
+          - { label: "Інвертори", value: "Інвертори" }
+          - { label: "Готові комплекти", value: "Готові комплекти" }
+          - { label: "Сонячні панелі", value: "Сонячні панелі" }
+          - { label: "Комплектуючі", value: "Комплектуючі" }
+      - { label: "Ціна", name: "price", type: "string" }
+      - label: "Галерея зображень (images)"
+        name: "images"
+        type: list
+        field: { label: "Зображення", type: image }
+      - { label: "Повний опис", name: "full_description", type: "text" }
+      - label: "Характеристики (specs)"
+        name: "specs"
+        type: object
+        list: true
+        fields:
+          - { label: "Параметр", name: "key", type: "string" }
+          - { label: "Значення", name: "val", type: "string" }
