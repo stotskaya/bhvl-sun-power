@@ -6,9 +6,9 @@ power_label: "8 кВт"
 category: "Дім"
 location: "Компактний котедж (монтаж: дах будинку + навіс для авто)"
 images:
-  - "/images/projects/hybrid-sps-1.webp"
-  - "/images/projects/hybrid-sps-2.webp"
-  - "/images/projects/hybrid-sps-3.webp"
+  - item: "/images/projects/hybrid-sps-1.webp"
+  - item: "/images/projects/hybrid-sps-2.webp"
+  - item: "/images/projects/hybrid-sps-3.webp"
 link: "/projects/hybrid-sps"
 # Три головні картки статистики
 stats:

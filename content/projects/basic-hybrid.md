@@ -6,9 +6,9 @@ power_label: "5 кВт"
 category: "Дім"
 location: "Приватний будинок (монтаж на скатному даху)"
 images:
-  - "/images/projects/basic-hybrid-3.webp"
-  - "/images/projects/basic-hybrid-2.webp"
-  - "/images/projects/basic-hybrid-3.webp"
+  - item: "/images/projects/basic-hybrid-3.webp"
+  - item: "/images/projects/basic-hybrid-2.webp"
+  - item: "/images/projects/basic-hybrid-3.webp"
 
 link: "/projects/basic-hybrid"
 # Три головні картки статистики

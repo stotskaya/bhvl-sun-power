@@ -6,9 +6,9 @@ power_label: "6 кВт"
 category: "Дім"
 location: "Заміський будинок (монтаж на скатному даху)"
 images:
-  - "/images/projects/hybrid-sps-6-3.webp"
-  - "/images/projects/hybrid-sps-6-1.webp"
-  - "/images/projects/hybrid-sps-6-2.webp"
+  - item: "/images/projects/hybrid-sps-6-3.webp"
+  - item: "/images/projects/hybrid-sps-6-1.webp"
+  - item: "/images/projects/hybrid-sps-6-2.webp"
 link: "/projects/hybrid-sps-6"
 # Три головні картки статистики
 stats:

@@ -6,9 +6,9 @@ power_label: "20 кВт"
 category: "Бізнес"
 location: "Виробничий цех (монтаж на скатних дахах підприємства)"
 images:
-  - "/images/projects/business-sps-20-1.webp"
-  - "/images/projects/business-sps-20-2.webp"
-  - "/images/projects/business-sps-20-3.webp"
+  - item: "/images/projects/business-sps-20-1.webp"
+  - item: "/images/projects/business-sps-20-2.webp"
+  - item: "/images/projects/business-sps-20-3.webp"
 link: "/projects/business-sps-20"
 # Три головні картки статистики
 stats:

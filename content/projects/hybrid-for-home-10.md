@@ -6,11 +6,11 @@ power_label: "10 кВт"
 category: "Дім"
 location: "Приватний будинок (альтернативний монтаж: плоский дах тераси)"
 images:
-  - "/images/projects/hybrid-for-home-10-4.webp"
-  - "/images/projects/hybrid-for-home-10-2.webp"
-  - "/images/projects/hybrid-for-home-10-3.webp"
-  - "/images/projects/hybrid-for-home-10-1.webp"
-  - "/images/projects/hybrid-for-home-10-5.webp"
+  - item: "/images/projects/hybrid-for-home-10-4.webp"
+  - item: "/images/projects/hybrid-for-home-10-2.webp"
+  - item: "/images/projects/hybrid-for-home-10-3.webp"
+  - item: "/images/projects/hybrid-for-home-10-1.webp"
+  - item: "/images/projects/hybrid-for-home-10-5.webp"
 link: "/projects/hybrid-for-home-10"
 # Три головні картки статистики
 stats:

@@ -6,9 +6,9 @@ power_label: "12 кВт"
 category: "Дім"
 location: "Великий приватний будинок (комбінований монтаж: дах + наземне поле)"
 images:
-  - "/images/projects/power-hybrid-1.webp"
-  - "/images/projects/power-hybrid-2.webp"
-  - "/images/projects/power-hybrid-3.webp"
+  - item: "/images/projects/power-hybrid-1.webp"
+  - item: "/images/projects/power-hybrid-2.webp"
+  - item: "/images/projects/power-hybrid-3.webp"
 link: "/projects/power-hybrid"
 # Три головні картки статистики
 stats:

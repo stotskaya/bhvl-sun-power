@@ -6,11 +6,11 @@ power_label: "32 кВт"
 category: "Бізнес"
 location: "Складський комплекс (монтаж на плоскому даху)"
 images:
-  - "/images/projects/business-hybrid-32-1.webp"
-  - "/images/projects/business-hybrid-32-2.webp"
-  - "/images/projects/business-hybrid-32-3.webp"
-  - "/images/projects/business-hybrid-32-4.webp"
-  - "/images/projects/business-hybrid-32-5.webp"
+  - item: "/images/projects/business-hybrid-32-1.webp"
+  - item: "/images/projects/business-hybrid-32-2.webp"
+  - item: "/images/projects/business-hybrid-32-3.webp"
+  - item: "/images/projects/business-hybrid-32-4.webp"
+  - item: "/images/projects/business-hybrid-32-5.webp"
 link: "/projects/business-hybrid-32"
 # Три головні картки статистики
 stats:

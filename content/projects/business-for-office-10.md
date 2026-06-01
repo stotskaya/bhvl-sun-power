@@ -6,10 +6,10 @@ power_label: "10 кВт"
 category: "Бізнес"
 location: "Комерційне приміщення (інтеграція АКБ + дахове сонячне поле)"
 images:
-  - "/images/projects/business-for-office-10-1.webp"
-  - "/images/projects/business-for-office-10-2.webp"
-  - "/images/projects/business-for-office-10-3.webp"
-  - "/images/projects/business-for-office-10-4.webp"
+  - item: "/images/projects/business-for-office-10-1.webp"
+  - item: "/images/projects/business-for-office-10-2.webp"
+  - item: "/images/projects/business-for-office-10-3.webp"
+  - item: "/images/projects/business-for-office-10-4.webp"
 link: "/projects/business-for-office-10"
 # Три головні картки статистики
 stats:

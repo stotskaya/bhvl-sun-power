@@ -6,9 +6,9 @@ power_label: "6 кВт"
 category: "Дім"
 location: "Приватний будинок (альтернативний монтаж: дах альтанки)"
 images:
-  - "/images/projects/hybrid-for-home-6-1.webp"
-  - "/images/projects/hybrid-for-home-6-2.webp"
-  - "/images/projects/hybrid-for-home-6-3.webp"
+  - item: "/images/projects/hybrid-for-home-6-1.webp"
+  - item: "/images/projects/hybrid-for-home-6-2.webp"
+  - item: "/images/projects/hybrid-for-home-6-3.webp"
 link: "/projects/hybrid-for-home-6"
 # Три головні картки статистики
 stats:
