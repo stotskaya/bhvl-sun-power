@@ -6,6 +6,7 @@ content:
   - name: sps
     label: "CEC сторінки"
     type: collection
+    exclude: ["_index.md"]
     path: "content/sps"
     filename: "{slug}.md"
     fields:
