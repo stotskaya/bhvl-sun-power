@@ -9,19 +9,19 @@ content:
     path: "content/sps"
     filename: "{slug}.md"
     fields:
-      - { name: title, label: "Title", type: string }
+      - { name: title, label: "Title", type: string, required: true }
       - { name: short_title, label: "Short title", type: string }
-      - { name: label, label: "Label", type: string }
-      - { name: description, label: "Description", type: text }
+      - { name: label, label: "Label", type: string, required: true }
+      - { name: description, label: "Description", type: text, required: true }
       - { name: price_from, label: "Price from", type: string }
-      - { name: price, label: "Price", type: string }
-      - { name: currency, label: "Currency", type: string }
-      - { name: efficiency, label: "Efficiency", type: string }
-      - { name: rating, label: "Rating", type: string }
+      - { name: price, label: "Price", type: string, required: true }
+      - { name: currency, label: "Currency", type: string, required: true }
+      - { name: efficiency, label: "Efficiency", type: string, required: true }
+      - { name: rating, label: "Rating", type: string, required: true }
       - { name: attribute_1, label: "Attribute 1", type: string }
       - { name: attribute_2, label: "Attribute 2", type: string }
       - { name: attribute_3, label: "Attribute 3", type: string }
-      - { name: image, label: "Main image", type: image }
+      - { name: image, label: "Main image", type: image, required: true, description: "Мінімум одне фото обов'язкове" }
       - { name: image_alt, label: "Image alt", type: string }
       - {
           name: with_main_image,
@@ -420,29 +420,32 @@ content:
     path: "content/projects"
     filename: "{slug}.md"
     fields:
-      - { label: "Назва проєкту (H1)", name: "title", type: "string" }
+      - { label: "Назва проєкту (H1)", name: "title", type: "string", required: true }
       - { label: "Коротка назва", name: "short_title", type: "string" }
       - { label: "Мітка потужності", name: "power_label", type: "string" }
       - name: "category"
         label: "Категорія"
         type: "select"
+        required: true
         options:
           - "Дім"
           - "Бізнес"
           - "ОСББ"
-      - { label: "Локація", name: "location", type: "string" }
+      - { label: "Локація", name: "location", type: "string", required: true }
       - name: images
         label: "Слайдер зображень"
         type: object
+        required: true
         list: true
         fields:
-          - { name: item, label: "Image", type: image }
+          - { name: item, label: "Image", type: image, required: true }
       - { label: "Посилання", name: "link", type: "string" }
 
       # Блок статистики (3 головні картки)
       - label: "Головна статистика (stats)"
         name: "stats"
         type: object
+        required: true
         list:
           collapsible:
             collapsed: true
@@ -528,7 +531,7 @@ content:
     path: "content/journal"
     filename: "{slug}/index.md"
     fields:
-      - { label: "Заголовок (Title)", name: "title", type: "string" }
+      - { label: "Заголовок (Title)", name: "title", type: "string", required: true }
       - { label: "Дата публікації", name: "date", type: "datetime" }
       - {
           label: "Чернетка (Draft)",
@@ -542,15 +545,16 @@ content:
           type: "string",
           default: "journal",
         }
-      - { label: "Категорія", name: "category", type: "string" }
+      - { label: "Категорія", name: "category", type: "string", required: true }
       - {
           label: "Тип редакційного матеріалу",
           name: "editorial_type",
           type: "string",
+          required: true,
         }
-      - { label: "Час читання", name: "reading_time", type: "string" }
-      - { label: "Опис (Description)", name: "description", type: "text" }
-      - { label: "Головне зображення", name: "image", type: "image" }
+      - { label: "Час читання", name: "reading_time", type: "string", required: true }
+      - { label: "Опис (Description)", name: "description", type: "text", required: true }
+      - { label: "Головне зображення", name: "image", type: "image", required: true, description: "Мінімум одне фото обов'язкове" }
       - { label: "Alt-текст зображення", name: "image_alt", type: "string" }
       - {
           label: "Автор",
@@ -1296,17 +1300,12 @@ content:
     path: "content/products"
     filename: "{folder}/{slug}.md"
     fields:
-      - { label: "Заголовок (Title)", name: "title", type: "string" }
-      - { label: "Короткий опис", name: "description", type: "string" }
-      - {
-          label: "Шаблон (layout)",
-          name: "layout",
-          type: "string",
-          default: "single",
-        }
+      - { label: "Заголовок (Title)", name: "title", type: "string", required: true }
+      - { label: "Короткий опис", name: "description", type: "string", required: true }
       - name: category
         label: "Категорія"
         type: select
+        required: true
         options:
           - { label: "A100", value: "A100" }
           - { label: "Аксесуари", value: "Аксесуари" }
@@ -1319,8 +1318,10 @@ content:
       - label: "Галерея зображень (images)"
         name: "images"
         type: list
+        required: true
+        description: "Мінімум одне фото обов'язкове"
         field: { label: "Зображення", type: image }
-      - { label: "Повний опис", name: "full_description", type: "text" }
+      - { label: "Повний опис", name: "full_description", type: "text", required: true }
       - label: "Характеристики (specs)"
         name: "specs"
         type: object

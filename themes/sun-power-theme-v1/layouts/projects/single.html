@@ -24,6 +24,7 @@
                                     color: #111827;
                                     padding: 10px;
                                 ">
+        {{ if .Params.category }}
         {{ if eq (lower .Params.category) "бізнес"}}
        
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building-2" aria-hidden="true" class="lucide lucide-building-2 w-3.5 h-3.5 text-amber-400"><path d="M10 12h4"></path><path d="M10 8h4"></path><path d="M14 21v-3a2 2 0 0 0-4 0v3"></path><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"></path><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path></svg>
@@ -35,6 +36,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building" aria-hidden="true" class="lucide lucide-building w-3.5 h-3.5 text-amber-400"><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M12 6h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M16 6h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path><path d="M8 6h.01"></path><path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path><rect x="4" y="2" width="16" height="20" rx="2"></rect></svg>
           <span class="text-xs font-medium  ">Осбб</span>
           {{end}}
+        {{ end }}
 </div>
               <div class="swiper-wrapper">
                 {{ range .Params.images }}
@@ -74,11 +76,14 @@
                     </span>
                 </h1>
         
+        {{ if .Params.location }}
         <span
           class="text-gray-500 font-light leading-relaxed mb-8 text-base max-w-[80%]"
         >
           {{ .Params.location }}
         </span>
+        {{ end }}
+        {{ if .Params.stats }}
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 fu">
           {{ range .Params.stats }}
           <div class="glass-card rounded-[1.75rem] px-5 py-5 hover-card">
@@ -95,9 +100,12 @@
           </div>
           {{ end }}
         </div>
+        {{ end }}
 
+        {{ if or .Params.mission.task .Params.mission.solution }}
         <div class="glass-card rounded-[2rem] p-8 fu d2">
           <div class="grid md:grid-cols-2 gap-6">
+            {{ if .Params.mission.task }}
             <div class="flex flex-col gap-4">
               <div class="flex items-center gap-3">
                 <div
@@ -113,6 +121,8 @@
                 </span>
               </div>
             </div>
+            {{ end }}
+            {{ if .Params.mission.solution }}
             <div class="flex flex-col gap-4">
               <div class="flex items-center gap-3">
                 <div
@@ -133,9 +143,13 @@
                 </span>
               </div>
             </div>
+            {{ end }}
           </div>
           </div>
+        {{ end }}
+        {{ if or .Params.mission.result .Params.mission.results_specs }}
            <div class="glass-card rounded-[2rem] p-8 fu d2">
+            {{ if .Params.mission.result }}
             <div class="flex flex-col  gap-6">
               <div class="flex flex-col gap-4">
               <div class="flex items-center gap-3">
@@ -158,6 +172,7 @@
               </div>
             </div>
             </div>
+            {{ end }}
             {{ if .Params.mission.results_specs }}
               <div class="grid md:grid-cols-2 gap-x-10 mt-6">
                 
@@ -191,12 +206,15 @@
               {{ end }}
                
           </div>
+        {{ end }}
 
+        {{ if or .Params.parameters .Params.parameters_else }}
         <div class="glass-card rounded-[2rem] p-8 fu d3">
           <span
             class="text-[10px] font-semibold tracking-[.14em] uppercase text-amber-600 mb-5 block"
             >Параметри проєкту</span
           >
+          {{ if .Params.parameters }}
           <div class="grid md:grid-cols-2 gap-x-10">
             {{ $params := .Params.parameters }} {{ $break := div (add (len
             $params) 1) 2 }}
@@ -217,9 +235,11 @@
               {{ end }}
             </div>
           </div>
-          <div class="grid md:grid-cols-2 gap-x-10">
+          {{ end }}
+          {{ if .Params.parameters_else }}
+          <div class="grid md:grid-cols-2 gap-x-10 mt-6">
             {{ $params_else := .Params.parameters_else }} {{ $break := div (add (len
-            $params) 1) 2 }}
+            $params_else) 1) 2 }}
             <div>
               {{ range (first $break $params_else) }}
               <div class="spec-row">
@@ -237,8 +257,11 @@
               {{ end }}
             </div>
           </div>
+          {{ end }}
         </div>
+        {{ end }}
 
+        {{ if .Params.components }}
         <div class="glass-card rounded-[2rem] p-8 fu d4">
           <div
             class="text-[10px] font-semibold tracking-[.14em] uppercase text-amber-600 mb-5"
@@ -252,19 +275,25 @@
                 <span class="text-sm font-medium text-gray-900"
                   >{{ .name }}</span
                 >
+                {{ if .desc }}
                 <span class="text-xs font-light text-gray-400 mt-0.5"
                   >{{ .desc }}</span
                 >
+                {{ end }}
               </div>
+              {{ if .qty }}
               <span
                 class="text-xs font-medium text-amber-700 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-100 shrink-0"
                 >{{ .qty }}</span
               >
+              {{ end }}
             </div>
             {{ end }}
           </div>
         </div>
+        {{ end }}
 
+        {{ if .Params.testimonial.text }}
         <div class="glass-card rounded-[2rem] p-7 fade-up">
           <div
             class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400 mb-5"
@@ -295,12 +324,13 @@
               </p>
             </div>
             <div class="flex items-center gap-1">
-              {{ range seq 5 }}
+              {{ range seq (.Params.testimonial.rating | default 5) }}
               <div class="star"></div>
               {{ end }}
             </div>
           </div>
         </div>
+        {{ end }}
       </div>
 
       <div class="flex flex-col gap-5 lg:sticky lg:top-28" id="cta">
@@ -422,18 +452,23 @@
         >
           <!-- Заголовок та клієнт -->
           <div>
+            {{ if .Params.category }}
             <p
               class="text-[12.5px] font-medium text-amber-600 bg-amber-50 rounded-full px-4 py-1.5 border border-amber-100/50 w-fit mb-3"
             >
               {{ .Params.category }}
             </p>
+            {{ end }}
             <h3 class="text-xl font-bold text-gray-900 leading-snug mb-1">
               {{ .Params.title }}
             </h3>
+            {{ if .Params.location }}
             <div class="text-sm text-gray-500 font-light">
               {{ .Params.location }}
             </div>
+            {{ end }}
           </div>
+          {{ if .Params.stats }}
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
             {{ range .Params.stats }}
             <div
@@ -450,9 +485,11 @@
             </div>
             {{ end }}
           </div>
+          {{ end }}
 
           <!-- Відгук -->
-          <div class="flex flex-col gap-4 flex-1">
+          {{ if .Params.testimonial.text }}
+          <div class="flex flex-col gap-4 flex-1 mt-4">
             <span
               class="text-[9px] text-gray-400 tracking-widest uppercase font-bold"
               >Відгук</span
@@ -482,7 +519,7 @@
               </div>
               <!-- Рейтинг зірками -->
               <div class="ml-auto flex gap-0.5">
-                {{ range seq .Params.testimonial.rating }}
+                {{ range seq (.Params.testimonial.rating | default 5) }}
                 <i
                   data-lucide="star"
                   class="w-3.5 h-3.5 text-amber-400 fill-amber-400"
@@ -491,6 +528,7 @@
               </div>
             </div>
           </div>
+          {{ end }}
 
           <!-- Кнопка проєкту -->
           <div class="flex items-center justify-between relative z-20 gap-2">
