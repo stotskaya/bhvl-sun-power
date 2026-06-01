@@ -185,7 +185,7 @@
                                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                             {{ else if .Params.images }}
                                 {{ $firstImage := index .Params.images 0 }}
-                                <img src="{{ $firstImage }}" alt="{{ .Title }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                                <img src="{{ $firstImage.item }}" alt="{{ .Title }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                             {{ else }}
                                 <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300">No Image</div>
                             {{ end }}

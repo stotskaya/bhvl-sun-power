@@ -423,7 +423,13 @@ content:
       - { label: "Назва проєкту (H1)", name: "title", type: "string" }
       - { label: "Коротка назва", name: "short_title", type: "string" }
       - { label: "Мітка потужності", name: "power_label", type: "string" }
-      - { label: "Категорія", name: "category", type: "string" }
+      - name: "category"
+        label: "Категорія"
+        type: "select"
+        options:
+          - "Дім"
+          - "Бізнес"
+          - "ОСББ"
       - { label: "Локація", name: "location", type: "string" }
       - name: images
         label: "Слайдер зображень"
