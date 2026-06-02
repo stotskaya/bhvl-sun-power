@@ -5,11 +5,11 @@ layout: "single"
 category: "Сонячні панелі"
 price: "100$"
 images:
-  - "/images/products/1.jpg"
-  - "/images/products/2.jpg"
-  - "/images/products/3.jpg"
-  - "/images/products/4.jpg"
-  - "/images/products/5.jpg"
+  - item: "/images/products/1.jpg"
+  - item: "/images/products/2.jpg"
+  - item: "/images/products/3.jpg"
+  - item: "/images/products/4.jpg"
+  - item: "/images/products/5.jpg"
 
 full_description: "Акумуляторний модуль A100 MT-LFP-51.2/105 — це потужне джерело енергії, що підходить для різноманітних застосувань. Завдяки передовій технології літій-залізо-фосфатних батарей, він має високу ефективність та довгий термін служби. Ідеальний для використання в системах зберігання енергії, сонячних установках та іншого енергетичного устаткування."
 specs:

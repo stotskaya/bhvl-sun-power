@@ -5,7 +5,7 @@ layout: "single"
 category: "Акумулятори"
 price: "1350$"
 images:
-  - "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=800"
+  - item: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=800"
 
 full_description: "Pylontech US3000C - це літій-залізо-фосфатна батарея (LiFePO4) нового покоління. Вона забезпечує високу щільність енергії, безпеку та надійність завдяки вбудованій системі BMS."
 specs:

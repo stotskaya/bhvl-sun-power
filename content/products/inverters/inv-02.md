@@ -5,8 +5,8 @@ layout: "single"
 category: "Інвертори"
 price: "2400$"
 images:
-  - "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"
-  - "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&q=80&w=800"
+  - item: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"
+  - item: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&q=80&w=800"
 
 full_description: "Потужний трифазний гібридний інвертор Deye SUN-12K. Підходить для великих домогосподарств або малого комерційного використання. Забезпечує несиметричне навантаження фаз та має підтримку генератора."
 specs:

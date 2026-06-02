@@ -5,7 +5,7 @@ layout: "single"
 category: "Аксесуари"
 price: "1.5$ / м"
 images:
-  - "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=800"
+  - item: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=800"
 
 full_description: "Спеціалізований кабель для сонячних систем. Має подвійну ізоляцію, яка витримує екстремальні температури, ультрафіолетове випромінювання та агресивні середовища. Гарантія стабільної передачі енергії."
 specs:

@@ -13,13 +13,10 @@
           <div class="glass-card rounded-[2rem] overflow-hidden">
             <div class="relative bg-white">
               {{ $firstImage := index .Params.images 0 }}
-              <img
-                id="mainImg"
-                src="{{ $firstImage }}"
-                alt="{{ .Title }}"
-                class="w-full h-[420px] object-contain p-6"
-              />
-
+             <img id="mainImg"
+     src="{{ if reflect.IsMap $firstImage }}{{ $firstImage.item | relURL }}{{ else }}{{ $firstImage | relURL }}{{ end }}"
+     alt="{{ .Title }}"
+     class="w-full h-[420px] object-contain p-6">
               <div
                 class="absolute bottom-4 right-4 glass-panel rounded-xl px-3 py-1.5 flex items-center gap-1.5"
               >
@@ -50,14 +47,31 @@
           </div>
 
           <div class="grid grid-cols-6 gap-2">
-            {{ range .Params.images }}
-            <button
-              class="thumb glass-card rounded-2xl overflow-hidden"
-              onclick="setImg(this, '{{ . }}')"
-            >
-              <img src="{{ . }}" class="w-full object-contain p-1.5 bg-white" />
-            </button>
-            {{ end }}
+          {{ range .Params.gallery }}
+  {{ $type := printf "%T" . }}
+
+  {{/* Варіант 1: Якщо це об'єкт/мапа (як хоче PagesCMS) */}}
+  {{ if ne $type "string" }}
+    {{ if index . "item" }}
+      {{ $imagePath := index . "item" }}
+      <button
+        class="thumb glass-card rounded-2xl overflow-hidden"
+        onclick="setImg(this, '{{ $imagePath }}')"
+      >
+        <img src="{{ $imagePath | relURL }}" class="w-full object-contain p-1.5 bg-white" />
+      </button>
+    {{ end }}
+
+  {{/* Варіант 2: Якщо це звичайний рядок (текст) */}}
+  {{ else }}
+    <button
+      class="thumb glass-card rounded-2xl overflow-hidden"
+      onclick="setImg(this, '{{ . }}')"
+    >
+      <img src="{{ . | relURL }}" class="w-full object-contain p-1.5 bg-white" />
+    </button>
+  {{ end }}
+{{ end }}
           </div>
         </div>
 
@@ -236,13 +250,12 @@
           <div
             class="aspect-square rounded-2xl bg-gray-50 mb-6 overflow-hidden flex items-center justify-center"
           >
-            {{ if .Params.images }} {{ $firstImage := index .Params.images 0 }}
-            <img
-              src="{{ $firstImage | relURL }}"
-              alt="{{ .Title }}"
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              itemprop="image"
-            />
+            {{ if .Params.images }}
+    {{ $firstImage := index .Params.images 0 }}
+    <img src="{{ if reflect.IsMap $firstImage }}{{ $firstImage.item | relURL }}{{ else }}{{ $firstImage | relURL }}{{ end }}"
+         alt="{{ .Title }}"
+         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+
             {{ else }}
             <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
             {{ end }}

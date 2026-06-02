@@ -5,7 +5,7 @@ layout: "single"
 category: "Аксесуари"
 price: "5$"
 images:
-  - "https://images.unsplash.com/photo-1620616952762-b9cf271a3de7?auto=format&fit=crop&q=80&w=800"
+  - item: "https://images.unsplash.com/photo-1620616952762-b9cf271a3de7?auto=format&fit=crop&q=80&w=800"
 
 full_description: "Конектори MC4 виробництва Staubli - золотий стандарт у світі сонячної енергетики. Вони гарантують надійний контакт з низьким опором та ідеальний захист від вологи та пилу."
 specs:

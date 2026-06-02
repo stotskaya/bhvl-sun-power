@@ -5,8 +5,8 @@ layout: "single"
 category: "Інвертори"
 price: "1200$"
 images:
-  - "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"
-  - "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&q=80&w=800"
+  - item: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"
+  - item: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&q=80&w=800"
 
 full_description: "Гібридний інвертор Deye SUN-5K-SG03LP1-EU - це багатофункціональне рішення для сонячних електростанцій, яке дозволяє об'єднувати енергію від сонячних панелей, загальної мережі та акумуляторів для забезпечення безперебійного живлення."
 specs:
