@@ -6,5 +6,5 @@ category: Бізнес
 location: /re/
 images:
   - item: /images/about-us-1.jpg
-link: /rt/
+slug: /rt/
 ---
