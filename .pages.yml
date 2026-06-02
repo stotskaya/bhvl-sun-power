@@ -1238,7 +1238,6 @@ content:
         type: string
         required: true
       - { label: "Коротка назва", name: "short_title", type: string }
-      - { label: "Мітка потужності", name: "power_label", type: string }
       - name: category
         label: "Категорія"
         type: select
