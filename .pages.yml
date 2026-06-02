@@ -1377,7 +1377,10 @@ content:
       - label: "Характеристики (specs)"
         name: "specs"
         type: object
-        list: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{key}"
         fields:
           - { label: "Параметр", name: "key", type: "string" }
           - { label: "Значення", name: "val", type: "string" }
