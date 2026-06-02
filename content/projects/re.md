@@ -1,5 +1,5 @@
 ---
-title: re
+title: retyp uopiower
 short_title: re
 power_label: re
 category: Бізнес
