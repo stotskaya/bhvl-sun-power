@@ -1,0 +1,111 @@
+<section class="py-20 px-6 relative z-10">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+       {{ with .title }}
+            <h2 class="text-3xl md:text-4xl font-light text-center mb-5">
+            {{ $title := . }}
+            {{ $words := split $title " " }}
+
+            <span class="solar-gradient-text italic font-medium">
+                {{ range first 1 $words }}{{ . }} {{ end }}
+            </span>
+
+            {{ range after 1 $words }}{{ . }} {{ end }}
+        </h2>
+        {{ end }}
+      <p class="text-base font-light text-gray-400 max-w-2xl mx-auto">
+        {{  .description }}
+      </p>
+    </div>
+
+    <div class="swiper cert-swiper reveal" role="region" aria-label="Слайдер сертифікатів">
+      <div class="swiper-wrapper py-4">
+        {{- range $index, $item := .items -}}
+        <div class="swiper-slide !w-[220px]">
+          <div class="glass-card group p-2 rounded-[2rem] relative cursor-zoom-in transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/50" onclick="openCertModal(this)" data-image="{{ $item.image }}" role="button" tabindex="0" aria-label="{{ $item.aria }}">
+            
+            <div class="aspect-[1/1.4] rounded-2xl bg-gray-50 overflow-hidden flex flex-col items-center justify-center relative cert-thumb-container {{ $item.class }}">
+              {{ if $item.image }}
+                <img src="{{ $item.image }}" alt="{{ $item.label }}" loading="lazy" class="w-full h-full object-contain p-2">
+              {{ else }}
+                <div class="text-center text-gray-400 font-bold tracking-tight opacity-50 px-4 w-full h-full flex flex-col justify-center items-center">
+                  {{ $item.label | safeHTML }}
+                </div>
+              {{ end }}
+              
+              <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <i data-lucide="zoom-in" class="w-8 h-8 text-white"></i>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        {{- end -}}
+      </div>
+      
+      <!-- Пагінація і навігація -->
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <div class="swiper-button-prev !static !w-10 !h-10 !m-0 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all bg-white text-gray-800 after:!text-sm"></div>
+        <div class="swiper-pagination !static !w-auto"></div>
+        <div class="swiper-button-next !static !w-10 !h-10 !m-0 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all bg-white text-gray-800 after:!text-sm"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="imageModal" class="modal-wrapper" role="dialog" aria-modal="true">
+  <div id="modalBackdrop" onclick="closeImageModal()"></div>
+  <div id="modalPanel" style="padding: 2.5rem; display: flex; justify-content: center; align-items: center; max-width: max-content;">
+    <button onclick="closeImageModal()" aria-label="Закрити" style="position:absolute;top:1.25rem;right:1.25rem;z-index:10;width:2.25rem;height:2.25rem;border-radius:9999px;background:rgba(255,255,255,.85);border:1px solid #f3f4f6;display:flex;align-items:center;justify-content:center;color:#9ca3af;cursor:pointer;transition: all 0.2s;" onmouseover="this.style.background='#f3f4f6'; this.style.color='#111827';" onmouseout="this.style.background='rgba(255,255,255,.85)'; this.style.color='#9ca3af';">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-4 h-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+    </button>
+    <img id="modalImage" src="" alt="Enlarged image" class="max-w-full max-h-[80vh] object-contain rounded-xl">
+  </div>
+</div>
+
+<style>
+  .cert-swiper .swiper-pagination-bullet { background: #e5e7eb; opacity: 1; width: 8px; height: 8px; transition: all 0.3s; }
+  .cert-swiper .swiper-pagination-bullet-active { background: #f59e0b; width: 16px; border-radius: 4px; }
+</style>
+
+<script>
+function openCertModal(element) {
+  const imageUrl = element.getAttribute('data-image');
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  
+  if (imageUrl) {
+    modalImg.src = imageUrl;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeImageModal() {
+  const modal = document.getElementById('imageModal');
+  modal.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { 
+  const modal = document.getElementById('imageModal');
+  if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+    closeImageModal();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  new Swiper('.cert-swiper', {
+    grabCursor: true,
+    slidesPerView: 'auto',
+    centerInsufficientSlides: true,
+    spaceBetween: 16,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: {
+      640: { spaceBetween: 24 }
+    }
+  });
+});
+</script>

@@ -326,6 +326,15 @@ sections:
       Ми не зникаємо після запуску об’єкта. Наші штатні бригади забезпечують
       оперативний виїзд та пожиттєве постгарантійне обслуговування вашої
       енергосистеми.
+
+  - type: certificates-slider
+    title: Сертифікати, дозволи, ліцензії
+    description: Підтверджена експертність A100
+    items:
+      - image: /images/certificate-1.jpg
+      - image: /images/certificate-2.jpg
+      - image: /images/certificate-3.jpg
+
   - type: faq
     title: FAQ
     items:
@@ -384,4 +393,5 @@ sections:
 
       детальний кошторис для вашої повної незалежності у будь-якому регіоні
       України
+
 ---

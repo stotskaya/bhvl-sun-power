@@ -915,7 +915,7 @@ content:
             label: "Останні проєкти (Авто)"
             fields:
               - { name: title, label: "Title", type: string }
-
+          
           # --- FAQ ---
           - name: faq
             label: "FAQ"
@@ -931,6 +931,25 @@ content:
                 fields:
                   - { name: question, label: "Q", type: string }
                   - { name: answer, label: "A", type: rich-text }
+
+          # --- CERTIFICATES SLIDER ---
+          - name: certificates-slider
+            label: "Сертифікати (Слайдер)"
+            fields:
+              - { name: title, label: "Title", type: string }
+              - { name: description, label: "Description", type: text }
+              - name: items
+                label: "Сертифікати"
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{label}"
+                fields:
+                  - { name: image, label: "Зображення", type: image }
+                  - { name: label, label: "Label", type: string }
+                  - { name: class, label: "CSS Class", type: string, required: false }
+                  - { name: aria, label: "Aria label", type: string, required: false }
 
   - name: about_us
     label: "Про компанію"

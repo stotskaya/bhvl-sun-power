@@ -360,30 +360,32 @@
     const mainImg = document.getElementById('mainImg');
     
     modalImg.src = mainImg.src;
-    modal.classList.remove('hidden');
-    setTimeout(() => {
-      modal.classList.remove('opacity-0');
-    }, 10);
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
   }
 
   function closeImageModal() {
     const modal = document.getElementById('imageModal');
-    modal.classList.add('opacity-0');
-    setTimeout(() => {
-      modal.classList.add('hidden');
-    }, 300);
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
   }
+
+  document.addEventListener('keydown', e => { 
+    const modal = document.getElementById('imageModal');
+    if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+      closeImageModal();
+    }
+  });
 </script>
 
 <!-- Modal for Image -->
-<div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-8 opacity-0 transition-opacity duration-300" onclick="if(event.target === this) closeImageModal()">
-  <div class="relative bg-white rounded-[2rem] max-w-5xl w-full shadow-2xl overflow-hidden glass-card flex flex-col items-center justify-center">
-    <button onclick="closeImageModal()" class="absolute top-4 right-4 bg-gray-100/80 hover:bg-gray-200 text-gray-800 rounded-full p-2.5 z-50 transition-colors backdrop-blur-md">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+<div id="imageModal" class="modal-wrapper" role="dialog" aria-modal="true">
+  <div id="modalBackdrop" onclick="closeImageModal()"></div>
+  <div id="modalPanel" style="padding: 2.5rem; display: flex; justify-content: center; align-items: center; max-width: max-content;">
+    <button onclick="closeImageModal()" aria-label="Закрити" style="position:absolute;top:1.25rem;right:1.25rem;z-index:10;width:2.25rem;height:2.25rem;border-radius:9999px;background:rgba(255,255,255,.85);border:1px solid #f3f4f6;display:flex;align-items:center;justify-content:center;color:#9ca3af;cursor:pointer;transition: all 0.2s;" onmouseover="this.style.background='#f3f4f6'; this.style.color='#111827';" onmouseout="this.style.background='rgba(255,255,255,.85)'; this.style.color='#9ca3af';">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-4 h-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
     </button>
-    <div class="p-4 sm:p-8 w-full flex items-center justify-center">
-      <img id="modalImage" src="" alt="Enlarged image" class="max-w-full max-h-[80vh] object-contain rounded-xl">
-    </div>
+    <img id="modalImage" src="" alt="Enlarged image" class="max-w-full max-h-[80vh] object-contain rounded-xl">
   </div>
 </div>
 
