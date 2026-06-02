@@ -1259,7 +1259,7 @@ content:
         list: true
         fields:
           - { name: item, label: "Image", type: image }
-      - { label: "Посилання", name: "link", type: string }
+      - { label: "Посилання", name: "slug", type: string }
 
       # Блок статистики (3 головні картки)
       - name: "stats"
