@@ -1243,7 +1243,10 @@ content:
         label: "Категорія"
         type: select
         required: true
-        options: ["Дім", "Бізнес", "ОСББ"]
+        options:
+          - { label: "Дім", value: "Дім" }
+          - { label: "Бізнес", value: "Бізнес" }
+          - { label: "ОСББ", value: "ОСББ" }
       - name: location
         label: "Локація"
         type: string
@@ -1360,7 +1363,14 @@ content:
         label: "Категорія"
         type: select
         required: true
-        options: ["A100", "Аксесуари", "Акумулятори", "Інвертори", "Готові комплекти", "Сонячні панелі", "Комплектуючі"]
+        options:
+          - { label: "A100", value: "A100" }
+          - { label: "Аксесуари", value: "Аксесуари" }
+          - { label: "Акумулятори", value: "Акумулятори" }
+          - { label: "Інвертори", value: "Інвертори" }
+          - { label: "Готові комплекти", value: "Готові комплекти" }
+          - { label: "Сонячні панелі", value: "Сонячні панелі" }
+          - { label: "Комплектуючі", value: "Комплектуючі" }
       - { label: "Ціна", name: "price", type: "string" }
       - name: images
         label: "Галерея зображень (images)"
