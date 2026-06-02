@@ -1254,8 +1254,9 @@ content:
         type: string
         required: true
       - name: images
-        label: "Слайдер зображень"
+        label: "Зображення"
         type: object
+        list: true
         fields:
           - { name: item, label: "Image", type: image }
       - { label: "Посилання", name: "link", type: string }
@@ -1308,6 +1309,7 @@ content:
       - name: images
         label: "Галерея зображень (images)"
         type: object
+        list: true
         fields:
           - { name: item, label: "Image", type: image }
       - name: full_description

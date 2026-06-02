@@ -157,7 +157,13 @@
                         <div class="aspect-square bg-gray-50 flex items-center justify-center">
                             {{ if .Params.images }}
                                 {{ $firstImage := index .Params.images 0 }}
-                                <img src="{{ $firstImage.item }}" alt="{{ .Title }}" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" itemprop="image">
+                                {{ $imgSrc := "" }}
+                                {{ if reflect.IsMap $firstImage }}
+                                  {{ $imgSrc = index $firstImage "item" }}
+                                {{ else }}
+                                  {{ $imgSrc = $firstImage }}
+                                {{ end }}
+                                <img src="{{ $imgSrc }}" alt="{{ .Title }}" class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700" itemprop="image">
                             {{ else }}
                                 <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
                             {{ end }}

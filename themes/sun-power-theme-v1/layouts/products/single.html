@@ -13,12 +13,17 @@
           <div class="glass-card rounded-[2rem] overflow-hidden">
             <div class="relative bg-white">
               {{ $firstImage := index .Params.images 0 }}
-             <img id="mainImg"
-     src="{{ if reflect.IsMap $firstImage }}{{ $firstImage.item | relURL }}{{ else }}{{ $firstImage | relURL }}{{ end }}"
-     alt="{{ .Title }}"
-     class="w-full h-[420px] object-contain p-6">
+              {{ $imgSrc := "" }}
+              {{ if reflect.IsMap $firstImage }}
+                {{ $imgSrc = index $firstImage "item" }}
+              {{ else }}
+                {{ $imgSrc = $firstImage }}
+              {{ end }}
+              <img id="mainImg"
+              src="{{ $imgSrc | relURL }}" alt="{{
+              .Title }}" class="w-full h-[420px] object-contain p-6 cursor-pointer" onclick="openImageModal()">
               <div
-                class="absolute bottom-4 right-4 glass-panel rounded-xl px-3 py-1.5 flex items-center gap-1.5"
+                class="absolute bottom-4 right-4 glass-panel rounded-xl px-3 py-1.5 flex items-center gap-1.5 pointer-events-none"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -47,31 +52,31 @@
           </div>
 
           <div class="grid grid-cols-6 gap-2">
-          {{ range .Params.gallery }}
-  {{ $type := printf "%T" . }}
-
-  {{/* Варіант 1: Якщо це об'єкт/мапа (як хоче PagesCMS) */}}
-  {{ if ne $type "string" }}
-    {{ if index . "item" }}
-      {{ $imagePath := index . "item" }}
-      <button
-        class="thumb glass-card rounded-2xl overflow-hidden"
-        onclick="setImg(this, '{{ $imagePath }}')"
-      >
-        <img src="{{ $imagePath | relURL }}" class="w-full object-contain p-1.5 bg-white" />
-      </button>
-    {{ end }}
-
-  {{/* Варіант 2: Якщо це звичайний рядок (текст) */}}
-  {{ else }}
-    <button
-      class="thumb glass-card rounded-2xl overflow-hidden"
-      onclick="setImg(this, '{{ . }}')"
-    >
-      <img src="{{ . | relURL }}" class="w-full object-contain p-1.5 bg-white" />
-    </button>
-  {{ end }}
-{{ end }}
+            {{ range .Params.images }} {{ $type := printf "%T" . }} {{/* Варіант
+            1: Якщо це об'єкт/мапа (як хоче PagesCMS) */}} {{ if ne $type
+            "string" }} {{ if index . "item" }} {{ $imagePath := index . "item"
+            }}
+            <button
+              class="thumb glass-card rounded-2xl overflow-hidden"
+              onclick="setImg(this, '{{ $imagePath }}')"
+            >
+              <img
+                src="{{ $imagePath | relURL }}"
+                class="w-full object-contain p-1.5 bg-white"
+              />
+            </button>
+            {{ end }} {{/* Варіант 2: Якщо це звичайний рядок (текст) */}} {{
+            else }}
+            <button
+              class="thumb glass-card rounded-2xl overflow-hidden"
+              onclick="setImg(this, '{{ . }}')"
+            >
+              <img
+                src="{{ . | relURL }}"
+                class="w-full object-contain p-1.5 bg-white"
+              />
+            </button>
+            {{ end }} {{ end }}
           </div>
         </div>
 
@@ -106,14 +111,14 @@
                 <!-- CTA -->
                 <div class="grid sm:grid-cols-2 gap-3">
                   <button
-                    class="bg-gray-900 text-white w-full py-4 rounded-full font-medium text-sm hover:bg-amber-500 hover:border-amber-400   transition-all shadow-lg shadow-gray-200 flex items-center justify-center gap-2 btn-open-modal"
+                    class="bg-gray-900 text-white w-full py-4 rounded-full font-medium text-sm hover:bg-amber-500 hover:border-amber-400 transition-all shadow-lg shadow-gray-200 flex items-center justify-center gap-2 btn-open-modal"
                     data-name="{{ .Params.title }}"
                     data-desc="Запросити ціну"
                   >
                     Запросити ціну
                   </button>
                   <button
-                    class="w-full sm:w-auto bg-white px-10 py-4 rounded-full font-bold text-sm  border border-amber-500 hover:bg-amber-50   transition-all flex items-center justify-center gap-3 text-gray-600  btn-open-modal"
+                    class="w-full sm:w-auto bg-white px-10 py-4 rounded-full font-bold text-sm border border-amber-500 hover:bg-amber-50 transition-all flex items-center justify-center gap-3 text-gray-600 btn-open-modal"
                     data-name="{{ .Params.title }}"
                     data-desc="Проконсультуватись"
                   >
@@ -250,13 +255,16 @@
           <div
             class="aspect-square rounded-2xl bg-gray-50 mb-6 overflow-hidden flex items-center justify-center"
           >
-            {{ if .Params.images }}
-    {{ $firstImage := index .Params.images 0 }}
-    <img src="{{ if reflect.IsMap $firstImage }}{{ $firstImage.item | relURL }}{{ else }}{{ $firstImage | relURL }}{{ end }}"
-         alt="{{ .Title }}"
-         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-
+            {{ if .Params.images }} {{ $firstImage := index .Params.images 0 }}
+            {{ $imgSrcRel := "" }}
+            {{ if reflect.IsMap $firstImage }}
+              {{ $imgSrcRel = index $firstImage "item" }}
             {{ else }}
+              {{ $imgSrcRel = $firstImage }}
+            {{ end }}
+            <img src="{{ $imgSrcRel | relURL }}"
+            alt="{{ .Title }}" class="w-full h-full object-cover
+            group-hover:scale-110 transition-transform duration-700"> {{ else }}
             <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
             {{ end }}
           </div>
@@ -278,8 +286,6 @@
             <p class="text-xs text-gray-500 font-light mb-2 line-clamp-2">
               {{ .Params.description | plainify | truncate 30 }}
             </p>
-
-           
 
             <div
               class="flex items-center justify-between relative z-20 gap-2 flex-col sm:flex-row"
@@ -347,5 +353,38 @@
       icon.classList.add("open");
     }
   }
+  // Modal Image
+  function openImageModal() {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const mainImg = document.getElementById('mainImg');
+    
+    modalImg.src = mainImg.src;
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      modal.classList.remove('opacity-0');
+    }, 10);
+  }
+
+  function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.add('opacity-0');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 300);
+  }
 </script>
+
+<!-- Modal for Image -->
+<div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-8 opacity-0 transition-opacity duration-300" onclick="if(event.target === this) closeImageModal()">
+  <div class="relative bg-white rounded-[2rem] max-w-5xl w-full shadow-2xl overflow-hidden glass-card flex flex-col items-center justify-center">
+    <button onclick="closeImageModal()" class="absolute top-4 right-4 bg-gray-100/80 hover:bg-gray-200 text-gray-800 rounded-full p-2.5 z-50 transition-colors backdrop-blur-md">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="p-4 sm:p-8 w-full flex items-center justify-center">
+      <img id="modalImage" src="" alt="Enlarged image" class="max-w-full max-h-[80vh] object-contain rounded-xl">
+    </div>
+  </div>
+</div>
+
 {{ end }}
