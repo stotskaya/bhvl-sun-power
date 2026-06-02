@@ -1274,7 +1274,70 @@ content:
           - { label: "Значення", name: "value", type: string }
           - { label: "Опис (підтекст)", name: "subtext", type: string }
           - { label: "Іконка (напр. battery, sun)", name: "icon", type: string }
+    # Блок Задача / Результат
+      - label: "Місія проєкту (Mission)"
+        name: "mission"
+        type: object
+        fields:
+          - { label: "Задача", name: "task", type: "text" }
+          - { label: "Результат", name: "result", type: "text" }
+          - { label: "Рішення (solution)", name: "solution", type: "text" }
+          - label: "Додаткові специфікації результату (results_specs)"
+            name: "results_specs"
+            type: object
+            list: true
+            fields:
+              - { label: "Ключ", name: "key", type: "string" }
+              - { label: "Значення", name: "val", type: "string" }
 
+      # Таблиця параметрів
+      # Таблиця параметрів
+      - label: "Таблиця параметрів (parameters)"
+        name: "parameters"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{key}"
+        fields:
+          - { label: "Ключ (Параметр)", name: "key", type: "string" }
+          - { label: "Значення", name: "val", type: "string" }
+
+      # Додаткові параметри
+      - label: "Додаткові параметри"
+        name: "parameters_else"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{key}"
+        fields:
+          - { label: "Ключ (Параметр)", name: "key", type: "string" }
+          - { label: "Значення", name: "val", type: "string" }
+
+      # Склад системи
+      - label: "Склад системи (components)"
+        name: "components"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - { label: "Назва пристрою", name: "name", type: "string" }
+          - { label: "Опис/Характеристики", name: "desc", type: "string" }
+          - { label: "Кількість", name: "qty", type: "string" }
+
+      # Відгук клієнта
+      - label: "Відгук (Testimonial)"
+        name: "testimonial"
+        type: object
+        fields:
+          - { label: "Текст відгуку", name: "text", type: "text" }
+          - { label: "Автор", name: "author", type: "string" }
+          - { label: "Посада/Роль", name: "role", type: "string" }
+          - { label: "Ініціали", name: "initials", type: "string" }
+          - { label: "Рейтинг (зірки)", name: "rating", type: "number" }
      
   - name: products
     label: "Товари / Каталог"
