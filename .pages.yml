@@ -1326,7 +1326,7 @@ content:
     type: collection
     exclude: ["_index.md", "*/_index.md"]
     path: "content/products"
-    filename: "{folder}/{slug}.md"
+    filename: "{slug}.md"
     fields:
       - name: title
         label: "Заголовок (Title)"
