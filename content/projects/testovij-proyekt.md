@@ -6,7 +6,7 @@ category: ОСББ
 location: опис
 images:
   - item: /images/about-us.png
-link: /test/
+slug: /test/
 mission:
   task: task
   result: result
