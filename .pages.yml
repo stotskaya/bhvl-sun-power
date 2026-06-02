@@ -459,12 +459,6 @@ content:
           type: "boolean",
           default: false,
         }
-      - {
-          label: "Тип (type)",
-          name: "type",
-          type: "string",
-          default: "journal",
-        }
       - name: category
         label: "Категорія"
         type: string
@@ -493,6 +487,9 @@ content:
           type: "string",
           default: "Редакція А100",
         }
+      - name: body
+        label: Content
+        type: rich-text
 
   - name: calculator_basic
     label: "Калькулятор — таблиця basic"
