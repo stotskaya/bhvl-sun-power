@@ -947,9 +947,6 @@ content:
                     summary: "{label}"
                 fields:
                   - { name: image, label: "Зображення", type: image }
-                  - { name: label, label: "Label", type: string }
-                  - { name: class, label: "CSS Class", type: string, required: false }
-                  - { name: aria, label: "Aria label", type: string, required: false }
 
   - name: about_us
     label: "Про компанію"
