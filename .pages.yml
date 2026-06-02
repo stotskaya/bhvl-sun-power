@@ -441,8 +441,6 @@ content:
       - { name: SEO_title, label: "SEO title", type: text }
       - { name: SEO_description, label: "SEO description", type: text }
 
-
-
   - name: journal
     label: "Блог / Журнал"
     type: collection
@@ -495,8 +493,6 @@ content:
           type: "string",
           default: "Редакція А100",
         }
-
-  
 
   - name: calculator_basic
     label: "Калькулятор — таблиця basic"
@@ -1049,12 +1045,7 @@ content:
           type: string,
           description: "Наприклад: https://sunpower.com.ua/",
         }
-      - {
-          name: languageCode,
-          label: "Код мови",
-          type: string,
-          default: "uk",
-        }
+      - { name: languageCode, label: "Код мови", type: string, default: "uk" }
       - {
           name: title,
           label: "Назва сайту (Заголовок в браузері)",
@@ -1072,16 +1063,8 @@ content:
               type: string,
             }
           - { name: phone, label: "Номер телефону", type: string }
-          - {
-              name: footerDescription,
-              label: "Опис у футері",
-              type: string,
-            }
-          - {
-              name: copyrightText,
-              label: "Текст копірайту",
-              type: string,
-            }
+          - { name: footerDescription, label: "Опис у футері", type: string }
+          - { name: copyrightText, label: "Текст копірайту", type: string }
 
       - name: menu
         label: "🗺️ Навігація (Меню)"
@@ -1245,9 +1228,9 @@ content:
         options:
           multiple: false
           values:
-          - { label: "Дім", value: "Дім" }
-          - { label: "Бізнес", value: "Бізнес" }
-          - { label: "ОСББ", value: "ОСББ" }
+            - { label: "Дім", value: "Дім" }
+            - { label: "Бізнес", value: "Бізнес" }
+            - { label: "ОСББ", value: "ОСББ" }
       - name: location
         label: "Короткий опис"
         type: string
@@ -1337,11 +1320,11 @@ content:
           - { label: "Посада/Роль", name: "role", type: "string" }
           - { label: "Ініціали", name: "initials", type: "string" }
           - { label: "Рейтинг (зірки)", name: "rating", type: "number" }
-     
+
   - name: products
     label: "Товари / Каталог"
     type: collection
-    exclude: ["_index.md"]
+    exclude: ["_index.md", "*/_index.md"]
     path: "content/products"
     filename: "{folder}/{slug}.md"
     fields:
