@@ -1238,112 +1238,43 @@ content:
         type: string
         required: true
       - { label: "Коротка назва", name: "short_title", type: string }
-      - { label: "Мітка потужності", name: "power_label", type: "string" }
+      - { label: "Мітка потужності", name: "power_label", type: string }
       - name: category
         label: "Категорія"
         type: select
         required: true
         options:
+          multiple: false
+          values:
           - { label: "Дім", value: "Дім" }
           - { label: "Бізнес", value: "Бізнес" }
           - { label: "ОСББ", value: "ОСББ" }
       - name: location
-        label: "Локація"
+        label: "Короткий опис"
         type: string
         required: true
       - name: images
         label: "Слайдер зображень"
         type: object
-        description: "Мінімум одне фото обов'язкове"
-        list:
-          min: 1
         fields:
           - { name: item, label: "Image", type: image }
-      - { label: "Посилання", name: "link", type: "string" }
+      - { label: "Посилання", name: "link", type: string }
 
       # Блок статистики (3 головні картки)
-      - label: "Головна статистика (stats)"
-        name: "stats"
+      - name: "stats"
+        label: "Головна статистика (stats)"
         type: object
         list:
-          min: 1
-          collapsible:
-            collapsed: true
-            summary: "{label}"
+              collapsible:
+                collapsed: true
+                summary: "{label}"
         fields:
-          - { label: "Заголовок", name: "label", type: "string" }
-          - { label: "Значення", name: "value", type: "string" }
-          - { label: "Опис (підтекст)", name: "subtext", type: "string" }
-          - {
-              label: "Іконка (напр. battery, sun)",
-              name: "icon",
-              type: "string",
-            }
+          - { label: "Заголовок", name: "label", type: string }
+          - { label: "Значення", name: "value", type: string }
+          - { label: "Опис (підтекст)", name: "subtext", type: string }
+          - { label: "Іконка (напр. battery, sun)", name: "icon", type: string }
 
-      # Блок Задача / Результат
-      - label: "Місія проєкту (Mission)"
-        name: "mission"
-        type: object
-        fields:
-          - { label: "Задача", name: "task", type: "text" }
-          - { label: "Результат", name: "result", type: "text" }
-          - { label: "Рішення (solution)", name: "solution", type: "text" }
-          - label: "Додаткові специфікації результату (results_specs)"
-            name: "results_specs"
-            type: object
-            list: true
-            fields:
-              - { label: "Ключ", name: "key", type: "string" }
-              - { label: "Значення", name: "val", type: "string" }
-
-      # Таблиця параметрів
-      # Таблиця параметрів
-      - label: "Таблиця параметрів (parameters)"
-        name: "parameters"
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{key}"
-        fields:
-          - { label: "Ключ (Параметр)", name: "key", type: "string" }
-          - { label: "Значення", name: "val", type: "string" }
-
-      # Додаткові параметри
-      - label: "Додаткові параметри"
-        name: "parameters_else"
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{key}"
-        fields:
-          - { label: "Ключ (Параметр)", name: "key", type: "string" }
-          - { label: "Значення", name: "val", type: "string" }
-
-      # Склад системи
-      - label: "Склад системи (components)"
-        name: "components"
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{name}"
-        fields:
-          - { label: "Назва пристрою", name: "name", type: "string" }
-          - { label: "Опис/Характеристики", name: "desc", type: "string" }
-          - { label: "Кількість", name: "qty", type: "string" }
-
-      # Відгук клієнта
-      - label: "Відгук (Testimonial)"
-        name: "testimonial"
-        type: object
-        fields:
-          - { label: "Текст відгуку", name: "text", type: "text" }
-          - { label: "Автор", name: "author", type: "string" }
-          - { label: "Посада/Роль", name: "role", type: "string" }
-          - { label: "Ініціали", name: "initials", type: "string" }
-          - { label: "Рейтинг (зірки)", name: "rating", type: "number" }
+     
   - name: products
     label: "Товари / Каталог"
     type: collection
@@ -1359,25 +1290,24 @@ content:
         label: "Короткий опис"
         type: string
         required: true
-      - name: category
+      - name: "category"
         label: "Категорія"
         type: select
         required: true
         options:
-          - { label: "A100", value: "A100" }
-          - { label: "Аксесуари", value: "Аксесуари" }
-          - { label: "Акумулятори", value: "Акумулятори" }
-          - { label: "Інвертори", value: "Інвертори" }
-          - { label: "Готові комплекти", value: "Готові комплекти" }
-          - { label: "Сонячні панелі", value: "Сонячні панелі" }
-          - { label: "Комплектуючі", value: "Комплектуючі" }
-      - { label: "Ціна", name: "price", type: "string" }
+          multiple: false
+          values:
+          - "A100"
+          - "Аксесуари"
+          - "Акумулятори"
+          - "Інвертори"
+          - "Готові комплекти"
+          - "Сонячні панелі"
+          - "Комплектуючі"
+      - { label: "Ціна", name: "price", type: string }
       - name: images
         label: "Галерея зображень (images)"
         type: object
-        description: "Мінімум одне фото обов'язкове"
-        list:
-          min: 1
         fields:
           - { name: item, label: "Image", type: image }
       - name: full_description
@@ -1392,5 +1322,5 @@ content:
             collapsed: true
             summary: "{key}"
         fields:
-          - { label: "Параметр", name: "key", type: "string" }
-          - { label: "Значення", name: "val", type: "string" }
+          - { label: "Параметр", name: "key", type: string }
+          - { label: "Значення", name: "val", type: string }
