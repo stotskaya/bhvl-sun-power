@@ -1,3 +1,5 @@
+import './orderModal.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   lucide.createIcons();
 
@@ -1061,5 +1063,27 @@ document.addEventListener("DOMContentLoaded", () => {
       this.style = "width: 60%; height: auto;"
       this.classList.add("is-placeholder"); 
     });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const utmParams = ["utm_source", "utm_medium", "utm_campaign"];
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // 1. Зберігаємо мітки в пам'ять браузера, якщо вони є в URL
+  utmParams.forEach((param) => {
+    if (urlParams.has(param)) {
+      sessionStorage.setItem(param, urlParams.get(param));
+    }
+  });
+
+  // 2. Вставляємо збережені мітки в приховані поля форми
+  utmParams.forEach((param) => {
+    const inputField = document.getElementById(param);
+    const savedValue = sessionStorage.getItem(param);
+
+    if (inputField && savedValue) {
+      inputField.value = savedValue;
+    }
   });
 });
