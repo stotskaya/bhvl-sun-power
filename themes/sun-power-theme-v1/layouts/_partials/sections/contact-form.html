@@ -29,30 +29,39 @@
 
         <div class="mt-16 max-w-3xl mx-auto text-left">
             <div class="glass-card p-6 md:p-10 rounded-[2.5rem]">
-                <form id="contact-form" novalidate class="space-y-6">
+                <form id="contact-form" novalidate action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                    <input type="hidden" name="access_key" value="15107f90-8ee8-4171-bf6b-30a291e81be8">
+                    <input type="hidden" name="from_name" value="A100 — контактна форма">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
                             <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-2">Name <span class="text-amber-600">*</span></label>
                             <input id="contact-name" name="name" type="text" required autocomplete="name" class="w-full px-5 py-4 rounded-2xl bg-white/90 border border-gray-200/80 shadow-sm shadow-gray-900/5 text-gray-900 placeholder:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-300/70 focus:border-amber-200 focus:bg-white">
+                            <p id="contact-error-name" class="hidden mt-1.5 text-xs text-red-600"></p>
                         </div>
                         <div>
                             <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-2">Email <span class="text-amber-600">*</span></label>
                             <input id="contact-email" name="email" type="email" required autocomplete="email" inputmode="email" class="w-full px-5 py-4 rounded-2xl bg-white/90 border border-gray-200/80 shadow-sm shadow-gray-900/5 text-gray-900 placeholder:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-300/70 focus:border-amber-200 focus:bg-white">
+                            <p id="contact-error-email" class="hidden mt-1.5 text-xs text-red-600"></p>
                         </div>
                     </div>
 
                     <div>
                         <label for="contact-subject" class="block text-sm font-medium text-gray-700 mb-2">Subject <span class="text-amber-600">*</span></label>
                         <input id="contact-subject" name="subject" type="text" required class="w-full px-5 py-4 rounded-2xl bg-white/90 border border-gray-200/80 shadow-sm shadow-gray-900/5 text-gray-900 placeholder:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-300/70 focus:border-amber-200 focus:bg-white">
+                        <p id="contact-error-subject" class="hidden mt-1.5 text-xs text-red-600"></p>
                     </div>
 
                     <div>
                         <label for="contact-message" class="block text-sm font-medium text-gray-700 mb-2">Message <span class="text-amber-600">*</span></label>
                         <textarea id="contact-message" name="message" rows="6" required class="w-full px-5 py-4 rounded-2xl bg-white/90 border border-gray-200/80 shadow-sm shadow-gray-900/5 text-gray-900 placeholder:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-300/70 focus:border-amber-200 focus:bg-white resize-none"></textarea>
+                        <p id="contact-error-message" class="hidden mt-1.5 text-xs text-red-600"></p>
                     </div>
 
+                    <div id="contact-form-status" class="hidden rounded-2xl px-5 py-4 text-sm"></div>
+
                     <div class="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
-                        <button id="contact-submit" type="submit" class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200">
+                        <button id="contact-submit" type="submit" class="bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg shadow-gray-200 disabled:opacity-60 disabled:cursor-not-allowed">
                             {{ .Params.submit_text }}
                         </button>
                         <p class="text-xs text-gray-400 tracking-wide">Fields marked with <span class="text-amber-600">*</span> are required.</p>

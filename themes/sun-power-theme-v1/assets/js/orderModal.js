@@ -168,23 +168,56 @@ document.addEventListener('DOMContentLoaded', () => {
     return ok;
   }
 
+  function showStatus(type, text) {
+    if (!fStatus) return;
+    fStatus.classList.remove('hidden', 'bg-red-50', 'text-red-600', 'bg-green-50', 'text-green-600');
+    fStatus.classList.add(type === 'error' ? 'bg-red-50' : 'bg-green-50', type === 'error' ? 'text-red-600' : 'text-green-600');
+    fStatus.textContent = text;
+  }
+
+  function resetSubmitButton() {
+    if (!fSubmit) return;
+    fSubmit.disabled = false;
+    fSubmit.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Залишити заявку';
+  }
+
   if (form) {
     form.addEventListener('submit', async e => {
       e.preventDefault();
       if (!validate()) return;
-      
+
+      if (fStatus) fStatus.classList.add('hidden');
+
       if (fSubmit) {
         fSubmit.disabled = true;
         fSubmit.innerHTML = '<svg style="animation:spin 1s linear infinite;width:1rem;height:1rem;" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="32" stroke-dashoffset="12"/></svg>&nbsp;Надсилаємо…';
       }
-      
-      await new Promise(r => setTimeout(r, 1400));
-      
-      if (success) {
-        success.classList.add('show');
-        if (typeof lucide !== 'undefined') {
-          lucide.createIcons({ nodes: [success] });
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data.success) {
+          form.reset();
+          if (cbBox) cbBox.classList.remove('on');
+          if (cbInput) cbInput.checked = false;
+          if (success) {
+            success.classList.add('show');
+            if (typeof lucide !== 'undefined') {
+              lucide.createIcons({ nodes: [success] });
+            }
+          }
+        } else {
+          showStatus('error', (data && data.message) || 'Не вдалося надіслати заявку. Спробуйте ще раз або зателефонуйте нам.');
+          resetSubmitButton();
         }
+      } catch (err) {
+        showStatus('error', 'Помилка мережі. Перевірте з’єднання та спробуйте ще раз.');
+        resetSubmitButton();
       }
     });
   }
