@@ -52,7 +52,11 @@
       
       <div>
         <p class="text-[0.65rem] font-semibold uppercase tracking-widest text-gray-400 mb-3">Ваші дані</p>
-        <form id="orderForm" novalidate="" class="flex flex-col gap-3.5">
+        <form id="orderForm" novalidate="" action="https://api.web3forms.com/submit" method="POST" class="flex flex-col gap-3.5">
+          <input type="hidden" name="access_key" value="15107f90-8ee8-4171-bf6b-30a291e81be8">
+          <input type="hidden" name="subject" value="Нова заявка з сайту A100 🔆">
+          <input type="hidden" name="from_name" value="A100 — сайт">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off">
           <input type="hidden" name="UTM_Source" id="utm_source" value="">
           <input type="hidden" name="UTM_Medium" id="utm_medium" value="">
           <input type="hidden" name="UTM_Campaign" id="utm_campaign" value="">
@@ -85,7 +89,7 @@
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <input id="cbInput" type="checkbox" class="absolute opacity-0 pointer-events-none">
+              <input id="cbInput" name="consent" value="Згода на обробку персональних даних надана" type="checkbox" class="absolute opacity-0 pointer-events-none">
               <span class="text-[11px] text-gray-500 font-light leading-relaxed pt-0.5">
                 Я даю згоду на обробку моїх персональних даних відповідно до
                 <a href="privacy-policy.html" target="_blank" class="text-amber-600 font-medium">Політики конфіденційності</a>.

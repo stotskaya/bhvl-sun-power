@@ -87,17 +87,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const subject = (subjectEl?.value || "").trim();
       const message = (messageEl?.value || "").trim();
 
-      setError("name", name ? "" : "Please enter your name.");
+      setError("name", name ? "" : "Будь ласка, вкажіть ваше ім'я.");
       setError(
         "email",
         email
           ? validateEmail(email)
             ? ""
-            : "Please enter a valid email address."
-          : "Please enter your email."
+            : "Будь ласка, вкажіть коректну email-адресу."
+          : "Будь ласка, вкажіть ваш email."
       );
-      setError("subject", subject ? "" : "Please enter a subject.");
-      setError("message", message ? "" : "Please enter your message.");
+      setError("subject", subject ? "" : "Будь ласка, вкажіть тему.");
+      setError("message", message ? "" : "Будь ласка, введіть ваше повідомлення.");
 
       const ok =
         Boolean(name) &&
@@ -108,32 +108,41 @@ document.addEventListener('DOMContentLoaded', () => {
       return ok ? { name, email, subject, message } : null;
     };
 
-    contactForm.addEventListener("submit", (e) => {
+    contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const payload = validate();
       if (!payload) {
-        setStatus("error", "Please fix the highlighted fields and try again.");
+        setStatus("error", "Будь ласка, виправте позначені поля та спробуйте ще раз.");
         return;
       }
 
       if (submitButton) submitButton.disabled = true;
 
-      const body = `Name: ${payload.name}\nEmail: ${payload.email}\n\n${payload.message}`;
-      const mailto = `mailto:studio@lumina.energy?subject=${encodeURIComponent(
-        payload.subject
-      )}&body=${encodeURIComponent(body)}`;
-
       try {
-        window.location.href = mailto;
-        contactForm.reset();
-        setStatus(
-          "success",
-          "Your message is ready to send in your email client."
-        );
+        const res = await fetch(contactForm.action, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(contactForm),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data.success) {
+          contactForm.reset();
+          setStatus(
+            "success",
+            "Дякуємо! Ваше повідомлення надіслано — ми зв'яжемося з вами найближчим часом."
+          );
+        } else {
+          setStatus(
+            "error",
+            (data && data.message) ||
+              "Не вдалося надіслати повідомлення. Спробуйте ще раз пізніше."
+          );
+        }
       } catch (err) {
         setStatus(
           "error",
-          "Unable to open your email client. Please email us directly at studio@lumina.energy."
+          "Помилка мережі. Перевірте з'єднання та спробуйте ще раз."
         );
       } finally {
         if (submitButton) submitButton.disabled = false;
