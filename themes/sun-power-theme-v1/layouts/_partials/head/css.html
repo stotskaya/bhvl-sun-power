@@ -29,23 +29,25 @@
     .modal-wrapper {
       display: none;
       position: fixed; inset: 0; z-index: 200;
+      overflow-y: auto;
+      padding-top: 2rem;
       align-items: flex-end; justify-content: center;
     }
     @media (min-width: 640px) {
-      .modal-wrapper { align-items: center; padding: 1.5rem; }
+      .modal-wrapper { align-items: flex-start; padding: 3rem 1.5rem; }
     }
     .modal-wrapper.is-open { display: flex; }
 
     #modalBackdrop {
-      position: absolute; inset: 0;
+      position: fixed; inset: 0;
       background: rgba(0,0,0,.22);
       backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
       animation: fadeIn .25s ease forwards;
     }
     #modalPanel {
       position: relative; width: 100%;
-      max-height: 96dvh; overflow-y: auto;
-      border-radius: 2.5rem 2.5rem 0 0;
+      margin: auto 15px;
+      border-radius: 2.5rem;
       background: rgba(255,255,255,.88);
       backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
       border: 1px solid rgba(255,255,255,.82);
