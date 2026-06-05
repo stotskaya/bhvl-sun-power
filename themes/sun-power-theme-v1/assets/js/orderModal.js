@@ -11,12 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const cbInput = document.getElementById('cbInput');
   const cbErr = document.getElementById('cbErr');
   
-  if (cbBox) {
-    cbBox.addEventListener('click', () => {
-      cbInput.checked = !cbInput.checked;
-      cbBox.classList.toggle('on', cbInput.checked);
-      if (cbInput.checked) cbErr.classList.add('hidden');
-      if (cbInput.checked) cbErr.classList.remove('block');
+  if (cbInput) {
+    cbInput.addEventListener('change', () => {
+      if (cbBox) cbBox.classList.toggle('on', cbInput.checked);
+      if (cbInput.checked && cbErr) {
+        cbErr.classList.add('hidden');
+        cbErr.classList.remove('block');
+      }
     });
   }
 
