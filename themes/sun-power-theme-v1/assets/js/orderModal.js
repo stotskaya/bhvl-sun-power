@@ -89,6 +89,32 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
       const card = null;
+      const btnText = btn.textContent.trim();
+      const btnTextLower = btnText.toLowerCase();
+      const mpGreenBadge = document.getElementById("modal_green-badge");
+      const mpSubtitle = document.getElementById("modal_subtitle");
+      if (
+        btnTextLower.includes("прорахунок") ||
+        btnTextLower.includes("розрахунок")
+      ) {
+        fSubmit.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Отримати розрахунок`;
+        if (mpGreenBadge) mpGreenBadge.textContent = "Безкоштовний прорахунок";
+        if (mpName) {
+          mpName.innerHTML = `Дізнайтеся вартість СЕС <br><span class="bg-gradient-to-br from-amber-500 via-amber-400 to-orange-500 bg-clip-text text-transparent font-medium">для вашого об’єкта</span>`;
+
+        } else {
+            mpName.innerHTML = `Залиште заявку —<br><span class="bg-gradient-to-br from-amber-500 via-amber-400 to-orange-500 bg-clip-text text-transparent font-medium">ми відповімо.</span>`;
+        }
+        if (mpSubtitle) mpSubtitle.textContent =
+          "Інженери А100 підберуть обладнання, розрахують потужність і підкажуть оптимальне рішення для вашого об’єкта.";
+      } else {
+        if (mpGreenBadge) mpGreenBadge.textContent = "Завжди на зв'язку";
+        if (mpSubtitle) mpSubtitle.textContent = "Наші фахівці зв'яжуться з вами, щоб відповісти на всі ваші питання та допомогти.";
+        if (mpName) {
+          mpName.innerHTML = `Залиште заявку —<br><span class="bg-gradient-to-br from-amber-500 via-amber-400 to-orange-500 bg-clip-text text-transparent font-medium">ми відповімо.</span>`;
+        }
+        fSubmit.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Залишити заявку';
+      }
       const mpPower = document.getElementById('mpPower');
       const mpObject = document.getElementById('mpObject');
       const mpTask = document.getElementById('mpTask');

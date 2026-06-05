@@ -3,7 +3,7 @@
         <div class="flex flex-col items-center text-center">
             
             <div class="reveal visible active max-w-3xl">
-                <h2 class="text-3xl md:text-4xl font-light mb-6 tracking-tight">
+                <div class="text-3xl md:text-4xl font-light mb-6 tracking-tight">
                    
                                 {{ $title := .title }}
 
@@ -11,22 +11,22 @@
           
             {{ $total := len $words }}
 
-            {{ range first (sub $total 3) $words }}
+            {{ range first (sub $total 2) $words }}
 
             {{ . }}
 
             {{ end }}
 
-            <br><span class="solar-gradient-text italic font-medium">
+            <br><span class="solar-gradient-text font-medium">
 
-            {{ range last 3 $words }}
+            {{ range last 2 $words }}
 
             {{ . }}
 
             {{ end }}
 
             </span>
-                </h2>
+                </div>
                 
                 <div class="text-gray-600 space-y-4 text-s font-light leading-relaxed mx-auto" style="max-width: 700px;">
                     {{ .content | markdownify }}

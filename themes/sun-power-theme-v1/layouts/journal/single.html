@@ -20,21 +20,21 @@
                     </div>
                 </div>
 
-                <h1 class="text-5xl lg:text-6xl font-light tracking-tight leading-[1.06] mb-6" itemprop="headline">
+                <h1 class="text-3xl lg:text-6xl font-light tracking-tight leading-[1.06] mb-6" itemprop="headline">
                     {{ $title := .Title }}
                     {{ $words := split $title " " }} 
                     {{ $total := len $words }}
                     {{ range first (sub $total 2) $words }}
                         {{ . }} 
                     {{ end }}
-                    <span class="solar-gradient-text italic font-medium">
+                    <span class="solar-gradient-text font-medium">
                         {{ range last 2 $words }}
                         {{ . }} 
                         {{ end }}
                     </span>
                 </h1>
 
-                <p class="text-gray-500 font-light leading-relaxed text-lg max-w-2xl mb-8" itemprop="description">
+                <p class="text-gray-500 font-light leading-relaxed text-base md:text-lg max-w-2xl mb-8" itemprop="description">
                     {{ .Params.description }}
                 </p>
 
@@ -63,7 +63,7 @@
         {{ if $related }}
         <div class="mt-24 border-t border-gray-100 pt-16 reveal mt-16">
             <h2 class="text-3xl font-light mb-10 text-start">
-                Читайте <span class="solar-gradient-text italic font-medium">також</span>
+                Читайте <span class="solar-gradient-text font-medium">також</span>
             </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {{ range first 3 $related }}

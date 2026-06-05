@@ -9,12 +9,13 @@
     <div class="max-w-7xl mx-auto">
         {{ partial "breadcrumbs.html" . }} 
         
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-8 reveal">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between  gap-8 reveal">
             <div class="w-fit">
-                <h2 id="catalog-title" class="text-4xl font-light mb-4">{{ .Params.Title }}</h2>
+                <h2 id="catalog-title" class="text-3xl md:text-4xl font-light mb-4">{{ .Params.Title }}</h2>
                 <p class="text-gray-500 font-light">{{ .Params.Subtitle }}</p>
             </div>
-            
+        </div>
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between md:mb-10 mb-5 gap-8 reveal">
             {{ $categories := .Sections }}
             {{ if not $categories }}
                 {{ if .Parent }}
@@ -26,13 +27,13 @@
             <div class="swiper categoriesSwiper w-[calc(100vw-3rem)]   -mx-6 px-6 lg:mx-0 lg:px-0">
                 <div class="swiper-wrapper lg:flex lg:flex-wrap lg:gap-2 lg:justify-end">
                     <div class="swiper-slide !w-auto">
-                        <a href="/products/" class="px-5 py-2.5 rounded-full border {{ if eq $.RelPermalink "/products/" }} border-amber-500 text-amber-500 bg-white{{ else }}border-gray-200 hover:border-amber-500 hover:text-amber-500 text-gray-600 bg-white/50 backdrop-blur-sm{{ end }} text-sm font-medium transition-all whitespace-nowrap block">
+                        <a href="/products/" class="px-5 py-2.5 rounded-full border {{ if eq $.RelPermalink "/products/" }} border-amber-500 text-amber-500 bg-white{{ else }}border-gray-200 hover:border-amber-500 hover:text-amber-500 text-gray-600 bg-white backdrop-blur-sm{{ end }} text-sm font-medium transition-all whitespace-nowrap block">
                             Усі
                         </a>
                     </div>
                     {{ range $categories }}
                     <div class="swiper-slide !w-auto">
-                        <a href="{{ .RelPermalink }}" class="px-5 py-2.5 rounded-full border {{ if eq $.RelPermalink .RelPermalink }} border-amber-500  text-amber-500 bg-white{{ else }}border-gray-200 hover:border-amber-500 hover:text-amber-500 text-gray-600 bg-white/50 backdrop-blur-sm{{ end }} text-sm font-medium transition-all whitespace-nowrap block">
+                        <a href="{{ .RelPermalink }}" class="px-5 py-2.5 rounded-full border {{ if eq $.RelPermalink .RelPermalink }} border-amber-500  text-amber-500 bg-white{{ else }}border-gray-200 hover:border-amber-500 hover:text-amber-500 text-gray-600 bg-white backdrop-blur-sm{{ end }} text-sm font-medium transition-all whitespace-nowrap block">
                             {{ .Title }}
                         </a>
                     </div>
@@ -45,7 +46,7 @@
         </div>
        
         <div class="lg:hidden mb-6 reveal">
-            <button id="filtersToggle" type="button" class="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-full glass-panel font-medium transition-all hover:bg-white" aria-expanded="false" aria-controls="filtersPanel">
+            <button id="filtersToggle" type="button" class="w-full flex items-center justify-center gap-2 md:py-4 py-2 px-6 rounded-full glass-panel font-medium transition-all hover:bg-white" aria-expanded="false" aria-controls="filtersPanel">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="2" x2="6" y1="14" y2="14"/><line x1="10" x2="14" y1="8" y2="8"/><line x1="18" x2="22" y1="16" y2="16"/></svg>
                 Фільтри <span id="mobileFiltersBadge" class="hidden bg-amber-500 text-white rounded-full px-2 py-0.5 text-[10px] font-bold">0</span>
             </button>
@@ -154,7 +155,7 @@
     {{ range $products }}
     <article class="relative glass-card group rounded-[2rem] h-fit overflow-hidden" data-price="{{ .Params.price }}" data-id="{{ .File.UniqueID }}">     <meta itemprop="position" content="{{ .File.UniqueID }}">
                         
-                        <div class="aspect-square bg-gray-50 flex items-center justify-center">
+                        <div class="h-[240px] md:h-auto md:aspect-square bg-gray-50 flex items-center justify-center">
                             {{ if .Params.images }}
                                 {{ $firstImage := index .Params.images 0 }}
                                 {{ $imgSrc := "" }}

@@ -4,16 +4,16 @@
     <!-- Заголовок -->
     <div class="text-center">
         {{ with  .title }}
-        <h2 class="text-3xl md:text-4xl font-light text-center mb-6">
+        <div class="text-3xl md:text-4xl font-light text-center mb-6">
             {{ $title := . }}
             {{ $words := split $title " " }}
 
-            <span class="solar-gradient-text italic font-medium">
+            <span class="solar-gradient-text font-medium">
                 {{ range first 2 $words }}{{ . }} {{ end }}
             </span><br>
 
             {{ range after 2 $words }}{{ . }} {{ end }}
-        </h2>
+        </div>
         {{ end }}
     </div>
    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-10">

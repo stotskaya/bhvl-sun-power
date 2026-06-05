@@ -1,16 +1,16 @@
 <section class="py-20 px-6">
     <div class="max-w-7xl mx-auto">
         {{ with .title }}
-        <h2 class="text-3xl md:text-4xl font-light text-center mb-16">
+        <div class="text-3xl md:text-4xl font-light text-center mb-16">
             {{ $title := . }}
             {{ $words := split $title " " }}
 
-            <span class="solar-gradient-text italic font-medium">
-                {{ range first 3 $words }}{{ . }} {{ end }}
+            <span class="solar-gradient-text font-medium">
+                {{ range first 2 $words }}{{ . }} {{ end }}
             </span><br>
 
-            {{ range after 3 $words }}{{ . }} {{ end }}
-        </h2>
+            {{ range after 2 $words }}{{ . }} {{ end }}
+        </div>
         {{ end }}
      
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-4">
@@ -23,7 +23,7 @@
                         {{ .title }}
                     </h3>
                     
-                    <div class="text-sm text-gray-400 font-light leading-relaxed">
+                    <div class="text-sm text-gray-500 font-light leading-relaxed">
                         {{ .text }}
                     </div>
                 </div>

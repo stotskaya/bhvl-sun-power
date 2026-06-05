@@ -12,7 +12,7 @@
           >
             {{ $title := .Title }} {{ $words := split $title " " }}
 
-            <span class="solar-gradient-text italic font-medium">
+            <span class="solar-gradient-text font-medium">
               {{ range first 2 $words }} {{ . }} {{ end }}
             </span>
 

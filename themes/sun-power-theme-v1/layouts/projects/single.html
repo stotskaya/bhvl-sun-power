@@ -4,51 +4,114 @@
     {{ partial "breadcrumbs.html" . }}
     <div class="grid lg:grid-cols-[1fr_400px] gap-8 items-start">
       <div class="flex flex-col gap-5 min-w-0">
-          
-      
-      
-
-        <div
-          class="glass-panel p-3 lg:p-4 rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden fu d1 min-w-0"
-        >
+        <div class="fu d1 min-w-0">
           <div
-            class="relative w-full h-[400px] md:h-[500px] rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden "
+            class="relative w-full h-[400px] md:h-[500px] rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden"
           >
             {{ if .Params.images }}
-            <div class="swiper projectHeroSwiper w-full h-full"  >
-              <div class="bg-amber-50 rounded-xl px-3.5 py-2 flex items-center gap-2" style="
-                                    position: absolute;
-                                    Z-INDEX: +10;
-                                    left: 20px;
-                                    bottom: 20px;
-                                    color: #111827;
-                                    padding: 10px;
-                                ">
-        {{ if .Params.category }}
-        {{ if eq (lower .Params.category) "бізнес"}}
-       
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building-2" aria-hidden="true" class="lucide lucide-building-2 w-3.5 h-3.5 text-amber-400"><path d="M10 12h4"></path><path d="M10 8h4"></path><path d="M14 21v-3a2 2 0 0 0-4 0v3"></path><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"></path><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path></svg>
-          <span class="text-xs font-medium  ">Бізнес</span>
-          {{ else if eq (lower .Params.category) "дім"}}
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="home" aria-hidden="true" class="lucide lucide-home w-3.5 h-3.5 text-amber-400"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
-          <span class="text-xs font-medium  ">Дім</span>
-          {{ else }}
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building" aria-hidden="true" class="lucide lucide-building w-3.5 h-3.5 text-amber-400"><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M12 6h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M16 6h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path><path d="M8 6h.01"></path><path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path><rect x="4" y="2" width="16" height="20" rx="2"></rect></svg>
-          <span class="text-xs font-medium  ">ОСББ</span>
-          {{end}}
-        {{ end }}
-</div>
+            <div class="swiper projectHeroSwiper w-full h-full">
+              <div
+                class="bg-amber-50 rounded-xl px-3.5 py-2 flex items-center gap-2"
+                style="
+                  position: absolute;
+                  z-index: +10;
+                  left: 20px;
+                  bottom: 20px;
+                  color: #111827;
+                  padding: 10px;
+                "
+              >
+                {{ if .Params.category }} {{ if eq (lower .Params.category)
+                "бізнес"}}
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  data-lucide="building-2"
+                  aria-hidden="true"
+                  class="lucide lucide-building-2 w-3.5 h-3.5 text-amber-400"
+                >
+                  <path d="M10 12h4"></path>
+                  <path d="M10 8h4"></path>
+                  <path d="M14 21v-3a2 2 0 0 0-4 0v3"></path>
+                  <path
+                    d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"
+                  ></path>
+                  <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path>
+                </svg>
+                <span class="text-xs font-medium">Бізнес</span>
+                {{ else if eq (lower .Params.category) "дім"}}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  data-lucide="home"
+                  aria-hidden="true"
+                  class="lucide lucide-home w-3.5 h-3.5 text-amber-400"
+                >
+                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+                  <path
+                    d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                  ></path>
+                </svg>
+                <span class="text-xs font-medium">Дім</span>
+                {{ else }}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  data-lucide="building"
+                  aria-hidden="true"
+                  class="lucide lucide-building w-3.5 h-3.5 text-amber-400"
+                >
+                  <path d="M12 10h.01"></path>
+                  <path d="M12 14h.01"></path>
+                  <path d="M12 6h.01"></path>
+                  <path d="M16 10h.01"></path>
+                  <path d="M16 14h.01"></path>
+                  <path d="M16 6h.01"></path>
+                  <path d="M8 10h.01"></path>
+                  <path d="M8 14h.01"></path>
+                  <path d="M8 6h.01"></path>
+                  <path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path>
+                  <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                </svg>
+                <span class="text-xs font-medium">ОСББ</span>
+                {{end}} {{ end }}
+              </div>
               <div class="swiper-wrapper">
                 {{ range .Params.images }}
-                <div
-                  class="swiper-slide bg-white"
-                >
-                  <img src="{{ .item }}" class=" object-contain bg-white" />
+                <div class="swiper-slide group cursor-pointer" onclick="openImageModal('{{ .item }}')">
+                  <img src="{{ .item }}" />
+                  <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-[2rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white drop-shadow-md"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line><line x1="11" x2="11" y1="8" y2="14"></line><line x1="8" x2="14" y1="11" y2="11"></line></svg>
+                  </div>
                 </div>
                 {{ end }}
               </div>
               <!-- Додаємо пагінацію (крапки) -->
               <div class="swiper-pagination !bottom-6"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
             </div>
             {{ else }}
             <div
@@ -62,29 +125,27 @@
             {{ end }}
           </div>
         </div>
-   <h1 class="text-4xl md:text-5xl font-light tracking-tight fu d1 mt-6" itemprop="headline" style="max-width: 750px;">
-                    {{ $title := .Title }}
-                    {{ $words := split $title " " }} 
-                    {{ $total := len $words }}
-                    {{ range first (sub $total 2) $words }}
-                        {{ . }} 
-                    {{ end }}
-                    <span class="solar-gradient-text italic font-medium">
-                        {{ range last 2 $words }}
-                        {{ . }} 
-                        {{ end }}
-                    </span>
-                </h1>
-        
+        <h1
+          class="text-4xl md:text-5xl font-light tracking-tight fu d1 mt-6"
+          itemprop="headline"
+          style="max-width: 750px"
+        >
+          {{ $title := .Title }} {{ $words := split $title " " }} {{ $total :=
+          len $words }} {{ range first (sub $total 2) $words }} {{ . }} {{ end
+          }}
+          <span class="solar-gradient-text font-medium">
+            {{ range last 2 $words }} {{ . }} {{ end }}
+          </span>
+        </h1>
+
         {{ if .Params.location }}
         <span
           class="text-gray-500 font-light leading-relaxed mb-8 text-base max-w-[80%]"
         >
           {{ .Params.location }}
         </span>
-        {{ end }}
-        {{ if .Params.stats }}
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 fu">
+        {{ end }} {{ if .Params.stats }}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 fu">
           {{ range .Params.stats }}
           <div class="glass-card rounded-[1.75rem] px-5 py-5 hover-card">
             <div class="flex items-center justify-between">
@@ -100,10 +161,8 @@
           </div>
           {{ end }}
         </div>
-        {{ end }}
-
-        {{ if or .Params.mission.task .Params.mission.solution }}
-        <div class="glass-card rounded-[2rem] p-8 fu d2">
+        {{ end }} {{ if or .Params.mission.task .Params.mission.solution }}
+        <div class="glass-card rounded-[2rem] p-6 md:p-8 fu d2">
           <div class="grid md:grid-cols-2 gap-6">
             {{ if .Params.mission.task }}
             <div class="flex flex-col gap-4">
@@ -121,8 +180,7 @@
                 </span>
               </div>
             </div>
-            {{ end }}
-            {{ if .Params.mission.solution }}
+            {{ end }} {{ if .Params.mission.solution }}
             <div class="flex flex-col gap-4">
               <div class="flex items-center gap-3">
                 <div
@@ -133,9 +191,7 @@
                     class="w-4 h-4 text-gray-500"
                   ></i>
                 </div>
-                <span class="text-base font-medium text-gray-900"
-                  >Рішення</span
-                >
+                <span class="text-base font-medium text-gray-900">Рішення</span>
               </div>
               <div class="quote-block">
                 <span class="text-sm font-light text-gray-600 leading-relaxed">
@@ -145,21 +201,18 @@
             </div>
             {{ end }}
           </div>
-          </div>
-        {{ end }}
-        {{ if or .Params.mission.result .Params.mission.results_specs }}
-           <div class="glass-card rounded-[2rem] p-8 fu d2">
-            {{ if .Params.mission.result }}
-            <div class="flex flex-col  gap-6">
-              <div class="flex flex-col gap-4">
+        </div>
+        {{ end }} {{ if or .Params.mission.result .Params.mission.results_specs
+        }}
+        <div class="glass-card rounded-[2rem] p-6 md:p-8 fu d2">
+          {{ if .Params.mission.result }}
+          <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-4">
               <div class="flex items-center gap-3">
                 <div
                   class="w-9 h-9 rounded-2xl bg-amber-50 flex items-center justify-center shrink-0"
                 >
-                  <i
-                    data-lucide="sun"
-                    class="w-4 h-4 text-amber-500"
-                  ></i>
+                  <i data-lucide="sun" class="w-4 h-4 text-amber-500"></i>
                 </div>
                 <span class="text-base font-medium text-gray-900"
                   >Результат</span
@@ -171,45 +224,47 @@
                 </span>
               </div>
             </div>
+          </div>
+          {{ end }} {{ if .Params.mission.results_specs }}
+          <div class="grid md:grid-cols-2 gap-x-10 gap-5 mt-6">
+            {{ $res := .Params.mission.results_specs }} {{ $break := div (add
+            (len $res) 1) 2 }} {{ range (first $break $res) }}
+            <div
+              class="flex gap-5 rounded-2xl p-5 bg-amber-50/70 border border-amber-100"
+            >
+              <ul class="mb-0">
+                <li class="flex flex-col">
+                  <span class="text-sm font-medium text-gray-900"
+                    >{{ .key }}</span
+                  >
+                  <span class="text-[12px] font-light text-gray-500 mt-1"
+                    >{{ .val }}</span
+                  >
+                </li>
+              </ul>
+            </div>
+            {{ end }} {{ range (after $break $res) }}
+            <div
+              class="flex gap-5 rounded-2xl p-5 bg-amber-50/70 border border-amber-100"
+            >
+              <ul class="mb-0">
+                <li class="flex flex-col">
+                  <span class="text-sm font-medium text-gray-900"
+                    >{{ .key }}</span
+                  >
+                  <span class="text-[12px] font-light text-gray-500 mt-1"
+                    >{{ .val }}</span
+                  >
+                </li>
+              </ul>
             </div>
             {{ end }}
-            {{ if .Params.mission.results_specs }}
-              <div class="grid md:grid-cols-2 gap-x-10 mt-6">
-                
-                  {{ $res := .Params.mission.results_specs }} 
-                  {{ $break := div (add (len $res) 1) 2 }}
-                  
-                    {{ range (first $break $res) }}
-                    <div class="flex  gap-5  rounded-2xl p-5 bg-amber-50/70 border border-amber-100">
-                      <ul class="mb-0">
-                      <li  class="flex flex-col">
-                        <span class="text-sm font-medium text-gray-900">{{ .key }}</span>
-                        <span class="text-[12px] font-light text-gray-500 mt-1" >{{ .val }}</span>
-                      </li>
-                   </ul>
-                    </div>
-                 {{ end }}
-                    {{ range (after $break $res) }}
-                    <div class="flex gap-5  rounded-2xl p-5 bg-amber-50/70 border border-amber-100">
-                     <ul class="mb-0">
-                        <li  class="flex flex-col">
-                          <span class="text-sm font-medium text-gray-900">{{ .key }}</span>
-                          <span class="text-[12px] font-light text-gray-500 mt-1"  >{{ .val }}</span>
-                        </li>
-                       </ul> 
-                     </div>
-                    {{ end }}
-                    
-                    
-                        </div>
-              
-              {{ end }}
-               
           </div>
-        {{ end }}
 
-        {{ if or .Params.parameters .Params.parameters_else }}
-        <div class="glass-card rounded-[2rem] p-8 fu d3">
+          {{ end }}
+        </div>
+        {{ end }} {{ if or .Params.parameters .Params.parameters_else }}
+        <div class="glass-card rounded-[2rem] p-6 md:p-8 fu d3">
           <span
             class="text-[10px] font-semibold tracking-[.14em] uppercase text-amber-600 mb-5 block"
             >Параметри проєкту</span
@@ -235,11 +290,10 @@
               {{ end }}
             </div>
           </div>
-          {{ end }}
-          {{ if .Params.parameters_else }}
+          {{ end }} {{ if .Params.parameters_else }}
           <div class="grid md:grid-cols-2 gap-x-10 mt-6">
-            {{ $params_else := .Params.parameters_else }} {{ $break := div (add (len
-            $params_else) 1) 2 }}
+            {{ $params_else := .Params.parameters_else }} {{ $break := div (add
+            (len $params_else) 1) 2 }}
             <div>
               {{ range (first $break $params_else) }}
               <div class="spec-row">
@@ -259,10 +313,8 @@
           </div>
           {{ end }}
         </div>
-        {{ end }}
-
-        {{ if .Params.components }}
-        <div class="glass-card rounded-[2rem] p-8 fu d4">
+        {{ end }} {{ if .Params.components }}
+        <div class="glass-card rounded-[2rem] p-6 md:p-8 fu d4">
           <div
             class="text-[10px] font-semibold tracking-[.14em] uppercase text-amber-600 mb-5"
           >
@@ -291,9 +343,7 @@
             {{ end }}
           </div>
         </div>
-        {{ end }}
-
-        {{ if .Params.testimonial.text }}
+        {{ end }} {{ if .Params.testimonial.text }}
         <div class="glass-card rounded-[2rem] p-7 fade-up">
           <div
             class="text-[10px] font-semibold tracking-[.14em] uppercase text-gray-400 mb-5"
@@ -335,7 +385,7 @@
 
       <div class="flex flex-col gap-5 lg:sticky lg:top-28" id="cta">
         <div class="glass-card bg-white rounded-[2rem] overflow-hidden fu d1">
-          <div class="p-7 flex flex-col gap-5">
+          <div class="p-6 md:p-8 flex flex-col gap-5">
             <div>
               <span
                 class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase mb-3"
@@ -351,60 +401,165 @@
                 годин — безкоштовно.
               </span>
             </div>
-            <div class="flex flex-col gap-3">
+            <form
+              id="orderForm"
+              novalidate=""
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              class="flex flex-col gap-3.5"
+            >
               <input
-                type="text"
-                placeholder="Ваше ім'я"
-                class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400"
+                type="hidden"
+                name="access_key"
+                value="15107f90-8ee8-4171-bf6b-30a291e81be8"
               />
               <input
-                type="tel"
-                placeholder="+380 __ ___ __ __"
-                class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400"
+                type="hidden"
+                name="subject"
+                value="Нова заявка з сайту A100 🔆"
               />
-              <textarea
-                rows="2"
-                placeholder="Тип об'єкта, місто..."
-                class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400 resize-none"
-              ></textarea>
-            </div>
-            <button
-              class="bg-gray-900 text-white w-full py-4 rounded-full font-medium text-sm hover:bg-amber-500 transition-all shadow-lg shadow-gray-200 flex items-center justify-center gap-2"
-            >
-              Отримати розрахунок + ТЕО
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                data-lucide="arrow-right"
-                aria-hidden="true"
-                class="lucide lucide-arrow-right w-4 h-4"
+              <input type="hidden" name="from_name" value="A100 — сайт" />
+              <input
+                type="checkbox"
+                name="botcheck"
+                class="hidden"
+                style="display: none"
+                tabindex="-1"
+                autocomplete="off"
+              />
+              <input type="hidden" name="UTM_Source" id="utm_source" value="" />
+              <input type="hidden" name="UTM_Medium" id="utm_medium" value="" />
+              <input
+                type="hidden"
+                name="UTM_Campaign"
+                id="utm_campaign"
+                value=""
+              />
+              <input type="hidden" name="mpPage" id="h_mpPage" value="{{- if
+              $.Params.short_title -}}{{ $.Params.short_title }}{{- else if
+              .Params.category -}}{{ .Params.category }}{{- else if eq $.Section
+              "products" -}}{{ $.Title }}{{- else if eq $.Section "projects"
+              -}}{{ $.Title }}{{- else -}}A100{{- end -}}">
+              <input type="hidden" name="mpTitle" id="h_mpTitle" value="" />
+              <input type="hidden" name="mpRequest" id="h_mpRequest" value="" />
+              <input type="hidden" name="mpObject" id="h_mpObject" value="" />
+              <input type="hidden" name="mpTask" id="h_mpTask" value="" />
+              <input type="hidden" name="mpPower" id="h_mpPower" value="" />
+
+              <div class="grid gap-3.5">
+                <div>
+                  <input
+                    name="nm"
+                    type="text"
+                    required=""
+                    autocomplete="name"
+                    placeholder="Як до вас звертатися?"
+                    class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400"
+                  />
+                  <p class="ferr text-[0.7rem] text-red-500 mt-1 hidden"></p>
+                </div>
+                <div>
+                  <input
+                    name="ph"
+                    type="tel"
+                    required=""
+                    autocomplete="tel"
+                    inputmode="tel"
+                    placeholder="+38 (050) 000-0000"
+                    class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400"
+                  />
+                  <p class="ferr text-[0.7rem] text-red-500 mt-1 hidden"></p>
+                </div>
+              </div>
+
+              <div>
+                <textarea
+                  name="notes"
+                  rows="3"
+                  placeholder="Тип об’єкта, місто або коротко опишіть задачу"
+                  class="w-full px-4 py-3 text-sm font-light bg-white/70 border border-gray-200 rounded-2xl outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all placeholder-gray-400 resize-none"
+                ></textarea>
+              </div>
+
+              <div>
+                <label class="flex items-start gap-2.5 cursor-pointer">
+                  <div id="cbBox" class="cb-box">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="11"
+                      height="11"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      stroke-width="3.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <input
+                    id="cbInput"
+                    name="consent"
+                    value="Згода на обробку персональних даних надана"
+                    type="checkbox"
+                    class="absolute opacity-0 pointer-events-none"
+                  />
+                  <span
+                    class="text-[11px] text-gray-500 font-light leading-relaxed pt-0.5"
+                  >
+                    Я даю згоду на обробку моїх персональних даних відповідно до
+                    <a
+                      href="privacy-policy.html"
+                      target="_blank"
+                      class="text-amber-600 font-medium"
+                      >Політики конфіденційності</a
+                    >.
+                    <span class="text-amber-500">*</span>
+                  </span>
+                </label>
+                <p
+                  id="cbErr"
+                  class="text-[0.7rem] text-red-500 mt-1.5 pl-7 hidden"
+                >
+                  Будь ласка, підтвердьте згоду.
+                </p>
+              </div>
+
+              <div id="fStatus" class="hidden rounded-xl p-3 text-sm"></div>
+
+              <button
+                id="fSubmit"
+                type="submit"
+                class="w-full bg-gray-900 text-white py-3.5 px-6 rounded-full text-sm font-medium cursor-pointer border-none flex items-center justify-center gap-2 shadow-[0_8px_24px_rgba(0,0,0,0.12)] transition-colors hover:bg-gray-800"
               >
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </button>
-            <div
-              class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1"
-            >
-              <span class="text-xs font-light text-gray-400"
-                >Відповідь до 30 хв</span
-              >
-              <span class="dot-sep bg-amber-50"></span>
-              <span class="text-xs font-light text-gray-400">Безкоштовно</span>
-            </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                Залишити заявку
+              </button>
+
+              <p class="text-center text-[10px] text-gray-400">
+                Поля, позначені <span class="text-amber-500">*</span>, є
+                обов'язковими. Відповідаємо протягом 24 год.
+              </p>
+            </form>
           </div>
         </div>
       </div>
       <!-- /right col -->
     </div>
-    
   </div>
 </section>
 <section class="py-20 px-6 relative z-10">
@@ -415,9 +570,8 @@
         class="text-3xl md:text-4xl font-light tracking-tight mb-4 text-gray-900"
       >
         Інші реалізовані проєкти та
-        <span class="solar-gradient-text italic font-medium">відгуки</span>
+        <span class="solar-gradient-text font-medium">відгуки</span>
       </h2>
-      
     </div>
 
     <!-- Сітка карток -->
@@ -432,12 +586,28 @@
         <div class="relative h-64 overflow-hidden group">
           <!-- Реальне фото об'єкта -->
           <div class="absolute inset-0 w-full h-full overflow-hidden">
-            {{ $firstImage := index .Params.images 0 }}
+            {{ if .Params.image }}
             <img
-              src="{{ $firstImage }}"
+              src="{{ .Params.image }}"
+              alt="{{ .Title }}"
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+            />
+            {{ else if .Params.images }} {{ $firstImage := index .Params.images
+            0 }} {{ $imgSrc := "" }} {{ if reflect.IsMap $firstImage }} {{
+            $imgSrc = index $firstImage "item" }} {{ else }} {{ $imgSrc =
+            $firstImage }} {{ end }}
+            <img
+              src="{{ $imgSrc }}"
               alt="{{  .Params.title }}"
               class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
+            {{ else }}
+            <div
+              class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300"
+            >
+              No Image
+            </div>
+            {{ end }}
           </div>
 
           <!-- Amber shimmer смуга -->
@@ -448,7 +618,7 @@
 
         <!-- Тіло картки -->
         <div
-          class="p-8 flex flex-col gap-6 flex-1 bg-white/40 backdrop-blur-sm"
+          class="p-6 md:p-8 flex flex-col gap-6 flex-1 bg-white/40 backdrop-blur-sm"
         >
           <!-- Заголовок та клієнт -->
           <div>
@@ -499,7 +669,7 @@
                 class="text-sm font-light text-gray-600 leading-relaxed italic relative pl-4 border-l-2 border-amber-600/30"
               >
                 {{ .Params.testimonial.text }}
-            </div>
+              </div>
             </div>
 
             <!-- Автор відгуку -->
@@ -558,7 +728,7 @@
     >
       <a
         href="/projects/"
-        class="bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-sm hover:bg-amber-500   transition-all shadow-xl shadow-gray-200 flex items-center gap-2 shrink-0 group"
+        class="bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-sm hover:bg-amber-500 transition-all shadow-xl shadow-gray-200 flex items-center gap-2 shrink-0 group"
       >
         Переглянути всі проєкти
         <i
@@ -569,7 +739,6 @@
     </div>
   </div>
 </section>
-
 
 <style>
   /* Стилізація крапок пагінації під ваш бренд */
@@ -584,38 +753,156 @@
     border-radius: 4px;
     transition: width 0.3s ease;
   }
-  .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #444;
-      display: flex;
-      width: auto;
-      justify-content: center;
-      align-items: center;
-    }
 
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: containe;
-    }
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
+    color: #111827 !important; /* gray-900 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background-color: #f59e0b !important; /* amber-500 */
+    color: white !important;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 12px !important;
+    font-weight: bold !important;
+  }
+
+  .swiper-slide {
+    background: transparent;
+    display: flex;
+    width: auto; /* size based on image width */
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 2rem; /* rounded corners */
+  }
 </style>
 <script>
   lucide.createIcons();
+
+  function openImageModal(src) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    if (!modal || !modalImg) return;
+    modalImg.src = src;
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeImageModal() {
+    const modal = document.getElementById("imageModal");
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("keydown", (e) => {
+    const modal = document.getElementById("imageModal");
+    if (e.key === "Escape" && modal && modal.classList.contains("is-open")) {
+      closeImageModal();
+    }
+  });
 
   document.addEventListener("DOMContentLoaded", function () {
     if (typeof Swiper !== "undefined") {
       new Swiper(".projectHeroSwiper", {
         loop: true,
-        slidesPerView: "1",
+        slidesPerView: "auto",
         spaceBetween: 20,
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
         },
-        });
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
     }
   });
 </script>
+<!-- Modal for Image -->
+<div id="imageModal" class="modal-wrapper" role="dialog" aria-modal="true" style="align-items: center;">
+  <div id="modalBackdrop" onclick="closeImageModal()"></div>
+  <div
+    id="modalPanel"
+    class="p-4 md:p-10 !rounded-[1.5rem] md:!rounded-[2.5rem]"
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: max-content;
+    "
+  >
+    <button
+      onclick="closeImageModal()"
+      aria-label="Закрити"
+      style="
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        z-index: 10;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #9ca3af;
+        cursor: pointer;
+        transition: all 0.2s;
+      "
+      onmouseover="this.style.background='#f3f4f6'; this.style.color='#111827';"
+      onmouseout="this.style.background='rgba(255,255,255,.85)'; this.style.color='#9ca3af';"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        data-lucide="x"
+        aria-hidden="true"
+        class="lucide lucide-x w-4 h-4"
+      >
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+    <img
+      id="modalImage"
+      src=""
+      alt="Збільшене зображення"
+      class="max-w-full max-h-[80vh] object-contain rounded-xl"
+    />
+  </div>
+</div>
+
 {{ end }}

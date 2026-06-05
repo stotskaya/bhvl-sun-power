@@ -2,12 +2,12 @@
   <div class="max-w-7xl mx-auto">
     <!-- Заголовок -->
     <div class="text-center mb-14">
-      <h2
+      <div
         class="text-3xl md:text-4xl font-light tracking-tight mb-4 text-gray-900"
       >
         Реалізовані проєкти та
-        <span class="solar-gradient-text italic font-medium">відгуки</span>
-      </h2>
+        <span class="solar-gradient-text font-medium">відгуки</span>
+      </div>
       <p class="text-base font-light text-gray-400">{{ .description }}</p>
     </div>
 
@@ -22,28 +22,50 @@
         <!-- Фото блок -->
         <div class="relative h-64 overflow-hidden group">
           <!-- Реальне фото об'єкта -->
+            <div class="bg-amber-50 rounded-xl px-3.5 py-2 flex items-center gap-2" style="
+                                    position: absolute;
+                                    Z-INDEX: +1;
+                                    left: 20px;
+                                    bottom: 20px;
+                                    color: #111827;
+                                    padding: 10px;
+                                ">
+              {{ if eq (lower .Params.category) "бізнес"}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building-2" aria-hidden="true" class="lucide lucide-building-2 w-3.5 h-3.5 text-amber-400"><path d="M10 12h4"></path><path d="M10 8h4"></path><path d="M14 21v-3a2 2 0 0 0-4 0v3"></path><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"></path><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path></svg>
+              <span class="text-xs font-medium  ">Бізнес</span>
+              {{ else if eq (lower .Params.category) "дім"}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="home" aria-hidden="true" class="lucide lucide-home w-3.5 h-3.5 text-amber-400"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+              <span class="text-xs font-medium  ">Дім</span>
+              {{ else }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="building" aria-hidden="true" class="lucide lucide-building w-3.5 h-3.5 text-amber-400"><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M12 6h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M16 6h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path><path d="M8 6h.01"></path><path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"></path><rect x="4" y="2" width="16" height="20" rx="2"></rect></svg>
+              <span class="text-xs font-medium  ">ОСББ</span>
+              {{end}}
+              </div>
           <div class="absolute inset-0 w-full h-full overflow-hidden">
-             {{ if .Params.image }}
-                                <img src="{{ .Params.image }}" 
-                                    alt="{{ .Title }}" 
+            {{ if .Params.image }}
+            <img
+              src="{{ .Params.image | safeURL }}"
+              alt="{{ .Title }}"
               class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
-            {{ else if .Params.images }}
-                                {{ $firstImage := index .Params.images 0 }}
-                                {{ $imgSrc := "" }}
-                                {{ if reflect.IsMap $firstImage }}
-                                  {{ $imgSrc = index $firstImage "item" }}
-                                {{ else }}
-                                  {{ $imgSrc = $firstImage }}
-                                {{ end }}
-          
-                                <img src="{{ $imgSrc }}" alt="{{ .Title }}"
-           class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+            {{ else if .Params.images }} {{ $firstImage := index .Params.images
+            0 }} {{ $imgSrc := "" }} {{ if reflect.IsMap $firstImage }} {{
+            $imgSrc = index $firstImage "item" }} {{ else }} {{ $imgSrc =
+            $firstImage }} {{ end }}
+
+            <img
+              src="{{ $imgSrc | safeURL }}"
+              alt="{{ .Title }}"
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            />
             {{ else }}
-                                <div class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">No Image</div>
-                            {{ end }}
-           
-                              </div>
+            <div
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            >
+              No Image
+            </div>
+            {{ end }}
+          </div>
 
           <!-- Amber shimmer смуга -->
           <div
@@ -53,15 +75,10 @@
 
         <!-- Тіло картки -->
         <div
-          class="p-8 flex flex-col gap-6 flex-1 bg-white/40 backdrop-blur-sm"
+          class="p-6 md:p-8 flex flex-col gap-6 flex-1 bg-white/40 backdrop-blur-sm"
         >
           <!-- Заголовок та клієнт -->
           <div>
-            <p
-              class="text-[12.5px] font-medium text-amber-600 bg-amber-50 rounded-full px-4 py-1.5 border border-amber-100/50 w-fit mb-3"
-            >
-              {{ .Params.category }}
-            </p>
             <h3 class="text-xl font-bold text-gray-900 leading-snug mb-1">
               {{ .Params.title }}
             </h3>
@@ -155,7 +172,7 @@
     >
       <a
         href="/projects/"
-        class="bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-sm hover:bg-amber-500   transition-all shadow-xl shadow-gray-200 flex items-center gap-2 shrink-0 group"
+        class="bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-sm hover:bg-amber-500 transition-all shadow-xl shadow-gray-200 flex items-center gap-2 shrink-0 group"
       >
         Переглянути всі проєкти
         <i

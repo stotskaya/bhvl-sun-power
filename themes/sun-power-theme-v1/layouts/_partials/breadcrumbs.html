@@ -1,12 +1,12 @@
 
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 reveal">
-                <div class="flex items-center gap-3 text-sm text-gray-500 font-light">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 mb-6 md:mb-10 reveal">
+                <div class="flex flex-wrap items-center gap-2 md:gap-3 text-sm text-gray-500 font-light">
                     {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
                 </div>
                 {{ with .Parent }}
                 {{ if eq .Title "Sps" }}
                 {{ else }}
-                <a href="{{ .RelPermalink }}" class="text-sm font-medium flex items-center gap-2 border-b border-black pb-1 hover:text-amber-600 transition-colors">
+                <a href="{{ .RelPermalink }}" class="hidden md:flex text-sm font-medium items-center gap-2 border-b border-black pb-1 hover:text-amber-600 transition-colors">
                     <i data-lucide="arrow-left" class="w-4 h-4" aria-hidden="true"></i>
                     {{ .Title }}
                 </a>

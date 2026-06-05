@@ -1,19 +1,19 @@
 <section class="py-20 px-6">
   <div class="max-w-7xl mx-auto">
     <div
-      class="glass rounded-[2rem] p-8 flex flex-col gap-8 relative overflow-hidden reveal"
+      class="glass rounded-[2rem] md:p-8 flex flex-col gap-8 relative overflow-hidden reveal"
     >
       <div>
         {{ with .title }}
-        <h2 class="text-3xl md:text-4xl font-light text-center mb-4">
+        <div class="text-3xl md:text-4xl font-light text-center mb-4">
           {{ $title := . }} {{ $words := split $title " " }}
 
-          <span class="solar-gradient-text italic font-medium">
-            {{ range first 3 $words }}{{ . }} {{ end }} </span
+          <span class="solar-gradient-text font-medium">
+            {{ range first 2 $words }}{{ . }} {{ end }} </span
           ><br />
 
-          {{ range after 3 $words }}{{ . }} {{ end }}
-        </h2>
+          {{ range after 2 $words }}{{ . }} {{ end }}
+        </div>
         {{ end }}
 
         <p class="text-[14px] font-light text-gray-400 italic text-center">
@@ -49,7 +49,7 @@
           ></div>
 
           <h4
-            class="relative text-base font-semibold solar-gradient-text italic"
+            class="relative text-base font-semibold solar-gradient-text"
           >
             {{ .checklist_title }}
           </h4>

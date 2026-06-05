@@ -2,13 +2,13 @@
   <div class="max-w-7xl mx-auto">
     <!-- Заголовок секції -->
     <div class="text-center mb-14">
-      <h2 class="text-3xl md:text-4xl font-light tracking-tight mb-4">
+      <div class="text-3xl md:text-4xl font-light tracking-tight mb-4">
         {{ $words := split .title " " }} {{ range $index, $word := $words }} {{
         if eq $word "«Золотого" }}<span
-          class="solar-gradient-text italic font-medium"
+          class="solar-gradient-text font-medium"
           >{{ end }} {{ $word }} {{ if eq $word "стандарту»" }}</span
         >{{ end }} {{ end }}
-      </h2>
+      </div>
       <p class="text-[14px] font-light text-gray-400 italic text-center">
         {{ .Params.description }}
       </p>

@@ -2,16 +2,16 @@
   <div class="max-w-7xl mx-auto">
     <div class="text-center mb-14">
        {{ with .title }}
-            <h2 class="text-3xl md:text-4xl font-light text-center mb-5">
+            <div class="text-3xl md:text-4xl font-light text-center mb-5">
             {{ $title := . }}
             {{ $words := split $title " " }}
 
-            <span class="solar-gradient-text italic font-medium">
+            <span class="solar-gradient-text font-medium">
                 {{ range first 1 $words }}{{ . }} {{ end }}
             </span>
 
             {{ range after 1 $words }}{{ . }} {{ end }}
-        </h2>
+        </div>
         {{ end }}
       <p class="text-base font-light text-gray-400 max-w-2xl mx-auto">
         {{  .description }}
@@ -44,10 +44,10 @@
       </div>
       
       <!-- Пагінація і навігація -->
-      <div class="flex items-center justify-center gap-4 mt-8">
-        <div class="swiper-button-prev !static !w-10 !h-10 !m-0 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all bg-white text-gray-800 after:!text-sm"></div>
+      <div class="flex items-center justify-center gap-4 mt-8 relative">
+        <div class="swiper-button-prev !static !m-0"></div>
         <div class="swiper-pagination !static !w-auto"></div>
-        <div class="swiper-button-next !static !w-10 !h-10 !m-0 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all bg-white text-gray-800 after:!text-sm"></div>
+        <div class="swiper-button-next !static !m-0"></div>
       </div>
     </div>
   </div>
@@ -67,6 +67,35 @@
 <style>
   .cert-swiper .swiper-pagination-bullet { background: #e5e7eb; opacity: 1; width: 8px; height: 8px; transition: all 0.3s; }
   .cert-swiper .swiper-pagination-bullet-active { background: #f59e0b; width: 16px; border-radius: 4px; }
+  
+  .cert-swiper .swiper-button-next,
+  .cert-swiper .swiper-button-prev {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 50% !important;
+    color: #111827 !important; /* gray-900 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    backdrop-filter: blur(4px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .cert-swiper .swiper-button-next:hover,
+  .cert-swiper .swiper-button-prev:hover {
+    background-color: #f59e0b !important; /* amber-500 */
+    color: white !important;
+  }
+
+  .cert-swiper .swiper-button-next::after,
+  .cert-swiper .swiper-button-prev::after {
+    font-size: 12px !important;
+    font-weight: bold !important;
+  }
 </style>
 
 <script>

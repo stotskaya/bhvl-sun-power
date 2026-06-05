@@ -2,37 +2,37 @@
   class="relative min-h-[100svh] flex lg:items-center pt-28 lg:pt-32 pb-12 lg:pb-0 luminous-depth overflow-hidden"
 >
   <div
-    class="max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center"
+    class="max-w-7xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-2 md:gap-10 lg:gap-12 items-center"
   >
     <div class="reveal">
       <span
-        class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-semibold tracking-widest uppercase mb-6"
+        class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-[10px] md:text-xs font-semibold tracking-widest uppercase mb-6"
       >
         {{ .badge | default "Future of Energy" }}
       </span>
       {{ with .title }}
       <h1
-        class="text-4xl sm:text-5xl md:text-6xl lg:text-[75px] font-light mb-8 tracking-tight leading-[1.1]"
+        class="text-5xl sm:text-5xl md:text-6xl lg:text-[75px] font-light mb-8 tracking-tight leading-[1.1]"
       >
         {{ $title := . }} {{ $words := split $title " " }}
 
-        <span class="solar-gradient-text italic font-medium">
-          {{ range first 3 $words }}{{ . }} {{ end }}
+        <span class="solar-gradient-text font-medium">
+          {{ range first 2 $words }}{{ . }} {{ end }}
         </span>
 
-        {{ range after 3 $words }}{{ . }} {{ end }}
+        {{ range after 2 $words }}{{ . }} {{ end }}
       </h1>
       {{ end }}
 
       <div
-        class="text-xl text-gray-500 max-w-lg mb-10 leading-relaxed font-light"
+        class="text-base md:text-xl text-gray-500 max-w-lg mb-10 leading-relaxed font-light"
       >
         {{ .body_text }}
       </div>
 
       <div class="flex flex-col sm:flex-row flex-wrap gap-4">
         <button
-          class="w-full sm:w-auto bg-gray-900 text-white px-10 py-4 rounded-full font-medium hover:scale-105 hover:bg-amber-500 hover:border-amber-400  transition-transform btn-open-modal"
+          class="w-full sm:w-auto bg-gray-900 text-white px-5 md:px-10 py-4 rounded-full font-medium hover:scale-105 hover:bg-amber-500 hover:border-amber-400  transition-transform btn-open-modal"
           data-name="{{ .badge }}"
           data-desc="{{ .primary_btn }}"
         >

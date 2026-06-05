@@ -3,15 +3,15 @@
     <!-- Заголовок секції -->
     <div class="text-center mb-16">
       {{ with .title }}
-      <h2 class="text-3xl md:text-4xl font-light text-center mb-16">
+      <div class="text-3xl md:text-4xl font-light text-center mb-16">
         {{ $title := . }} {{ $words := split $title " " }}
 
-        <span class="solar-gradient-text italic font-medium">
-          {{ range first 3 $words }}{{ . }} {{ end }} </span
+        <span class="solar-gradient-text font-medium">
+          {{ range first 2 $words }}{{ . }} {{ end }} </span
         ><br />
 
-        {{ range after 3 $words }}{{ . }} {{ end }}
-      </h2>
+        {{ range after 2 $words }}{{ . }} {{ end }}
+      </div>
       {{ end }}
     </div>
 

@@ -380,6 +380,7 @@ sections:
     image: /images/home/13-text-image.webp
     image_alt: Автономна СЕС
     image_left: true
+    button_text: "Отримати прорахунок"
     body_text: >-
       ## Готові забезпечити себе надійною енергією та забути про відключення?
 

@@ -1,17 +1,17 @@
 <section class="py-20 px-6" id="specs">
   <div class="max-w-7xl mx-auto reveal visible">
     {{ with .title }}
-    <h2
+    <div
       class="text-4xl font-light text-center mb-14 tracking-tight reveal visible"
     >
       {{ $title := . }} {{ $words := split $title " " }}
 
-      <span class="solar-gradient-text italic font-medium">
-        {{ range first 3 $words }} {{ . }} {{ end }} </span
+      <span class="solar-gradient-text font-medium">
+        {{ range first 2 $words }} {{ . }} {{ end }} </span
       ><br />
 
-      {{ range after 3 $words }} {{ . }} {{ end }}
-    </h2>
+      {{ range after 2 $words }} {{ . }} {{ end }}
+    </div>
     {{ end }}
     <div class="grid lg:grid-cols-3 gap-10 items-center">
       <div class="lg:col-span-2 glass-card rounded-[2.5rem] p-6 md:p-10">

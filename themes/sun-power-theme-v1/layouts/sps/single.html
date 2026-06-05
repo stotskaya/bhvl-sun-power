@@ -22,7 +22,7 @@
           >
             {{ $title := .Title }} {{ $words := split $title " " }}
 
-            <span class="solar-gradient-text italic font-medium">
+            <span class="solar-gradient-text font-medium">
               {{ range first 2 $words }} {{ . }} {{ end }}
             </span>
 
@@ -143,7 +143,7 @@
           >
             {{ $title := .Title }} {{ $words := split $title " " }}
 
-            <span class="solar-gradient-text italic font-medium">
+            <span class="solar-gradient-text font-medium">
               {{ range first 2 $words }} {{ . }} {{ end }}
             </span>
 
@@ -239,7 +239,7 @@
     {{ end }}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
       {{ range .Params.features }}
-      <div class="glass-card rounded-[2rem] p-8 reveal visible">
+      <div class="glass-card rounded-[2rem] p-6 md:p-8 reveal visible">
         <div
           class="w-10 h-10 bg-{{ .color }}-50 rounded-xl flex items-center justify-center mb-5"
         >
@@ -249,7 +249,7 @@
           ></i>
         </div>
         <h3 class="text-lg font-medium mb-2">{{ .title }}</h3>
-        <p class="text-sm text-gray-400 font-light leading-relaxed">
+        <p class="text-sm text-gray-500 font-light leading-relaxed">
           {{ .text }}
         </p>
       </div>

@@ -12,7 +12,7 @@
         {{ $words := split $title " " }}
         {{ $total := len $words }}
         {{ range first (sub $total 1) $words }}{{ . }} {{ end }}
-        <span class="solar-gradient-text italic font-medium">
+        <span class="solar-gradient-text font-medium">
           {{ range last 1 $words }}{{ . }}{{ end }}
         </span>
       </h1>
@@ -105,7 +105,7 @@
         <div class="min-w-0">
           <span class="text-xs uppercase tracking-widest text-gray-400">Результати розрахунку</span>
           <h2 class="text-2xl md:text-3xl font-light mt-1">
-            Параметри <span class="solar-gradient-text italic font-medium">конфігурації</span>
+            Параметри <span class="solar-gradient-text font-medium">конфігурації</span>
           </h2>
         </div>
       </div>

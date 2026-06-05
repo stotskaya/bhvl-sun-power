@@ -7,21 +7,22 @@
 >
   <div class="max-w-7xl mx-auto">
     {{ partial "breadcrumbs.html" . }}
-    <div class="max-w-7xl mx-auto px-4 md:px-6 pb-20 relative z-10">
+    <div class="max-w-7xl mx-auto md:px-6 pb-20 relative z-10">
       <div class="grid lg:grid-cols-2 gap-6 items-start">
         <div class="flex flex-col gap-4 md-block">
           <div class="glass-card rounded-[2rem] overflow-hidden">
             <div class="relative bg-white">
-              {{ $firstImage := index .Params.images 0 }}
-              {{ $imgSrc := "" }}
-              {{ if reflect.IsMap $firstImage }}
-                {{ $imgSrc = index $firstImage "item" }}
-              {{ else }}
-                {{ $imgSrc = $firstImage }}
-              {{ end }}
-              <img id="mainImg"
-              src="{{ $imgSrc | relURL }}" alt="{{
-              .Title }}" class="w-full h-[420px] object-contain p-6 cursor-pointer" onclick="openImageModal()">
+              {{ $firstImage := index .Params.images 0 }} {{ $imgSrc := "" }} {{
+              if reflect.IsMap $firstImage }} {{ $imgSrc = index $firstImage
+              "item" }} {{ else }} {{ $imgSrc = $firstImage }} {{ end }}
+              <img
+                id="mainImg"
+                src="{{ $imgSrc | relURL }}"
+                alt="{{
+              .Title }}"
+                class="w-full h-[280px] md:h-[420px] object-contain p-0 md:p-6 cursor-pointer"
+                onclick="openImageModal()"
+              />
               <div
                 class="absolute bottom-4 right-4 glass-panel rounded-xl px-3 py-1.5 flex items-center gap-1.5 pointer-events-none"
               >
@@ -84,7 +85,7 @@
         <div class="flex flex-col gap-5" id="order">
           <!-- Назва і ціна -->
           <div class="overflow-hidden fade-up d2">
-            <div class="p-7 flex flex-col gap-4">
+            <div class="md:p-7 flex flex-col gap-4">
               <span
                 class="inline-block px-4 py-1.5 rounded-full bg-amber-50 text-amber-600 text-xs font-semibold tracking-widest uppercase mb-0 w-fit"
                 >{{ .Params.category }}</span
@@ -162,19 +163,19 @@
       </div>
       <div class="max-w-5xl mx-auto mt-10">
         <div class="glass-panel rounded-[2rem] overflow-hidden fade-up d1">
-          <div class="p-6 pb-0 flex items-center gap-2">
-            <button class="tab-btn active" onclick="switchTab(this,'specs')">
+          <div class="p-6 pb-0 flex items-center gap-2 overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <button class="tab-btn active shrink-0" onclick="switchTab(this,'specs')">
               Характеристики
             </button>
-            <button class="tab-btn" onclick="switchTab(this,'desc')">
+            <button class="tab-btn shrink-0" onclick="switchTab(this,'desc')">
               Опис
             </button>
-            <button class="tab-btn" onclick="switchTab(this,'more')">
+            <button class="tab-btn shrink-0" onclick="switchTab(this,'more')">
               Додатково
             </button>
           </div>
 
-          <div id="tab-specs" class="tab-panel p-10 active">
+          <div id="tab-specs" class="tab-panel md:p-10 p-6 active">
             {{ if .Params.specs }}
             <div class="grid md:grid-cols-2 gap-x-8">
               {{ range .Params.specs }}
@@ -186,14 +187,14 @@
             </div>
             {{ end }}
           </div>
-          <div id="tab-desc" class="tab-panel p-10">
+          <div id="tab-desc" class="tab-panel md:p-10 p-6">
             <div
               class="flex flex-col gap-5 text-sm font-light text-gray-600 leading-relaxed"
             >
               {{ .Params.full_description }}
             </div>
           </div>
-          <div id="tab-more" class="tab-panel p-10">
+          <div id="tab-more" class="tab-panel md:p-10 p-6">
             <div
               class="flex flex-col gap-5 text-sm font-light text-gray-600 leading-relaxed"
             >
@@ -239,37 +240,26 @@
       </div>
       <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
         {{ range $related }}
-        <article
-          class="glass-card group p-6 rounded-[2rem] h-fit"
-          data-price="{{ .Params.price }}"
-          data-id="{{ .File.UniqueID }}"
-        >
-          <meta itemprop="position" content="{{ .File.UniqueID }}" />
+        <article class="relative glass-card group rounded-[2rem] h-fit overflow-hidden" data-price="{{ .Params.price }}" data-id="{{ .File.UniqueID }}">
+          <meta itemprop="position" content="{{ .File.UniqueID }}">
 
-          <a
-            href="{{ .RelPermalink }}"
-            class="absolute inset-0 z-10"
-            aria-label="View {{ .Title }}"
-          ></a>
-
-          <div
-            class="aspect-square rounded-2xl bg-gray-50 mb-6 overflow-hidden flex items-center justify-center"
-          >
+          <div class="h-[240px] md:h-auto md:aspect-square bg-gray-50 flex items-center justify-center">
             {{ if .Params.images }} {{ $firstImage := index .Params.images 0 }}
-            {{ $imgSrcRel := "" }}
-            {{ if reflect.IsMap $firstImage }}
-              {{ $imgSrcRel = index $firstImage "item" }}
+            {{ $imgSrcRel := "" }} {{ if reflect.IsMap $firstImage }} {{
+            $imgSrcRel = index $firstImage "item" }} {{ else }} {{ $imgSrcRel =
+            $firstImage }} {{ end }}
+            <img
+              src="{{ $imgSrcRel | relURL }}"
+              alt="{{ .Title }}"
+              class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
+              itemprop="image"
+            />
             {{ else }}
-              {{ $imgSrcRel = $firstImage }}
-            {{ end }}
-            <img src="{{ $imgSrcRel | relURL }}"
-            alt="{{ .Title }}" class="w-full h-full object-cover
-            group-hover:scale-110 transition-transform duration-700"> {{ else }}
             <i data-lucide="sun" class="w-12 h-12 text-gray-200"></i>
             {{ end }}
           </div>
 
-          <div class="px-2">
+          <div class="p-6">
             <div
               class="text-[10px] text-amber-600 uppercase tracking-widest mb-2 relative z-20"
               itemprop="category"
@@ -283,22 +273,22 @@
               {{ .Title | truncate 50}}
             </h3>
 
-            <p class="text-xs text-gray-500 font-light mb-2 line-clamp-2">
+            <p class="text-xs text-gray-500 font-light mb-3 line-clamp-2">
               {{ .Params.description | plainify | truncate 30 }}
             </p>
 
             <div
-              class="flex items-center justify-between relative z-20 gap-2 flex-col sm:flex-row"
+              class="flex items-center justify-between gap-2"
             >
               <a
                 href="{{ .RelPermalink }}"
-                class="w-full sm:flex-1 py-2 px-4 rounded-full border border-gray-200 text-sm font-medium hover:border-black transition-all text-center"
+                class="flex-1 py-2 px-4 rounded-full border border-gray-200 text-sm font-medium hover:border-amber-500 hover:text-amber-500 group-hover:border-amber-500 group-hover:text-amber-500 transition-all text-center before:absolute before:inset-0 before:z-10"
               >
                 Детальніше
               </a>
               <button
                 type="button"
-                class="w-full sm:w-auto shrink-0 py-2 px-4 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-amber-600 transition-all shadow-md btn-open-modal"
+                class="relative z-30 shrink-0 py-2 px-4 rounded-full bg-amber-500 text-white text-sm font-medium hover:bg-gray-900 transition-all shadow-md btn-open-modal"
                 data-name="{{ .Title }}"
                 data-desc="Замовити"
               >
@@ -355,37 +345,89 @@
   }
   // Modal Image
   function openImageModal() {
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const mainImg = document.getElementById('mainImg');
-    
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const mainImg = document.getElementById("mainImg");
+
     modalImg.src = mainImg.src;
-    modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
   }
 
   function closeImageModal() {
-    const modal = document.getElementById('imageModal');
-    modal.classList.remove('is-open');
-    document.body.style.overflow = '';
+    const modal = document.getElementById("imageModal");
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
   }
 
-  document.addEventListener('keydown', e => { 
-    const modal = document.getElementById('imageModal');
-    if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+  document.addEventListener("keydown", (e) => {
+    const modal = document.getElementById("imageModal");
+    if (e.key === "Escape" && modal && modal.classList.contains("is-open")) {
       closeImageModal();
     }
   });
 </script>
 
 <!-- Modal for Image -->
-<div id="imageModal" class="modal-wrapper" role="dialog" aria-modal="true">
+<div id="imageModal" class="modal-wrapper" role="dialog" aria-modal="true" style="align-items: center;">
   <div id="modalBackdrop" onclick="closeImageModal()"></div>
-  <div id="modalPanel" style="padding: 2.5rem; display: flex; justify-content: center; align-items: center; max-width: max-content;">
-    <button onclick="closeImageModal()" aria-label="Закрити" style="position:absolute;top:1.25rem;right:1.25rem;z-index:10;width:2.25rem;height:2.25rem;border-radius:9999px;background:rgba(255,255,255,.85);border:1px solid #f3f4f6;display:flex;align-items:center;justify-content:center;color:#9ca3af;cursor:pointer;transition: all 0.2s;" onmouseover="this.style.background='#f3f4f6'; this.style.color='#111827';" onmouseout="this.style.background='rgba(255,255,255,.85)'; this.style.color='#9ca3af';">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-4 h-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+  <div
+    id="modalPanel"
+    class="p-4 md:p-10 !rounded-[1.5rem] md:!rounded-[2.5rem]"
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: max-content;
+    "
+  >
+    <button
+      onclick="closeImageModal()"
+      aria-label="Закрити"
+      style="
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        z-index: 10;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #9ca3af;
+        cursor: pointer;
+        transition: all 0.2s;
+      "
+      onmouseover="this.style.background='#f3f4f6'; this.style.color='#111827';"
+      onmouseout="this.style.background='rgba(255,255,255,.85)'; this.style.color='#9ca3af';"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        data-lucide="x"
+        aria-hidden="true"
+        class="lucide lucide-x w-4 h-4"
+      >
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
     </button>
-    <img id="modalImage" src="" alt="Enlarged image" class="max-w-full max-h-[80vh] object-contain rounded-xl">
+    <img
+      id="modalImage"
+      src=""
+      alt="Enlarged image"
+      class="max-w-full max-h-[80vh] object-contain rounded-xl"
+    />
   </div>
 </div>
 
