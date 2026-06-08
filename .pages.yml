@@ -43,18 +43,17 @@ content:
       - { name: attribute_1, label: "Attribute 1", type: string }
       - { name: attribute_2, label: "Attribute 2", type: string }
       - { name: attribute_3, label: "Attribute 3", type: string }
-      - name: image
-        label: "Main image"
-        type: image
-        required: true
-        description: "Мінімум одне фото обов'язкове"
-      - { name: image_alt, label: "Image alt", type: string }
       - {
           name: with_main_image,
           label: "Show Main image on the Page?",
           type: boolean,
           default: true,
         }
+      - name: image
+        label: "Main image"
+        type: image
+      - { name: image_alt, label: "Image alt", type: string }
+
       - {
           name: image_left,
           label: "Image left (Fallback/Legacy)?",
