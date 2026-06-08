@@ -53,13 +53,6 @@ content:
         label: "Main image"
         type: image
       - { name: image_alt, label: "Image alt", type: string }
-
-      - {
-          name: image_left,
-          label: "Image left (Fallback/Legacy)?",
-          type: boolean,
-          default: true,
-        }
       - { name: main_button_text, label: "Main button Text", type: text }
       - { name: specs_button_text, label: "Specs button Text", type: text }
       # FEATURES
